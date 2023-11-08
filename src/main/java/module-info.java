@@ -5,4 +5,5 @@ module com.example.citizenmanagement {
 
     opens com.example.citizenmanagement to javafx.fxml;
     exports com.example.citizenmanagement;
+    exports com.example.citizenmanagement.controller;
 }
