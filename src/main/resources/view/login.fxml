@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.LoginController">
+   <children>
+      <AnchorPane fx:id="login_form" layoutX="400.0" prefHeight="500.0" prefWidth="400.0">
+         <children>
+            <Label layoutX="156.0" layoutY="128.0" text="Login">
+               <font>
+                  <Font name="Arial" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="213.0" text="Username">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="268.0" text="Password">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="login_username" layoutX="134.0" layoutY="210.0" prefHeight="30.0" prefWidth="200.0" promptText="username">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <TextField fx:id="login_password_show" layoutX="131.0" layoutY="265.0" prefHeight="30.0" prefWidth="200.0" />
+            <PasswordField fx:id="login_password_hidden" layoutX="131.0" layoutY="265.0" prefHeight="30.0" prefWidth="200.0" promptText="password">
+               <font>
+                  <Font size="14.0" />
+               </font></PasswordField>
+            <Hyperlink fx:id="login_forgot_password" layoutX="231.0" layoutY="304.0" text="Forgot password?" />
+            <Button fx:id="login_btn" layoutX="50.0" layoutY="337.0" mnemonicParsing="false" onMouseClicked="#checkLogin" prefHeight="40.0" prefWidth="300.0" text="Login" />
+            <Label layoutX="77.0" layoutY="452.0" text="Don't have an account?" />
+            <Label fx:id="login_switchRegister" layoutX="226.0" layoutY="447.0" text="Register Here">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Line endX="138.5999755859375" layoutX="207.0" layoutY="433.0" startX="-143.0" />
+            <ImageView fitHeight="104.0" fitWidth="108.0" layoutX="153.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/user_icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="login_eye" fitHeight="30.0" fitWidth="44.0" layoutX="297.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/show-pass.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="login_errorUsernameAlert" layoutX="134.0" layoutY="190.0" text="Username is a required field." textFill="RED">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="login_errorPasswordAlert" layoutX="132.0" layoutY="247.0" text="Password is a required field." textFill="RED">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="register_form" prefHeight="500.0" prefWidth="400.0" visible="false">
+         <children>
+            <Label layoutX="135.0" layoutY="82.0" text="Register">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="74.0" layoutY="195.0" text="Username">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Label layoutX="76.0" layoutY="233.0" text="Password">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Label layoutX="12.0" layoutY="272.0" text="Confirm Password">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <TextField fx:id="register_username" layoutX="159.0" layoutY="193.0" prefHeight="30.0" prefWidth="200.0" />
+            <TextField fx:id="register_password" layoutX="159.0" layoutY="230.0" prefHeight="30.0" prefWidth="200.0" />
+            <TextField fx:id="register_confirm" layoutX="160.0" layoutY="270.0" prefHeight="30.0" prefWidth="200.0" />
+            <Button fx:id="register_btn" layoutX="74.0" layoutY="335.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Register" />
+            <Line endX="138.5999755859375" layoutX="234.0" layoutY="437.0" startX="-143.0" />
+            <Label layoutX="64.0" layoutY="455.0" text="Already have an account?" />
+            <Label fx:id="register_switchLogin" layoutX="224.0" layoutY="450.0" text="Login Here">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="slider" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #035bff;">
+         <children>
+            <Label layoutX="55.0" layoutY="162.0" text="Hello, dude" textFill="WHITE">
+               <font>
+                  <Font size="60.0" />
+               </font>
+            </Label>
+            <Label layoutX="113.0" layoutY="258.0" text="how are you?" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <Line endX="152.0" endY="1.52587890625E-5" layoutX="188.0" layoutY="250.0" startX="-113.60000610351562" startY="1.52587890625E-5" stroke="#fafafa" strokeWidth="2.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
