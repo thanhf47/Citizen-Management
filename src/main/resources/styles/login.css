@@ -1,0 +1,18 @@
+
+.login_switchRegister:hover {
+    -fx-text-fill: #47f00a;
+    -fx-font-size: 24px;
+    -fx-cursor: hand;
+}
+.login_switchRegister:pressed {
+    -fx-text-fill: red;
+}
+
+.register_switchLogin:hover {
+    -fx-text-fill: #47f00a;
+    -fx-font-size: 24px;
+    -fx-cursor: hand;
+}
+.register_switchLogin:pressed {
+    -fx-text-fill: red;
+}
