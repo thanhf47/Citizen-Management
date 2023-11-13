@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class App extends Application {
     @Override
@@ -14,6 +15,8 @@ public class App extends Application {
 
         stage.setTitle("Citizen Management");
         stage.setScene(new Scene(root));
+        // Đặt kiểu cho Stage là UNDECORATED để xóa title bar
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
 

@@ -1,4 +1,12 @@
-
+.form {
+    -fx-background: #CCCCCC;
+}
+.error_alert {
+    -fx-text-fill: #ff0000;
+    -fx-font-family: Calibri;
+    -fx-font-style: Italic;
+    -fx-font-size: 14px;
+}
 .login_switchRegister:hover {
     -fx-text-fill: #47f00a;
     -fx-font-size: 24px;
@@ -15,4 +23,61 @@
 }
 .register_switchLogin:pressed {
     -fx-text-fill: red;
+}
+
+/* Button */
+.button_style {
+    -fx-background-color: #060c54;
+    -fx-border: none;
+    -fx-border-radius: 5px;
+    -fx-text-style: Verdana;
+    -fx-font-size: 20px;
+    -fx-text-fill: #FFFFFF;
+}
+
+.button_style:hover {
+    -fx-cursor: hand;
+    -fx-text-style: bold;
+    -fx-background-color: #373c7d;
+}
+
+.button_style:focus {
+    -fx-outline-color: transparent;
+    -fx-outline-style: solid;
+}
+.button_style:pressed {
+    -fx-background-color: #3998e6;
+}
+
+/* Slider Style*/
+.slider_style {
+}
+.slider_style Label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: Verdana;
+    -fx-alignment: center;
+
+}
+.slider_style .label1 {
+    -fx-font-size: 32px;
+    -fx-font-weight: Bold;
+}
+.slider_style .timeLabel {
+    -fx-font-size: 54px;
+    -fx-font-weight: Bold;
+}
+.slider_style .dateLabel {
+    -fx-font-size: 24px;
+    -fx-font-style: normal;
+}
+.slider_style FontAwesomeIconView {
+    -fx-fill: #ff7700;
+}
+/* Custom title bar*/
+.custom_title_bar{
+    -fx-background-color: #FFFFFF;
+}
+.custom_title_bar FontAwesomeIconView:hover {
+    -fx-cursor: hand;
+    -fx-fill: #FF0000;
 }

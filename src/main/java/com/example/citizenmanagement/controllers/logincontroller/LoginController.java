@@ -1,5 +1,6 @@
 package com.example.citizenmanagement.controllers.logincontroller;
 
+import com.example.citizenmanagement.modules.login.DigitalClock;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -44,7 +46,7 @@ public class LoginController implements Initializable {
     private TextField login_password_show;
 
     @FXML
-    private FontAwesomeIconView login_showPassword;
+    private ImageView login_showedPassIcon;
 
     @FXML
     private Label login_switchRegister;
@@ -53,10 +55,19 @@ public class LoginController implements Initializable {
     private TextField login_username;
 
     @FXML
+    private ImageView login_hiddenPassIcon;
+
+    @FXML
     private Button register_btn;
 
     @FXML
-    private TextField register_confirm;
+    private PasswordField register_confirm;
+
+    @FXML
+    private FontAwesomeIconView closeBtn;
+
+    @FXML
+    private FontAwesomeIconView windowMinimizeBtn;
 
     @FXML
     private Label register_errorAlert;
@@ -71,13 +82,19 @@ public class LoginController implements Initializable {
     private TextField register_lastname;
 
     @FXML
-    private TextField register_password;
+    private PasswordField register_password;
 
     @FXML
     private Label register_switchLogin;
 
     @FXML
     private TextField register_username;
+
+    @FXML
+    private Label timeLabel;
+
+    @FXML
+    private Label dateLabel;
 
     @FXML
     private AnchorPane slider;
@@ -122,29 +139,13 @@ public class LoginController implements Initializable {
         }
 
     }
-
-    @FXML
-    void showPassword() {
-        if (!login_password_hidden.getText().isBlank()) {
-            login_password_show.setText(login_password_hidden.getText());
-            login_password_show.setVisible(true);
-            login_password_hidden.setVisible(false);
-        }
-    }
-    @FXML
-    void hidePassword() {
-        if (!login_password_show.getText().isBlank()) {
-            login_password_hidden.setVisible(true);
-            login_password_show.setVisible(false);
-        }
-    }
     @FXML
     void switchRegisterForm() {
         register_form.setVisible(true);
         transition = new TranslateTransition();
         transition.setNode(slider);
         transition.setToX(400);
-        transition.setDuration(Duration.seconds(1));
+        transition.setDuration(Duration.seconds(.6));
         transition.setOnFinished(e->{
             //hide login form
             login_username.setText("");
@@ -161,7 +162,7 @@ public class LoginController implements Initializable {
         transition = new TranslateTransition();
         transition.setNode(slider);
         transition.setToX(0);
-        transition.setDuration(Duration.seconds(1));
+        transition.setDuration(Duration.seconds(.6));
         transition.setOnFinished(e->{
             //reset register form ans hide.
             register_firstname.setText("");
@@ -209,7 +210,7 @@ public class LoginController implements Initializable {
             register_errorAlert.setVisible(true);
         }
         else{
-            register_errorAlert.setVisible(true);
+            register_errorAlert.setVisible(false);
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Message");
             alert.setHeaderText(null);
@@ -218,6 +219,34 @@ public class LoginController implements Initializable {
             //switch to login form.
             switchLoginForm();
         }
+    }
+
+    @FXML
+    void onShowedPasswordIconClicked() {
+        login_showedPassIcon.setVisible(false);
+        login_hiddenPassIcon.setVisible(true);
+        login_password_hidden.setText(login_password_show.getText());
+        login_password_hidden.setVisible(true);
+        login_password_show.setVisible(false);
+    }
+    @FXML
+    void onHiddenPasswordIconClicked() {
+        login_hiddenPassIcon.setVisible(false);
+        login_showedPassIcon.setVisible(true);
+        login_password_show.setText(login_password_hidden.getText());
+        login_password_show.setVisible(true);
+        login_password_hidden.setVisible(false);
+    }
+    @FXML
+    void onCloseBtnClicked() {
+        Stage stage = (Stage) closeBtn.getScene().getWindow();
+        stage.close();
+    }
+    @FXML
+    void onWindowMinimizeBtnClicked() {
+        Stage stage = (Stage) windowMinimizeBtn.getScene().getWindow();
+
+        stage.setIconified(true);
     }
     @FXML
     void onForgotClicked() {
@@ -232,5 +261,9 @@ public class LoginController implements Initializable {
         register_errorAlert.setVisible(false);
         slider.setVisible(true);
 
+        login_showedPassIcon.setVisible(false);
+        login_hiddenPassIcon.setVisible(true);
+
+        DigitalClock.TimeRunning(timeLabel, dateLabel);
     }
 }
