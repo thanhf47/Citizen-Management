@@ -9,4 +9,6 @@ module com.example.citizenmanagement {
     exports com.example.citizenmanagement.controllers;
     exports com.example.citizenmanagement.controllers.logincontroller;
     opens com.example.citizenmanagement.controllers.logincontroller to javafx.fxml;
+    exports com.example.citizenmanagement.controllers.maincontrollers;
+    opens com.example.citizenmanagement.controllers.maincontrollers to javafx.fxml;
 }

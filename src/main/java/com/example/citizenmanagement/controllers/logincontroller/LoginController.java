@@ -23,7 +23,11 @@ public class LoginController implements Initializable {
 
     private TranslateTransition transition;
     private Alert alert;
+    private double xOffset; // lưu vị trí con trỏ chuột ban đầu theo Ox
+    private double yOffset; // lưu vị trí con trỏ chuột ban đầu theo Oy
 
+    @FXML
+    private AnchorPane customBar;
     @FXML
     private Button login_btn;
 
@@ -99,6 +103,8 @@ public class LoginController implements Initializable {
     @FXML
     private AnchorPane slider;
 
+    @FXML
+    private TextField register_phoneNumber;
 
 
     //login form
@@ -125,13 +131,15 @@ public class LoginController implements Initializable {
         // login successfully!
 
         if (login_username.getText().isBlank() == false && login_password_hidden.getText().isBlank() == false){
-            Stage stage = (Stage) login_btn.getScene().getWindow();
-
+            Stage loginStage = (Stage) login_btn.getScene().getWindow();
+            loginStage.close();
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));
-                stage.setTitle("Citizen Management");
-                stage.setScene(new Scene(root));
+                Stage mainStage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("/fxml/main/main.fxml"));
+                mainStage.setTitle("Citizen Management");
+                mainStage.setScene(new Scene(root));
                 System.out.println("successfully.");
+                mainStage.show();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -151,7 +159,11 @@ public class LoginController implements Initializable {
             login_username.setText("");
             login_password_show.setText("");
             login_password_hidden.setText("");
+            login_errorPasswordAlert.setVisible(false);
+            login_errorUsernameAlert.setVisible(false);
             login_form.setVisible(false);
+
+            register_btn.requestFocus(); //con trỏ chuột ban đầu đặt ở đây.
         });
         transition.play();
     }
@@ -170,11 +182,21 @@ public class LoginController implements Initializable {
             register_username.setText("");
             register_password.setText("");
             register_confirm.setText("");
+            register_phoneNumber.setText("");
             register_errorAlert.setVisible(false);
             register_form.setVisible(false);
+            login_btn.requestFocus(); //con trỏ chuột ban đầu đặt ở đây.
         });
         transition.play();
     }
+
+//    @FXML
+//    void checkPhoneNumber(KeyEvent keyEvent) {
+//        String character = keyEvent.getCharacter();
+//        if (!character.matches("[0-9]")) {
+//            keyEvent.consume();
+//        }
+//    }
 
     //kiểm tra register form có oke chưa
     Boolean checkRegister() {
@@ -184,6 +206,10 @@ public class LoginController implements Initializable {
         }
         else if (register_lastname.getText().isBlank()) {
             register_errorAlert.setText("Last name is required field.");
+            return false;
+        }
+        else if (register_phoneNumber.getText().isBlank()) {
+            register_errorAlert.setText("Phone number is required field.");
             return false;
         }
         else if (register_username.getText().isBlank()) {
@@ -247,6 +273,18 @@ public class LoginController implements Initializable {
         Stage stage = (Stage) windowMinimizeBtn.getScene().getWindow();
 
         stage.setIconified(true);
+    }
+    @FXML
+    void pressCustomBar(MouseEvent mouseEvent) {
+
+        xOffset = mouseEvent.getSceneX();
+        yOffset = mouseEvent.getSceneY();
+    }
+    @FXML
+    void dragCustomBar(MouseEvent mouseEvent) {
+        Stage stage = (Stage) customBar.getScene().getWindow();
+        stage.setX(mouseEvent.getScreenX() - xOffset);
+        stage.setY(mouseEvent.getScreenY() - yOffset);
     }
     @FXML
     void onForgotClicked() {

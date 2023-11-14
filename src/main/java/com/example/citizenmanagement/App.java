@@ -12,7 +12,6 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
         Parent root = loader.load();
-
         stage.setTitle("Citizen Management");
         stage.setScene(new Scene(root));
         // Đặt kiểu cho Stage là UNDECORATED để xóa title bar
