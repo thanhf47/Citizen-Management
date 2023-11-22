@@ -47,12 +47,12 @@ public class MainMenuController implements Initializable {
     }
 
     private void addListeners() {
-        trang_chu_btn.setOnAction(event -> onDashboard());
+        trang_chu_btn.setOnAction(event -> onTrangChu());
         nhan_khau_btn.setOnAction(event -> onNhanKhau());
         ho_khau_btn.setOnAction(event -> onHoKhau());
     }
 
-    private void onDashboard() {
+    private void onTrangChu() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TRANG_CHU);
     }
     private void onNhanKhau() {

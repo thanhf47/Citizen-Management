@@ -1,5 +1,6 @@
 package com.example.citizenmanagement.views;
 
+import com.example.citizenmanagement.models.FeeMenuOptions;
 import com.example.citizenmanagement.models.MainMenuOptions;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -14,12 +15,23 @@ import java.io.IOException;
 // THIS CLASS IS USED TO MANAGE UI COMPONENT.
 public class ViewFactory {
 
-    //Main Views
+    //Main Citizen Views
     private final ObjectProperty<MainMenuOptions> selectedMenuItem;
     private AnchorPane trangChuView;
     private AnchorPane nhanKhauView;
     private AnchorPane hoKhauView;
 
+    // Fee Views
+    private final ObjectProperty<FeeMenuOptions> feeSelectedMenuItem;
+    private AnchorPane feeTrangChuView;
+    private AnchorPane feeVeSinhView;
+    private AnchorPane feeDongGopView;
+    /********************************************************************************************/
+    public ViewFactory() {
+        this.selectedMenuItem = new SimpleObjectProperty<>();
+        this.feeSelectedMenuItem = new SimpleObjectProperty<>();
+    }
+    /********************************************************************************************/
     public ObjectProperty<MainMenuOptions> getSelectedMenuItem() {return selectedMenuItem;}
     public AnchorPane getTrangChuView() {
         if (trangChuView == null) {
@@ -51,8 +63,39 @@ public class ViewFactory {
         }
         return nhanKhauView;
     }
-    public ViewFactory() {
-        this.selectedMenuItem = new SimpleObjectProperty<>();
+    /********************************************************************************************/
+    public ObjectProperty<FeeMenuOptions> getFeeSelectedMenuItem(){
+        return feeSelectedMenuItem;
+    }
+    public AnchorPane getFeeTrangChuView() {
+        if (feeTrangChuView == null) {
+            try {
+                feeTrangChuView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeTrangChu.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return feeTrangChuView;
+    }
+    public AnchorPane getFeeVeSinhView() {
+        if (feeVeSinhView == null) {
+            try {
+                feeVeSinhView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeVeSinh.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return feeVeSinhView;
+    }
+    public AnchorPane getFeeDongGopView() {
+        if (feeDongGopView == null) {
+            try {
+                feeDongGopView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeDongGop.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return feeDongGopView;
     }
     /********************************************************************************************/
     public void showLoginWindow() {

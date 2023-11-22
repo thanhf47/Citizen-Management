@@ -3,6 +3,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
+<?import javafx.scene.control.Label?>
 <AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.feecontrollers.FeeTrangChuController">
-
+    <Label layoutX="383.0" layoutY="366.0" text="PHI TRANG CHU HERE"/>
 </AnchorPane>
