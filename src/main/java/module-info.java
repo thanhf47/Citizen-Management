@@ -9,10 +9,12 @@ module com.example.citizenmanagement {
     opens com.example.citizenmanagement.controllers.maincontrollers to javafx.fxml;
     opens com.example.citizenmanagement.models to javafx.fxml;
     opens com.example.citizenmanagement.views to javafx.fxml;
+    opens com.example.citizenmanagement.controllers.feecontrollers to javafx.fxml;
 
     exports com.example.citizenmanagement;
     exports com.example.citizenmanagement.controllers;
     exports com.example.citizenmanagement.controllers.maincontrollers;
+    exports com.example.citizenmanagement.controllers.feecontrollers;
     exports com.example.citizenmanagement.models;
     exports com.example.citizenmanagement.views;
 }

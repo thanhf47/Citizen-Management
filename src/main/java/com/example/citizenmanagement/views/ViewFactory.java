@@ -24,7 +24,7 @@ public class ViewFactory {
     public AnchorPane getTrangChuView() {
         if (trangChuView == null) {
             try {
-                trangChuView = new FXMLLoader(getClass().getResource("/fxml/main/TrangChu.fxml")).load();
+                trangChuView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/TrangChu.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -34,7 +34,7 @@ public class ViewFactory {
     public AnchorPane getHoKhauView() {
         if (hoKhauView == null) {
             try {
-                hoKhauView = new FXMLLoader(getClass().getResource("/fxml/main/HoKhau.fxml")).load();
+                hoKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -44,7 +44,7 @@ public class ViewFactory {
     public AnchorPane getNhanKhauView() {
         if (nhanKhauView == null) {
             try {
-                nhanKhauView = new FXMLLoader(getClass().getResource("/fxml/main/NhanKhau.fxml")).load();
+                nhanKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/NhanKhau.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -61,7 +61,11 @@ public class ViewFactory {
     }
 
     public void showMainWindow() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main/Main.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main_citizen/Main.fxml"));
+        createStage(loader);
+    }
+    public void showFeeWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/fee/Fee.fxml"));
         createStage(loader);
     }
 

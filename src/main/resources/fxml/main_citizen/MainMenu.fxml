@@ -19,11 +19,11 @@
          </ImageView>
       </VBox>
       <VBox prefHeight="400.0" prefWidth="160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
-         <Button fx:id="dashboard_btn" mnemonicParsing="false" text="DASHBOARD" />
+         <Button fx:id="trang_chu_btn" mnemonicParsing="false" text="TRANG CHỦ" />
          <Button fx:id="nhan_khau_btn" mnemonicParsing="false" text="NHÂN KHẨU" />
          <Button fx:id="ho_khau_btn" mnemonicParsing="false" text="HỘ KHẨU" />
          <Line endX="100.0" />
-         <Button fx:id="logout_btn" mnemonicParsing="false" onAction="#onLogoutBtn" text="Logout" />
+         <Button fx:id="logout_btn" mnemonicParsing="false" onAction="#onLogoutBtn" text="ĐĂNG XUẤT" />
       </VBox>
       <VBox prefHeight="120.0" prefWidth="130.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Report Suggestion/Bug?" />

@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 public class MainMenuController implements Initializable {
 
     @FXML
-    private Button dashboard_btn;
+    private Button trang_chu_btn;
 
     @FXML
     private Button ho_khau_btn;
@@ -47,7 +47,7 @@ public class MainMenuController implements Initializable {
     }
 
     private void addListeners() {
-        dashboard_btn.setOnAction(event -> onDashboard());
+        trang_chu_btn.setOnAction(event -> onDashboard());
         nhan_khau_btn.setOnAction(event -> onNhanKhau());
         ho_khau_btn.setOnAction(event -> onHoKhau());
     }

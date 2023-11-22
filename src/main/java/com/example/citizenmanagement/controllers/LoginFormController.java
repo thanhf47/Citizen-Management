@@ -128,6 +128,7 @@ public class LoginFormController implements Initializable {
                 Stage stage = (Stage) login_btn.getScene().getWindow();
                 Model.getInstance().getViewFactory().closeStage(stage);
                 Model.getInstance().getViewFactory().showMainWindow();
+//                Model.getInstance().getViewFactory().showFeeWindow();
 //            }
 //            else {
 //                login_errorAlert.setText("Tên đăng nhập hoặc mật khẩu không đúng.");
