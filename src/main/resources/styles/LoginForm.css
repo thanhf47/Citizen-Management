@@ -59,7 +59,7 @@
 
 }
 .slider_style .label1 {
-    -fx-font-size: 32px;
+    -fx-font-size: 42px;
     -fx-font-weight: Bold;
 }
 .slider_style .timeLabel {
@@ -72,12 +72,4 @@
 }
 .slider_style FontAwesomeIconView {
     -fx-fill: #ff7700;
-}
-/* Custom title bar*/
-.custom_title_bar{
-    -fx-background-color: #FFFFFF;
-}
-.custom_title_bar FontAwesomeIconView:hover {
-    -fx-cursor: hand;
-    -fx-fill: #FF0000;
 }

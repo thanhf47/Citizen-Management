@@ -2,13 +2,17 @@ module com.example.citizenmanagement {
     requires javafx.controls;
     requires javafx.fxml;
     requires de.jensd.fx.glyphs.fontawesome;
+    requires java.sql;
 
     opens com.example.citizenmanagement to javafx.fxml;
     opens com.example.citizenmanagement.controllers to javafx.fxml;
+    opens com.example.citizenmanagement.controllers.maincontrollers to javafx.fxml;
+    opens com.example.citizenmanagement.models to javafx.fxml;
+    opens com.example.citizenmanagement.views to javafx.fxml;
+
     exports com.example.citizenmanagement;
     exports com.example.citizenmanagement.controllers;
-    exports com.example.citizenmanagement.controllers.logincontroller;
-    opens com.example.citizenmanagement.controllers.logincontroller to javafx.fxml;
     exports com.example.citizenmanagement.controllers.maincontrollers;
-    opens com.example.citizenmanagement.controllers.maincontrollers to javafx.fxml;
+    exports com.example.citizenmanagement.models;
+    exports com.example.citizenmanagement.views;
 }

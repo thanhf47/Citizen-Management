@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="180.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.MainMenuController">
+   <AnchorPane prefHeight="730.0" prefWidth="160.0">
+      <VBox prefHeight="80.0" prefWidth="160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../images/main/BART_SIMPSON.png" />
+            </image>
+         </ImageView>
+      </VBox>
+      <VBox prefHeight="400.0" prefWidth="160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <Button fx:id="dashboard_btn" mnemonicParsing="false" text="DASHBOARD" />
+         <Button fx:id="nhan_khau_btn" mnemonicParsing="false" text="NHÂN KHẨU" />
+         <Button fx:id="ho_khau_btn" mnemonicParsing="false" text="HỘ KHẨU" />
+         <Line endX="100.0" />
+         <Button fx:id="logout_btn" mnemonicParsing="false" onAction="#onLogoutBtn" text="Logout" />
+      </VBox>
+      <VBox prefHeight="120.0" prefWidth="130.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Report Suggestion/Bug?" />
+         <Label text="Use this to report any errors or suggestion" />
+         <Button fx:id="report_btn" mnemonicParsing="false" text="Report">
+            <graphic>
+               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../../../../MazeBank/src/main/resources/images/PLUS.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+      </VBox>
+   </AnchorPane>
+</VBox>

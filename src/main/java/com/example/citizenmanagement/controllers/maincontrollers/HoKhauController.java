@@ -1,4 +1,4 @@
 package com.example.citizenmanagement.controllers.maincontrollers;
 
-public class DashboardController {
+public class HoKhauController {
 }

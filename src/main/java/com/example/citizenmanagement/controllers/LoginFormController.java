@@ -1,6 +1,8 @@
-package com.example.citizenmanagement.controllers.logincontroller;
+package com.example.citizenmanagement.controllers;
 
-import com.example.citizenmanagement.modules.login.DigitalClock;
+import com.example.citizenmanagement.models.DatabaseConnection;
+import com.example.citizenmanagement.models.DigitalClock;
+import com.example.citizenmanagement.models.Model;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -17,25 +19,26 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
-public class LoginController implements Initializable {
+
+public class LoginFormController implements Initializable {
 
     private TranslateTransition transition;
     private Alert alert;
-    private double xOffset; // lưu vị trí con trỏ chuột ban đầu theo Ox
-    private double yOffset; // lưu vị trí con trỏ chuột ban đầu theo Oy
 
-    @FXML
-    private AnchorPane customBar;
+//    private DatabaseConnection connectNow;
+//    private Connection connectDB;
+
     @FXML
     private Button login_btn;
 
     @FXML
-    private Label login_errorPasswordAlert;
-
-    @FXML
-    private Label login_errorUsernameAlert;
+    private Label login_errorAlert;
 
     @FXML
     private Hyperlink login_forgotPassword;
@@ -68,22 +71,13 @@ public class LoginController implements Initializable {
     private PasswordField register_confirm;
 
     @FXML
-    private FontAwesomeIconView closeBtn;
-
-    @FXML
-    private FontAwesomeIconView windowMinimizeBtn;
-
-    @FXML
     private Label register_errorAlert;
 
     @FXML
-    private TextField register_firstname;
+    private TextField register_fullname;
 
     @FXML
     private AnchorPane register_form;
-
-    @FXML
-    private TextField register_lastname;
 
     @FXML
     private PasswordField register_password;
@@ -112,38 +106,33 @@ public class LoginController implements Initializable {
     void onLoginBtnClicked(MouseEvent event) {
         // complete later
 
-        //username field
-        if (login_username.getText().isBlank()) {
-            login_errorUsernameAlert.setVisible(true);
-        }
-        else {
-            login_errorUsernameAlert.setVisible(false);
+        // Trong trường hợp người dùng nhập mật khẩu ở chế độ nhìn thấy,
+        // phải gán lại cho login_password_hidden để so sánh
+        if (!login_password_hidden.isVisible()) {
+            login_password_hidden.setText(login_password_show.getText());
         }
 
-        //password field
-        if (login_password_hidden.getText().isBlank()) {
-            login_errorPasswordAlert.setVisible(true);
+        if (login_username.getText().isBlank()) {
+            login_errorAlert.setText("Vui lòng điển đầy đủ tên đăng nhập.");
+            login_errorAlert.setVisible(true);
         }
-        else {
-            login_errorPasswordAlert.setVisible(false);
+        else if (login_password_hidden.getText().isBlank()){
+            login_errorAlert.setText("Vui lòng điền đầy đủ mật khẩu.");
+            login_errorAlert.setVisible(true);
         }
 
         // login successfully!
 
         if (login_username.getText().isBlank() == false && login_password_hidden.getText().isBlank() == false){
-            Stage loginStage = (Stage) login_btn.getScene().getWindow();
-            loginStage.close();
-            try {
-                Stage mainStage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("/fxml/main/main.fxml"));
-                mainStage.setTitle("Citizen Management");
-                mainStage.setScene(new Scene(root));
-                System.out.println("successfully.");
-                mainStage.show();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
+//            if (verifyAccount()) {
+                Stage stage = (Stage) login_btn.getScene().getWindow();
+                Model.getInstance().getViewFactory().closeStage(stage);
+                Model.getInstance().getViewFactory().showMainWindow();
+//            }
+//            else {
+//                login_errorAlert.setText("Tên đăng nhập hoặc mật khẩu không đúng.");
+//                login_errorAlert.setVisible(true);
+//            }
         }
 
     }
@@ -159,8 +148,7 @@ public class LoginController implements Initializable {
             login_username.setText("");
             login_password_show.setText("");
             login_password_hidden.setText("");
-            login_errorPasswordAlert.setVisible(false);
-            login_errorUsernameAlert.setVisible(false);
+            login_errorAlert.setVisible(false);
             login_form.setVisible(false);
 
             register_btn.requestFocus(); //con trỏ chuột ban đầu đặt ở đây.
@@ -177,8 +165,7 @@ public class LoginController implements Initializable {
         transition.setDuration(Duration.seconds(.6));
         transition.setOnFinished(e->{
             //reset register form ans hide.
-            register_firstname.setText("");
-            register_lastname.setText("");
+            register_fullname.setText("");
             register_username.setText("");
             register_password.setText("");
             register_confirm.setText("");
@@ -200,32 +187,29 @@ public class LoginController implements Initializable {
 
     //kiểm tra register form có oke chưa
     Boolean checkRegister() {
-        if (register_firstname.getText().isBlank()) {
-            register_errorAlert.setText("First name is required field.");
-            return false;
-        }
-        else if (register_lastname.getText().isBlank()) {
-            register_errorAlert.setText("Last name is required field.");
+
+        if (register_fullname.getText().isBlank()) {
+            register_errorAlert.setText("Vui lòng điền đầy đủ họ và tên.");
             return false;
         }
         else if (register_phoneNumber.getText().isBlank()) {
-            register_errorAlert.setText("Phone number is required field.");
+            register_errorAlert.setText("Vui lòng điền đầy đủ số điện thoại.");
             return false;
         }
         else if (register_username.getText().isBlank()) {
-            register_errorAlert.setText("Username is required field.");
+            register_errorAlert.setText("Vui lòng điền đầy đủ tên đăng nhập.");
             return false;
         }
         else if (register_password.getText().isBlank()) {
-            register_errorAlert.setText("Password is required field.");
+            register_errorAlert.setText("Vui lòng điền đầy đủ mật khẩu.");
             return false;
         }
         else if (register_confirm.getText().isBlank()) {
-            register_errorAlert.setText("Firstname is required field.");
+            register_errorAlert.setText("Vui lòng xác nhận mật khẩu.");
             return false;
         }
         else if (!register_confirm.getText().equals(register_password.getText())) {
-            register_errorAlert.setText("Your confirm password is incorrect.");
+            register_errorAlert.setText("Mật khẩu của bạn chưa xác nhận đúng.");
             return false;
         }
         return true;
@@ -240,7 +224,7 @@ public class LoginController implements Initializable {
             alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Message");
             alert.setHeaderText(null);
-            alert.setContentText("Register successfully!");
+            alert.setContentText("Đăng ký thành công!");
             alert.showAndWait();
             //switch to login form.
             switchLoginForm();
@@ -264,36 +248,33 @@ public class LoginController implements Initializable {
         login_password_hidden.setVisible(false);
     }
     @FXML
-    void onCloseBtnClicked() {
-        Stage stage = (Stage) closeBtn.getScene().getWindow();
-        stage.close();
-    }
-    @FXML
-    void onWindowMinimizeBtnClicked() {
-        Stage stage = (Stage) windowMinimizeBtn.getScene().getWindow();
-
-        stage.setIconified(true);
-    }
-    @FXML
-    void pressCustomBar(MouseEvent mouseEvent) {
-
-        xOffset = mouseEvent.getSceneX();
-        yOffset = mouseEvent.getSceneY();
-    }
-    @FXML
-    void dragCustomBar(MouseEvent mouseEvent) {
-        Stage stage = (Stage) customBar.getScene().getWindow();
-        stage.setX(mouseEvent.getScreenX() - xOffset);
-        stage.setY(mouseEvent.getScreenY() - yOffset);
-    }
-    @FXML
     void onForgotClicked() {
 
     }
+
+//    private boolean verifyAccount() {
+//        String query = "SELECT COUNT(*)\n" +
+//                "FROM UserAccount\n" +
+//                "WHERE USERNAME = '" + login_username.getText() + "' AND PASSWORD = '" + login_password_hidden.getText() + "';";
+//
+//        try {
+//            Statement statement = connectDB.createStatement();
+//            ResultSet queryResult = statement.executeQuery(query);
+//
+//            while(queryResult.next()) {
+//                if (queryResult.getInt(1) == 1) {
+//                    return true;
+//                }
+//            }
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//        return false;
+//    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        login_errorUsernameAlert.setVisible(false);
-        login_errorPasswordAlert.setVisible(false);
+        login_errorAlert.setVisible(false);
         login_form.setVisible(true);
         register_form.setVisible(false);
         register_errorAlert.setVisible(false);
@@ -303,5 +284,9 @@ public class LoginController implements Initializable {
         login_hiddenPassIcon.setVisible(true);
 
         DigitalClock.TimeRunning(timeLabel, dateLabel);
+
+//        connectNow = new DatabaseConnection();
+//        connectDB = connectNow.getConnection();
+
     }
 }

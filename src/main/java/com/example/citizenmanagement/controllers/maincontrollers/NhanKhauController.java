@@ -1,4 +1,4 @@
 package com.example.citizenmanagement.controllers.maincontrollers;
 
-public class NavigationController {
+public class NhanKhauController {
 }

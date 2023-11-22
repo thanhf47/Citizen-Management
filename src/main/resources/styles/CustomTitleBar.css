@@ -1,0 +1,9 @@
+
+/* Custom title bar*/
+.custom_title_bar{
+    -fx-background-color: #FFFFFF;
+}
+.custom_title_bar FontAwesomeIconView:hover {
+    -fx-cursor: hand;
+    -fx-fill: #FF0000;
+}

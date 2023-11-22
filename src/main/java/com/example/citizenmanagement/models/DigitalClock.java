@@ -1,4 +1,4 @@
-package com.example.citizenmanagement.modules.login;
+package com.example.citizenmanagement.models;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;

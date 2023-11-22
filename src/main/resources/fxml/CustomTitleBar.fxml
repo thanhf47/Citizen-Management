@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="customBar" onMouseDragged="#dragCustomBar" onMousePressed="#pressCustomBar" prefHeight="40.0" prefWidth="800.0" styleClass="custom_title_bar" stylesheets="@../styles/CustomTitleBar.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.CustomTitleBarController">
+   <FontAwesomeIconView fx:id="closeBtn" glyphName="TIMES" layoutX="768.0" layoutY="33.0" onMouseClicked="#onCloseBtnClicked" size="35" wrappingWidth="36.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+   <FontAwesomeIconView fx:id="windowMinimizeBtn" glyphName="WINDOW_MINIMIZE" layoutX="719.0" layoutY="33.0" onMouseClicked="#onWindowMinimizeBtnClicked" size="35" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="50.0" />
+</AnchorPane>
