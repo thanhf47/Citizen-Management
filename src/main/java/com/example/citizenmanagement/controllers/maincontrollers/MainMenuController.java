@@ -19,9 +19,6 @@ public class MainMenuController implements Initializable {
     private Button ho_khau_btn;
 
     @FXML
-    private Button khai_tu_btn;
-
-    @FXML
     private Button logout_btn;
 
     @FXML
@@ -30,16 +27,12 @@ public class MainMenuController implements Initializable {
     @FXML
     private Button report_btn;
 
-    @FXML
-    private Button tam_tru_btn;
-
-    @FXML
-    private Button tam_vang_btn;
 
     public void onLogoutBtn() {
         Stage stage = (Stage) logout_btn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showLoginWindow();
+        Model.getInstance().setCitizenManagerLoginSuccessFlag(false);
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -61,4 +54,5 @@ public class MainMenuController implements Initializable {
     private void onHoKhau() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.HO_KHAU);
     }
+
 }
