@@ -21,18 +21,26 @@ public class ViewFactory {
     private AnchorPane nhanKhauView;
     private AnchorPane hoKhauView;
 
+    // Nhan Khau View
+
+
     // Fee Views
     private final ObjectProperty<FeeMenuOptions> feeSelectedMenuItem;
     private AnchorPane feeTrangChuView;
     private AnchorPane feeVeSinhView;
     private AnchorPane feeDongGopView;
+
     /********************************************************************************************/
     public ViewFactory() {
         this.selectedMenuItem = new SimpleObjectProperty<>();
         this.feeSelectedMenuItem = new SimpleObjectProperty<>();
     }
+
     /********************************************************************************************/
-    public ObjectProperty<MainMenuOptions> getSelectedMenuItem() {return selectedMenuItem;}
+    public ObjectProperty<MainMenuOptions> getSelectedMenuItem() {
+        return selectedMenuItem;
+    }
+
     public AnchorPane getTrangChuView() {
         if (trangChuView == null) {
             try {
@@ -43,6 +51,7 @@ public class ViewFactory {
         }
         return trangChuView;
     }
+
     public AnchorPane getHoKhauView() {
         if (hoKhauView == null) {
             try {
@@ -53,6 +62,7 @@ public class ViewFactory {
         }
         return hoKhauView;
     }
+
     public AnchorPane getNhanKhauView() {
         if (nhanKhauView == null) {
             try {
@@ -63,10 +73,12 @@ public class ViewFactory {
         }
         return nhanKhauView;
     }
+
     /********************************************************************************************/
-    public ObjectProperty<FeeMenuOptions> getFeeSelectedMenuItem(){
+    public ObjectProperty<FeeMenuOptions> getFeeSelectedMenuItem() {
         return feeSelectedMenuItem;
     }
+
     public AnchorPane getFeeTrangChuView() {
         if (feeTrangChuView == null) {
             try {
@@ -77,6 +89,7 @@ public class ViewFactory {
         }
         return feeTrangChuView;
     }
+
     public AnchorPane getFeeVeSinhView() {
         if (feeVeSinhView == null) {
             try {
@@ -87,6 +100,7 @@ public class ViewFactory {
         }
         return feeVeSinhView;
     }
+
     public AnchorPane getFeeDongGopView() {
         if (feeDongGopView == null) {
             try {
@@ -97,6 +111,7 @@ public class ViewFactory {
         }
         return feeDongGopView;
     }
+
     /********************************************************************************************/
     public void showLoginWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login/Login.fxml"));
@@ -107,10 +122,12 @@ public class ViewFactory {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main_citizen/Main.fxml"));
         createStage(loader);
     }
+
     public void showFeeWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/fee/Fee.fxml"));
         createStage(loader);
     }
+
 
     private void createStage(FXMLLoader loader) {
         Stage stage = new Stage();
@@ -124,6 +141,11 @@ public class ViewFactory {
         stage.setScene(scene);
         stage.show();
     }
-    public void closeStage(Stage stage) { stage.close(); }
+
+    public void closeStage(Stage stage) {
+        stage.close();
+    }
 }
+
+
 

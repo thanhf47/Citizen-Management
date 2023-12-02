@@ -1,17 +1,24 @@
 package com.example.citizenmanagement.controllers.maincontrollers.NhankhauController;
 
+import com.example.citizenmanagement.models.MainMenuOptions;
 import com.example.citizenmanagement.models.Model;
-import com.example.citizenmanagement.models.NhanKhauMenu;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class NhanKhauController implements Initializable {
+
+public class NhanKhauMenuController implements Initializable {
+
+    @FXML
     public Button themmoi_btn;
+    @FXML
     public Button khaitu_button;
+    @FXML
     public Button tamtru_button;
+    @FXML
     public Button tamvang_button;
 
     @Override
@@ -27,19 +34,17 @@ public class NhanKhauController implements Initializable {
     }
 
     private void onThemmoi() {
-        Model.getInstance().getNhankhauFactoryView().selectedMenuNhanKhau().set(NhanKhauMenu.Them_Moi);
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.Them_Moi);
     }
 
     private void onTamtru() {
-        Model.getInstance().getNhankhauFactoryView().selectedMenuNhanKhau().set(NhanKhauMenu.Tam_Tru);
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.Tam_Tru);
     }
-
     private void onTamvang() {
-        Model.getInstance().getNhankhauFactoryView().selectedMenuNhanKhau().set(NhanKhauMenu.Tam_Vang);
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.Tam_Vang);
     }
-
     private void onKhaitu() {
-        Model.getInstance().getNhankhauFactoryView().selectedMenuNhanKhau().set(NhanKhauMenu.Khai_Tu);
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.Khai_Tu);
     }
 
 

@@ -17,4 +17,6 @@ module com.example.citizenmanagement {
     exports com.example.citizenmanagement.controllers.feecontrollers;
     exports com.example.citizenmanagement.models;
     exports com.example.citizenmanagement.views;
+    exports com.example.citizenmanagement.controllers.maincontrollers.NhankhauController;
+    opens com.example.citizenmanagement.controllers.maincontrollers.NhankhauController to javafx.fxml;
 }

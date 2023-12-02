@@ -1,4 +1,4 @@
-package com.example.citizenmanagement.controllers.maincontrollers.HokhauController;
+package com.example.citizenmanagement.controllers.maincontrollers.NhankhauController;
 
 public class DkTamTruController {
 }
