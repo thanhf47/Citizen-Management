@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../styles/DkTamTru.css"
+            xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.citizenmanagement.controllers.maincontrollers.DkTamTruController">
+    <Label layoutX="324.0" layoutY="41.0" styleClass="text_lbl" text="Đăng kí tạm trú"/>
+    <VBox layoutX="41.0" layoutY="116.0" prefHeight="490.0" prefWidth="312.0" styleClass="vbx">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số CCCD"/>
+        <TextField/>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên"/>
+        <TextField/>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Biệt danh"/>
+        <TextField/>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính"/>
+        <TextField/>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh"/>
+        <DatePicker prefHeight="36.0" prefWidth="316.0"/>
+        <HBox prefHeight="100.0" prefWidth="200.0" styleClass="hbx">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính:    "/>
+            <CheckBox mnemonicParsing="false" text="Nam     "/>
+            <CheckBox mnemonicParsing="false" text="Nữ       "/>
+        </HBox>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thường trú" wrappingWidth="90.63720703125"/>
+        <TextField/>
+    </VBox>
+    <VBox layoutX="455.0" layoutY="116.0" prefHeight="510.0" prefWidth="312.0" styleClass="vbx">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số giấy tạm trú"/>
+        <TextField/>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lý do "/>
+        <TextField prefHeight="144.0" prefWidth="292.0"/>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian tạm trú: "/>
+        <Label text="Ngày bắt đầu tạm trú  "/>
+        <DatePicker prefHeight="36.0" prefWidth="316.0"/>
+        <Label text="Ngày kết thúc tạm trú"/>
+        <DatePicker prefHeight="36.0" prefWidth="316.0"/>
+    </VBox>
+    <Button layoutX="445.0" layoutY="664.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0"
+            styleClass="button_acp" stylesheets="@../../styles/DkTamTru.css" text="Xác nhận "/>
+    <Button layoutX="266.0" layoutY="664.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0"
+            styleClass="button_cancel" stylesheets="@../../styles/DkTamTru.css" text="Thoát"/>
+</AnchorPane>
