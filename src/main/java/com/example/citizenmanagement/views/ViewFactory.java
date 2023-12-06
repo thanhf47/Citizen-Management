@@ -26,6 +26,8 @@ public class ViewFactory {
     private AnchorPane feeTrangChuView;
     private AnchorPane feeVeSinhView;
     private AnchorPane feeDongGopView;
+
+
     /********************************************************************************************/
     public ViewFactory() {
         this.selectedMenuItem = new SimpleObjectProperty<>();
@@ -97,6 +99,8 @@ public class ViewFactory {
         }
         return feeDongGopView;
     }
+
+
     /********************************************************************************************/
     public void showLoginWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login/Login.fxml"));

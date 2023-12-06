@@ -50,6 +50,7 @@ public class MainMenuController implements Initializable {
         trang_chu_btn.setOnAction(event -> onTrangChu());
         nhan_khau_btn.setOnAction(event -> onNhanKhau());
         ho_khau_btn.setOnAction(event -> onHoKhau());
+
     }
 
     private void onTrangChu() {
@@ -61,4 +62,5 @@ public class MainMenuController implements Initializable {
     private void onHoKhau() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.HO_KHAU);
     }
+
 }
