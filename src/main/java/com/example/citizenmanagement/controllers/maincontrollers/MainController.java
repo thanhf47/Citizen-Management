@@ -9,17 +9,20 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
-    @FXML
+
     public BorderPane main_parent;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Model.getInstance().getViewFactory().getSelectedMenuItem().addListener((observable, oldValue, newValue) -> {
             switch (newValue) {
-                case HO_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactory().getHoKhauView());
+                case HO_KHAU -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getHoKhauView());
+                }
                 case NHAN_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactory().getNhanKhauView());
                 default -> main_parent.setCenter(Model.getInstance().getViewFactory().getTrangChuView());
             }
         });
+
     }
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="50.0" prefWidth="800.0" styleClass="hoKhauCell_container" stylesheets="@../../../styles/hoKhau/hoKhauCell.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <Text fx:id="id_text" fill="#b76d22" layoutX="64.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12345678906" AnchorPane.bottomAnchor="16.0" />
+   <Text fx:id="name_owner_text" fill="#861a1a" layoutX="178.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12345678906" AnchorPane.bottomAnchor="16.0" />
+   <Text fx:id="add_text" fill="#205e40" layoutX="302.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hai ba trung, ha noi" AnchorPane.bottomAnchor="16.0" />
+   <Line endY="15.0" layoutX="159.0" layoutY="31.0" startY="-15.0" AnchorPane.bottomAnchor="10.0" />
+   <Line endY="15.0" layoutX="281.0" layoutY="25.0" startY="-15.0" AnchorPane.bottomAnchor="10.0" />
+   <FontAwesomeIconView glyphName="HOME" layoutX="14.0" layoutY="31.0" size="30" AnchorPane.bottomAnchor="12.0" />
+   <Line endY="15.0" layoutX="463.0" layoutY="24.0" startY="-15.0" AnchorPane.bottomAnchor="10.0" />
+   <Text fx:id="ngaytao" layoutX="487.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="01/01/2003" AnchorPane.bottomAnchor="16.0" />
+   <Text fx:id="ngaychuyen" layoutX="598.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="01/01/2021" AnchorPane.bottomAnchor="16.0" />
+   <Text fx:id="ghichu" layoutX="728.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ghi chú" AnchorPane.bottomAnchor="16.0" />
+   <Line endY="15.0" layoutX="693.0" layoutY="22.0" startY="-15.0" AnchorPane.bottomAnchor="10.0" />
+   <Line endY="15.0" layoutX="580.0" layoutY="24.0" startY="-15.0" AnchorPane.bottomAnchor="10.0" />
+</AnchorPane>

@@ -2,6 +2,7 @@ package com.example.citizenmanagement.controllers.maincontrollers;
 
 import com.example.citizenmanagement.models.MainMenuOptions;
 import com.example.citizenmanagement.models.Model;
+import com.example.citizenmanagement.models.hoKhauOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -12,29 +13,12 @@ import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
 
-    @FXML
-    private Button trang_chu_btn;
 
-    @FXML
-    private Button ho_khau_btn;
-
-    @FXML
-    private Button khai_tu_btn;
-
-    @FXML
-    private Button logout_btn;
-
-    @FXML
-    private Button nhan_khau_btn;
-
-    @FXML
-    private Button report_btn;
-
-    @FXML
-    private Button tam_tru_btn;
-
-    @FXML
-    private Button tam_vang_btn;
+    public Button trang_chu_btn;
+    public Button nhan_khau_btn;
+    public Button ho_khau_btn;
+    public Button logout_btn;
+    public Button report_btn;
 
     public void onLogoutBtn() {
         Stage stage = (Stage) logout_btn.getScene().getWindow();

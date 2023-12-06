@@ -1,0 +1,14 @@
+.hoKhauCell_container{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box,#AAAAAA,3,0,0,3);
+    -fx-spacing: 10;
+}
+.hoKhauCell_container Text{
+    -fx-font-size: 1.2em;
+    -fx-font-family: Calibri;
+    -fx-font-weight: 700;
+}
+.hoKhauCell_container Line{
+    -fx-stroke: #AAAAAA;
+}

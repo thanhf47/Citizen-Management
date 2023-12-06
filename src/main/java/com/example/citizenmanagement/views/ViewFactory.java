@@ -1,12 +1,15 @@
 package com.example.citizenmanagement.views;
 
+import com.example.citizenmanagement.controllers.maincontrollers.MainController;
 import com.example.citizenmanagement.models.FeeMenuOptions;
 import com.example.citizenmanagement.models.MainMenuOptions;
+import com.example.citizenmanagement.models.hoKhauOptions;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -16,10 +19,12 @@ import java.io.IOException;
 public class ViewFactory {
 
     //Main Citizen Views
-    private final ObjectProperty<MainMenuOptions> selectedMenuItem;
+    private final ObjectProperty<MainMenuOptions>    selectedMenuItem;
     private AnchorPane trangChuView;
     private AnchorPane nhanKhauView;
     private AnchorPane hoKhauView;
+    private  BorderPane Main;
+    //Ho Khau
 
     // Fee Views
     private final ObjectProperty<FeeMenuOptions> feeSelectedMenuItem;
@@ -27,7 +32,7 @@ public class ViewFactory {
     private AnchorPane feeVeSinhView;
     private AnchorPane feeDongGopView;
     /********************************************************************************************/
-    public ViewFactory() {
+    public ViewFactory(){
         this.selectedMenuItem = new SimpleObjectProperty<>();
         this.feeSelectedMenuItem = new SimpleObjectProperty<>();
     }
@@ -46,9 +51,9 @@ public class ViewFactory {
     public AnchorPane getHoKhauView() {
         if (hoKhauView == null) {
             try {
-                hoKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau.fxml")).load();
+                hoKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/hoKhauShow.fxml")).load();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+              e.printStackTrace();
             }
         }
         return hoKhauView;
@@ -62,6 +67,16 @@ public class ViewFactory {
             }
         }
         return nhanKhauView;
+    }
+    public BorderPane getMain(){
+        /*if(Main==null){
+            try {
+                Main = new FXMLLoader(getClass().getResource("/fxml/main_citizen/Main.fxml")).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }*/
+        return Main;
     }
     /********************************************************************************************/
     public ObjectProperty<FeeMenuOptions> getFeeSelectedMenuItem(){
@@ -97,7 +112,7 @@ public class ViewFactory {
         }
         return feeDongGopView;
     }
-    /********************************************************************************************/
+    //****************************************************************************************
     public void showLoginWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login/Login.fxml"));
         createStage(loader);
@@ -105,13 +120,25 @@ public class ViewFactory {
 
     public void showMainWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main_citizen/Main.fxml"));
-        createStage(loader);
+        try {
+            Main = loader.load();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        Scene scene=new Scene(Main);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(scene);
+        stage.show();
     }
     public void showFeeWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/fee/Fee.fxml"));
         createStage(loader);
     }
-
+    public void showHoKhau(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/hoKhauConCac.fxml"));
+        createStage(loader);
+    }
     private void createStage(FXMLLoader loader) {
         Stage stage = new Stage();
         Scene scene;
