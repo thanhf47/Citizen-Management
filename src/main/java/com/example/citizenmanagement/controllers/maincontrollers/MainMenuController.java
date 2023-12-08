@@ -2,6 +2,7 @@ package com.example.citizenmanagement.controllers.maincontrollers;
 
 import com.example.citizenmanagement.models.MainMenuOptions;
 import com.example.citizenmanagement.models.Model;
+import com.example.citizenmanagement.models.hoKhauOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -11,6 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
+
 
     @FXML
     private Button trang_chu_btn;

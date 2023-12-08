@@ -5,20 +5,24 @@ import com.example.citizenmanagement.views.ViewFactoryThongKe;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.example.citizenmanagement.views.viewHoKhauFactory;
 
 public class Model {
     private static Model model;
     private final ViewFactory viewFactory;
+
     private final DatabaseConnection databaseConnection;
 
     //citizen manager section
     private CitizenManager citizenManager;
     private boolean citizenManagerLoginSuccessFlag;
 
+    //ho khau section
+    private final viewHoKhauFactory viewHK;
+    private static hoKhauCell hoKhauDuocChon;
 
+
+    //main Thong Ke section
     private final ViewFactoryThongKe viewFactoryThongKe;
 
     private Model() {
@@ -29,6 +33,8 @@ public class Model {
         citizenManagerLoginSuccessFlag = false;
 
         this.viewFactoryThongKe = new ViewFactoryThongKe();
+
+        this.viewHK = new viewHoKhauFactory();
 
     }
 
@@ -404,6 +410,17 @@ public class Model {
 
     public int getTamVangViLyDoKhac(){
         return  getNumberOfTamVang() - getTamVangViLyDoHocTap() - getTamVangViLyDoLamViec() - getTamVangViLyDoSucKhoe();
+    }
 
+    public viewHoKhauFactory getViewHK(){return viewHK;}
+
+    // ho khau
+
+    public static hoKhauCell getHoKhauDuocChon() {
+        return hoKhauDuocChon;
+    }
+
+    public static void setHoKhauDuocChon(hoKhauCell hoKhauDuocChon) {
+        Model.hoKhauDuocChon = hoKhauDuocChon;
     }
 }
