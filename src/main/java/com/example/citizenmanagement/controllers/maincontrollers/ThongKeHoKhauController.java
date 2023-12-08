@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,12 +16,14 @@ public class ThongKeHoKhauController implements Initializable {
     public StackedBarChart thongKeHoKhau;
 
     public Button QuayLai2;
+    public Text tongsohokhau_text;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showBieuDoNhanKhau();
 
         QuayLai2.setOnAction(event -> onQuayLai1());
+        tongsohokhau_text.setText(Integer.toString(Model.getInstance().getNumberOfHoKhau()));
 
     }
 

@@ -7,7 +7,7 @@ public class DatabaseConnection {
     public DatabaseConnection() {
         String dbName = "QUANLYDANCU";
         String dbUser = "sa";
-        String dbPassword = "123";
+        String dbPassword = "123456789";
         String url = "jdbc:sqlserver://DESKTOP-0686QHH:1433;databaseName=" + dbName + ";IntegratedSecurity=false;encrypt=false;trustSeverCertificate=true;";
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -192,6 +192,130 @@ public class DatabaseConnection {
         }
         return rs;
     }
+
+    public ResultSet getTamTruOfThangVaNam(int thang,int nam){
+        Statement st;
+        ResultSet rs = null;
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU)\n" +
+                    "FROM TAMTRU\n" +
+                    "WHERE MONTH(TUNGAY) =" + thang +"\n" +
+                    "AND YEAR(TUNGAY) =" + nam);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rs;
+
+    }
+
+    public ResultSet getTamTruViLyDoHocTap(){
+        Statement st;
+        ResultSet rs = null;
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU)\n" +
+                    "FROM TAMTRU\n" +
+                    "WHERE LYDO LIKE N'%Học tập%'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return  rs;
+    }
+    public ResultSet getTamTruViLyDoLamViec(){
+        Statement st;
+        ResultSet rs = null;
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU)\n" +
+                    "FROM TAMTRU\n" +
+                    "WHERE LYDO LIKE N'%Làm việc%'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return  rs;
+    }
+
+    public ResultSet getTamTruViLyDoSucKhoe(){
+        Statement st;
+        ResultSet rs = null;
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU)\n" +
+                    "FROM TAMTRU\n" +
+                    "WHERE LYDO LIKE N'%Chăm sóc sức khỏe%'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return  rs;
+    }
+
+    public ResultSet getTamVangOfThangVaNam(int thang,int nam){
+        Statement st;
+        ResultSet rs = null;
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG)\n" +
+                    "FROM TAMVANG\n" +
+                    "WHERE MONTH(TUNGAY) =" +thang + "\n" +
+                    "AND YEAR(TUNGAY) ="+ nam);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rs;
+    }
+
+    public ResultSet getTamVangViLyDoHocTap(){
+        Statement st;
+        ResultSet rs = null;
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG)\n" +
+                    "FROM TAMVANG\n" +
+                    "WHERE LYDO LIKE N'%Học tập%'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return  rs;
+    }
+
+    public ResultSet getTamVangViLyDoLamViec(){
+        Statement st;
+        ResultSet rs = null;
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG)\n" +
+                    "FROM TAMVANG\n" +
+                    "WHERE LYDO LIKE N'%Làm việc%'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return  rs;
+    }
+
+    public ResultSet getTamVangViLyDoSucKhoe(){
+        Statement st;
+        ResultSet rs = null;
+        try {
+            st = connection.createStatement();
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG)\n" +
+                    "FROM TAMVANG\n" +
+                    "WHERE LYDO LIKE N'%sức Khoẻ%'");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return  rs;
+    }
+
+
+
+
 
 
 }

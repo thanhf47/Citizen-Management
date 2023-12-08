@@ -218,6 +218,126 @@ public class Model {
         return res;
     }
 
+    public int getTamTruOfThangVaNam(int thang, int nam){
+        ResultSet resultSet = databaseConnection.getTamTruOfThangVaNam(thang,nam);
+        int res = 0;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+    public int getTamTruViLyDoHocTap(){
+        ResultSet resultSet = databaseConnection.getTamTruViLyDoHocTap();
+        int res = 0;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+    public int getTamTruViLyDoLamViec(){
+        ResultSet resultSet = databaseConnection.getTamTruViLyDoLamViec();
+        int res = 0;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    public int getTamTruViLyDoSucKhoe(){
+        ResultSet resultSet = databaseConnection.getTamTruViLyDoSucKhoe();
+        int res = 0;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    public int getTamTruViLyDoKhac(){
+        return  getNumberOfTamTru() - getTamTruViLyDoHocTap() - getTamTruViLyDoSucKhoe() - getTamTruViLyDoLamViec();
+
+    }
+    public int getTamVangOfThangVaNam(int thang, int nam){
+        ResultSet resultSet = databaseConnection.getTamVangOfThangVaNam(thang, nam);
+        int res = 0;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    public int getTamVangViLyDoSucKhoe(){
+        ResultSet resultSet = databaseConnection.getTamVangViLyDoSucKhoe();
+        int res = 0;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    public int getTamVangViLyDoHocTap(){
+        ResultSet resultSet = databaseConnection.getTamVangViLyDoHocTap();
+        int res = 0;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    public int getTamVangViLyDoLamViec(){
+        ResultSet resultSet = databaseConnection.getTamVangViLyDoLamViec();
+        int res = 0;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    public int getTamVangViLyDoKhac(){
+        return  getNumberOfTamVang() - getTamVangViLyDoHocTap() - getTamVangViLyDoLamViec() - getTamVangViLyDoSucKhoe();
+
+    }
+
+
 
 
 }

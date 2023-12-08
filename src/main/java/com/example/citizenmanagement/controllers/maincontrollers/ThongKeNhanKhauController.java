@@ -1,12 +1,10 @@
 package com.example.citizenmanagement.controllers.maincontrollers;
 
-import com.example.citizenmanagement.models.GioiTinh;
+import com.example.citizenmanagement.models.ThongKe;
 import com.example.citizenmanagement.models.MainMenuOptions;
 import com.example.citizenmanagement.models.Model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
@@ -21,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class ThongKeNhanKhauController implements Initializable {
     public TableView table_gioitinh;
-    public TableColumn <GioiTinh,String>gioitinh;
+    public TableColumn <ThongKe,String>gioitinh;
 
     public StackedBarChart bieudogioitinh;
     public PieChart bieudonhomtuoi;
@@ -46,13 +44,13 @@ public class ThongKeNhanKhauController implements Initializable {
     public void showTableGioiTinh(){
         int a1 = Model.getInstance().getNumberOfNhanKhauNam();
         int a2 = Model.getInstance().getNumberOfNhanKhauNu();
-        ObservableList<GioiTinh> list_gt = FXCollections.observableArrayList(
-                new GioiTinh("Nam",a1),
-                new GioiTinh("Nữ",a2)
+        ObservableList<ThongKe> list_gt = FXCollections.observableArrayList(
+                new ThongKe("Nam",a1),
+                new ThongKe("Nữ",a2)
         );
 
-        gioitinh.setCellValueFactory(new PropertyValueFactory<GioiTinh,String>("gioitinh"));
-        soluonggioitinh.setCellValueFactory(new PropertyValueFactory<GioiTinh,Integer>("soluonggioitinh"));
+        gioitinh.setCellValueFactory(new PropertyValueFactory<ThongKe,String>("gioitinh"));
+        soluonggioitinh.setCellValueFactory(new PropertyValueFactory<ThongKe,Integer>("soluonggioitinh"));
         table_gioitinh.setItems(list_gt);
 
     }
@@ -67,16 +65,16 @@ public class ThongKeNhanKhauController implements Initializable {
         bieudonhomtuoi.setData(piechartdata);
     }
     public void showTableNhomTuoi(){
-        ObservableList<GioiTinh> list_gt1 = FXCollections.observableArrayList(
-                new GioiTinh("Dưới 3 Tuổi",Model.getInstance().getNumberOfNhanKhauDuoi3Tuoi()),
-                new GioiTinh("Từ 3-10 Tuổi",Model.getInstance().getNumberOfNhanKhauTu3Den10Tuoi()),
-                new GioiTinh("Từ 10-18 Tuổi",Model.getInstance().getNumberOfNhanKhauTu10Den18Tuoi()),
-                new GioiTinh("Từ 18-60 Tuổi",Model.getInstance().getNumberOfNhanKhauTu18Den60Tuoi()),
-                new GioiTinh("Trên 60 Tuổi",Model.getInstance().getNumberOfNhanKhauTren60Tuoi())
+        ObservableList<ThongKe> list_gt1 = FXCollections.observableArrayList(
+                new ThongKe("Dưới 3 Tuổi",Model.getInstance().getNumberOfNhanKhauDuoi3Tuoi()),
+                new ThongKe("Từ 3-10 Tuổi",Model.getInstance().getNumberOfNhanKhauTu3Den10Tuoi()),
+                new ThongKe("Từ 10-18 Tuổi",Model.getInstance().getNumberOfNhanKhauTu10Den18Tuoi()),
+                new ThongKe("Từ 18-60 Tuổi",Model.getInstance().getNumberOfNhanKhauTu18Den60Tuoi()),
+                new ThongKe("Trên 60 Tuổi",Model.getInstance().getNumberOfNhanKhauTren60Tuoi())
         );
 
-        nhomtuoi.setCellValueFactory(new PropertyValueFactory<GioiTinh,String>("gioitinh"));
-        soluongnhomtuoi.setCellValueFactory(new PropertyValueFactory<GioiTinh,Integer>("soluonggioitinh"));
+        nhomtuoi.setCellValueFactory(new PropertyValueFactory<ThongKe,String>("gioitinh"));
+        soluongnhomtuoi.setCellValueFactory(new PropertyValueFactory<ThongKe,Integer>("soluonggioitinh"));
         table_nhomtuoi.setItems(list_gt1);
 
     }

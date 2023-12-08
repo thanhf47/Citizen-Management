@@ -27,12 +27,6 @@ public class TrangChuController implements Initializable {
     public Text text_hokhau;
     public Text text_tamtru;
     public Text text_tamvang;
-    public String soluongnhankhau;
-
-
-
-    private EventHandler<MouseEvent> nhankhauClickHandler;
-
 
     @FXML
     void click_nhankhau(MouseEvent event) {
@@ -43,8 +37,7 @@ public class TrangChuController implements Initializable {
 
     @FXML
     void click_tamvang(MouseEvent event) {
-
-
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.THONG_KE_TAM_VANG);
     }
 
     @FXML
@@ -55,7 +48,7 @@ public class TrangChuController implements Initializable {
 
     @FXML
     void click_tamtru(MouseEvent event) {
-
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.THONG_KE_TAM_TRU);
     }
 
     public void showNhanKhau(){
