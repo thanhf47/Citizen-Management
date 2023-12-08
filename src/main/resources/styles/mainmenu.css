@@ -1,0 +1,49 @@
+.slide_ankerpaine{
+    -fx-background-color:#353A56;
+    /*-fx-border-color: #2207bb;*/
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-text-fill: #FFFFFF;
+    /*-fx-border-style: solid;*/
+
+}
+
+.slide_ankerpaine FontAwesomeIconView{
+    -fx-fill: #FFFFFF;
+}
+.inner_paine{
+    -fx-background-color: #69B4C7;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-border-style: solid;
+    -fx-border-color: #748CF1;
+
+}
+
+.btn_an{
+    -fx-background-color: transparent;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    /*-fx-border-style: solid;*/
+    /*-fx-border-color: #748CF1;*/
+    -fx-text-fill: #FFFFFF;
+}
+
+.btn_an: hover{
+    -fx-cursor: hand;
+    -fx-background-color: #69B4C7;
+}
+.btn_an: pressed{
+    -fx-background-color: #69B4C7;
+}
+
+
+
+
+
+
+
+

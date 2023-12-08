@@ -1,0 +1,45 @@
+.maunen{
+    -fx-background-color:#EAEEF4;
+}
+.trangtri_top{
+    -fx-background-color: #353A56;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    /*-fx-border-style: solid;*/
+    /*-fx-border-color: #748CF1;*/
+    -fx-text-fill: #000000;
+}
+.pain{
+    -fx-background-color:#ffffff;
+
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+
+}
+.pain: hover{
+    -fx-cursor: hand;
+    -fx-background-color:#8AD1EB;
+}
+
+.button_quaylai{
+    -fx-background-color: #353A56;
+    -fx-text-fill: #FFFFFF;
+
+}
+
+.button_quaylai FontAwesomeIconView{
+    -fx-fill: #FFFFFF;
+}
+
+.button_quaylai: hover{
+    -fx-cursor: hand;
+
+}
+
+
+
+
+
+

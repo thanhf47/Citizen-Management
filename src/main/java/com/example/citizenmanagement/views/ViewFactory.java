@@ -108,6 +108,8 @@ public class ViewFactory {
         }
         return feeThemHoKhauView;
     }
+
+
     /********************************************************************************************/
     public void showLoginWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login/Login.fxml"));

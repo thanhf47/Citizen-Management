@@ -18,6 +18,10 @@ public class MainController implements Initializable {
             switch (newValue) {
                 case HO_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactory().getHoKhauView());
                 case NHAN_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactory().getNhanKhauView());
+                case THONG_KE_NHAN_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactoryThongKe().getThongKeNhanKhauView());
+                case THONG_KE_HO_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactoryThongKe().getThongKeHoKhauView());
+                case THONG_KE_TAM_TRU -> main_parent.setCenter(Model.getInstance().getViewFactoryThongKe().getThongKeTamTruView());
+                case THONG_KE_TAM_VANG -> main_parent.setCenter(Model.getInstance().getViewFactoryThongKe().getThongKeTamVangView());
                 default -> main_parent.setCenter(Model.getInstance().getViewFactory().getTrangChuView());
             }
         });
