@@ -41,15 +41,15 @@ public class FeeMenuController implements Initializable {
 
     private void addListeners() {
         trang_chu_btn.setOnAction(event -> onTrangChu());
-        danh_sach_phi_btn.setOnAction(event -> onThuPhiVeSinh());
-        them_khoan_thu_btn.setOnAction(event -> onThuPhiDongGop());
+        them_khoan_thu_btn.setOnAction(event -> onThemKhoanThu());
+        danh_sach_phi_btn.setOnAction(event -> onDanhSachKhoanThu());
     }
 
-    private void onThuPhiDongGop() {
+    private void onDanhSachKhoanThu() {
         Model.getInstance().getViewFactory().getFeeSelectedMenuItem().set(FeeMenuOptions.DANH_SACH_KHOAN_THU);
     }
 
-    private void onThuPhiVeSinh() {
+    private void onThemKhoanThu() {
         Model.getInstance().getViewFactory().getFeeSelectedMenuItem().set(FeeMenuOptions.THEM_KHOAN_THU_PHI);
     }
 
