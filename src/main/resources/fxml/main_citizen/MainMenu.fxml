@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="180.0" styleClass="slide_ankerpaine" stylesheets="@../../styles/mainmenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.MainMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="180.0" styleClass="slide_ankerpaine" stylesheets="@../../styles/mainmenu.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.MainMenuController">
    <children>
       <Pane layoutX="4.0" layoutY="18.0" prefHeight="76.0" prefWidth="175.0" styleClass="inner_paine" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="2.0">
          <children>
@@ -38,16 +38,6 @@
          </font>
       </Button>
       <Button fx:id="ho_khau_btn" layoutX="3.0" layoutY="352.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="173.0" styleClass="btn_an" text="Hộ Khẩu" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Button>
-      <Button fx:id="tam_tru_btn" layoutX="3.0" layoutY="434.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="173.0" styleClass="btn_an" text="Tạm Trú" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Button>
-      <Button fx:id="tam_vang_btn" layoutX="3.0" layoutY="515.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="173.0" styleClass="btn_an" text="Tạm Vắng" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font size="15.0" />
          </font>
