@@ -1,10 +1,12 @@
 package com.example.citizenmanagement.controllers.maincontrollers.hoKhau;
 
+import com.example.citizenmanagement.models.MainMenuOptions;
 import com.example.citizenmanagement.models.Model;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -27,22 +29,26 @@ public class tachHoKhauControler implements Initializable {
     public TextField ngay_tao;
     public TextField dia_chi;
     public TextField id_chu_moi;
+    public Label error_lbl;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cancel_but.setOnAction(event -> {
-            Stage stage = (Stage)cancel_but.getScene().getWindow();
-            BorderPane tam = Model.getInstance().getViewFactory().getMain();
-            tam.setCenter(Model.getInstance().getViewHK().getHoKhauShow());
-            Scene scene = new Scene(tam);
-            stage.setScene(scene);
+            Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.HO_KHAU);
+
         });
         xacNhan_but.setOnAction(event -> {
-            Stage stage = (Stage)xacNhan_but.getScene().getWindow();
-            BorderPane tam = Model.getInstance().getViewFactory().getMain();
-            tam.setCenter(Model.getInstance().getViewHK().getHoKhauShow());
-            Scene scene = new Scene(tam);
-            stage.setScene(scene);
+            int ketqua=0;
+            ketqua=Model.getInstance().getDataBCHK().addHoKhau(id_chu_moi.getText(),ngay_tao.getText(),dia_chi.getText(),ghi_chu.getText());
+            id_chu_moi.setText("");
+            ngay_tao.setText("");
+            dia_chi.setText("");
+            ghi_chu.setText("");
+            if(ketqua==0)
+                error_lbl.setText("Khong tach thanh cong");
+            else
+                Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.HO_KHAU);
+
         });
     }
 }

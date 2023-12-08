@@ -30,10 +30,34 @@ public StringProperty getAddress(){
 public StringProperty getDate_tao(){
     return this.date_tao;
 }
-    public StringProperty getDate_chuyen(){
+public StringProperty getDate_chuyen(){
     return this.date_chuyen;
     }
     public StringProperty getGhi_chu(){
     return ghi_chu;
+    }
+
+    public void setId(String id) {
+        this.id.set(id);
+    }
+
+    public void setOwner(String owner) {
+        this.owner.set(owner);
+    }
+
+    public void setAddress(String address) {
+        this.address.set(address);
+    }
+
+    public void setDate_tao(String date_tao) {
+        this.date_tao.set(date_tao);
+    }
+
+    public void setDate_chuyen(String date_chuyen) {
+        this.date_chuyen.set(date_chuyen);
+    }
+
+    public void setGhi_chu(String ghi_chu) {
+        this.ghi_chu.set(ghi_chu);
     }
 }

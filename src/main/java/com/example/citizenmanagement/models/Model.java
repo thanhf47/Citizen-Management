@@ -12,9 +12,8 @@ public class Model {
     private static Model model;
     private final ViewFactory viewFactory;
     private final viewHoKhauFactory viewHK;
-
     private final dataBaseConnectionHoKhau dataBCHK;
-
+    private static hoKhauCell hoKhauDuocChon;
     private Model() {
         this.viewFactory = new ViewFactory();
         this.viewHK = new viewHoKhauFactory();
@@ -32,5 +31,16 @@ public class Model {
 
     public dataBaseConnectionHoKhau getDataBCHK() {
         return dataBCHK;
+    }
+
+
+    // ho khau
+
+    public static hoKhauCell getHoKhauDuocChon() {
+        return hoKhauDuocChon;
+    }
+
+    public static void setHoKhauDuocChon(hoKhauCell hoKhauDuocChon) {
+        Model.hoKhauDuocChon = hoKhauDuocChon;
     }
 }

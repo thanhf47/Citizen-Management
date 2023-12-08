@@ -16,10 +16,13 @@ public class MainController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Model.getInstance().getViewFactory().getSelectedMenuItem().addListener((observable, oldValue, newValue) -> {
             switch (newValue) {
-                case HO_KHAU -> {
-                    main_parent.setCenter(Model.getInstance().getViewFactory().getHoKhauView());
-                }
                 case NHAN_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactory().getNhanKhauView());
+                //ho khau ****************************************************************************************
+                case HO_KHAU -> main_parent.setCenter(Model.getInstance().getViewHK().getHoKhauShow());
+                case XEM_CHI_TIET_HO_KHAU -> main_parent.setCenter(Model.getInstance().getViewHK().getXemChiTietHoKhau());
+                case TACH_HO_KHAU -> main_parent.setCenter(Model.getInstance().getViewHK().getTachHoKhau());
+                case THEM_HO_KHAU -> main_parent.setCenter(Model.getInstance().getViewHK().getThemHoKhau());
+                //*********************************************************************************
                 default -> main_parent.setCenter(Model.getInstance().getViewFactory().getTrangChuView());
             }
         });

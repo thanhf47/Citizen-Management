@@ -14,8 +14,8 @@ public class hoKhauCellFactory extends ListCell<hoKhauCell> {
             setGraphic(null);
         }else {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/hoKhauCell.fxml"));
-            hoKhauCellControler HKcellControler = new hoKhauCellControler(khauCell);
-            loader.setController(HKcellControler);
+            //hoKhauCellControler HKcellControler = new hoKhauCellControler(khauCell);
+            loader.setController(new hoKhauCellControler(khauCell));
             setText(null);
             try {
                 setGraphic(loader.load());

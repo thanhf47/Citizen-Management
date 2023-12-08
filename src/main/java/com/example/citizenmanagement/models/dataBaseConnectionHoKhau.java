@@ -15,17 +15,28 @@ public class dataBaseConnectionHoKhau {
             System.out.println("concac");
         }
     }
-    public int addHoKhau(String id, String name_owner, String add){
-        int anhhuong=0;
-        String query = "insert into HOKHAU values('" + id+"','"+name_owner+"','"+add+"');";
-        try {
-            Statement statement = connection.createStatement();
-            statement.executeUpdate(query);
-            anhhuong = statement.getUpdateCount();
-        }catch (Exception e){
-            System.out.println("loi o dataBCHK");
+    public int addHoKhau(String ma_ch, String ngaythem, String diachi, String ghichu){
+        if(!ma_ch.isEmpty() && !diachi.isEmpty() && !ngaythem.isEmpty()) {
+            String query = "insert into HOKHAU (IDCHUHO, NGAYLAP, DIACHI, GHICHU) VALUES (?, ?, ?, ?)";
+            try {
+                PreparedStatement statement = connection.prepareStatement(query);
+
+                statement.setString(1, ma_ch);
+                statement.setString(2, ngaythem);
+                statement.setString(3, diachi);
+                if(ghichu.isEmpty())
+                    statement.setString(4,null);
+                else
+                    statement.setString(4, ghichu);
+
+                statement.executeUpdate();
+                return 1;
+            } catch (Exception e) {
+                return 0;
+            }
         }
-        return anhhuong;
+        else
+            return 0;
     }
     public ResultSet getResultSet(){
         String query = "select * from HOKHAU";
@@ -39,31 +50,43 @@ public class dataBaseConnectionHoKhau {
     }
     public ResultSet timKiem(String dieukien){
         ResultSet resultSet=null;
-        String query = "select * from HOKHAU where ID = " + dieukien;
+        String query = "SELECT * FROM HOKHAU WHERE IDHOKHAU LIKE ? OR IDCHUHO LIKE ? OR DIACHI LIKE ? OR NGAYLAP LIKE ? OR NGAYCHUYENDI LIKE ? OR GHICHU LIKE ?";
         try{
-            Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, dieukien + "%");
+            statement.setString(2, dieukien + "%");
+            statement.setString(3, dieukien + "%");
+            statement.setString(4, dieukien + "%");
+            statement.setString(5, dieukien + "%");
+            statement.setString(6, dieukien + "%");
+            resultSet = statement.executeQuery();
         }catch (Exception e){
-            System.out.println("concac timkiem");
+            System.out.println("timkiem");
         }
         return resultSet;
     }
     public int capNhatHoKhau(String idHoKhau, String maChuHo, String diaChi, String ngayChuyen, String ghiChu){
         ResultSet resultSet=null;
-        int ketqua=0;
         try {
             String capnhat = "update HOKHAU set IDCHUHO=?, DIACHI=?, NGAYCHUYENDI=?, GHICHU=? where IDHOKHAU=?";
             PreparedStatement preparedStatement = connection.prepareStatement(capnhat);
             preparedStatement.setString(1,maChuHo);
             preparedStatement.setString(2,diaChi);
-            preparedStatement.setString(3,ngayChuyen);
-            preparedStatement.setString(4,ghiChu);
+            if(ngayChuyen.isEmpty() || ngayChuyen.equals("null")){
+                preparedStatement.setString(3,null);
+            }
+            else
+                preparedStatement.setString(3, ngayChuyen);
+            if(ghiChu.isEmpty())
+                preparedStatement.setString(4,null);
+            else
+                preparedStatement.setString(4, ghiChu);
             preparedStatement.setString(5,idHoKhau);
-            ketqua = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
+            return 1;
         } catch (SQLException e) {
             System.out.println("loi o capnhat !!!!!!!!!!!!!");
-            throw new RuntimeException(e);
+            return 0;
         }
-        return ketqua;
     }
 }

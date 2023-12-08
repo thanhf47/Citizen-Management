@@ -30,13 +30,12 @@ public class viewHoKhauFactory {
     }
 
     public AnchorPane getHoKhauShow(){
-        if(hoKhauShow==null){
             try {
                 hoKhauShow = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/hoKhauShow.fxml")).load();
             }catch (Exception e) {
                 e.printStackTrace();
             }
-        }
+
         return hoKhauShow;
     }
 
@@ -51,14 +50,12 @@ public class viewHoKhauFactory {
         return tachHoKhau;
     }
     public AnchorPane getXemChiTietHoKhau(){
-        if(xemChiTietHoKhau==null){
             try {
                 xemChiTietHoKhau = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/xemChiTietHoKhau.fxml")).load();
             }catch (Exception e){
                 System.out.println("loi o getXemChiTietHoKhau()");
                 e.printStackTrace();
             }
-        }
         return xemChiTietHoKhau;
     }
     public ObjectProperty<String> getQuaylai(){

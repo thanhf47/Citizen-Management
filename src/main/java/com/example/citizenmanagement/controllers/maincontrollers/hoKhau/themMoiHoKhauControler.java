@@ -1,5 +1,6 @@
 package com.example.citizenmanagement.controllers.maincontrollers.hoKhau;
 
+import com.example.citizenmanagement.models.MainMenuOptions;
 import com.example.citizenmanagement.models.Model;
 
 import com.example.citizenmanagement.models.hoKhauCell;
@@ -31,24 +32,27 @@ public class themMoiHoKhauControler implements Initializable {
     public Button chuyen_lai;
     public Button chuyen_sang;
     public TextField search_text;
-    public Button search_but;
     public Button xac_nhan_but;
+    public Label error_lbl;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cancel_but.setOnAction(event -> {
-            Stage stage = (Stage)cancel_but.getScene().getWindow();
-            BorderPane tam = Model.getInstance().getViewFactory().getMain();
-            tam.setCenter(Model.getInstance().getViewHK().getHoKhauShow());
-            Scene scene = new Scene(tam);
-            stage.setScene(scene);
+            Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.HO_KHAU);
+
         });
         xac_nhan_but.setOnAction(event -> {
-            Stage stage = (Stage)xac_nhan_but.getScene().getWindow();
-            BorderPane tam = Model.getInstance().getViewFactory().getMain();
-            tam.setCenter(Model.getInstance().getViewHK().getHoKhauShow());
-            Scene scene = new Scene(tam);
-            stage.setScene(scene);
+            int ketqua=0;
+            ketqua = Model.getInstance().getDataBCHK().addHoKhau(id_chu_ho_text.getText(),date_them_text.getText(),add_text.getText(),ghi_chu_text.getText());
+            id_chu_ho_text.setText("");
+            date_them_text.setText("");
+            add_text.setText("");
+            ghi_chu_text.setText("");
+            if(ketqua==0){
+                error_lbl.setText("Ban da khong them thanh cong!");
+            }
+            else
+                Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.HO_KHAU);
         });
     }
 }

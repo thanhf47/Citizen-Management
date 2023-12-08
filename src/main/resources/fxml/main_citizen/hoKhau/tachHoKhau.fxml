@@ -32,7 +32,7 @@
          <FontAwesomeIconView fill="#f4f2f2" glyphName="SEARCH" size="20" />
       </graphic>
    </Button>
-   <Label layoutX="14.0" layoutY="692.0" text="fsedgn" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="40.0" />
+   <Label fx:id="error_lbl" layoutX="14.0" layoutY="692.0" text="fsedgn" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="40.0" />
    <TextField fx:id="ngay_tao" layoutX="75.0" layoutY="575.0" AnchorPane.bottomAnchor="95.0" />
    <TextField fx:id="ghi_chu" layoutX="529.0" layoutY="619.0" AnchorPane.bottomAnchor="95.0" />
    <TextField fx:id="dia_chi" layoutX="529.0" layoutY="544.0" AnchorPane.topAnchor="544.0" />

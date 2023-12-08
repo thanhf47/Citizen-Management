@@ -22,7 +22,7 @@
     -fx-text-fill: #315919;
 }
 .tach_container Button{
-    -fx-background-color: linear-gradient(to right,#aa0000,#561B1B);
+    -fx-background-color: linear-gradient(to right,#898630,#47f00a);
     -fx-effect: dropshadow(three-pass-box,#AAAAAA,3,0,0,3);
     -fx-background-radius: 2;
     -fx-font-size: 1.3em;
@@ -33,7 +33,7 @@
     -fx-cursor: hand;
 }
 .tach_container .list-view{
-    -fx-background-color: #888888;
+    -fx-background-color: #AAAAAA;
     -fx-padding: 3;
 }
 .tach_container .list-cell{

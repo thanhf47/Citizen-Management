@@ -48,7 +48,7 @@ public class ViewFactory {
         }
         return trangChuView;
     }
-    public AnchorPane getHoKhauView() {
+    /*public AnchorPane getHoKhauView() {
         if (hoKhauView == null) {
             try {
                 hoKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/hoKhauShow.fxml")).load();
@@ -57,7 +57,7 @@ public class ViewFactory {
             }
         }
         return hoKhauView;
-    }
+    }*/
     public AnchorPane getNhanKhauView() {
         if (nhanKhauView == null) {
             try {
