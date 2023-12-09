@@ -33,7 +33,7 @@ public class hoKhauShowControler implements Initializable {
                 capnhat();
             }
             else {
-                ResultSet resultSet = Model.getInstance().getDataBCHK().timKiem(search_textfield.getText());
+                ResultSet resultSet = Model.getInstance().getDatabaseConnection().timKiem(search_textfield.getText());
                 listView.getItems().clear();
                 try {
                     if(resultSet.isBeforeFirst()){
@@ -75,7 +75,7 @@ public class hoKhauShowControler implements Initializable {
     }
 
     public void capnhat(){
-        ResultSet resultSet = Model.getInstance().getDataBCHK().getResultSet();
+        ResultSet resultSet = Model.getInstance().getDatabaseConnection().getDanhSachHoKhau();
         listView.getItems().clear();
         try {
             if(resultSet.isBeforeFirst()){

@@ -14,16 +14,27 @@ import java.util.ResourceBundle;
 public class MainMenuController implements Initializable {
 
 
-    public Button trang_chu_btn;
-    public Button nhan_khau_btn;
-    public Button ho_khau_btn;
-    public Button logout_btn;
-    public Button report_btn;
+    @FXML
+    private Button trang_chu_btn;
+
+    @FXML
+    private Button ho_khau_btn;
+
+    @FXML
+    private Button logout_btn;
+
+    @FXML
+    private Button nhan_khau_btn;
+
+    @FXML
+    private Button report_btn;
+
 
     public void onLogoutBtn() {
         Stage stage = (Stage) logout_btn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showLoginWindow();
+        Model.getInstance().setCitizenManagerLoginSuccessFlag(false);
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -34,6 +45,7 @@ public class MainMenuController implements Initializable {
         trang_chu_btn.setOnAction(event -> onTrangChu());
         nhan_khau_btn.setOnAction(event -> onNhanKhau());
         ho_khau_btn.setOnAction(event -> onHoKhau());
+
     }
 
     private void onTrangChu() {
@@ -45,4 +57,5 @@ public class MainMenuController implements Initializable {
     private void onHoKhau() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.HO_KHAU);
     }
+
 }

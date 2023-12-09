@@ -39,7 +39,7 @@ public class tachHoKhauControler implements Initializable {
         });
         xacNhan_but.setOnAction(event -> {
             int ketqua=0;
-            ketqua=Model.getInstance().getDataBCHK().addHoKhau(id_chu_moi.getText(),ngay_tao.getText(),dia_chi.getText(),ghi_chu.getText());
+            ketqua=Model.getInstance().getDatabaseConnection().addHoKhau(id_chu_moi.getText(),ngay_tao.getText(),dia_chi.getText(),ghi_chu.getText());
             id_chu_moi.setText("");
             ngay_tao.setText("");
             dia_chi.setText("");

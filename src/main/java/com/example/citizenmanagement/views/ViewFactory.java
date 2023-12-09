@@ -29,8 +29,9 @@ public class ViewFactory {
     // Fee Views
     private final ObjectProperty<FeeMenuOptions> feeSelectedMenuItem;
     private AnchorPane feeTrangChuView;
-    private AnchorPane feeVeSinhView;
-    private AnchorPane feeDongGopView;
+    private AnchorPane feeDanhSachView;
+    private AnchorPane feeThemKhoanThuView;
+    private AnchorPane feeThemHoKhauView;
     /********************************************************************************************/
     public ViewFactory(){
         this.selectedMenuItem = new SimpleObjectProperty<>();
@@ -92,27 +93,39 @@ public class ViewFactory {
         }
         return feeTrangChuView;
     }
-    public AnchorPane getFeeVeSinhView() {
-        if (feeVeSinhView == null) {
+    public AnchorPane getFeeDanhSachView() {
+        if (feeDanhSachView == null) {
             try {
-                feeVeSinhView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeVeSinh.fxml")).load();
+                feeDanhSachView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeDanhSach.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-        return feeVeSinhView;
+        return feeDanhSachView;
     }
-    public AnchorPane getFeeDongGopView() {
-        if (feeDongGopView == null) {
+    public AnchorPane getFeeThemKhoanThuView() {
+        if (feeThemKhoanThuView == null) {
             try {
-                feeDongGopView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeDongGop.fxml")).load();
+                feeThemKhoanThuView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeThemKhoanThu.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-        return feeDongGopView;
+        return feeThemKhoanThuView;
     }
-    //****************************************************************************************
+    public AnchorPane getFeeThemHoKhauView() {
+        if (feeThemHoKhauView == null) {
+            try {
+                feeThemHoKhauView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeThemHoKhau.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return feeThemHoKhauView;
+    }
+
+
+    /********************************************************************************************/
     public void showLoginWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login/Login.fxml"));
         createStage(loader);

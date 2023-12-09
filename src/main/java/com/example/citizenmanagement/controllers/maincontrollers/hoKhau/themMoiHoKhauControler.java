@@ -43,7 +43,7 @@ public class themMoiHoKhauControler implements Initializable {
         });
         xac_nhan_but.setOnAction(event -> {
             int ketqua=0;
-            ketqua = Model.getInstance().getDataBCHK().addHoKhau(id_chu_ho_text.getText(),date_them_text.getText(),add_text.getText(),ghi_chu_text.getText());
+            ketqua = Model.getInstance().getDatabaseConnection().addHoKhau(id_chu_ho_text.getText(),date_them_text.getText(),add_text.getText(),ghi_chu_text.getText());
             id_chu_ho_text.setText("");
             date_them_text.setText("");
             add_text.setText("");

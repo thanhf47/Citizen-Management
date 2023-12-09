@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="maunen" stylesheets="@../../styles/TrangChu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.ThongKeHoKhauController">
+    <StackedBarChart fx:id="thongKeHoKhau" layoutX="113.0" layoutY="242.0" legendVisible="false" prefHeight="322.0" prefWidth="585.0" title="Thống Kê Hộ Khẩu Theo Từng Năm">
+      <xAxis>
+          <CategoryAxis side="BOTTOM" />
+      </xAxis>
+      <yAxis>
+          <NumberAxis side="LEFT" />
+      </yAxis>
+    </StackedBarChart>
+    <Button fx:id="QuayLai2" layoutX="714.0" layoutY="680.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" styleClass="button_quaylai" text="Trang Chủ">
+        <graphic>
+          <FontAwesomeIconView glyphName="ARROW_LEFT" />
+        </graphic>
+    </Button>
+   <Pane layoutX="264.0" layoutY="89.0" prefHeight="97.0" prefWidth="282.0" styleClass="pain">
+      <children>
+         <ImageView fitHeight="62.0" fitWidth="48.0" layoutX="14.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../images/login_form/smart-city.png" />
+            </image>
+         </ImageView>
+         <Text layoutX="78.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tổng số hộ khẩu năm 2023" wrappingWidth="196.53677368164062">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Text>
+         <Text fx:id="tongsohokhau_text" layoutX="132.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+            <font>
+               <Font name="System Bold" size="25.0" />
+            </font>
+         </Text>
+      </children>
+   </Pane>
+</AnchorPane>

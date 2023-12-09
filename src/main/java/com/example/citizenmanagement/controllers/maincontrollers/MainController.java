@@ -17,6 +17,10 @@ public class MainController implements Initializable {
         Model.getInstance().getViewFactory().getSelectedMenuItem().addListener((observable, oldValue, newValue) -> {
             switch (newValue) {
                 case NHAN_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactory().getNhanKhauView());
+                case THONG_KE_NHAN_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactoryThongKe().getThongKeNhanKhauView());
+                case THONG_KE_HO_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactoryThongKe().getThongKeHoKhauView());
+                case THONG_KE_TAM_TRU -> main_parent.setCenter(Model.getInstance().getViewFactoryThongKe().getThongKeTamTruView());
+                case THONG_KE_TAM_VANG -> main_parent.setCenter(Model.getInstance().getViewFactoryThongKe().getThongKeTamVangView());
                 //ho khau ****************************************************************************************
                 case HO_KHAU -> main_parent.setCenter(Model.getInstance().getViewHK().getHoKhauShow());
                 case XEM_CHI_TIET_HO_KHAU -> main_parent.setCenter(Model.getInstance().getViewHK().getXemChiTietHoKhau());

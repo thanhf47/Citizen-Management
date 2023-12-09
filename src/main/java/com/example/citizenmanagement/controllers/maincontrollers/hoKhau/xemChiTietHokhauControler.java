@@ -80,7 +80,7 @@ public class xemChiTietHokhauControler implements Initializable {
 
         xac_nhan_but.setOnAction(event -> {
             int ketqua=0;
-            ketqua=Model.getInstance().getDataBCHK().capNhatHoKhau(ma_ho_khau.getText(),ma_chu_ho.getText(),dia_chi.getText(),ngay_chuyen.getText(),ghi_chu.getText());
+            ketqua=Model.getInstance().getDatabaseConnection().capNhatHoKhau(ma_ho_khau.getText(),ma_chu_ho.getText(),dia_chi.getText(),ngay_chuyen.getText(),ghi_chu.getText());
             chuyen_di_but.setDisable(false);
             thaydoi_but.setDisable(false);
 
