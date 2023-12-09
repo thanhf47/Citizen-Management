@@ -26,6 +26,9 @@ public class ViewFactory {
     private  BorderPane Main;
     //Ho Khau
 
+    // Nhan Khau View
+
+
     // Fee Views
     private final ObjectProperty<FeeMenuOptions> feeSelectedMenuItem;
     private AnchorPane feeTrangChuView;
@@ -37,8 +40,12 @@ public class ViewFactory {
         this.selectedMenuItem = new SimpleObjectProperty<>();
         this.feeSelectedMenuItem = new SimpleObjectProperty<>();
     }
+
     /********************************************************************************************/
-    public ObjectProperty<MainMenuOptions> getSelectedMenuItem() {return selectedMenuItem;}
+    public ObjectProperty<MainMenuOptions> getSelectedMenuItem() {
+        return selectedMenuItem;
+    }
+
     public AnchorPane getTrangChuView() {
         if (trangChuView == null) {
             try {
@@ -49,7 +56,7 @@ public class ViewFactory {
         }
         return trangChuView;
     }
-    /*public AnchorPane getHoKhauView() {
+    public AnchorPane getHoKhauView() {
         if (hoKhauView == null) {
             try {
                 hoKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/hoKhauShow.fxml")).load();
@@ -58,7 +65,8 @@ public class ViewFactory {
             }
         }
         return hoKhauView;
-    }*/
+    }
+
     public AnchorPane getNhanKhauView() {
         if (nhanKhauView == null) {
             try {
@@ -70,19 +78,21 @@ public class ViewFactory {
         return nhanKhauView;
     }
     public BorderPane getMain(){
-        /*if(Main==null){
+        if(Main==null){
             try {
                 Main = new FXMLLoader(getClass().getResource("/fxml/main_citizen/Main.fxml")).load();
             }catch (Exception e){
                 e.printStackTrace();
             }
-        }*/
+        }
         return Main;
     }
+
     /********************************************************************************************/
-    public ObjectProperty<FeeMenuOptions> getFeeSelectedMenuItem(){
+    public ObjectProperty<FeeMenuOptions> getFeeSelectedMenuItem() {
         return feeSelectedMenuItem;
     }
+
     public AnchorPane getFeeTrangChuView() {
         if (feeTrangChuView == null) {
             try {
@@ -113,6 +123,7 @@ public class ViewFactory {
         }
         return feeThemKhoanThuView;
     }
+
     public AnchorPane getFeeThemHoKhauView() {
         if (feeThemHoKhauView == null) {
             try {
@@ -144,6 +155,7 @@ public class ViewFactory {
         stage.setScene(scene);
         stage.show();
     }
+
     public void showFeeWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/fee/Fee.fxml"));
         createStage(loader);
@@ -152,6 +164,7 @@ public class ViewFactory {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/hoKhauConCac.fxml"));
         createStage(loader);
     }
+
     private void createStage(FXMLLoader loader) {
         Stage stage = new Stage();
         Scene scene;
@@ -164,6 +177,11 @@ public class ViewFactory {
         stage.setScene(scene);
         stage.show();
     }
-    public void closeStage(Stage stage) { stage.close(); }
+
+    public void closeStage(Stage stage) {
+        stage.close();
+    }
 }
+
+
 

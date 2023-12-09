@@ -6,11 +6,8 @@
     -fx-text-fill: #FFFFFF;
     -fx-background-color: #7B68EE;
     -fx-pref-width: 100;
-    -fx-pref-height: 27;
+    -fx-pref-height: 25;
     -fx-font-size: 1.1em;
-    -fx-font-family: Serif ;
-    -fx-font-weight: BOLD;
-    -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );
 }
 
 
@@ -25,7 +22,6 @@
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 1.1em;
     -fx-font-weight: bold;
-    -fx-effect: dropshadow(three-pass-box , #AAAAAA, 3, 0, 0, 3);
 }
 
 .button_add FontAwesomeIconView {
@@ -37,33 +33,19 @@
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 1.1em;
     -fx-font-weight: bold;
-    -fx-effect: dropshadow(three-pass-box , #AAAAAA, 3, 0, 0, 3);
 }
 
 .button_remove FontAwesomeIconView {
     -fx-fill: White;
 }
 
-.button_tamvang{
-    -fx-background-color: red;
+.button_tachkhau{
+    -fx-background-color: #FFCC33;
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 1.1em;
     -fx-font-weight: bold;
-    -fx-effect: dropshadow(three-pass-box , #AAAAAA, 3, 0, 0, 3);
 }
 
-.button_tamvang FontAwesomeIconView {
-    -fx-fill: White;
-}
-
-.button_tamtru {
-    -fx-background-color: Green;
-        -fx-text-fill: #FFFFFF;
-        -fx-font-size: 1.1em;
-        -fx-font-weight: bold;
-        -fx-effect: dropshadow(three-pass-box , #AAAAAA, 3, 0, 0, 3);
-}
-
-.button_tamtru FontAwesomeIconView {
+.button_tachkhau FontAwesomeIconView {
     -fx-fill: White;
 }

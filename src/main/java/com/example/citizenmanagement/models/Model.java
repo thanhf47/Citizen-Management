@@ -1,5 +1,6 @@
 package com.example.citizenmanagement.models;
 
+import com.example.citizenmanagement.views.NhankhauFactoryView;
 import com.example.citizenmanagement.views.ViewFactory;
 import com.example.citizenmanagement.views.ViewFactoryThongKe;
 
@@ -16,6 +17,9 @@ public class Model {
     //citizen manager section
     private CitizenManager citizenManager;
     private boolean citizenManagerLoginSuccessFlag;
+
+    // nhan khau
+    private final NhankhauFactoryView nhankhauFactoryView;
 
     //ho khau section
     private final viewHoKhauFactory viewHK;
@@ -36,6 +40,8 @@ public class Model {
 
         this.viewHK = new viewHoKhauFactory();
 
+
+        this.nhankhauFactoryView = new NhankhauFactoryView();
     }
 
     public static synchronized Model getInstance() {
@@ -422,5 +428,8 @@ public class Model {
 
     public static void setHoKhauDuocChon(hoKhauCell hoKhauDuocChon) {
         Model.hoKhauDuocChon = hoKhauDuocChon;
+    }
+    public NhankhauFactoryView getNhankhauFactoryView() {
+        return nhankhauFactoryView;
     }
 }
