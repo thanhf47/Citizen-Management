@@ -18,7 +18,7 @@
     -fx-background-radius: 20;
 
 }
-.pain: hover{
+.pain:hover{
     -fx-cursor: hand;
     -fx-background-color:#8AD1EB;
 }
@@ -37,6 +37,13 @@
     -fx-cursor: hand;
 }
 
+.name {
+    -fx-font-weight: bold;
+}
+.name:hover {
+    -fx-font-size: 36px;
+    -fx-text-fill: #0ffc03;
+}
 
 
 

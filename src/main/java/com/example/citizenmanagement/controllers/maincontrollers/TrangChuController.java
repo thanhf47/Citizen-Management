@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -20,6 +21,7 @@ import java.util.ResourceBundle;
 public class TrangChuController implements Initializable {
 
     public Pane nhankhau;
+
     public Pane hokhau;
     public Pane tamtru;
     public Pane tamvang;
@@ -27,6 +29,9 @@ public class TrangChuController implements Initializable {
     public Text text_hokhau;
     public Text text_tamtru;
     public Text text_tamvang;
+
+    @FXML
+    private Label name;
 
     @FXML
     void click_nhankhau(MouseEvent event) {
@@ -72,10 +77,21 @@ public class TrangChuController implements Initializable {
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        displayName();
+
         showNhanKhau();
         showHoKhau();
         showTamVang();
         showTamTru();
+    }
+
+    private void displayName() {
+        String[] parts = Model.getInstance().getCitizenManager().getHoTen().trim().split(" ");
+
+        if (parts.length > 0) {
+            name.setText(parts[parts.length - 1]);
+        }
     }
 
 

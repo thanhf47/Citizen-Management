@@ -21,6 +21,7 @@ public class MainController implements Initializable {
 
         ho_khau_btn = (Button) main_parent.lookup("#ho_khau_btn");
         nhan_khau_btn = (Button) main_parent.lookup("#nhan_khau_btn");
+
         addListener();
     }
 
