@@ -56,6 +56,10 @@ public class TrangChuController implements Initializable {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.THONG_KE_TAM_TRU);
     }
 
+    @FXML
+    private void onProfile() {
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.PROFILE);
+    }
     public void showNhanKhau(){
         text_nhankhau.setText(Integer.toString(Model.getInstance().getNumberOfNhanKhau()));
     }

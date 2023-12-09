@@ -1,12 +1,9 @@
 package com.example.citizenmanagement.models;
 
-import com.example.citizenmanagement.views.NhankhauFactoryView;
 import com.example.citizenmanagement.views.ViewFactory;
-import com.example.citizenmanagement.views.ViewFactoryThongKe;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.example.citizenmanagement.views.viewHoKhauFactory;
 
 public class Model {
     private static Model model;
@@ -19,15 +16,11 @@ public class Model {
     private boolean citizenManagerLoginSuccessFlag;
 
     // nhan khau
-    private final NhankhauFactoryView nhankhauFactoryView;
 
     //ho khau section
-    private final viewHoKhauFactory viewHK;
     private static hoKhauCell hoKhauDuocChon;
 
 
-    //main Thong Ke section
-    private final ViewFactoryThongKe viewFactoryThongKe;
 
     private Model() {
         this.viewFactory = new ViewFactory();
@@ -35,13 +28,6 @@ public class Model {
 
         this.citizenManager = new CitizenManager("", "", "", "", -1);
         citizenManagerLoginSuccessFlag = false;
-
-        this.viewFactoryThongKe = new ViewFactoryThongKe();
-
-        this.viewHK = new viewHoKhauFactory();
-
-
-        this.nhankhauFactoryView = new NhankhauFactoryView();
     }
 
     public static synchronized Model getInstance() {
@@ -107,10 +93,6 @@ public class Model {
     }
     public void registerManagerAccount(String hoTen, String tenDangNhap, String matKhau, String soDienThoai, int vaiTro) {
         databaseConnection.setCitizenManagerData(hoTen, tenDangNhap, matKhau, soDienThoai, vaiTro);
-    }
-
-    public ViewFactoryThongKe getViewFactoryThongKe(){
-        return viewFactoryThongKe;
     }
 
 
@@ -418,8 +400,6 @@ public class Model {
         return  getNumberOfTamVang() - getTamVangViLyDoHocTap() - getTamVangViLyDoLamViec() - getTamVangViLyDoSucKhoe();
     }
 
-    public viewHoKhauFactory getViewHK(){return viewHK;}
-
     // ho khau
 
     public static hoKhauCell getHoKhauDuocChon() {
@@ -428,8 +408,5 @@ public class Model {
 
     public static void setHoKhauDuocChon(hoKhauCell hoKhauDuocChon) {
         Model.hoKhauDuocChon = hoKhauDuocChon;
-    }
-    public NhankhauFactoryView getNhankhauFactoryView() {
-        return nhankhauFactoryView;
     }
 }

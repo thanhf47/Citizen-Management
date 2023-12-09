@@ -21,8 +21,13 @@
 .pain:hover{
     -fx-cursor: hand;
     -fx-background-color:#8AD1EB;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
 }
 
+.pain:pressed {
+    -fx-background-color: #eeeeee;
+}
 .button_quaylai{
     -fx-background-color: #353A56;
     -fx-text-fill: #FFFFFF;
@@ -33,7 +38,7 @@
     -fx-fill: #FFFFFF;
 }
 
-.button_quaylai: hover{
+.button_quaylai:hover{
     -fx-cursor: hand;
 }
 
@@ -45,6 +50,11 @@
     -fx-text-fill: #0ffc03;
 }
 
+.profile:hover {
+    -fx-cursor: hand;
+    -fx-scale-x: 1.25;
+    -fx-scale-y: 1.25;
+}
 
 
 
