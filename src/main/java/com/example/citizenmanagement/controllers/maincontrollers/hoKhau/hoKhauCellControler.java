@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class hoKhauCellControler implements Initializable {
-
+//122222222222222232
     private final hoKhauCell khauCell;
     public AnchorPane anchorPane;
     public HBox hbox;

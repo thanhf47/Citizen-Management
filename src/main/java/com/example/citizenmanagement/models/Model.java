@@ -9,6 +9,7 @@ import java.util.Properties;
 import java.util.concurrent.Executor;
 
 public class Model {
+    private int tam;
     private static Model model;
     private final ViewFactory viewFactory;
     private final viewHoKhauFactory viewHK;
