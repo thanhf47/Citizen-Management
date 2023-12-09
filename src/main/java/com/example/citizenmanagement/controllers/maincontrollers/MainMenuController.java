@@ -6,6 +6,7 @@ import com.example.citizenmanagement.models.hoKhauOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -21,15 +22,13 @@ public class MainMenuController implements Initializable {
     private Button ho_khau_btn;
 
     @FXML
-    private Button logout_btn;
+    private HBox logout_btn;
 
     @FXML
     private Button nhan_khau_btn;
 
+
     @FXML
-    private Button report_btn;
-
-
     public void onLogoutBtn() {
         Stage stage = (Stage) logout_btn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
@@ -45,7 +44,6 @@ public class MainMenuController implements Initializable {
         trang_chu_btn.setOnAction(event -> onTrangChu());
         nhan_khau_btn.setOnAction(event -> onNhanKhau());
         ho_khau_btn.setOnAction(event -> onHoKhau());
-
     }
 
     private void onTrangChu() {

@@ -51,6 +51,8 @@
 
 /* Slider Style*/
 .slider_style {
+    -fx-background-image: url('../images/login_form/city.png');
+    -fx-background-size: cover;
 }
 .slider_style Label {
     -fx-text-fill: #FFFFFF;

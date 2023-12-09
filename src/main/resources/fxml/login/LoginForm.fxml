@@ -175,11 +175,6 @@
       </RadioButton>
    </AnchorPane>
    <AnchorPane fx:id="slider" prefHeight="500.0" prefWidth="400.0" styleClass="slider_style" stylesheets="@../../styles/LoginForm.css">
-      <ImageView fitHeight="607.0" fitWidth="405.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.6000000000000227" AnchorPane.topAnchor="0.0">
-         <image>
-            <Image url="@../../images/login_form/city.png" />
-         </image>
-      </ImageView>
       <Label layoutX="27.0" layoutY="14.0" styleClass="label1" stylesheets="@../../styles/LoginForm.css" text="Quản lý dân cư" textFill="RED">
          <font>
             <Font name="System Bold" size="80.0" />

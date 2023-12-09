@@ -6,6 +6,7 @@ import com.example.citizenmanagement.models.Model;
 import com.example.citizenmanagement.models.hoKhauCell;
 import com.example.citizenmanagement.views.hoKhauCellFactory;
 
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -17,10 +18,14 @@ import java.sql.ResultSet;
 import java.util.*;
 
 public class hoKhauShowControler implements Initializable {
-    public TextField search_textfield;
-    public ListView<hoKhauCell> listView;
-    public Button tach_but;
-    public Button them_but;
+    @FXML
+    private TextField search_textfield;
+    @FXML
+    private ListView<hoKhauCell> listView;
+    @FXML
+    private Button tach_but;
+    @FXML
+    private Button them_but;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
