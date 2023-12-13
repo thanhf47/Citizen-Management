@@ -20,8 +20,7 @@
       <Text layoutX="51.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã hộ khẩu" />
       <Text layoutX="179.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã chủ hộ" />
       <Text layoutX="314.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Địa chỉ" />
-      <Text layoutX="451.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo" />
-      <Text layoutX="576.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày rời đi" />
+      <Text layoutX="537.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo" />
       <Text layoutX="689.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ghi chú" />
    </AnchorPane>
 </AnchorPane>

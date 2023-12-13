@@ -1,0 +1,22 @@
+.xem_chi_tiet{
+-fx-background-color: #ffffff;
+}
+
+.xem_chi_tiet .list-view{
+-fx-background-color: #acdecf;
+}
+
+.xem_chi_tiet VBox{
+-fx-background-color: #e4f5f0;
+-fx-padding:5;
+
+}
+
+.xem_chi_tiet VBox TextField{
+-fx-background-color: #d9de7a;
+-fx-text-fill: #3e0f17;
+}
+
+.xem_chi_tiet VBox Label{
+-fx-text-fill: #6d703a;
+}
