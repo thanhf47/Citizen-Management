@@ -8,8 +8,8 @@ public class DatabaseConnection {
     public DatabaseConnection() {
         String dbName = "QUANLYDANCU";
         String dbUser = "sa";
-        String dbPassword = "040703";
-        String url = "jdbc:sqlserver://MAIN-CHARACTER\\THANH_NGUYEN:1433;databaseName=" + dbName + ";integratedSecurity=false;trustServerCertificate=true";
+        String dbPassword = "123456789";
+        String url = "jdbc:sqlserver://DESKTOP-0686QHH:1433;databaseName=" + dbName + ";IntegratedSecurity=false;encrypt=false;trustSeverCertificate=true;";
 
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -116,7 +116,7 @@ public class DatabaseConnection {
         ResultSet rs = null;
         try {
             st= connection.createStatement();
-            rs = st.executeQuery("select count(SOCANCUOC) from TAMTRU");
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU) FROM TAMTRU WHERE YEAR(TUNGAY) = YEAR(GETDATE()) ");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -127,7 +127,7 @@ public class DatabaseConnection {
         ResultSet rs = null;
         try {
             st= connection.createStatement();
-            rs = st.executeQuery("select count(MANHANKHAU) from TAMVANG");
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG WHERE YEAR(TUNGAY) = YEAR(GETDATE())");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -278,28 +278,28 @@ public class DatabaseConnection {
 
     }
 
-    public ResultSet getTamTruViLyDoHocTap(){
+    public ResultSet getTamTruViLyDoHocTap(int nam){
         Statement st;
         ResultSet rs = null;
         try {
             st = connection.createStatement();
             rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU)\n" +
                     "FROM TAMTRU\n" +
-                    "WHERE LYDO LIKE N'%Học tập%'");
+                    "WHERE LYDO LIKE N'%Học tập%' AND YEAR(TUNGAY)= " + nam);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return  rs;
     }
-    public ResultSet getTamTruViLyDoLamViec(){
+    public ResultSet getTamTruViLyDoLamViec(int nam){
         Statement st;
         ResultSet rs = null;
         try {
             st = connection.createStatement();
             rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU)\n" +
                     "FROM TAMTRU\n" +
-                    "WHERE LYDO LIKE N'%Làm việc%'");
+                    "WHERE LYDO LIKE N'%Làm việc%' AND YEAR(TUNGAY)=" + nam);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -307,14 +307,14 @@ public class DatabaseConnection {
         return  rs;
     }
 
-    public ResultSet getTamTruViLyDoSucKhoe(){
+    public ResultSet getTamTruViLyDoSucKhoe(int nam){
         Statement st;
         ResultSet rs = null;
         try {
             st = connection.createStatement();
             rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU)\n" +
                     "FROM TAMTRU\n" +
-                    "WHERE LYDO LIKE N'%Chăm sóc sức khỏe%'");
+                    "WHERE LYDO LIKE N'%Chăm sóc sức khỏe%' AND YEAR(TUNGAY)=" + nam);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -337,14 +337,12 @@ public class DatabaseConnection {
         return rs;
     }
 
-    public ResultSet getTamVangViLyDoHocTap(){
+    public ResultSet getTamVangViLyDoHocTap(int nam){
         Statement st;
         ResultSet rs = null;
         try {
             st = connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG)\n" +
-                    "FROM TAMVANG\n" +
-                    "WHERE LYDO LIKE N'%Học tập%'");
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG   WHERE LYDO LIKE N'%Học tập%' AND YEAR(TUNGAY) =" +nam);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -352,14 +350,12 @@ public class DatabaseConnection {
         return  rs;
     }
 
-    public ResultSet getTamVangViLyDoLamViec(){
+    public ResultSet getTamVangViLyDoLamViec(int nam){
         Statement st;
         ResultSet rs = null;
         try {
             st = connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG)\n" +
-                    "FROM TAMVANG\n" +
-                    "WHERE LYDO LIKE N'%Làm việc%'");
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG   WHERE LYDO LIKE N'%Làm việc%' AND YEAR(TUNGAY) =" + nam);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -367,14 +363,12 @@ public class DatabaseConnection {
         return  rs;
     }
 
-    public ResultSet getTamVangViLyDoSucKhoe(){
+    public ResultSet getTamVangViLyDoSucKhoe(int nam){
         Statement st;
         ResultSet rs = null;
         try {
             st = connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG)\n" +
-                    "FROM TAMVANG\n" +
-                    "WHERE LYDO LIKE N'%sức Khoẻ%'");
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG   WHERE LYDO LIKE N'%sức Khoẻ%' AND YEAR(TUNGAY) =" + nam);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -457,6 +451,38 @@ public class DatabaseConnection {
             return 0;
         }
     }
+
+    public ResultSet getNumberOfTamTru(int nam){
+        ResultSet resultSet = null;
+        String query = "SELECT COUNT(MAGIAYTAMTRU) FROM TAMTRU WHERE YEAR(TUNGAY) =" + nam;
+        Statement st;
+        try {
+            st = connection.createStatement();
+            resultSet = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
+    public ResultSet getNumberOfTamVang(int nam){
+        ResultSet resultSet = null;
+        String query = "SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG WHERE YEAR(TUNGAY) =" + nam;
+        Statement st;
+        try {
+            st = connection.createStatement();
+            resultSet = st.executeQuery(query);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
+
+
+
 }
 
 
