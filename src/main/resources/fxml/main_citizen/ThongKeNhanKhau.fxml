@@ -12,10 +12,10 @@
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="maunen" stylesheets="@../../styles/TrangChu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.ThongKeNhanKhauController">
    <children>
-      <TableView fx:id="table_gioitinh" layoutX="555.0" layoutY="40.0" prefHeight="94.0" prefWidth="200.0" AnchorPane.topAnchor="40.0">
+      <TableView fx:id="table_gioitinh" layoutX="563.0" layoutY="40.0" prefHeight="94.0" prefWidth="182.0" AnchorPane.topAnchor="40.0">
         <columns>
-          <TableColumn fx:id="gioitinh" prefWidth="94.40008544921875" text="Giới Tính" />
-          <TableColumn fx:id="soluonggioitinh" prefWidth="103.9998779296875" text="Số Lượng" />
+          <TableColumn fx:id="gioitinh" prefWidth="90.39996337890625" text="Giới Tính" />
+          <TableColumn fx:id="soluonggioitinh" prefWidth="87.2000732421875" text="Số Lượng" />
         </columns>
       </TableView>
       <StackedBarChart fx:id="bieudogioitinh" layoutX="109.0" legendVisible="false" prefHeight="324.0" prefWidth="282.0" styleClass="maunen" title="Thống kê theo giới tính" AnchorPane.leftAnchor="109.0" AnchorPane.topAnchor="0.0">

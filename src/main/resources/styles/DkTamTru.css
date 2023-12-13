@@ -1,0 +1,45 @@
+
+.text_lbl {
+    -fx-font-size: 2em;
+    -fx-fill: #FFFFFF;
+    -fx-font-weight: Bold;
+ }
+
+ .vbx {
+     -fx-background-color: #EEEEEE;
+     -fx-padding: 20 10 20 10;
+     -fx-spacing: 10;
+     -fx-alignment: center_left;
+ }
+
+ .vbx Lable {
+     -fx-font-family: "Calibri Light";
+     -fx-font-size: 1.3em;
+ }
+
+ .button_acp {
+     -fx-background-color: linear-gradient(to bottom right ,#007700,#00CC00);
+     -fx-effect: dropshadow(three-pass-box , #AAAAAA, 3, 0, 0, 3);
+     -fx-pref-width: 100;
+     -fx-pref-hight: 50;
+     -fx-pref-size: 1.5em;
+     -fx-font-family: Serif ;
+     -fx-text-fill: #FFFFFF;
+     -fx-font-weight: Bold;
+ }
+
+ .button_cancel {
+      -fx-background-color: linear-gradient(to bottom right ,#838B83,#8B8B7A);
+      -fx-effect: dropshadow(three-pass-box , #AAAAAA, 3, 0, 0, 3);
+      -fx-pref-width: 100;
+      -fx-pref-hight: 50;
+      -fx-pref-size: 1.5em;
+      -fx-font-family: Serif ;
+      -fx-text-fill: #FFFFFF;
+      -fx-font-weight: Bold;
+  }
+
+ .hbx {
+     -fx-padding: 10 10 10 10;
+     -fx-spacing: 10;
+ }

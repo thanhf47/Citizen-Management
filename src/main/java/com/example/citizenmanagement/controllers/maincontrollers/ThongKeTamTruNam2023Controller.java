@@ -13,6 +13,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
@@ -21,6 +22,8 @@ import java.util.ResourceBundle;
 
 public class ThongKeTamTruNam2023Controller implements Initializable {
 
+    public TextField timkiemnam_textfield;
+    public Button timkiemnam_btn;
     @FXML
     private TableColumn<ThongKe, String> Lydo;
 
@@ -41,16 +44,17 @@ public class ThongKeTamTruNam2023Controller implements Initializable {
     @FXML
     private StackedBarChart thongKeTamTruNam2023;
 
-    @FXML
-    private Text tongsonam2023_text;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        hienThiTamTru();
+
         thoatTamTru.setOnAction(event -> onThoatTamTru());
-        showBieuDoTamTruTheoThang();
-        showBieuDoTamTruTheoLyDo();
-        showTableTamTruTheoLyDo();
+
+        timkiemnam_btn.setOnAction(event ->{
+            //thongKeTamTruNam2023.getData().clear();
+            showBieuDoTamTruTheoThang();
+            showBieuDoTamTruTheoLyDo();
+            showTableTamTruTheoLyDo();
+        });
 
     }
 
@@ -58,34 +62,31 @@ public class ThongKeTamTruNam2023Controller implements Initializable {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TRANG_CHU);
     }
 
-    public void hienThiTamTru(){
-        tongsonam2023_text.setText(Integer.toString(Model.getInstance().getNumberOfTamTru()));
-
-    }
 
     public void showBieuDoTamTruTheoThang(){
-        final XYChart.Series<String,Number> series = new XYChart.Series<>();
-        series.getData().add(new XYChart.Data<>("Tháng 1",Model.getInstance().getTamTruOfThangVaNam(1,2023)));
-        series.getData().add(new XYChart.Data<>("Tháng 2",Model.getInstance().getTamTruOfThangVaNam(2,2023)));
-        series.getData().add(new XYChart.Data<>("Tháng 3",Model.getInstance().getTamTruOfThangVaNam(3,2023)));
-        series.getData().add(new XYChart.Data<>("Tháng 4",Model.getInstance().getTamTruOfThangVaNam(4,2023)));
-        series.getData().add(new XYChart.Data<>("Tháng 5",Model.getInstance().getTamTruOfThangVaNam(5,2023)));
-        series.getData().add(new XYChart.Data<>("Tháng 6",Model.getInstance().getTamTruOfThangVaNam(6,2023)));
-        series.getData().add(new XYChart.Data<>("Tháng 7",Model.getInstance().getTamTruOfThangVaNam(7,2023)));
-        series.getData().add(new XYChart.Data<>("Tháng 8",Model.getInstance().getTamTruOfThangVaNam(8,2023)));
-        series.getData().add(new XYChart.Data<>("Tháng 9",Model.getInstance().getTamTruOfThangVaNam(9,2023)));
-        series.getData().add(new XYChart.Data<>("Tháng 10",Model.getInstance().getTamTruOfThangVaNam(10,2023)));
-        series.getData().add(new XYChart.Data<>("Tháng 11",Model.getInstance().getTamTruOfThangVaNam(11,2023)));
-        series.getData().add(new XYChart.Data<>("Tháng 12",Model.getInstance().getTamTruOfThangVaNam(12,2023)));
+        thongKeTamTruNam2023.getData().clear();
+        XYChart.Series<String,Number> series = new XYChart.Series<>();
+        series.getData().add(new XYChart.Data<>("Tháng 1",Model.getInstance().getTamTruOfThangVaNam(1,Integer.parseInt(timkiemnam_textfield.getText()))));
+        series.getData().add(new XYChart.Data<>("Tháng 2",Model.getInstance().getTamTruOfThangVaNam(2,Integer.parseInt(timkiemnam_textfield.getText()))));
+        series.getData().add(new XYChart.Data<>("Tháng 3",Model.getInstance().getTamTruOfThangVaNam(3,Integer.parseInt(timkiemnam_textfield.getText()))));
+        series.getData().add(new XYChart.Data<>("Tháng 4",Model.getInstance().getTamTruOfThangVaNam(4,Integer.parseInt(timkiemnam_textfield.getText()))));
+        series.getData().add(new XYChart.Data<>("Tháng 5",Model.getInstance().getTamTruOfThangVaNam(5,Integer.parseInt(timkiemnam_textfield.getText()))));
+        series.getData().add(new XYChart.Data<>("Tháng 6",Model.getInstance().getTamTruOfThangVaNam(6,Integer.parseInt(timkiemnam_textfield.getText()))));
+        series.getData().add(new XYChart.Data<>("Tháng 7",Model.getInstance().getTamTruOfThangVaNam(7,Integer.parseInt(timkiemnam_textfield.getText()))));
+        series.getData().add(new XYChart.Data<>("Tháng 8",Model.getInstance().getTamTruOfThangVaNam(8,Integer.parseInt(timkiemnam_textfield.getText()))));
+        series.getData().add(new XYChart.Data<>("Tháng 9",Model.getInstance().getTamTruOfThangVaNam(9,Integer.parseInt(timkiemnam_textfield.getText()))));
+        series.getData().add(new XYChart.Data<>("Tháng 10",Model.getInstance().getTamTruOfThangVaNam(10,Integer.parseInt(timkiemnam_textfield.getText()))));
+        series.getData().add(new XYChart.Data<>("Tháng 11",Model.getInstance().getTamTruOfThangVaNam(11,Integer.parseInt(timkiemnam_textfield.getText()))));
+        series.getData().add(new XYChart.Data<>("Tháng 12",Model.getInstance().getTamTruOfThangVaNam(12,Integer.parseInt(timkiemnam_textfield.getText()))));
         thongKeTamTruNam2023.getData().add(series);
     }
 
     public void showBieuDoTamTruTheoLyDo(){
         ObservableList<PieChart.Data> piechartdata = FXCollections.observableArrayList(
-                new PieChart.Data("Học tập",Model.getInstance().getTamTruViLyDoHocTap()),
-                new PieChart.Data("Làm việc",Model.getInstance().getTamTruViLyDoLamViec()),
-                new PieChart.Data("Chăm sóc sức khoẻ",Model.getInstance().getTamTruViLyDoSucKhoe()),
-                new PieChart.Data("Khác",Model.getInstance().getTamTruViLyDoKhac())
+                new PieChart.Data("Học tập",Model.getInstance().getTamTruViLyDoHocTap(Integer.parseInt(timkiemnam_textfield.getText()))),
+                new PieChart.Data("Làm việc",Model.getInstance().getTamTruViLyDoLamViec(Integer.parseInt(timkiemnam_textfield.getText()))),
+                new PieChart.Data("Chăm sóc sức khoẻ",Model.getInstance().getTamTruViLyDoSucKhoe(Integer.parseInt(timkiemnam_textfield.getText()))),
+                new PieChart.Data("Khác",Model.getInstance().getTamTruViLyDoKhac(Integer.parseInt(timkiemnam_textfield.getText())))
 
         );
         bieudolidotamtru.setData(piechartdata);
@@ -94,10 +95,10 @@ public class ThongKeTamTruNam2023Controller implements Initializable {
     public void showTableTamTruTheoLyDo(){
 
         ObservableList<ThongKe> list1 = FXCollections.observableArrayList(
-                new ThongKe("Học tập",Model.getInstance().getTamTruViLyDoHocTap()),
-                new ThongKe("Làm việc", Model.getInstance().getTamTruViLyDoLamViec()),
-                new ThongKe("Sức khoẻ", Model.getInstance().getTamTruViLyDoSucKhoe()),
-                new ThongKe("Khác", Model.getInstance().getTamTruViLyDoKhac())
+                new ThongKe("Học tập",Model.getInstance().getTamTruViLyDoHocTap(Integer.parseInt(timkiemnam_textfield.getText()))),
+                new ThongKe("Làm việc", Model.getInstance().getTamTruViLyDoLamViec(Integer.parseInt(timkiemnam_textfield.getText()))),
+                new ThongKe("Sức khoẻ", Model.getInstance().getTamTruViLyDoSucKhoe(Integer.parseInt(timkiemnam_textfield.getText()))),
+                new ThongKe("Khác", Model.getInstance().getTamTruViLyDoKhac(Integer.parseInt(timkiemnam_textfield.getText())))
         );
 
         Lydo.setCellValueFactory(new PropertyValueFactory<ThongKe,String>("gioitinh"));

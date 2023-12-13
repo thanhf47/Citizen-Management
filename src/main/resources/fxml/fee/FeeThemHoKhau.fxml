@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.feecontrollers.FeeThemHoKhauController">
+    <Label layoutX="43.0" layoutY="47.0" text="Chọn các hộ cần thu phí">
+        <font>
+          <Font name="Verdana Bold" size="42.0" />
+        </font>
+    </Label>
+    <Button fx:id="hoanThanhBtn" layoutX="512.0" layoutY="638.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="114.0" text="Hoàn thành" AnchorPane.rightAnchor="175.0">
+        <font>
+          <Font name="Calibri" size="18.0" />
+        </font>
+    </Button>
+    <Button fx:id="quayLaiBtn" layoutX="356.0" layoutY="638.0" mnemonicParsing="false" onAction="#onQuayLaiBtn" prefHeight="40.0" prefWidth="100.0" text="Quay lại" AnchorPane.rightAnchor="350.0">
+        <font>
+          <Font name="Calibri" size="18.0" />
+        </font>
+    </Button>
+   <TextField fx:id="search_textfield" layoutX="35.0" layoutY="117.0" promptText="Tìm kiếm hộ khẩu">
+      <font>
+         <Font size="17.0" />
+      </font>
+   </TextField>
+   <ListView fx:id="listView" layoutX="24.0" layoutY="207.0" prefHeight="414.0" prefWidth="820.0" />
+   <AnchorPane layoutX="45.0" layoutY="167.0" prefHeight="50.0" prefWidth="800.0" styleClass="tieu_de">
+      <children>
+         <Text layoutX="51.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã hộ khẩu" />
+         <Text layoutX="179.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã chủ hộ" />
+         <Text layoutX="314.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Địa chỉ" />
+         <Text layoutX="451.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo" />
+         <Text layoutX="576.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày rời đi" />
+         <Text layoutX="689.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ghi chú" />
+      </children>
+   </AnchorPane>
+</AnchorPane>

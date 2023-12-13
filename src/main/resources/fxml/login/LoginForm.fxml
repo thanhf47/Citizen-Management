@@ -13,211 +13,288 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0"
-            prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.citizenmanagement.controllers.LoginFormController">
-   <AnchorPane fx:id="login_form" layoutX="400.0" prefHeight="500.0" prefWidth="400.0" styleClass="form"
-               stylesheets="@../../styles/LoginForm.css">
-      <TextField fx:id="login_password_show" layoutX="148.0" layoutY="261.0" prefHeight="30.0" prefWidth="200.0"
-                 promptText="Password" style="-fx-background-color: #FFFFFF;">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.LoginFormController">
+   <AnchorPane fx:id="login_form" layoutX="400.0" prefHeight="500.0" prefWidth="400.0" styleClass="form" stylesheets="@../../styles/LoginForm.css">
+      <TextField fx:id="login_password_show" layoutX="148.0" layoutY="261.0" prefHeight="30.0" prefWidth="200.0" promptText="Password" style="-fx-background-color: #FFFFFF;">
          <font>
-            <Font name="Verdana" size="14.0"/>
+            <Font name="Verdana" size="14.0" />
          </font>
       </TextField>
       <Label layoutX="115.0" layoutY="128.0" text="Đăng nhập">
          <font>
-            <Font name="Verdana" size="36.0"/>
+            <Font name="Verdana" size="36.0" />
          </font>
       </Label>
       <Label layoutX="14.0" layoutY="212.0" text="Tên đăng nhập" AnchorPane.rightAnchor="265.2">
          <font>
-            <Font name="Verdana" size="16.0"/>
+            <Font name="Verdana" size="16.0" />
          </font>
       </Label>
       <Label layoutX="61.0" layoutY="268.0" text="Mật khẩu" AnchorPane.rightAnchor="265.2">
          <font>
-            <Font name="Verdana" size="16.0"/>
+            <Font name="Verdana" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="login_username" layoutX="148.0" layoutY="207.0" prefHeight="30.0" prefWidth="200.0"
-                 style="-fx-background-color: #FFFFFF;">
+      <TextField fx:id="login_username" layoutX="148.0" layoutY="207.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
          <font>
-            <Font name="Verdana" size="14.0"/>
+            <Font name="Verdana" size="14.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="login_password_hidden" layoutX="148.0" layoutY="261.0" prefHeight="30.0"
-                     prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+      <PasswordField fx:id="login_password_hidden" layoutX="148.0" layoutY="261.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
          <font>
-            <Font name="Verdana" size="14.0"/>
+            <Font name="Verdana" size="14.0" />
          </font>
       </PasswordField>
-      <Hyperlink fx:id="login_forgotPassword" layoutX="53.0" layoutY="376.0" onMouseClicked="#onForgotClicked"
-                 text="Quên mật khẩu?"/>
-      <Button fx:id="login_btn" layoutX="50.0" layoutY="329.0" mnemonicParsing="false"
-              onMouseClicked="#onLoginBtnClicked" prefHeight="40.0" prefWidth="300.0" styleClass="button_style"
-              stylesheets="@../../styles/LoginForm.css" text="Đăng nhập">
+      <Hyperlink fx:id="login_forgotPassword" layoutX="53.0" layoutY="376.0" onAction="#onForgotClicked" onMouseClicked="#onForgotClicked" text="Quên mật khẩu?" />
+      <Button fx:id="login_btn" layoutX="50.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#onLoginBtnClicked" prefHeight="40.0" prefWidth="300.0" styleClass="button_style" stylesheets="@../../styles/LoginForm.css" text="Đăng nhập">
          <font>
-            <Font name="Verdana" size="18.0"/>
+            <Font name="Verdana" size="18.0" />
          </font>
       </Button>
       <Label layoutX="58.0" layoutY="451.0" text="Chưa có tài khoản?">
          <font>
-            <Font size="14.0"/>
+            <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="login_switchRegister" layoutX="192.0" layoutY="445.0" onMouseClicked="#switchRegisterForm"
-             styleClass="login_switchRegister" stylesheets="@../../styles/LoginForm.css" text="Đăng ký ngay">
+      <Label fx:id="login_switchRegister" layoutX="192.0" layoutY="445.0" onMouseClicked="#switchRegisterForm" styleClass="login_switchRegister" stylesheets="@../../styles/LoginForm.css" text="Đăng ký ngay">
          <font>
-            <Font name="Verdana" size="24.0"/>
+            <Font name="Verdana" size="24.0" />
          </font>
       </Label>
-      <Line endX="173.800048828125" layoutX="207.0" layoutY="433.0" startX="-182.20001220703125"/>
-      <ImageView fitHeight="104.0" fitWidth="108.0" layoutX="153.0" layoutY="24.0" pickOnBounds="true"
-                 preserveRatio="true">
+      <Line endX="173.800048828125" layoutX="207.0" layoutY="433.0" startX="-182.20001220703125" />
+      <ImageView fitHeight="104.0" fitWidth="108.0" layoutX="153.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/login_form/user_icon.png"/>
+            <Image url="@../../images/login_form/user_icon.png" />
          </image>
       </ImageView>
-      <Label fx:id="login_errorAlert" layoutX="53.0" layoutY="311.0" styleClass="error_alert"
-             stylesheets="@../../styles/LoginForm.css" text="login_errorAlert" textFill="RED">
+      <Label fx:id="login_errorAlert" layoutX="53.0" layoutY="311.0" styleClass="error_alert" stylesheets="@../../styles/LoginForm.css" text="login_errorAlert" textFill="RED">
          <font>
-            <Font name="Calibri Italic" size="13.0"/>
+            <Font name="Calibri Italic" size="13.0" />
          </font>
       </Label>
-      <ImageView fx:id="login_hiddenPassIcon" fitHeight="20.0" fitWidth="30.0" layoutX="318.0" layoutY="267.0"
-                 onMousePressed="#onHiddenPasswordIconClicked" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="login_hiddenPassIcon" fitHeight="20.0" fitWidth="30.0" layoutX="318.0" layoutY="267.0" onMousePressed="#onHiddenPasswordIconClicked" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/login_form/hidden.png"/>
+            <Image url="@../../images/login_form/hidden.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="login_showedPassIcon" fitHeight="20.0" fitWidth="30.0" layoutX="318.0" layoutY="268.0"
-                 onMousePressed="#onShowedPasswordIconClicked" pickOnBounds="true" preserveRatio="true"
-                 visible="false">
+      <ImageView fx:id="login_showedPassIcon" fitHeight="20.0" fitWidth="30.0" layoutX="318.0" layoutY="268.0" onMousePressed="#onShowedPasswordIconClicked" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../../images/login_form/visible.png"/>
+            <Image url="@../../images/login_form/visible.png" />
          </image>
       </ImageView>
    </AnchorPane>
-   <AnchorPane fx:id="register_form" prefHeight="500.0" prefWidth="400.0" styleClass="form"
-               stylesheets="@../../styles/LoginForm.css">
+   <AnchorPane fx:id="register_form" prefHeight="500.0" prefWidth="400.0" styleClass="form" stylesheets="@../../styles/LoginForm.css">
       <Label layoutX="12.0" layoutY="34.0" text="Đăng ký">
          <font>
-            <Font name="Verdana" size="36.0"/>
+            <Font name="Verdana" size="36.0" />
          </font>
       </Label>
       <Label layoutX="40.0" layoutY="180.0" text="Tên đăng nhập" AnchorPane.rightAnchor="245.6">
          <font>
-            <Font name="Verdana" size="16.0"/>
+            <Font name="Verdana" size="16.0" />
          </font>
       </Label>
       <Label layoutX="78.0" layoutY="219.0" text="Mật khẩu" AnchorPane.rightAnchor="245.6">
          <font>
-            <Font name="Verdana" size="16.0"/>
+            <Font name="Verdana" size="16.0" />
          </font>
       </Label>
       <Label layoutX="14.0" layoutY="258.0" text="Nhập lại mật khẩu" AnchorPane.rightAnchor="245.6">
          <font>
-            <Font name="Verdana" size="16.0"/>
+            <Font name="Verdana" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="register_username" layoutX="169.0" layoutY="175.0" prefHeight="30.0" prefWidth="200.0"
-                 style="-fx-background-color: #FFFFFF;">
+      <TextField fx:id="register_username" layoutX="169.0" layoutY="175.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
          <font>
-            <Font name="Verdana" size="14.0"/>
+            <Font name="Verdana" size="14.0" />
          </font>
       </TextField>
-      <Button fx:id="register_btn" layoutX="63.0" layoutY="344.0" mnemonicParsing="false"
-              onMouseClicked="#onRegisterBtnClicked" prefHeight="40.0" prefWidth="300.0" styleClass="button_style"
-              stylesheets="@../../styles/LoginForm.css" text="Đăng ký">
+      <Button fx:id="register_btn" layoutX="63.0" layoutY="344.0" mnemonicParsing="false" onMouseClicked="#onRegisterBtnClicked" prefHeight="40.0" prefWidth="300.0" styleClass="button_style" stylesheets="@../../styles/LoginForm.css" text="Đăng ký">
          <font>
-            <Font name="Verdana" size="18.0"/>
+            <Font name="Verdana" size="18.0" />
          </font>
       </Button>
-      <Line endX="147.5999755859375" layoutX="234.0" layoutY="437.0" startX="-210.0"/>
+      <Line endX="147.5999755859375" layoutX="234.0" layoutY="437.0" startX="-210.0" />
       <Label layoutX="63.0" layoutY="452.0" text="Đã có tài khoản?">
          <font>
-            <Font size="14.0"/>
+            <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="register_switchLogin" layoutX="182.0" layoutY="446.0" onMouseClicked="#switchLoginForm"
-             styleClass="register_switchLogin" stylesheets="@../../styles/LoginForm.css" text="Đăng nhập ngay">
+      <Label fx:id="register_switchLogin" layoutX="182.0" layoutY="446.0" onMouseClicked="#switchLoginForm" styleClass="register_switchLogin" stylesheets="@../../styles/LoginForm.css" text="Đăng nhập ngay">
          <font>
-            <Font name="Verdana" size="24.0"/>
+            <Font name="Verdana" size="24.0" />
          </font>
       </Label>
       <Label layoutX="76.0" layoutY="105.0" text="Họ và tên" AnchorPane.rightAnchor="245.6">
          <font>
-            <Font name="Verdana" size="16.0"/>
+            <Font name="Verdana" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="register_fullname" layoutX="169.0" layoutY="100.0" prefHeight="30.0" prefWidth="200.0"
-                 style="-fx-background-color: #FFFFFF;">
+      <TextField fx:id="register_fullname" layoutX="169.0" layoutY="100.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
          <font>
-            <Font name="Verdana" size="14.0"/>
+            <Font name="Verdana" size="14.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="register_confirm" layoutX="169.0" layoutY="252.0" prefHeight="30.0" prefWidth="200.0"
-                     style="-fx-background-color: #FFFFFF;">
+      <PasswordField fx:id="register_confirm" layoutX="169.0" layoutY="252.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
          <font>
-            <Font name="Verdana" size="14.0"/>
+            <Font name="Verdana" size="14.0" />
          </font>
       </PasswordField>
-      <PasswordField fx:id="register_password" layoutX="169.0" layoutY="213.0" prefHeight="30.0" prefWidth="200.0"
-                     style="-fx-background-color: #FFFFFF;">
+      <PasswordField fx:id="register_password" layoutX="169.0" layoutY="213.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
          <font>
-            <Font name="Verdana" size="14.0"/>
+            <Font name="Verdana" size="14.0" />
          </font>
       </PasswordField>
-      <Label fx:id="register_errorAlert" layoutX="64.0" layoutY="326.0" styleClass="error_alert"
-             stylesheets="@../../styles/LoginForm.css" text="register_errorAlert" textFill="RED">
+      <Label fx:id="register_errorAlert" layoutX="64.0" layoutY="326.0" styleClass="error_alert" stylesheets="@../../styles/LoginForm.css" text="register_errorAlert" textFill="RED">
          <font>
-            <Font name="System Italic" size="13.0"/>
+            <Font name="System Italic" size="13.0" />
          </font>
       </Label>
       <Label layoutX="47.0" layoutY="142.0" text="Số điện thoại" AnchorPane.rightAnchor="245.6">
          <font>
-            <Font name="Verdana" size="16.0"/>
+            <Font name="Verdana" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="register_phoneNumber" layoutX="169.0" layoutY="137.0" prefHeight="30.0" prefWidth="200.0"
-                 style="-fx-background-color: #FFFFFF;">
+      <TextField fx:id="register_phoneNumber" layoutX="169.0" layoutY="137.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
          <font>
-            <Font name="Verdana" size="14.0"/>
+            <Font name="Verdana" size="14.0" />
          </font>
       </TextField>
-      <RadioButton layoutX="47.0" layoutY="296.0" mnemonicParsing="false" text="Trưởng khu phố">
+      <RadioButton fx:id="role1" layoutX="47.0" layoutY="296.0" mnemonicParsing="false" text="Trưởng khu phố">
          <toggleGroup>
-            <ToggleGroup fx:id="role"/>
+            <ToggleGroup fx:id="role" />
          </toggleGroup>
          <font>
-            <Font name="Verdana" size="16.0"/>
+            <Font name="Verdana" size="16.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="235.0" layoutY="296.0" mnemonicParsing="false" text="Cán bộ" toggleGroup="$role">
+      <RadioButton fx:id="role0" layoutX="235.0" layoutY="296.0" mnemonicParsing="false" text="Cán bộ" toggleGroup="$role">
          <font>
-            <Font name="Verdana" size="16.0"/>
+            <Font name="Verdana" size="16.0" />
          </font>
       </RadioButton>
    </AnchorPane>
-   <AnchorPane fx:id="slider" prefHeight="500.0" prefWidth="400.0" styleClass="slider_style"
-               stylesheets="@../../styles/LoginForm.css">
-      <ImageView fitHeight="607.0" fitWidth="405.0" pickOnBounds="true" preserveRatio="true"
-                 AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.6000000000000227" AnchorPane.topAnchor="0.0">
-         <image>
-            <Image url="@../../images/login_form/city.png"/>
-         </image>
-      </ImageView>
-      <Label layoutX="27.0" layoutY="14.0" styleClass="label1" stylesheets="@../../styles/LoginForm.css"
-             text="Quản lý dân cư" textFill="RED">
+   <AnchorPane fx:id="slider" prefHeight="500.0" prefWidth="400.0" styleClass="slider_style" stylesheets="@../../styles/LoginForm.css">
+      <Label layoutX="27.0" layoutY="14.0" styleClass="label1" stylesheets="@../../styles/LoginForm.css" text="Quản lý dân cư" textFill="RED">
          <font>
-            <Font name="System Bold" size="80.0"/>
+            <Font name="System Bold" size="80.0" />
          </font>
       </Label>
-      <Line endX="226.4000244140625" layoutX="159.0" layoutY="68.0" startX="-139.20001220703125" stroke="WHITE"
-            strokeWidth="2.0"/>
-      <Label fx:id="timeLabel" layoutX="-1.0" layoutY="203.0" styleClass="timeLabel" text="Time Label"
-             textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
-      <Label fx:id="dateLabel" layoutX="-1.0" layoutY="273.0" styleClass="dateLabel" text="Date label"
-             textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+      <Line endX="226.4000244140625" layoutX="159.0" layoutY="68.0" startX="-139.20001220703125" stroke="WHITE" strokeWidth="2.0" />
+      <Label fx:id="timeLabel" layoutX="-1.0" layoutY="203.0" styleClass="timeLabel" text="Time Label" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Label fx:id="dateLabel" layoutX="-1.0" layoutY="273.0" styleClass="dateLabel" text="Date label" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+   </AnchorPane>
+   <AnchorPane fx:id="forgot_form1" layoutX="10.0" layoutY="10.0" prefHeight="500.0" prefWidth="400.0" styleClass="form" stylesheets="@../../styles/LoginForm.css" visible="false" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <Label layoutX="88.0" layoutY="68.0" text="Quên mật khẩu" AnchorPane.rightAnchor="32.0">
+            <font>
+               <Font name="Verdana" size="36.0" />
+            </font>
+         </Label>
+         <Label layoutX="32.0" layoutY="247.0" text="Tên đăng nhập" AnchorPane.rightAnchor="246.6">
+            <font>
+               <Font name="Verdana" size="16.0" />
+            </font>
+         </Label>
+         <TextField fx:id="forgot_username" layoutX="168.0" layoutY="242.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" AnchorPane.rightAnchor="32.0">
+            <font>
+               <Font name="Verdana" size="14.0" />
+            </font>
+         </TextField>
+         <Button fx:id="forgot_confirmBtn1" layoutX="63.0" layoutY="344.0" mnemonicParsing="false" onAction="#onForgotConfirmBtn1" prefHeight="40.0" prefWidth="300.0" styleClass="button_style" stylesheets="@../../styles/LoginForm.css" text="Xác nhận">
+            <font>
+               <Font name="Verdana" size="18.0" />
+            </font>
+         </Button>
+         <Line endX="147.5999755859375" layoutX="234.0" layoutY="437.0" startX="-210.0" />
+         <Label fx:id="forgot_backBtn1" layoutX="263.0" layoutY="447.0" onMouseClicked="#onForgotBackBtn1Clicked" styleClass="register_switchLogin" stylesheets="@../../styles/LoginForm.css" text="Quay lại">
+            <font>
+               <Font name="Verdana" size="24.0" />
+            </font>
+         </Label>
+         <Label layoutX="75.0" layoutY="154.0" text="Họ và tên" AnchorPane.rightAnchor="246.6">
+            <font>
+               <Font name="Verdana" size="16.0" />
+            </font>
+         </Label>
+         <TextField fx:id="forgot_fullname" layoutX="168.0" layoutY="149.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" AnchorPane.rightAnchor="32.0">
+            <font>
+               <Font name="Verdana" size="14.0" />
+            </font>
+         </TextField>
+         <Label fx:id="forgot_errorLbl1" layoutX="64.0" layoutY="326.0" styleClass="error_alert" stylesheets="@../../styles/LoginForm.css" text="register_errorAlert" textFill="RED">
+            <font>
+               <Font name="System Italic" size="13.0" />
+            </font>
+         </Label>
+         <Label layoutX="43.0" layoutY="200.0" text="Số điện thoại" AnchorPane.rightAnchor="246.6">
+            <font>
+               <Font name="Verdana" size="16.0" />
+            </font>
+         </Label>
+         <TextField fx:id="forgot_phoneNumber" layoutX="164.0" layoutY="195.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" AnchorPane.rightAnchor="32.0">
+            <font>
+               <Font name="Verdana" size="14.0" />
+            </font>
+         </TextField>
+         <RadioButton fx:id="forgot_role1" layoutX="47.0" layoutY="296.0" mnemonicParsing="false" text="Trưởng khu phố">
+            <font>
+               <Font name="Verdana" size="16.0" />
+            </font>
+            <toggleGroup>
+               <ToggleGroup fx:id="forgot_role" />
+            </toggleGroup>
+         </RadioButton>
+         <RadioButton fx:id="forgot_role0" layoutX="235.0" layoutY="296.0" mnemonicParsing="false" text="Cán bộ" toggleGroup="$forgot_role">
+            <font>
+               <Font name="Verdana" size="16.0" />
+            </font>
+         </RadioButton>
+      </children>
+   </AnchorPane>
+   <AnchorPane fx:id="forgot_form2" layoutX="410.0" layoutY="10.0" prefHeight="500.0" prefWidth="400.0" styleClass="form" stylesheets="@../../styles/LoginForm.css" visible="false" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <Label layoutX="88.0" layoutY="68.0" text="Quên mật khẩu" AnchorPane.rightAnchor="32.0">
+            <font>
+               <Font name="Verdana" size="36.0" />
+            </font>
+         </Label>
+         <Button fx:id="forgot_confirmBtn2" layoutX="63.0" layoutY="344.0" mnemonicParsing="false" onAction="#onForgotConfirmBtn2" prefHeight="40.0" prefWidth="300.0" styleClass="button_style" stylesheets="@../../styles/LoginForm.css" text="Xác nhận">
+            <font>
+               <Font name="Verdana" size="18.0" />
+            </font>
+         </Button>
+         <Line endX="147.5999755859375" layoutX="234.0" layoutY="437.0" startX="-210.0" />
+         <Label fx:id="forgot_backBtn2" layoutX="263.0" layoutY="447.0" onMouseClicked="#onForgotBackBtn2Clicked" styleClass="register_switchLogin" stylesheets="@../../styles/LoginForm.css" text="Quay lại">
+            <font>
+               <Font name="Verdana" size="24.0" />
+            </font>
+         </Label>
+         <Label fx:id="forgot_errorLbl2" layoutX="64.0" layoutY="326.0" styleClass="error_alert" stylesheets="@../../styles/LoginForm.css" text="register_errorAlert" textFill="RED">
+            <font>
+               <Font name="System Italic" size="13.0" />
+            </font>
+         </Label>
+         <Label layoutX="47.0" layoutY="200.0" text="Mật khẩu mới">
+            <font>
+               <Font name="Verdana" size="16.0" />
+            </font>
+         </Label>
+         <Label layoutX="23.0" layoutY="274.0" text="Nhập lại mật khẩu">
+            <font>
+               <Font name="Verdana" size="16.0" />
+            </font>
+         </Label>
+         <PasswordField fx:id="forgot_confirm" layoutX="178.0" layoutY="268.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+            <font>
+               <Font name="Verdana" size="14.0" />
+            </font>
+         </PasswordField>
+         <PasswordField fx:id="forgot_password" layoutX="179.0" layoutY="195.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+            <font>
+               <Font name="Verdana" size="14.0" />
+            </font>
+         </PasswordField>
+      </children>
    </AnchorPane>
 </AnchorPane>

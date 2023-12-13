@@ -1,22 +1,47 @@
 package com.example.citizenmanagement.models;
 
+import com.example.citizenmanagement.views.NhankhauFactoryView;
 import com.example.citizenmanagement.views.ViewFactory;
 import com.example.citizenmanagement.views.ViewFactoryThongKe;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import com.example.citizenmanagement.views.viewHoKhauFactory;
 
 public class Model {
     private static Model model;
     private final ViewFactory viewFactory;
 
     private final DatabaseConnection databaseConnection;
+
+    //citizen manager section
+    private CitizenManager citizenManager;
+    private boolean citizenManagerLoginSuccessFlag;
+
+    // nhan khau
+    private final NhankhauFactoryView nhankhauFactoryView;
+
+    //ho khau section
+    private final viewHoKhauFactory viewHK;
+    private static hoKhauCell hoKhauDuocChon;
+
+
+    //main Thong Ke section
     private final ViewFactoryThongKe viewFactoryThongKe;
 
     private Model() {
         this.viewFactory = new ViewFactory();
         this.databaseConnection = new DatabaseConnection();
+
+        this.citizenManager = new CitizenManager("", "", "", "", -1);
+        citizenManagerLoginSuccessFlag = false;
+
         this.viewFactoryThongKe = new ViewFactoryThongKe();
+
+        this.viewHK = new viewHoKhauFactory();
+
+
+        this.nhankhauFactoryView = new NhankhauFactoryView();
     }
 
     public static synchronized Model getInstance() {
@@ -27,6 +52,63 @@ public class Model {
     }
 
     public ViewFactory getViewFactory() {return viewFactory;}
+
+    public DatabaseConnection getDatabaseConnection() {return databaseConnection;}
+
+
+    //Citizen Manager Method
+    public void setCitizenManagerLoginSuccessFlag(boolean flag) {
+        this.citizenManagerLoginSuccessFlag = flag;
+    }
+    public boolean getCitizenManagerLoginSuccessFlag() {return citizenManagerLoginSuccessFlag;}
+    public CitizenManager getCitizenManager() {return citizenManager;}
+    public void verifyManagerAccount(String tenDangNhap, String matKhau) {
+        ResultSet resultSet = databaseConnection.getCitizenManagerData(tenDangNhap, matKhau);
+
+        try {
+            if(resultSet.isBeforeFirst()) {
+                resultSet.next();
+                this.citizenManager.setHoTen(resultSet.getString("HOTEN"));
+                this.citizenManager.setTenDangNhap(resultSet.getString("TENDANGNHAP"));
+                this.citizenManager.setMatKhau(resultSet.getString("MATKHAU"));
+                this.citizenManager.setSoDienThoai(resultSet.getString("SODIENTHOAI"));
+                this.citizenManager.setVaiTro(resultSet.getInt("VAITRO"));
+                this.citizenManagerLoginSuccessFlag = true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean checkManagerUsernameExisted(String tenDangNhap) {
+        ResultSet resultSet = databaseConnection.checkCitizenManagerUsernameExisted(tenDangNhap);
+
+        try {
+            if (resultSet.isBeforeFirst()){
+                return true;
+            }
+            else return false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public boolean checkManagerAccountExisted(String hoTen, String tenDangNhap, String soDienThoai, int vaiTro) {
+        ResultSet resultSet = databaseConnection.checkCitizenManagerAccountExisted(hoTen, tenDangNhap, soDienThoai, vaiTro);
+
+        try {
+            if (resultSet.isBeforeFirst()) return true;
+            else return false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void updateManagerAccountPassword(String hoTen, String tenDangNhap, String soDienThoai, int vaiTro, String matKhau) {
+        databaseConnection.updateCitizenManagerAccountPassword(hoTen, tenDangNhap, soDienThoai, vaiTro, matKhau);
+    }
+    public void registerManagerAccount(String hoTen, String tenDangNhap, String matKhau, String soDienThoai, int vaiTro) {
+        databaseConnection.setCitizenManagerData(hoTen, tenDangNhap, matKhau, soDienThoai, vaiTro);
+    }
+
     public ViewFactoryThongKe getViewFactoryThongKe(){
         return viewFactoryThongKe;
     }
@@ -231,8 +313,8 @@ public class Model {
         }
         return res;
     }
-    public int getTamTruViLyDoHocTap(){
-        ResultSet resultSet = databaseConnection.getTamTruViLyDoHocTap();
+    public int getTamTruViLyDoHocTap(int nam){
+        ResultSet resultSet = databaseConnection.getTamTruViLyDoHocTap(nam);
         int res = 0;
         try {
             if(resultSet.isBeforeFirst()){
@@ -244,22 +326,8 @@ public class Model {
         }
         return res;
     }
-    public int getTamTruViLyDoLamViec(){
-        ResultSet resultSet = databaseConnection.getTamTruViLyDoLamViec();
-        int res = 0;
-        try {
-            if(resultSet.isBeforeFirst()){
-                resultSet.next();
-                res = resultSet.getInt(1);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return res;
-    }
-
-    public int getTamTruViLyDoSucKhoe(){
-        ResultSet resultSet = databaseConnection.getTamTruViLyDoSucKhoe();
+    public int getTamTruViLyDoLamViec(int nam){
+        ResultSet resultSet = databaseConnection.getTamTruViLyDoLamViec(nam);
         int res = 0;
         try {
             if(resultSet.isBeforeFirst()){
@@ -272,8 +340,22 @@ public class Model {
         return res;
     }
 
-    public int getTamTruViLyDoKhac(){
-        return  getNumberOfTamTru() - getTamTruViLyDoHocTap() - getTamTruViLyDoSucKhoe() - getTamTruViLyDoLamViec();
+    public int getTamTruViLyDoSucKhoe(int nam){
+        ResultSet resultSet = databaseConnection.getTamTruViLyDoSucKhoe(nam);
+        int res = 0;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    public int getTamTruViLyDoKhac(int nam){
+        return  getNumberOfTamTru(nam) - getTamTruViLyDoHocTap(nam) - getTamTruViLyDoSucKhoe(nam) - getTamTruViLyDoLamViec(nam);
 
     }
     public int getTamVangOfThangVaNam(int thang, int nam){
@@ -290,8 +372,8 @@ public class Model {
         return res;
     }
 
-    public int getTamVangViLyDoSucKhoe(){
-        ResultSet resultSet = databaseConnection.getTamVangViLyDoSucKhoe();
+    public int getTamVangViLyDoSucKhoe(int nam){
+        ResultSet resultSet = databaseConnection.getTamVangViLyDoSucKhoe(nam);
         int res = 0;
         try {
             if(resultSet.isBeforeFirst()){
@@ -304,8 +386,8 @@ public class Model {
         return res;
     }
 
-    public int getTamVangViLyDoHocTap(){
-        ResultSet resultSet = databaseConnection.getTamVangViLyDoHocTap();
+    public int getTamVangViLyDoHocTap(int nam){
+        ResultSet resultSet = databaseConnection.getTamVangViLyDoHocTap(nam);
         int res = 0;
         try {
             if(resultSet.isBeforeFirst()){
@@ -318,8 +400,8 @@ public class Model {
         return res;
     }
 
-    public int getTamVangViLyDoLamViec(){
-        ResultSet resultSet = databaseConnection.getTamVangViLyDoLamViec();
+    public int getTamVangViLyDoLamViec(int nam){
+        ResultSet resultSet = databaseConnection.getTamVangViLyDoLamViec(nam);
         int res = 0;
         try {
             if(resultSet.isBeforeFirst()){
@@ -332,12 +414,50 @@ public class Model {
         return res;
     }
 
-    public int getTamVangViLyDoKhac(){
-        return  getNumberOfTamVang() - getTamVangViLyDoHocTap() - getTamVangViLyDoLamViec() - getTamVangViLyDoSucKhoe();
-
+    public int getTamVangViLyDoKhac(int nam){
+        return  getNumberOfTamVang(nam) - getTamVangViLyDoHocTap(nam) - getTamVangViLyDoLamViec(nam) - getTamVangViLyDoSucKhoe(nam);
     }
 
+    public int getNumberOfTamTru(int nam){
+        ResultSet resultSet = databaseConnection.getNumberOfTamTru(nam);
+        int res = 0;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
 
+    public int getNumberOfTamVang(int nam){
+        ResultSet resultSet = databaseConnection.getNumberOfTamVang(nam);
+        int res = 0;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
 
+    public viewHoKhauFactory getViewHK(){return viewHK;}
 
+    // ho khau
+
+    public static hoKhauCell getHoKhauDuocChon() {
+        return hoKhauDuocChon;
+    }
+
+    public static void setHoKhauDuocChon(hoKhauCell hoKhauDuocChon) {
+        Model.hoKhauDuocChon = hoKhauDuocChon;
+    }
+    public NhankhauFactoryView getNhankhauFactoryView() {
+        return nhankhauFactoryView;
+    }
 }

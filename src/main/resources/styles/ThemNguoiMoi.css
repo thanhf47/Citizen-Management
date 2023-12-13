@@ -1,0 +1,12 @@
+.text_fld {
+    -fx-border-style: solid solid solid solid;
+    -fx-border-width: 0.5;
+    -fx-border-color: purple;
+    -fx-border-radius: 50% 50% 50% 50% ;
+}
+
+.text_fld1 {
+        -fx-border-style: solid solid solid solid;
+        -fx-border-width: 0.5;
+        -fx-border-color: purple;
+}
