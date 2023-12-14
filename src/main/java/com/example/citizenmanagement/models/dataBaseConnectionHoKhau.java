@@ -7,7 +7,7 @@ public class dataBaseConnectionHoKhau {
     public dataBaseConnectionHoKhau(){
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url = "jdbc:sqlserver://DESKTOP-UK69FVU:1433;databaseName=QLDanCu;encrypt=true;trustServerCertificate=true";
+            String url = "jdbc:sqlserver://DESKTOP-UK69FVU:1433;databaseName=QUANLYDANCU;encrypt=true;trustServerCertificate=true";
             String user = "sa";
             String pass = "123456789";
             connection = DriverManager.getConnection(url, user, pass);
@@ -17,7 +17,7 @@ public class dataBaseConnectionHoKhau {
     }
     public int addHoKhau(String ma_ch, String ngaythem, String diachi, String ghichu){
         if(!ma_ch.isEmpty() && !diachi.isEmpty() && !ngaythem.isEmpty()) {
-            String query = "insert into HOKHAU (IDCHUHO, NGAYLAP, DIACHI, GHICHU) VALUES (?, ?, ?, ?)";
+            String query = "insert into HOKHAU (IDCHUHO, NGAYTAO, DIACHI, GHICHU) VALUES (?, ?, ?, ?)";
             try {
                 PreparedStatement statement = connection.prepareStatement(query);
 
@@ -50,7 +50,7 @@ public class dataBaseConnectionHoKhau {
     }
     public ResultSet timKiem(String dieukien){
         ResultSet resultSet=null;
-        String query = "SELECT * FROM HOKHAU WHERE IDHOKHAU LIKE ? OR IDCHUHO LIKE ? OR DIACHI LIKE ? OR NGAYLAP LIKE ? OR GHICHU LIKE ?";
+        String query = "SELECT * FROM HOKHAU WHERE MAHOKHAU LIKE ? OR IDCHUHO LIKE ? OR DIACHI LIKE ? OR NGAYTAO LIKE ? OR GHICHU LIKE ?";
         try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, dieukien + "%");
@@ -67,7 +67,7 @@ public class dataBaseConnectionHoKhau {
     public int capNhatHoKhau(String idHoKhau, String maChuHo, String diaChi, String ghiChu){
         ResultSet resultSet=null;
         try {
-            String capnhat = "update HOKHAU set IDCHUHO=?, DIACHI=?, GHICHU=? where IDHOKHAU=?";
+            String capnhat = "update HOKHAU set IDCHUHO=?, DIACHI=?, GHICHU=? where MAHOKHAU=?";
             PreparedStatement preparedStatement = connection.prepareStatement(capnhat);
             preparedStatement.setString(1,maChuHo);
             preparedStatement.setString(2,diaChi);
@@ -89,7 +89,7 @@ public class dataBaseConnectionHoKhau {
 
     public int xoa_ho_khau(String maHoKhau){
         try {
-            String xoa = "delete from HOKHAU WHERE IDHOKHAU='" + maHoKhau+"'";
+            String xoa = "delete from HOKHAU WHERE MAHOKHAU='" + maHoKhau+"'";
             Statement statement = connection.createStatement();
             statement.executeUpdate(xoa);
             return 1;
