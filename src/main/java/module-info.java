@@ -12,6 +12,8 @@ module com.example.citizenmanagement {
     opens com.example.citizenmanagement.models to javafx.fxml;
     opens com.example.citizenmanagement.views to javafx.fxml;
     opens com.example.citizenmanagement.controllers.feecontrollers to javafx.fxml;
+    opens com.example.citizenmanagement.controllers.maincontrollers.hoKhau to javafx.fxml;
+    opens com.example.citizenmanagement.controllers.maincontrollers.NhankhauController to javafx.fxml;
 
     exports com.example.citizenmanagement;
     exports com.example.citizenmanagement.controllers;
@@ -20,5 +22,6 @@ module com.example.citizenmanagement {
     exports com.example.citizenmanagement.models;
     exports com.example.citizenmanagement.views;
     exports com.example.citizenmanagement.controllers.maincontrollers.hoKhau;
-    opens com.example.citizenmanagement.controllers.maincontrollers.hoKhau to javafx.fxml;
+    exports com.example.citizenmanagement.controllers.maincontrollers.NhankhauController;
+
 }

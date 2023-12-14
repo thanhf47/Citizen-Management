@@ -8,8 +8,8 @@ public class DatabaseConnection {
     public DatabaseConnection() {
         String dbName = "QUANLYDANCU";
         String dbUser = "sa";
-        String dbPassword = "040703";
-        String url = "jdbc:sqlserver://MAIN-CHARACTER\\THANH_NGUYEN:1433;databaseName=" + dbName + ";integratedSecurity=false;trustServerCertificate=true";
+        String dbPassword = "123456789";
+        String url = "jdbc:sqlserver://DESKTOP-UK69FVU:1433;databaseName=" + dbName + ";integratedSecurity=false;trustServerCertificate=true";
 
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -382,10 +382,10 @@ public class DatabaseConnection {
         return  rs;
     }
 
-    // ho khau
+    // ho khau****************************************************************************
     public int addHoKhau(String ma_ch, String ngaythem, String diachi, String ghichu){
         if(!ma_ch.isEmpty() && !diachi.isEmpty() && !ngaythem.isEmpty()) {
-            String query = "insert into HOKHAU (IDCHUHO, NGAYLAP, DIACHI, GHICHU) VALUES (?, ?, ?, ?)";
+            String query = "insert into HOKHAU (IDCHUHO, NGAYTAO, DIACHI, GHICHU) VALUES (?, ?, ?, ?)";
             try {
                 PreparedStatement statement = connection.prepareStatement(query);
 
@@ -418,7 +418,7 @@ public class DatabaseConnection {
     }
     public ResultSet timKiem(String dieukien){
         ResultSet resultSet=null;
-        String query = "SELECT * FROM HOKHAU WHERE IDHOKHAU LIKE ? OR IDCHUHO LIKE ? OR DIACHI LIKE ? OR NGAYLAP LIKE ? OR NGAYCHUYENDI LIKE ? OR GHICHU LIKE ?";
+        String query = "SELECT * FROM HOKHAU WHERE MAHOKHAU LIKE ? OR IDCHUHO LIKE ? OR DIACHI LIKE ? OR NGAYTAO LIKE ? OR NGAYCHUYENDI LIKE ? OR GHICHU LIKE ?";
         try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, dieukien + "%");

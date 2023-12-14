@@ -39,6 +39,8 @@
     -fx-cursor: hand;
     -fx-text-style: bold;
     -fx-background-color: #373c7d;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
 }
 
 .button_style:focus {
@@ -47,10 +49,14 @@
 }
 .button_style:pressed {
     -fx-background-color: #3998e6;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
 }
 
 /* Slider Style*/
 .slider_style {
+    -fx-background-image: url('../images/login_form/city.png');
+    -fx-background-size: cover;
 }
 .slider_style Label {
     -fx-text-fill: #FFFFFF;

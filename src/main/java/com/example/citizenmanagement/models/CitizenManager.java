@@ -40,14 +40,15 @@ public class CitizenManager {
         return tenDangNhap;
     }
 
-    public String getMatKhau() {
-        return matKhau;
-    }
+    public String getSoDienThoai_hide() {
+        StringBuilder tmp = new StringBuilder();
+        for (int i = 0; i < 7; i++) {
+            tmp.append('*');
+        }
+        tmp.append(this.soDienThoai.substring(7));
 
-    public String getSoDienThoai() {
-        return soDienThoai;
+        return tmp.toString();
     }
-
     public int getVaiTro() {
         return vaiTro;
     }

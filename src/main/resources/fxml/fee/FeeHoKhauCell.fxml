@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="800.0" styleClass="hoKhauCell_container" stylesheets="@../../styles/hoKhau/hoKhauCell.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox fx:id="hbox" prefHeight="50.0" prefWidth="800.0">
+         <children>
+            <FontAwesomeIconView glyphName="HOME" size="30" />
+            <Text fx:id="ma_ho_khau_text" strokeType="OUTSIDE" strokeWidth="0.0" text="12345678901" wrappingWidth="90.0" />
+            <Text fx:id="ma_chu_ho_text" layoutX="24.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12345678902" wrappingWidth="90.0" />
+            <Text fx:id="dia_chi_text" layoutX="48.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dia chi" wrappingWidth="120.0" />
+            <Text fx:id="ngay_lap_text" layoutX="72.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ngay lap" wrappingWidth="90.0" />
+            <Text fx:id="ngay_chuyen_di_text" layoutX="96.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ngay chuyen di" wrappingWidth="90.0" />
+            <Text fx:id="ghi_chu_text" layoutX="120.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ghi chu" wrappingWidth="100.0" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
