@@ -1,6 +1,9 @@
 package com.example.citizenmanagement.models;
 
 import com.example.citizenmanagement.views.ViewFactory;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.image.Image;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,37 +11,36 @@ import java.sql.SQLException;
 public class Model {
     private static Model model;
     private final ViewFactory viewFactory;
-
     private final DatabaseConnection databaseConnection;
 
     //citizen manager section
-    private CitizenManager citizenManager;
+    private final CitizenManager citizenManager;
     private boolean citizenManagerLoginSuccessFlag;
-
+    private ObjectProperty<Image> imageObjectProperty;
     // nhan khau
 
     //ho khau section
     private static hoKhauCell hoKhauDuocChon;
-
-
 
     private Model() {
         this.viewFactory = new ViewFactory();
         this.databaseConnection = new DatabaseConnection();
 
         this.citizenManager = new CitizenManager("", "", "", "", -1);
+        imageObjectProperty = new SimpleObjectProperty<>();
+
         citizenManagerLoginSuccessFlag = false;
     }
 
     public static synchronized Model getInstance() {
-        if (model == null) {
-            model = new Model();
-        }
         return model;
     }
 
+    // su dung de tao moi 1 Model khi dang xuat va khoi tao lan dau tien.
+    public static void createNewInstance() {
+        model = new Model();
+    }
     public ViewFactory getViewFactory() {return viewFactory;}
-
     public DatabaseConnection getDatabaseConnection() {return databaseConnection;}
 
 
@@ -54,11 +56,11 @@ public class Model {
         try {
             if(resultSet.isBeforeFirst()) {
                 resultSet.next();
-                this.citizenManager.setHoTen(resultSet.getString("HOTEN"));
-                this.citizenManager.setTenDangNhap(resultSet.getString("TENDANGNHAP"));
-                this.citizenManager.setMatKhau(resultSet.getString("MATKHAU"));
-                this.citizenManager.setSoDienThoai(resultSet.getString("SODIENTHOAI"));
-                this.citizenManager.setVaiTro(resultSet.getInt("VAITRO"));
+                this.citizenManager.setHoTen(resultSet.getString(1));
+                this.citizenManager.setTenDangNhap(resultSet.getString(2));
+                this.citizenManager.setMatKhau(resultSet.getString(3));
+                this.citizenManager.setSoDienThoai(resultSet.getString(4));
+                this.citizenManager.setVaiTro(resultSet.getInt(5));
                 this.citizenManagerLoginSuccessFlag = true;
             }
         } catch (SQLException e) {
@@ -95,6 +97,8 @@ public class Model {
         databaseConnection.setCitizenManagerData(hoTen, tenDangNhap, matKhau, soDienThoai, vaiTro);
     }
 
+    public ObjectProperty<Image> getImageObjectProperty() {return imageObjectProperty;}
+    /*************************************************************************************************/
 
     public int getNumberOfNhanKhau() {
         ResultSet resultSet = databaseConnection.getNumberOfNhanhKhau();
@@ -409,4 +413,5 @@ public class Model {
     public static void setHoKhauDuocChon(hoKhauCell hoKhauDuocChon) {
         Model.hoKhauDuocChon = hoKhauDuocChon;
     }
+
 }

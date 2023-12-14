@@ -1,8 +1,8 @@
 .maunen{
-    -fx-background-color:#EAEEF4;
+    -fx-background-color:#CCCCCC;
 }
 .trangtri_top{
-    -fx-background-color: #353A56;
+    -fx-background-color: STEELBLUE;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 50;
     -fx-background-radius: 50;
@@ -12,7 +12,6 @@
 }
 .pain{
     -fx-background-color:#ffffff;
-
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 20;
     -fx-background-radius: 20;
@@ -20,16 +19,18 @@
 }
 .pain:hover{
     -fx-cursor: hand;
-    -fx-background-color:#8AD1EB;
+    -fx-background-color: LIGHTSKYBLUE;
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
 }
 
 .pain:pressed {
     -fx-background-color: #eeeeee;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
 }
 .button_quaylai{
-    -fx-background-color: #353A56;
+    -fx-background-color:STEELBLUE;
     -fx-text-fill: #FFFFFF;
 
 }
@@ -47,13 +48,18 @@
 }
 .name:hover {
     -fx-font-size: 36px;
-    -fx-text-fill: #0ffc03;
+    -fx-text-fill: #0e9637;
 }
 
 .profile:hover {
     -fx-cursor: hand;
-    -fx-scale-x: 1.25;
-    -fx-scale-y: 1.25;
+    -fx-scale-x: 1.15;
+    -fx-scale-y: 1.15;
+}
+
+.profile:pressed {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
 }
 
 

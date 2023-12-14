@@ -15,7 +15,6 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-// THIS CLASS IS USED TO MANAGE UI COMPONENT.
 public class ViewFactory {
 
     //Main Citizen Views
@@ -23,8 +22,6 @@ public class ViewFactory {
     private AnchorPane trangChuView;
     private AnchorPane nhanKhauView;
     private AnchorPane hoKhauView;
-    private  BorderPane Main;
-
     // Trang chu thong ke
     private AnchorPane thongKeNhanKhauView;
     private AnchorPane thongKeHoKhauView;
@@ -100,6 +97,59 @@ public class ViewFactory {
         }
         return nhanKhauView;
     }
+    /********************************************************************************************/
+    // thong ke phan trang chu
+    public AnchorPane getThongKeNhanKhauView() {
+        if (thongKeHoKhauView == null) {
+            try {
+                thongKeNhanKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongKeNhanKhau.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return thongKeNhanKhauView;
+    }
+    public AnchorPane getThongKeHoKhauView() {
+        if (thongKeHoKhauView == null) {
+            try {
+                thongKeHoKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongKeHoKhau.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return thongKeHoKhauView;
+    }
+    public AnchorPane getThongKeTamTruView(){
+        if (thongKeTamTruView == null) {
+            try {
+                thongKeTamTruView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongKeTamTruNam2023.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return thongKeTamTruView;
+    }
+    public AnchorPane getThongKeTamVangView(){
+        if (thongKeTamVangView == null) {
+            try {
+                thongKeTamVangView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongKeTamVangNam2023.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return thongKeTamVangView;
+    }
+
+    public AnchorPane getProfile() {
+        if (profile == null) {
+            try {
+                profile = new FXMLLoader(getClass().getResource("/fxml/main_citizen/Profile.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return profile;
+    }
 
     /********************************************************************************************/
     public ObjectProperty<FeeMenuOptions> getFeeSelectedMenuItem() {
@@ -151,62 +201,6 @@ public class ViewFactory {
         return feeThemHoKhauView;
     }
 
-
-    /********************************************************************************************/
-    // thong ke phan trang chu
-    public AnchorPane getThongKeNhanKhauView() {
-        if (thongKeHoKhauView == null) {
-            try {
-                thongKeNhanKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongKeNhanKhau.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-        }
-        return thongKeNhanKhauView;
-    }
-    public AnchorPane getThongKeHoKhauView() {
-        if (thongKeHoKhauView == null) {
-            try {
-                thongKeHoKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongKeHoKhau.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-        }
-        return thongKeHoKhauView;
-    }
-    public AnchorPane getThongKeTamTruView(){
-        if (thongKeTamTruView == null) {
-            try {
-                thongKeTamTruView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongKeTamTruNam2023.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return thongKeTamTruView;
-    }
-    public AnchorPane getThongKeTamVangView(){
-        if (thongKeTamVangView == null) {
-            try {
-                thongKeTamVangView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongKeTamVangNam2023.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return thongKeTamVangView;
-    }
-
-    public AnchorPane getProfile() {
-        if (profile == null) {
-            try {
-                profile = new FXMLLoader(getClass().getResource("/fxml/main_citizen/Profile.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return profile;
-    }
     /********************************************************************************************/
     public AnchorPane getThemHoKhau(){
         if (themHoKhau == null) {
@@ -325,8 +319,6 @@ public class ViewFactory {
     public void closeStage(Stage stage) {
         stage.close();
     }
-
-
 }
 
 

@@ -8,12 +8,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
 
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,11 +36,11 @@ public class TrangChuController implements Initializable {
 
     @FXML
     private Label name;
-
+    @FXML
+    private Circle profile;
     @FXML
     void click_nhankhau(MouseEvent event) {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.THONG_KE_NHAN_KHAU);
-
     }
 
 
@@ -64,8 +68,6 @@ public class TrangChuController implements Initializable {
         text_nhankhau.setText(Integer.toString(Model.getInstance().getNumberOfNhanKhau()));
     }
 
-
-
     public void showHoKhau() {
         text_hokhau.setText(Integer.toString(Model.getInstance().getNumberOfHoKhau()));
     }
@@ -78,12 +80,20 @@ public class TrangChuController implements Initializable {
         text_tamvang.setText(Integer.toString(Model.getInstance().getNumberOfTamVang()));
     }
 
-
-
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        displayName();
+        Model.getInstance().getImageObjectProperty().addListener((observable, oldValue, newValue) -> {
+            profile.setFill(new ImagePattern(newValue));
+            System.out.println("change");
+        });
 
+        try {
+            profile.setFill(new ImagePattern(new Image(getClass().getResource("/images/login_form/profile.png").toURI().toString(), 60, 60, false, true)));
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+
+        displayName();
         showNhanKhau();
         showHoKhau();
         showTamVang();

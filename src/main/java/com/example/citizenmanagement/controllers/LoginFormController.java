@@ -444,6 +444,8 @@ public class LoginFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println(Model.getInstance().getCitizenManager().getHoTen());
+
         login_errorAlert.setVisible(false);
         login_form.setVisible(true);
         register_form.setVisible(false);
