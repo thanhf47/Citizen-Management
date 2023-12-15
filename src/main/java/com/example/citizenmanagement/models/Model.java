@@ -7,10 +7,13 @@ public class Model {
     private static Model model;
     private final ViewFactory viewFactory;
 
+    private final DatabaseConnectionNhanKhau databaseConnectionNhanKhau;
+
     private final NhankhauFactoryView nhankhauFactoryView;
     private Model() {
         this.viewFactory = new ViewFactory();
         this.nhankhauFactoryView = new NhankhauFactoryView();
+        this.databaseConnectionNhanKhau = new DatabaseConnectionNhanKhau();
     }
 
     public static synchronized Model getInstance() {
@@ -25,4 +28,10 @@ public class Model {
     public NhankhauFactoryView getNhankhauFactoryView() {
         return nhankhauFactoryView;
     }
+
+    public DatabaseConnectionNhanKhau getDatabaseConnectionNhanKhau() {
+        return databaseConnectionNhanKhau;
+    }
+
+
 }

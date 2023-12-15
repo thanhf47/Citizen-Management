@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
+<AnchorPane prefHeight="60.0" prefWidth="800.0" styleClass="cell_container" stylesheets="@../../../styles/NhanKhauCell.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <FontAwesomeIconView glyphName="USER" layoutX="14.0" layoutY="38.0" size="25" styleClass="icon_container" />
+   <Line endX="8.5" endY="-13.0" layoutX="45.0" layoutY="20.0" startX="8.499984741210938" startY="33.0" />
+   <Label fx:id="So_ho_khau_lbl" layoutX="86.0" layoutY="19.0" styleClass="ten_lbl" text="01" />
+   <Label fx:id="cccd_lbl" layoutX="138.0" layoutY="19.0" styleClass="ten_lbl" text="1234567890" />
+   <Label fx:id="ten_lbl" layoutX="254.0" layoutY="19.0" styleClass="ten_lbl" text="Quách Đình Dương " />
+   <Label fx:id="gioi_tinh_lbl" layoutX="422.0" layoutY="20.0" styleClass="ten_lbl" text="Nam" />
+   <Label fx:id="ngay_sinh_lbl" layoutX="491.0" layoutY="20.0" styleClass="date_lbl" text="05/06/2003" />
+   <Label fx:id="dia_chi_lbl" layoutX="609.0" layoutY="19.0" styleClass="ten_lbl" text="Đông Hưng  - Thái Bình" />
 </AnchorPane>

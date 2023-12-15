@@ -13,11 +13,11 @@
 <AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../../styles/DkTamTru.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.DkTamVangController">
     <Label layoutX="324.0" layoutY="41.0" styleClass="text_lbl" text="Khai báo tạm vắng" />
     <VBox layoutX="41.0" layoutY="116.0" prefHeight="490.0" prefWidth="312.0" styleClass="vbx">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số hộ khẩu " />
+      <TextField />
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số CCCD" />
         <TextField />
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên" />
-        <TextField />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Biệt danh" />
         <TextField />
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính" />
         <TextField />
@@ -36,6 +36,8 @@
         <TextField />
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi tạm trú " />
         <TextField prefHeight="43.0" prefWidth="292.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lý do " />
+      <TextField prefHeight="97.0" prefWidth="292.0" />
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian tạm vắng: " />
         <Label text="Ngày bắt đầu tạm vắng  " />
         <DatePicker prefHeight="36.0" prefWidth="316.0" />
