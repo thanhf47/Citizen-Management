@@ -9,11 +9,15 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="maunen" stylesheets="@../../styles/TrangChu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.ThongKeTamVangNam2023Controller">
-    <StackedBarChart fx:id="bieuDoThongKeTamVangTheoThang" layoutX="29.0" layoutY="136.0" legendVisible="false" prefHeight="266.0" prefWidth="710.0" title="Thống kê tạm vắng năm 2023">
+    <StackedBarChart fx:id="bieuDoThongKeTamVangTheoThang" layoutX="29.0" layoutY="150.0" legendVisible="false" prefHeight="266.0" prefWidth="710.0" title="Thống kê tạm vắng năm 2023">
       <xAxis>
           <CategoryAxis side="BOTTOM" />
       </xAxis>
@@ -21,14 +25,14 @@
           <NumberAxis side="LEFT" />
       </yAxis>
     </StackedBarChart>
-    <PieChart fx:id="thongKeTamVangTheoLyDo" layoutX="47.0" layoutY="433.0" prefHeight="282.0" prefWidth="467.0" title="Lý do tạm vắng" />
-    <TableView fx:id="tableThongKeLyDoTamVang" layoutX="539.0" layoutY="433.0" prefHeight="241.0" prefWidth="200.0">
+    <PieChart fx:id="thongKeTamVangTheoLyDo" layoutX="133.0" layoutY="441.0" prefHeight="282.0" prefWidth="467.0" title="Lý do tạm vắng" />
+    <TableView fx:id="tableThongKeLyDoTamVang" layoutX="620.0" layoutY="450.0" prefHeight="241.0" prefWidth="200.0">
       <columns>
           <TableColumn fx:id="lyDoTamVang" prefWidth="100.0" text="Lý do" />
           <TableColumn fx:id="soLuongTamVang" prefWidth="99.20001220703125" text="Số lượng" />
       </columns>
     </TableView>
-    <Button fx:id="thoatTamVang" layoutX="750.0" layoutY="703.0" mnemonicParsing="false" styleClass="button_quaylai" text="Thoát">
+    <Button fx:id="thoatTamVang" layoutX="14.0" layoutY="702.0" mnemonicParsing="false" styleClass="button_quaylai" text="Thoát">
         <graphic>
           <FontAwesomeIconView glyphName="ARROW_LEFT" size="13" />
         </graphic>
@@ -36,10 +40,34 @@
           <Font size="14.0" />
         </font>
     </Button>
-   <TextField fx:id="timkiemnamtamvang_tfld" layoutX="152.0" layoutY="53.0" prefHeight="37.0" prefWidth="150.0" promptText="Năm" styleClass="text_field" />
-   <Button fx:id="timkiemnamtamvang_btn" layoutX="313.0" layoutY="56.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" styleClass="button_quaylai" text="Tìm Kiếm">
+   <TextField fx:id="timkiemnamtamvang_tfld" layoutX="29.0" layoutY="37.0" prefHeight="37.0" prefWidth="150.0" promptText="Năm" styleClass="text_field" />
+   <Button fx:id="timkiemnamtamvang_btn" layoutX="190.0" layoutY="40.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" styleClass="button_quaylai" text="Tìm Kiếm">
       <graphic>
          <FontAwesomeIconView glyphName="SEARCH" size="18" />
       </graphic>
    </Button>
+   <Pane layoutX="325.0" layoutY="24.0" prefHeight="85.0" prefWidth="234.0" styleClass="pain">
+      <children>
+         <ImageView fitHeight="47.0" fitWidth="53.0" layoutX="14.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../images/login_form/garbage.png" />
+            </image>
+         </ImageView>
+         <Text layoutX="82.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Năm">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Text>
+         <Text fx:id="namtamvang_text" layoutX="128.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Năm">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Text>
+         <Text fx:id="tongsotamvang_text" layoutX="107.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+            <font>
+               <Font name="System Bold" size="20.0" />
+            </font>
+         </Text>
+      </children>
+   </Pane>
 </AnchorPane>
