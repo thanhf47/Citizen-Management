@@ -3,8 +3,8 @@ package com.example.citizenmanagement.controllers.maincontrollers.hoKhau;
 
 import com.example.citizenmanagement.models.MainMenuOptions;
 import com.example.citizenmanagement.models.Model;
-import com.example.citizenmanagement.models.hoKhauCell;
-import com.example.citizenmanagement.views.hoKhauCellFactory;
+import com.example.citizenmanagement.models.MainHoKhauCell;
+import com.example.citizenmanagement.views.MainHoKhauCellFactory;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,7 +21,7 @@ public class hoKhauShowControler implements Initializable {
     @FXML
     private TextField search_textfield;
     @FXML
-    private ListView<hoKhauCell> listView;
+    private ListView<MainHoKhauCell> listView;
     @FXML
     private Button tach_but;
     @FXML
@@ -42,18 +42,16 @@ public class hoKhauShowControler implements Initializable {
                 listView.getItems().clear();
                 try {
                     if(resultSet.isBeforeFirst()){
-                        System.out.println("co");
                         while (resultSet.next()){
                             String id = resultSet.getString(1);
                             String Owner = resultSet.getString(2);
                             String add = resultSet.getString(3);
                             String date_tao = resultSet.getString(4);
-                            String date_chuyen = resultSet.getString(5);
-                            String ghi_chu = resultSet.getString(6);
+                            String ghi_chu = resultSet.getString(5);
 
-                            listView.getItems().add(new hoKhauCell(id, Owner, add,date_tao,date_chuyen,ghi_chu));
+                            listView.getItems().add(new MainHoKhauCell(id, Owner, add,date_tao, ghi_chu));
                         }
-                        listView.setCellFactory(param-> new hoKhauCellFactory());
+                        listView.setCellFactory(param-> new MainHoKhauCellFactory());
                     }
                 }catch (Exception e){
                     e.printStackTrace();
@@ -89,14 +87,13 @@ public class hoKhauShowControler implements Initializable {
                     String Owner = resultSet.getString(2);
                     String add = resultSet.getString(3);
                     String date_tao = resultSet.getString(4);
-                    String date_chuyen = resultSet.getString(5);
-                    String ghi_chu = resultSet.getString(6);
-                    listView.getItems().add(new hoKhauCell(id, Owner, add,date_tao,date_chuyen,ghi_chu));
+                    String ghi_chu = resultSet.getString(5);
+                    listView.getItems().add(new MainHoKhauCell(id, Owner, add,date_tao,ghi_chu));
                 }
             }
         } catch (Exception e) {
             System.out.println("loi o hokhauShow");
         }
-        listView.setCellFactory(param-> new hoKhauCellFactory());
+        listView.setCellFactory(param-> new MainHoKhauCellFactory());
     }
 }

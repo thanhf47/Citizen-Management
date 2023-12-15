@@ -2,14 +2,11 @@ package com.example.citizenmanagement.views;
 
 import com.example.citizenmanagement.models.FeeMenuOptions;
 import com.example.citizenmanagement.models.MainMenuOptions;
-import com.example.citizenmanagement.models.hoKhauOptions;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -37,7 +34,7 @@ public class ViewFactory {
     private AnchorPane tachHoKhau;
     private AnchorPane xemChiTietHoKhau;
     private final ObjectProperty<String> quaylai;
-    private final ObjectProperty<hoKhauOptions> selectedHoKhauItem;
+
     // Nhan Khau View
 
     private AnchorPane tamTruView;
@@ -56,7 +53,6 @@ public class ViewFactory {
         this.selectedMenuItem = new SimpleObjectProperty<>();
         this.feeSelectedMenuItem = new SimpleObjectProperty<>();
 
-        selectedHoKhauItem = new SimpleObjectProperty<>();
         this.quaylai = new SimpleObjectProperty<>("showBang");
     }
 
@@ -237,9 +233,6 @@ public class ViewFactory {
     }
     public ObjectProperty<String> getQuaylai(){
         return quaylai;
-    }
-    public ObjectProperty<hoKhauOptions> getSelectedHoKhauItem(){
-        return selectedHoKhauItem;
     }
     /********************************************************************************************/
     // nhan khau

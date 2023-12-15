@@ -20,13 +20,17 @@ public class Model {
     // nhan khau
 
     //ho khau section
-    private static hoKhauCell hoKhauDuocChon;
+    private static MainHoKhauCell hoKhauDuocChon;
+
+    //thu phi
+    private final FeeKhoanThuModel feeKhoanThuModel;
 
     private Model() {
         this.viewFactory = new ViewFactory();
         this.databaseConnection = new DatabaseConnection();
 
-        this.citizenManager = new CitizenManager("", "", "", "", -1);
+        this.citizenManager = new CitizenManager();
+        this.feeKhoanThuModel = new FeeKhoanThuModel();
         imageObjectProperty = new SimpleObjectProperty<>();
 
         citizenManagerLoginSuccessFlag = false;
@@ -36,14 +40,7 @@ public class Model {
         return model;
     }
 
-    // su dung de tao moi 1 Model khi dang xuat va khoi tao lan dau tien.
-    public static void createNewInstance() {
-        model = new Model();
-    }
-    public ViewFactory getViewFactory() {return viewFactory;}
-    public DatabaseConnection getDatabaseConnection() {return databaseConnection;}
-
-
+    /*****************************************************************************/
     //Citizen Manager Method
     public void setCitizenManagerLoginSuccessFlag(boolean flag) {
         this.citizenManagerLoginSuccessFlag = flag;
@@ -96,6 +93,13 @@ public class Model {
     public void registerManagerAccount(String hoTen, String tenDangNhap, String matKhau, String soDienThoai, int vaiTro) {
         databaseConnection.setCitizenManagerData(hoTen, tenDangNhap, matKhau, soDienThoai, vaiTro);
     }
+
+    // su dung de tao moi 1 Model khi dang xuat va khoi tao lan dau tien.
+    public static void createNewInstance() {
+        model = new Model();
+    }
+    public ViewFactory getViewFactory() {return viewFactory;}
+    public DatabaseConnection getDatabaseConnection() {return databaseConnection;}
 
     public ObjectProperty<Image> getImageObjectProperty() {return imageObjectProperty;}
     /*************************************************************************************************/
@@ -406,12 +410,22 @@ public class Model {
 
     // ho khau
 
-    public static hoKhauCell getHoKhauDuocChon() {
+    public static MainHoKhauCell getHoKhauDuocChon() {
         return hoKhauDuocChon;
     }
 
-    public static void setHoKhauDuocChon(hoKhauCell hoKhauDuocChon) {
+    public static void setHoKhauDuocChon(MainHoKhauCell hoKhauDuocChon) {
         Model.hoKhauDuocChon = hoKhauDuocChon;
     }
 
+
+
+
+    /*************************************************************************************************/
+    //Thu phí
+
+
+    public FeeKhoanThuModel getFeeKhoanThuModel() {
+        return feeKhoanThuModel;
+    }
 }

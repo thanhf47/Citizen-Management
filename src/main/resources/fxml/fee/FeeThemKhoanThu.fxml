@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -13,22 +14,12 @@
          <Font name="Verdana Bold" size="42.0" />
       </font>
    </Label>
-   <Label layoutX="300.0" layoutY="116.0" text="Mã Phí" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="120.0">
+   <Label layoutX="300.0" layoutY="116.0" text="Tên khoản thu" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="150.0">
       <font>
          <Font name="Verdana" size="18.0" />
       </font>
    </Label>
-   <Label layoutX="300.0" layoutY="199.0" text="Tên khoản thu" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="200.0">
-      <font>
-         <Font name="Verdana" size="18.0" />
-      </font>
-   </Label>
-   <TextField layoutX="30.0" layoutY="251.0" prefHeight="30.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="230.0">
-      <font>
-         <Font name="Verdana" size="14.0" />
-      </font>
-   </TextField>
-   <TextField layoutX="245.0" layoutY="109.0" prefHeight="30.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="150.0">
+   <TextField fx:id="ten_khoan_thu" layoutX="245.0" layoutY="109.0" prefHeight="30.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="180.0">
       <font>
          <Font name="Verdana" size="14.0" />
       </font>
@@ -38,7 +29,7 @@
          <Font name="Verdana" size="18.0" />
       </font>
    </Label>
-   <TextField layoutX="32.0" layoutY="329.0" prefHeight="30.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="310.0">
+   <TextField fx:id="so_tien_can_dong" layoutX="32.0" layoutY="329.0" prefHeight="30.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="310.0">
       <font>
          <Font name="Verdana" size="14.0" />
       </font>
@@ -48,8 +39,14 @@
          <Font name="Verdana" size="18.0" />
       </font>
    </Label>
-   <TextArea layoutX="30.0" layoutY="416.0" prefHeight="200.0" prefWidth="500.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="390.0" />
-   <Button fx:id="fee_create_tiep_btn" layoutX="502.0" layoutY="628.0" mnemonicParsing="false" onAction="#onFeeCreateTiepBtn" prefHeight="40.0" prefWidth="100.0" text="Tiếp" AnchorPane.rightAnchor="175.0">
+   <TextArea fx:id="mo_ta" layoutX="30.0" layoutY="416.0" prefHeight="200.0" prefWidth="500.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="390.0" />
+   <Button fx:id="next_page_btn" layoutX="502.0" layoutY="628.0" mnemonicParsing="false" onAction="#onFeeCreateTiepBtn" prefHeight="40.0" prefWidth="100.0" text="Tiếp" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="175.0">
+      <font>
+         <Font name="Calibri" size="18.0" />
+      </font>
+   </Button>
+   <ChoiceBox fx:id="bat_buoc" layoutX="42.0" layoutY="233.0" prefHeight="30.0" prefWidth="200.0" AnchorPane.leftAnchor="175.0" AnchorPane.topAnchor="230.0" />
+   <Button fx:id="reset_btn" layoutX="175.0" layoutY="628.0" mnemonicParsing="false" onAction="#onResetBtn" prefHeight="40.0" prefWidth="100.0" text="Làm lại" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="175.0">
       <font>
          <Font name="Calibri" size="18.0" />
       </font>

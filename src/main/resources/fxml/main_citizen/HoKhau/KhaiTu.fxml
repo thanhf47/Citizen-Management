@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../../styles/DkTamTru.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.KhaiTuController">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../../styles/Main/DkTamTru.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.KhaiTuController">
    <children>
       <VBox layoutX="51.0" layoutY="126.0" prefHeight="501.0" prefWidth="312.0" styleClass="vbx">
          <children>
@@ -36,7 +36,7 @@
             <TextField />
          </children>
       </VBox>
-      <VBox layoutX="465.0" layoutY="123.0" prefHeight="509.0" prefWidth="312.0" styleClass="vbx" stylesheets="@../../../styles/DkTamVang.css">
+      <VBox layoutX="465.0" layoutY="123.0" prefHeight="509.0" prefWidth="312.0" styleClass="vbx" stylesheets="@../../../styles/Main/DkTamVang.css">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số giấy khai tử " />
             <TextField />
@@ -50,8 +50,8 @@
             <DatePicker prefHeight="36.0" prefWidth="316.0" />
          </children>
       </VBox>
-      <Button layoutX="455.0" layoutY="674.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_acp" stylesheets="@../../../styles/DkTamTru.css" text="Xác nhận " />
-      <Button layoutX="276.0" layoutY="674.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_cancel" stylesheets="@../../../styles/DkTamTru.css" text="Thoát" />
+      <Button layoutX="455.0" layoutY="674.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_acp" stylesheets="@../../../styles/Main/DkTamTru.css" text="Xác nhận " />
+      <Button layoutX="276.0" layoutY="674.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_cancel" stylesheets="@../../../styles/Main/DkTamTru.css" text="Thoát" />
       <Label layoutX="372.0" layoutY="48.0" prefHeight="45.0" prefWidth="106.0" styleClass="text_lbl" text="Khai tử" />
    </children>
 </AnchorPane>
