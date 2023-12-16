@@ -112,8 +112,6 @@ public class DkTamTruController implements Initializable {
 
         gioitinh_text.getItems().addAll(Gioitinh);
         gioitinh_text.setOnAction(this::getGioiTinh);
-
-
     }
     public String getGioiTinh(ActionEvent event) {
         String myGioiTinh = gioitinh_text.getValue();

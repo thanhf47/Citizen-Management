@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -19,7 +20,6 @@ public class ThemMoiController implements Initializable {
     public Button thoat_themmoi_button;
     public ChoiceBox<String> my_choise_box;
     public Button confirm_btn;
-    public TextField ngay_tao_text;
     public TextField ton_giao_text;
     public TextField quoc_tich_text;
     public TextField nghe_text;
@@ -30,7 +30,6 @@ public class ThemMoiController implements Initializable {
     public TextField dan_toc_text;
     public TextField ghi_chu_text;
     public TextField ho_ten_text;
-    public TextField so_ho_chieu_text;
     public TextField noi_sinh_text;
 
     //    public Label my_lable_gioitinh;
@@ -58,9 +57,9 @@ public class ThemMoiController implements Initializable {
                    nam_sinh_text.getText(), bit,
                    noi_sinh_text.getText(), nguyen_quan_text.getText(),
                    dan_toc_text.getText(), ton_giao_text.getText(),
-                   quoc_tich_text.getText(), so_ho_chieu_text.getText(),
+                   quoc_tich_text.getText(),
                    thuong_tru_text.getText(), nghe_text.getText(),
-                   ngay_tao_text.getText(), ghi_chu_text.getText());
+                   LocalDate.now().toString(), ghi_chu_text.getText());
         if(thanhcong == 0) {
             System.out.println("Đã thêm không thành công");
         }

@@ -121,7 +121,7 @@ public class DatabaseConnection {
         ResultSet rs = null;
         try {
             st= connection.createStatement();
-            rs = st.executeQuery("select count(SOCANCUOC) from TAMTRU");
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU) FROM TAMTRU WHERE YEAR(TUNGAY) = YEAR(GETDATE()) ");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -132,7 +132,7 @@ public class DatabaseConnection {
         ResultSet rs = null;
         try {
             st= connection.createStatement();
-            rs = st.executeQuery("select count(MANHANKHAU) from TAMVANG");
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG WHERE YEAR(TUNGAY) = YEAR(GETDATE())");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -283,28 +283,28 @@ public class DatabaseConnection {
 
     }
 
-    public ResultSet getTamTruViLyDoHocTap(){
+    public ResultSet getTamTruViLyDoHocTap(int nam){
         Statement st;
         ResultSet rs = null;
         try {
             st = connection.createStatement();
             rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU)\n" +
                     "FROM TAMTRU\n" +
-                    "WHERE LYDO LIKE N'%Học tập%'");
+                    "WHERE LYDO LIKE N'%Học tập%' AND YEAR(TUNGAY)= " + nam);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return  rs;
     }
-    public ResultSet getTamTruViLyDoLamViec(){
+    public ResultSet getTamTruViLyDoLamViec(int nam){
         Statement st;
         ResultSet rs = null;
         try {
             st = connection.createStatement();
             rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU)\n" +
                     "FROM TAMTRU\n" +
-                    "WHERE LYDO LIKE N'%Làm việc%'");
+                    "WHERE LYDO LIKE N'%Làm việc%' AND YEAR(TUNGAY)=" + nam);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -312,14 +312,14 @@ public class DatabaseConnection {
         return  rs;
     }
 
-    public ResultSet getTamTruViLyDoSucKhoe(){
+    public ResultSet getTamTruViLyDoSucKhoe(int nam){
         Statement st;
         ResultSet rs = null;
         try {
             st = connection.createStatement();
             rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU)\n" +
                     "FROM TAMTRU\n" +
-                    "WHERE LYDO LIKE N'%Chăm sóc sức khỏe%'");
+                    "WHERE LYDO LIKE N'%sức khỏe%' AND YEAR(TUNGAY)=" + nam);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -342,14 +342,12 @@ public class DatabaseConnection {
         return rs;
     }
 
-    public ResultSet getTamVangViLyDoHocTap(){
+    public ResultSet getTamVangViLyDoHocTap(int nam){
         Statement st;
         ResultSet rs = null;
         try {
             st = connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG)\n" +
-                    "FROM TAMVANG\n" +
-                    "WHERE LYDO LIKE N'%Học tập%'");
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG   WHERE LYDO LIKE N'%Học tập%' AND YEAR(TUNGAY) =" +nam);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -357,14 +355,12 @@ public class DatabaseConnection {
         return  rs;
     }
 
-    public ResultSet getTamVangViLyDoLamViec(){
+    public ResultSet getTamVangViLyDoLamViec(int nam){
         Statement st;
         ResultSet rs = null;
         try {
             st = connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG)\n" +
-                    "FROM TAMVANG\n" +
-                    "WHERE LYDO LIKE N'%Làm việc%'");
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG   WHERE LYDO LIKE N'%Làm việc%' AND YEAR(TUNGAY) =" + nam);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -372,14 +368,12 @@ public class DatabaseConnection {
         return  rs;
     }
 
-    public ResultSet getTamVangViLyDoSucKhoe(){
+    public ResultSet getTamVangViLyDoSucKhoe(int nam){
         Statement st;
         ResultSet rs = null;
         try {
             st = connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG)\n" +
-                    "FROM TAMVANG\n" +
-                    "WHERE LYDO LIKE N'%sức Khoẻ%'");
+            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG   WHERE LYDO LIKE N'%sức Khoẻ%' AND YEAR(TUNGAY) =" + nam);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -389,19 +383,19 @@ public class DatabaseConnection {
 
     /***********************************************************************************/
     //Nhân khẩu
-    public int addNhanKhau (String hoTen, String CCCD, String namSinh, int gioiTinh, String noiSinh, String nguyenQuan,String danToc, String tonGiao, String quocTich, String soHoChieu, String noiThuongTru, String ngheNghiep, String ngayTao, String ghiChu ){
+    public int addNhanKhau (String hoTen, String CCCD, String namSinh, int gioiTinh, String noiSinh, String nguyenQuan,String danToc, String tonGiao, String quocTich, String noiThuongTru, String ngheNghiep, String ngayTao, String ghiChu ){
         int thanhcong = 0;
-        String querry = "insert into NHANKHAU (HOTEN, SOCANCUOC, NAMSINH, GIOITINH, NOISINH, NGUYENQUAN, DANTOC, TONGIAO, QUOCTICH, SOHOCHIEU, NOITHUONGTRU, NGHENGHIEP, NGAYTAO, GHICHU )" +
-                " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String querry = "insert into NHANKHAU (HOTEN, SOCANCUOC, NAMSINH, GIOITINH, NOISINH, NGUYENQUAN, DANTOC, TONGIAO, QUOCTICH, NOITHUONGTRU, NGHENGHIEP, NGAYTAO, GHICHU )" +
+                " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try{
             PreparedStatement pre = connection.prepareStatement(querry);
             pre.setNString(1,hoTen); pre.setString(2,CCCD);
-            pre.setString(3,namSinh); pre.setInt(4,gioiTinh);
+            pre.setInt(3,Integer.parseInt(namSinh)); pre.setInt(4,gioiTinh);
             pre.setNString(5,noiSinh); pre.setNString(6,nguyenQuan);
             pre.setNString(7,danToc); pre.setNString(8,tonGiao);
-            pre.setNString(9,quocTich); pre.setString(10,soHoChieu);
-            pre.setNString(11,noiThuongTru); pre.setNString(12,ngheNghiep);
-            pre.setDate(13, Date.valueOf(ngayTao)); pre.setNString(14,ghiChu);
+            pre.setNString(9,quocTich);
+            pre.setNString(10,noiThuongTru); pre.setNString(11,ngheNghiep);
+            pre.setDate(12, Date.valueOf(ngayTao)); pre.setNString(13,ghiChu);
             thanhcong = pre.executeUpdate();
         }
         catch(SQLException e) {
@@ -411,21 +405,21 @@ public class DatabaseConnection {
         return thanhcong;
     }
 
-    public int addTamtru(String hoTen, String CCCD, int namSinh, int gioiTinh, String noiSinh, String nguyenQuan, String danToc, String tonGiao, String quocTich, String soHoChieu, String noiThuongTru, String ngheNghiep, String maTamTru, String sdt, Date ngayDen, Date ngayDi, String liDo ) {
+    public int addTamtru(String hoTen, String CCCD, int namSinh, int gioiTinh, String noiSinh, String nguyenQuan, String danToc, String tonGiao, String quocTich, String noiThuongTru, String ngheNghiep, String sdt, Date ngayDen, Date ngayDi, String liDo ) {
         int thanhcong = 0;
         String que = "ínsert to TAMTRU()" +
-                "value (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "value (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try{
             PreparedStatement pre = connection.prepareStatement(que);
             pre.setNString(1,hoTen); pre.setString(2,CCCD);
             pre.setInt(3,namSinh); pre.setInt(4,gioiTinh);
             pre.setNString(5,noiSinh); pre.setNString(6,nguyenQuan);
             pre.setNString(7,danToc); pre.setNString(8,tonGiao);
-            pre.setNString(9,quocTich); pre.setString(10,soHoChieu);
-            pre.setNString(11,noiThuongTru); pre.setNString(12,ngheNghiep);
-            pre.setString(13, maTamTru); pre.setString(14, sdt);
-            pre.setDate(15, ngayDen); pre.setDate(16,ngayDi);
-            pre.setNString(17,liDo);
+            pre.setNString(9,quocTich);
+            pre.setNString(10,noiThuongTru); pre.setNString(11,ngheNghiep);
+            pre.setString(12, sdt);
+            pre.setDate(13, ngayDen); pre.setDate(14,ngayDi);
+            pre.setNString(15,liDo);
             thanhcong = pre.executeUpdate();
         }catch(Exception e) {
             System.out.println("Lỗi thêm nhân khẩu");
@@ -536,6 +530,7 @@ public class DatabaseConnection {
             return 0;
         }
     }
+
     public int xoaHoKhau(String maHoKhau) {
         int res = 0;
         String query = "DELETE HOKHAU\n" +
@@ -582,6 +577,20 @@ public class DatabaseConnection {
         try {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
+    public ResultSet getNumberOfTamTru(int nam){
+        ResultSet resultSet = null;
+        String query = "SELECT COUNT(MAGIAYTAMTRU) FROM TAMTRU " +
+                "WHERE " + nam + " BETWEEN (YEAR(TUNGAY), YEAR(DENNGAY))";
+        Statement st;
+        try {
+            st = connection.createStatement();
+            resultSet = st.executeQuery(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -645,6 +654,18 @@ public class DatabaseConnection {
         return resultSet;
     }
 
+    public ResultSet getNumberOfTamVang(int nam){
+        ResultSet resultSet = null;
+        String query = "SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG WHERE YEAR(TUNGAY) =" + nam;
+        Statement st;
+        try {
+            st = connection.createStatement();
+            resultSet = st.executeQuery(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
     public ResultSet danhSachKhoanThu_timKiem(String condition) {
         String query = "SELECT * FROM LOAIPHI\n" +
                 "WHERE MAKHOANTHU LIKE '%" + condition + "%' OR TEN LIKE N'%" + condition + "%'";
