@@ -67,3 +67,18 @@
 .button_tamtru FontAwesomeIconView {
     -fx-fill: White;
 }
+
+.button_search :hover {
+      -fx-cursor: hand;
+      -fx-text-style: bold;
+      -fx-background-color: #373c7d;
+}
+
+.button_search  :focus {
+  -fx-outline-color: transparent;
+  -fx-outline-style: solid;
+}
+
+.button_search :pressed {
+  -fx-background-color: #3998e6;
+}

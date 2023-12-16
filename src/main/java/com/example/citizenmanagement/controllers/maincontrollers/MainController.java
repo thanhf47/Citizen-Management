@@ -27,6 +27,7 @@ public class MainController implements Initializable {
 
     private void addListener() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().addListener((observable, oldValue, newValue) -> {
+            main_parent.requestFocus();
             switch (newValue) {
                 case NHAN_KHAU -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().getNhanKhauView());
@@ -68,6 +69,10 @@ public class MainController implements Initializable {
                     main_parent.setCenter(Model.getInstance().getViewFactory().gettamTruView());
                     nhan_khau_btn.requestFocus();
                 }
+                case TAM_TRU_2 -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().gettamTru2View());
+                    nhan_khau_btn.requestFocus();
+                }
                 case KHAI_TU -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().getkhaiTuView());
                     nhan_khau_btn.requestFocus();
@@ -75,6 +80,7 @@ public class MainController implements Initializable {
                 default -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().getTrangChuView());
                 }
+
             }
         });
     }

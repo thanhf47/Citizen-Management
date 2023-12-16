@@ -17,7 +17,7 @@
 }
 
 .list-view .my-list-cell:odd {
-   -fx-background-color: #dddddd;
+   -fx-background-color: #e82e2e;
 }
 
 .list-view .my-list-cell:hover {

@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DkTamVangController implements Initializable {
+
     public Button thoat_btn;
 
     private void onThoatBtn() {

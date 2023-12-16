@@ -10,28 +10,28 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="background" stylesheets="@../../styles/Fee/FeeThemHoKhau.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.feecontrollers.FeeThemHoKhauController">
-    <Label layoutX="43.0" layoutY="47.0" text="Chọn các hộ cần thu phí">
+    <Label layoutX="43.0" layoutY="47.0" text="Chọn các hộ cần thu phí" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="50.0">
         <font>
           <Font name="Verdana Bold" size="42.0" />
         </font>
     </Label>
-    <Button fx:id="hoanThanhBtn" layoutX="512.0" layoutY="638.0" mnemonicParsing="false" onAction="#onHoanThanhBtn" prefHeight="40.0" prefWidth="114.0" text="Hoàn thành" AnchorPane.rightAnchor="175.0">
+    <Button fx:id="hoanThanhBtn" layoutX="512.0" layoutY="638.0" mnemonicParsing="false" onAction="#onHoanThanhBtn" prefHeight="40.0" prefWidth="114.0" text="Hoàn thành" AnchorPane.bottomAnchor="70.0" AnchorPane.rightAnchor="150.0">
         <font>
           <Font name="Calibri" size="18.0" />
         </font>
     </Button>
-    <Button fx:id="quayLaiBtn" layoutX="356.0" layoutY="638.0" mnemonicParsing="false" onAction="#onQuayLaiBtn" prefHeight="40.0" prefWidth="100.0" text="Quay lại" AnchorPane.rightAnchor="350.0">
+    <Button fx:id="quayLaiBtn" layoutX="356.0" layoutY="638.0" mnemonicParsing="false" onAction="#onQuayLaiBtn" prefHeight="40.0" prefWidth="100.0" text="Quay lại" AnchorPane.bottomAnchor="70.0" AnchorPane.rightAnchor="350.0">
         <font>
           <Font name="Calibri" size="18.0" />
         </font>
     </Button>
-   <TextField fx:id="search_textfield" layoutX="35.0" layoutY="117.0" promptText="Tìm kiếm hộ khẩu">
+   <TextField fx:id="search_textfield" layoutX="35.0" layoutY="117.0" prefHeight="30.0" prefWidth="250.0" promptText="Tìm kiếm hộ khẩu" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="115.0">
       <font>
          <Font size="17.0" />
       </font>
    </TextField>
-   <ListView fx:id="listView" layoutX="24.0" layoutY="207.0" prefHeight="414.0" prefWidth="820.0" />
-   <AnchorPane layoutX="45.0" layoutY="167.0" prefHeight="50.0" prefWidth="800.0" styleClass="tieu_de">
+   <ListView fx:id="listView" layoutX="24.0" layoutY="207.0" prefHeight="400.0" prefWidth="820.0" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+   <AnchorPane layoutX="45.0" layoutY="167.0" prefHeight="50.0" prefWidth="800.0" styleClass="tieu_de" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="170.0">
       <children>
          <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã hộ khẩu">
             <font>
@@ -55,7 +55,7 @@
             </font></Text>
       </children>
    </AnchorPane>
-   <Label contentDisplay="CENTER" layoutX="758.0" layoutY="38.0" opacity="0.6" rotate="45.0" text="Press Ctrl" textFill="#c41313">
+   <Label contentDisplay="CENTER" layoutX="758.0" layoutY="38.0" opacity="0.6" rotate="45.0" text="Press Ctrl" textFill="#c41313" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
       <font>
          <Font name="System Bold" size="18.0" />
       </font>
