@@ -12,8 +12,7 @@ public class DatabaseConnection {
         String dbName = "QUANLYDANCU";
         String dbUser = "sa";
         String dbPassword = "040703";
-        String url = "jdbc:sqlserver://MAIN-CHARACTER\\THANH_NGUYEN:1433;databaseName=" + dbName + ";integratedSecurity=false;trustServerCertificate=true";
-
+        String url = "jdbc:sqlserver://MAIN-CHARACTER\\THANH_NGUYEN:1433;databaseName=" + dbName + ";encrypt=true;integratedSecurity=false;trustServerCertificate=true";
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, dbUser, dbPassword);
@@ -385,7 +384,9 @@ public class DatabaseConnection {
         return  rs;
     }
 
-    // ho khau
+    /***********************************************************************************/
+    // Hộ khẩu
+
     public int addHoKhau(String ma_ch, String ngaythem, String diachi, String ghichu){
         if(!ma_ch.isEmpty() && !diachi.isEmpty() && !ngaythem.isEmpty()) {
             String query = "insert into HOKHAU (IDCHUHO, DIACHI, NGAYTAO, GHICHU) VALUES (?, ?, ?, ?)";
@@ -455,7 +456,20 @@ public class DatabaseConnection {
             return 0;
         }
     }
-
+    public int xoaHoKhau(String maHoKhau) {
+        int res = 0;
+        String query = "DELETE HOKHAU\n" +
+                "WHERE MAHOKHAU = " + maHoKhau;
+        Statement statement;
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate(query);
+            res = 1;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
 
 
     /***************************************************************************/
@@ -538,19 +552,31 @@ public class DatabaseConnection {
         }
     }
 
-    public int xoaHoKhau(String maHoKhau) {
-        int res = 0;
-        String query = "DELETE HOKHAU\n" +
-                "WHERE MAHOKHAU = " + maHoKhau;
+    public ResultSet getDanhSachKhoanThu() {
+        String query = "SELECT * FROM LOAIPHI";
         Statement statement;
+        ResultSet resultSet = null;
         try {
             statement = connection.createStatement();
-            statement.executeUpdate(query);
-            res = 1;
+            resultSet = statement.executeQuery(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return res;
+        return resultSet;
+    }
+
+    public ResultSet danhSachKhoanThu_timKiem(String condition) {
+        String query = "SELECT * FROM LOAIPHI\n" +
+                "WHERE MAKHOANTHU LIKE '%" + condition + "%' OR TEN LIKE N'%" + condition + "%'";
+        Statement statement;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
     }
 }
 

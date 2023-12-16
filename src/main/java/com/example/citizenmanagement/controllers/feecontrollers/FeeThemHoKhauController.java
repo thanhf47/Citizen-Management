@@ -137,7 +137,9 @@ public class FeeThemHoKhauController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         initDanhSach();
         search_textfield.textProperty().addListener((observable, oldValue, newValue) -> {
             reloadListView = true;

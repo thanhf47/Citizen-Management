@@ -1,27 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/20.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.citizenmanagement.controllers.feecontrollers.FeeDanhSachController">
-    <TextField fx:id="search_textfield" layoutX="25.0" layoutY="107.0" promptText="Tìm kiếm hộ khẩu">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.feecontrollers.FeeDanhSachController">
+    <TextField fx:id="search_textfield" layoutX="25.0" layoutY="107.0" prefHeight="30.0" prefWidth="250.0" promptText="Tìm kiểm khoản thu" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="115.0">
         <font>
-          <Font size="17.0"/>
+          <Font size="17.0" />
         </font>
     </TextField>
-    <ListView fx:id="listView" layoutX="14.0" layoutY="197.0" prefHeight="530.0" prefWidth="820.0"/>
-    <Text layoutX="334.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHỌN HỘ KHẨU CẦN THU TIỀN"/>
-    <AnchorPane layoutX="35.0" layoutY="157.0" prefHeight="50.0" prefWidth="800.0" styleClass="tieu_de">
-        <Text layoutX="51.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã hộ khẩu"/>
-        <Text layoutX="179.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã chủ hộ"/>
-        <Text layoutX="314.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Địa chỉ"/>
-        <Text layoutX="451.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo"/>
-        <Text layoutX="576.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày rời đi"/>
-        <Text layoutX="689.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ghi chú"/>
-    </AnchorPane>
+    <ListView fx:id="listView" layoutX="14.0" layoutY="197.0" prefHeight="500.0" prefWidth="820.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="215.0" />
+   <Label layoutX="54.0" layoutY="53.0" text="Danh sách các khoản thu" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="50.0">
+      <font>
+         <Font name="Verdana Bold" size="42.0" />
+      </font>
+   </Label>
+   <AnchorPane layoutX="55.0" layoutY="177.0" prefHeight="50.0" prefWidth="800.0" styleClass="tieu_de" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="170.0">
+      <children>
+         <Text layoutX="7.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã khoản thu">
+            <font>
+               <Font name="Verdana Bold" size="15.0" />
+            </font>
+         </Text>
+         <Text layoutX="173.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên khoản thu">
+            <font>
+               <Font name="Verdana Bold" size="15.0" />
+            </font>
+         </Text>
+         <Text layoutX="355.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bắt buộc">
+            <font>
+               <Font name="Verdana Bold" size="15.0" />
+            </font>
+         </Text>
+         <Text layoutX="491.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tiền/người">
+            <font>
+               <Font name="Verdana Bold" size="15.0" />
+            </font>
+         </Text>
+         <Text layoutX="675.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo">
+            <font>
+               <Font name="Verdana Bold" size="15.0" />
+            </font>
+         </Text>
+      </children>
+   </AnchorPane>
+   <Label contentDisplay="CENTER" layoutX="750.0" layoutY="36.0" opacity="0.6" rotate="45.0" text="jwannasleep" textFill="#c41313" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font>
+      <effect>
+         <Glow />
+      </effect>
+   </Label>
 </AnchorPane>
