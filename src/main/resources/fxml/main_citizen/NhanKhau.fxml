@@ -3,9 +3,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="container" stylesheets="@../../styles/Main/NhanKhau.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.NhanKhauMenuController">
-    <TextField layoutX="135.0" layoutY="84.0" prefHeight="35.0" prefWidth="263.0" />
+    <TextField fx:id="tim_kiem_text" layoutX="180.0" layoutY="85.0" prefHeight="35.0" prefWidth="398.0" />
     <Button fx:id="themmoi_btn" layoutX="682.0" layoutY="157.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="154.0" styleClass="button_add" text="Thêm mới ">
       <graphic>
          <FontAwesomeIconView glyphName="PLUS" size="20" />
@@ -30,34 +28,19 @@
       <graphic>
          <FontAwesomeIconView glyphName="BOOK" size="20" />
       </graphic></Button>
-   <Label contentDisplay="CENTER" layoutX="27.0" layoutY="86.0" lineSpacing="10.0" text="Tìm Kiếm" textAlignment="CENTER">
+   <Label contentDisplay="CENTER" layoutX="51.0" layoutY="87.0" lineSpacing="10.0" text="Tìm Kiếm" textAlignment="CENTER">
       <font>
          <Font size="22.0" />
       </font>
    </Label>
-   <Button layoutX="408.0" layoutY="87.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="77.0" styleClass="button_search" text="Xác nhận" />
    <ImageView fitHeight="190.0" fitWidth="176.0" layoutX="675.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../../images/login_form/NhanKhau/Logo.png" />
       </image>
    </ImageView>
-   <ScrollPane layoutX="3.0" layoutY="160.0" prefHeight="574.0" prefWidth="661.0">
-     <content>
-       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="573.0" prefWidth="1438.0">
-            <children>
-               <TableView layoutX="2.0" layoutY="-5.0" prefHeight="907.0" prefWidth="1321.0">
-                  <columns>
-                     <TableColumn prefWidth="127.0" text="CCCD" />
-                     <TableColumn prefWidth="142.0" text="Họ và tên" />
-                     <TableColumn prefWidth="138.0" text="Ngày sinh" />
-                     <TableColumn prefWidth="106.66665649414062" text="Giới tính " />
-                     <TableColumn prefWidth="109.6666259765625" text="Nghề nghiệp" />
-                     <TableColumn prefWidth="112.3333740234375" text="Nguyên quán" />
-                     <TableColumn prefWidth="75.0" text="Địa chỉ hiện tại" />
-                  </columns>
-               </TableView>
-            </children>
-         </AnchorPane>
-     </content>
-   </ScrollPane>
+ <AnchorPane layoutY="162.0" minHeight="0.0" minWidth="0.0" prefHeight="588.0" prefWidth="655.0">
+      <children>
+         <ListView fx:id="list_view" layoutX="14.0" prefHeight="556.0" prefWidth="655.0" />
+      </children>
+   </AnchorPane>
 </AnchorPane>

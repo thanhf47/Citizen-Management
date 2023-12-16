@@ -426,9 +426,6 @@ public class Model {
         Model.hoKhauDuocChon = hoKhauDuocChon;
     }
 
-
-
-
     /*************************************************************************************************/
     //Thu phí
 
@@ -456,4 +453,5 @@ public class Model {
             throw new RuntimeException(e);
         }
     }
+
 }

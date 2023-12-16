@@ -41,6 +41,9 @@ public class ViewFactory {
     private AnchorPane tamVangView;
     private AnchorPane themMoiView;
     private AnchorPane khaiTuView;
+    private AnchorPane tamTru2View;
+
+    private AnchorPane tamVang2View;
 
     // Fee Views
     private final ObjectProperty<FeeMenuOptions> feeSelectedMenuItem;
@@ -279,6 +282,29 @@ public class ViewFactory {
             }
         }
         return tamTruView;
+    }
+
+    public AnchorPane gettamVang2View() {
+        if (tamVang2View == null) {
+            try {
+                tamVang2View = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau/DkTamVang2.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return tamVang2View;
+    }
+
+    public AnchorPane gettamTru2View() {
+        if (tamTru2View == null) {
+            try {
+                tamTru2View = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau/DkTamTru2.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return tamTru2View;
     }
     /********************************************************************************************/
     public void showLoginWindow() {
