@@ -11,8 +11,8 @@ public class DatabaseConnection {
     public DatabaseConnection() {
         String dbName = "QUANLYDANCU";
         String dbUser = "sa";
-        String dbPassword = "040703";
-        String url = "jdbc:sqlserver://MAIN-CHARACTER\\THANH_NGUYEN:1433;databaseName=" + dbName + ";integratedSecurity=false;trustServerCertificate=true";
+        String dbPassword = "123456789";
+        String url = "jdbc:sqlserver://DESKTOP-0686QHH:1433;databaseName=" + dbName + ";IntegratedSecurity=false;encrypt=false;trustSeverCertificate=true;";
 
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
