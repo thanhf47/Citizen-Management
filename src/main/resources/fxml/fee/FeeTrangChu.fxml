@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-
-
 <?import javafx.scene.control.Label?>
-<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.feecontrollers.FeeTrangChuController">
-    <Label layoutX="383.0" layoutY="366.0" text="PHI TRANG CHU HERE"/>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.feecontrollers.FeeTrangChuController">
+   <children>
+      <AnchorPane prefHeight="80.0" prefWidth="850.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Circle fx:id="profile_thuphi" fill="DODGERBLUE" layoutX="806.0" layoutY="39.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label layoutX="8.0" layoutY="30.0" text="HỆ THỐNG QUẢN LÝ THU PHÍ, ĐÓNG GÓP" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="25.0">
+               <font>
+                  <Font name="Verdana Bold" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="31.0" layoutY="112.0" text="Welcome back,">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Label fx:id="name_thuphi" layoutX="227.0" layoutY="108.0" text="NAME">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
