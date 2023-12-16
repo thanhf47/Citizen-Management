@@ -9,8 +9,9 @@ public class DatabaseConnectionNhanKhau {
     public DatabaseConnectionNhanKhau() {
         String dbName = "QUANLYDANCU";
         String dbUser = "sa";
-        String dbPassword = "123456789";
-        String url = "jdbc:sqlserver://LAPTOP-GKSBA9V1\\SQLEXPRESS:1433;databaseName=QUANLYDANCU;encrypt=true;trustServerCertificate=true";
+        String dbPassword = "040703";
+        String url = "jdbc:sqlserver://MAIN-CHARACTER\\THANH_NGUYEN:1433;databaseName=" + dbName +
+                ";encrypt=true;integratedSecurity=false;trustServerCertificate=true";
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, dbUser, dbPassword);
