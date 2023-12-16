@@ -1,5 +1,5 @@
 .form {
-    -fx-background: #CCCCCC;
+    -fx-background-color: #eeeeee;
 }
 .error_alert {
     -fx-text-fill: #ff0000;

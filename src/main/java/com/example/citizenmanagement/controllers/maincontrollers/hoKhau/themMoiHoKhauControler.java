@@ -3,21 +3,10 @@ package com.example.citizenmanagement.controllers.maincontrollers.hoKhau;
 import com.example.citizenmanagement.models.MainMenuOptions;
 import com.example.citizenmanagement.models.Model;
 
-import com.example.citizenmanagement.models.hoKhauCell;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class themMoiHoKhauControler implements Initializable {

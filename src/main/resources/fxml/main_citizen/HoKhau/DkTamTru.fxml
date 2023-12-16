@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../../styles/DkTamTru.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.DkTamTruController">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../../styles/Main/DkTamTru.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.DkTamTruController">
    <Label layoutX="334.0" layoutY="51.0" styleClass="text_lbl" text="Đăng kí tạm trú" />
    <VBox layoutX="51.0" layoutY="126.0" prefHeight="490.0" prefWidth="312.0" styleClass="vbx">
       <children>
@@ -48,6 +48,6 @@
          <DatePicker prefHeight="36.0" prefWidth="316.0" />
       </children>
    </VBox>
-   <Button layoutX="455.0" layoutY="674.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_acp" stylesheets="@../../../styles/DkTamTru.css" text="Xác nhận " />
-   <Button layoutX="276.0" layoutY="674.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_cancel" stylesheets="@../../../styles/DkTamTru.css" text="Thoát" />
+   <Button layoutX="455.0" layoutY="674.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_acp" stylesheets="@../../../styles/Main/DkTamTru.css" text="Xác nhận " />
+   <Button layoutX="276.0" layoutY="674.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_cancel" stylesheets="@../../../styles/Main/DkTamTru.css" text="Thoát" />
 </AnchorPane>

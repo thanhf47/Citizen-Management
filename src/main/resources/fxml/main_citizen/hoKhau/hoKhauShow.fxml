@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="hoKhauShow_container" stylesheets="@../../../styles/hoKhau/hoKhauShow.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.hoKhau.hoKhauShowControler">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="hoKhauShow_container" stylesheets="@../../../styles/Main/hoKhau/hoKhauShow.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.hoKhau.hoKhauShowControler">
    <TextField fx:id="search_textfield" layoutX="15.0" layoutY="97.0" promptText="Tìm kiếm hộ khẩu" AnchorPane.topAnchor="98.0">
       <font>
          <Font size="17.0" />
@@ -20,8 +20,7 @@
       <Text layoutX="51.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã hộ khẩu" />
       <Text layoutX="179.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã chủ hộ" />
       <Text layoutX="314.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Địa chỉ" />
-      <Text layoutX="451.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo" />
-      <Text layoutX="576.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày rời đi" />
+      <Text layoutX="537.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo" />
       <Text layoutX="689.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ghi chú" />
    </AnchorPane>
 </AnchorPane>
