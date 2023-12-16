@@ -1,61 +1,46 @@
 package com.example.citizenmanagement.models;
 
-import com.example.citizenmanagement.views.NhankhauFactoryView;
 import com.example.citizenmanagement.views.ViewFactory;
-import com.example.citizenmanagement.views.ViewFactoryThongKe;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.image.Image;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.example.citizenmanagement.views.viewHoKhauFactory;
 
 public class Model {
     private static Model model;
     private final ViewFactory viewFactory;
-
     private final DatabaseConnection databaseConnection;
 
     //citizen manager section
-    private CitizenManager citizenManager;
+    private final CitizenManager citizenManager;
     private boolean citizenManagerLoginSuccessFlag;
-
+    private ObjectProperty<Image> imageObjectProperty;
     // nhan khau
-    private final NhankhauFactoryView nhankhauFactoryView;
 
     //ho khau section
-    private final viewHoKhauFactory viewHK;
-    private static hoKhauCell hoKhauDuocChon;
+    private static MainHoKhauCell hoKhauDuocChon;
 
-
-    //main Thong Ke section
-    private final ViewFactoryThongKe viewFactoryThongKe;
+    //thu phi
+    private final FeeKhoanThuModel feeKhoanThuModel;
 
     private Model() {
         this.viewFactory = new ViewFactory();
         this.databaseConnection = new DatabaseConnection();
 
-        this.citizenManager = new CitizenManager("", "", "", "", -1);
+        this.citizenManager = new CitizenManager();
+        this.feeKhoanThuModel = new FeeKhoanThuModel();
+        imageObjectProperty = new SimpleObjectProperty<>();
+
         citizenManagerLoginSuccessFlag = false;
-
-        this.viewFactoryThongKe = new ViewFactoryThongKe();
-
-        this.viewHK = new viewHoKhauFactory();
-
-
-        this.nhankhauFactoryView = new NhankhauFactoryView();
     }
 
     public static synchronized Model getInstance() {
-        if (model == null) {
-            model = new Model();
-        }
         return model;
     }
 
-    public ViewFactory getViewFactory() {return viewFactory;}
-
-    public DatabaseConnection getDatabaseConnection() {return databaseConnection;}
-
-
+    /*****************************************************************************/
     //Citizen Manager Method
     public void setCitizenManagerLoginSuccessFlag(boolean flag) {
         this.citizenManagerLoginSuccessFlag = flag;
@@ -68,11 +53,11 @@ public class Model {
         try {
             if(resultSet.isBeforeFirst()) {
                 resultSet.next();
-                this.citizenManager.setHoTen(resultSet.getString("HOTEN"));
-                this.citizenManager.setTenDangNhap(resultSet.getString("TENDANGNHAP"));
-                this.citizenManager.setMatKhau(resultSet.getString("MATKHAU"));
-                this.citizenManager.setSoDienThoai(resultSet.getString("SODIENTHOAI"));
-                this.citizenManager.setVaiTro(resultSet.getInt("VAITRO"));
+                this.citizenManager.setHoTen(resultSet.getString(1));
+                this.citizenManager.setTenDangNhap(resultSet.getString(2));
+                this.citizenManager.setMatKhau(resultSet.getString(3));
+                this.citizenManager.setSoDienThoai(resultSet.getString(4));
+                this.citizenManager.setVaiTro(resultSet.getInt(5));
                 this.citizenManagerLoginSuccessFlag = true;
             }
         } catch (SQLException e) {
@@ -109,10 +94,15 @@ public class Model {
         databaseConnection.setCitizenManagerData(hoTen, tenDangNhap, matKhau, soDienThoai, vaiTro);
     }
 
-    public ViewFactoryThongKe getViewFactoryThongKe(){
-        return viewFactoryThongKe;
+    // su dung de tao moi 1 Model khi dang xuat va khoi tao lan dau tien.
+    public static void createNewInstance() {
+        model = new Model();
     }
+    public ViewFactory getViewFactory() {return viewFactory;}
+    public DatabaseConnection getDatabaseConnection() {return databaseConnection;}
 
+    public ObjectProperty<Image> getImageObjectProperty() {return imageObjectProperty;}
+    /*************************************************************************************************/
 
     public int getNumberOfNhanKhau() {
         ResultSet resultSet = databaseConnection.getNumberOfNhanhKhau();
@@ -446,18 +436,79 @@ public class Model {
         return res;
     }
 
-    public viewHoKhauFactory getViewHK(){return viewHK;}
-
     // ho khau
 
-    public static hoKhauCell getHoKhauDuocChon() {
+    public static MainHoKhauCell getHoKhauDuocChon() {
         return hoKhauDuocChon;
     }
 
-    public static void setHoKhauDuocChon(hoKhauCell hoKhauDuocChon) {
+    public static void setHoKhauDuocChon(MainHoKhauCell hoKhauDuocChon) {
         Model.hoKhauDuocChon = hoKhauDuocChon;
     }
-    public NhankhauFactoryView getNhankhauFactoryView() {
-        return nhankhauFactoryView;
+
+
+
+
+    /*************************************************************************************************/
+    //Thu phí
+
+
+    public FeeKhoanThuModel getFeeKhoanThuModel() {
+        return feeKhoanThuModel;
+    }
+
+    public int getSoTienPhiVeSinhTren1Nguoi(){
+        int res = 0;
+        ResultSet resultSet = databaseConnection.getSoTienPhiVeSinhTren1Nguoi();
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return  res;
+    }
+
+    public int getTongSoTienDaThuPhiVeSinh(){
+        int res = 0;
+        ResultSet resultSet = databaseConnection.getTongSoTienDaThuPhiVeSinh();
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    public int getTongSoTienDaThuPhiKhac(){
+        int res = 0;
+        ResultSet resultSet = databaseConnection.getTongSoTienDaThuPhiKhac();
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+    public int getNumberOfCacLoaiPhiKhac(){
+        int res = 0;
+        ResultSet resultSet = databaseConnection.getNumberOfCacLoaiPhiKhac();
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
     }
 }

@@ -56,6 +56,8 @@ public class ThongKeTamTruNam2023Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
+
+
         thoatTamTru.setOnAction(event -> onThoatTamTru());
         showBieuDoTamTruTheoThangMacDinh();
         showBieuDoTamTruTheoLyDoMacDinh();

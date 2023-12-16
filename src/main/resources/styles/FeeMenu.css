@@ -1,14 +1,8 @@
 .slide_ankerpaine{
-    /*-fx-background-color:#353A56;*/
     -fx-background-image: url("../images/main/wall.jpg");
     -fx-background-size: cover;
-    /*-fx-border-color: #2207bb;*/
     -fx-border-width: 2px 2px 2px 2px;
-    /*-fx-border-radius: 20;
-    -fx-background-radius: 20;*/
     -fx-text-fill: #FFFFFF;
-    /*-fx-border-style: solid;*/
-
 }
 
 .slide_ankerpaine FontAwesomeIconView{
@@ -17,8 +11,6 @@
 .inner_paine{
     -fx-background-color: #69B4C7;
     -fx-border-width: 2px 2px 2px 2px;
-    /*-fx-border-radius: 20;
-    -fx-background-radius: 20;*/
     -fx-border-style: solid;
     -fx-border-color: #748CF1;
 
@@ -31,12 +23,15 @@
     -fx-font-weight: bold;
     -fx-font-size: 2em;
     -fx-text-alignment: center;
+
+    -fx-wrap-text: true;
+    -fx-white-space: pre-wrap;
 }
 
 .btn_an:hover{
     -fx-cursor: hand;
     -fx-background-color: rgba(146, 150, 156, 0.5);
-    -fx-font-size: 2.2em;
+    -fx-font-size: 2.1em;
 
 }
 .btn_an:pressed{

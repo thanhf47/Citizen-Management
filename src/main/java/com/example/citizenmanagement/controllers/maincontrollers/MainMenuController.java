@@ -1,13 +1,10 @@
 package com.example.citizenmanagement.controllers.maincontrollers;
 
-import com.example.citizenmanagement.models.CitizenManager;
 import com.example.citizenmanagement.models.MainMenuOptions;
 import com.example.citizenmanagement.models.Model;
-import com.example.citizenmanagement.models.hoKhauOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -35,7 +32,7 @@ public class MainMenuController implements Initializable {
         Stage stage = (Stage) logout_btn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showLoginWindow();
-        Model.getInstance().setCitizenManagerLoginSuccessFlag(false);
+        Model.createNewInstance();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -32,43 +32,44 @@ public class MainController implements Initializable {
                     main_parent.setCenter(Model.getInstance().getViewFactory().getNhanKhauView());
                     nhan_khau_btn.requestFocus();
                 }
-                case THONG_KE_NHAN_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactoryThongKe().getThongKeNhanKhauView());
-                case THONG_KE_HO_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactoryThongKe().getThongKeHoKhauView());
-                case THONG_KE_TAM_TRU -> main_parent.setCenter(Model.getInstance().getViewFactoryThongKe().getThongKeTamTruView());
-                case THONG_KE_TAM_VANG -> main_parent.setCenter(Model.getInstance().getViewFactoryThongKe().getThongKeTamVangView());
+                case PROFILE -> main_parent.setCenter(Model.getInstance().getViewFactory().getProfile());
+                case THONG_KE_NHAN_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactory().getThongKeNhanKhauView());
+                case THONG_KE_HO_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactory().getThongKeHoKhauView());
+                case THONG_KE_TAM_TRU -> main_parent.setCenter(Model.getInstance().getViewFactory().getThongKeTamTruView());
+                case THONG_KE_TAM_VANG -> main_parent.setCenter(Model.getInstance().getViewFactory().getThongKeTamVangView());
                 //ho khau ****************************************************************************************
                 case HO_KHAU -> {
-                    main_parent.setCenter(Model.getInstance().getViewHK().getHoKhauShow());
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getHoKhauView());
                     ho_khau_btn.requestFocus();
                 }
                 case XEM_CHI_TIET_HO_KHAU -> {
-                    main_parent.setCenter(Model.getInstance().getViewHK().getXemChiTietHoKhau());
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getXemChiTietHoKhau());
                     ho_khau_btn.requestFocus();
                 }
                 case TACH_HO_KHAU -> {
-                    main_parent.setCenter(Model.getInstance().getViewHK().getTachHoKhau());
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getTachHoKhau());
                     ho_khau_btn.requestFocus();
                 }
                 case THEM_HO_KHAU -> {
-                    main_parent.setCenter(Model.getInstance().getViewHK().getThemHoKhau());
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getThemHoKhau());
                     ho_khau_btn.requestFocus();
                 }
                 //*********************************************************************************
 
                 case THEM_NHAN_KHAU -> {
-                    main_parent.setCenter(Model.getInstance().getNhankhauFactoryView().getthemMoiView());
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getthemMoiView());
                     nhan_khau_btn.requestFocus();
                 }
                 case TAM_VANG -> {
-                    main_parent.setCenter(Model.getInstance().getNhankhauFactoryView().gettamVangView());
+                    main_parent.setCenter(Model.getInstance().getViewFactory().gettamVangView());
                     nhan_khau_btn.requestFocus();
                 }
                 case TAM_TRU -> {
-                    main_parent.setCenter(Model.getInstance().getNhankhauFactoryView().gettamTruView());
+                    main_parent.setCenter(Model.getInstance().getViewFactory().gettamTruView());
                     nhan_khau_btn.requestFocus();
                 }
                 case KHAI_TU -> {
-                    main_parent.setCenter(Model.getInstance().getNhankhauFactoryView().getkhaiTuView());
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getkhaiTuView());
                     nhan_khau_btn.requestFocus();
                 }
                 default -> {

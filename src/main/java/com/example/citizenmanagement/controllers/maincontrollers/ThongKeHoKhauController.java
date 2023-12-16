@@ -21,7 +21,7 @@ public class ThongKeHoKhauController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showBieuDoNhanKhau();
-
+        System.out.println(Model.getInstance().getCitizenManager().getHoTen());
         QuayLai2.setOnAction(event -> onQuayLai1());
         tongsohokhau_text.setText(Integer.toString(Model.getInstance().getNumberOfHoKhau()));
 

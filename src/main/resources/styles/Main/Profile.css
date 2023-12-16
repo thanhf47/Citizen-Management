@@ -1,0 +1,14 @@
+.form {
+    fx-background-color: #CCCCCC;
+}
+
+.image:hover {
+    -fx-cursor: hand;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.image:pressed {
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}

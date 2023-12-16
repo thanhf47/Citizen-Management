@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="750" prefWidth="850" styleClass="form" stylesheets="@../../styles/Main/Profile.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.ProfileController">
+   <children>
+      <Label layoutX="43.0" layoutY="47.0" text="Thông tin người quản lý">
+         <font>
+            <Font name="Verdana Bold" size="42.0" />
+         </font>
+      </Label>
+      <Label layoutX="454.0" layoutY="179.0" text="Tên đăng nhập" AnchorPane.leftAnchor="454.0" AnchorPane.topAnchor="180.0">
+         <font>
+            <Font name="Verdana" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="454.0" layoutY="280.0" text="Họ và tên" AnchorPane.leftAnchor="454.0" AnchorPane.topAnchor="270.0">
+         <font>
+            <Font name="Verdana" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="454.0" layoutY="357.0" text="Vai trò" AnchorPane.leftAnchor="454.0" AnchorPane.topAnchor="360.0">
+         <font>
+            <Font name="Verdana" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="vai_tro" layoutX="454.0" layoutY="396.0" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="454.0" AnchorPane.topAnchor="390.0">
+         <font>
+            <Font name="Verdana" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="ho_ten" layoutX="454.0" layoutY="313.0" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="454.0" AnchorPane.topAnchor="300.0">
+         <font>
+            <Font name="Verdana" size="18.0" />
+         </font>
+      </TextField>
+      <Label layoutX="454.0" layoutY="456.0" prefHeight="30.0" prefWidth="213.0" text="Số điện thoại" AnchorPane.leftAnchor="454.0" AnchorPane.topAnchor="450.0">
+         <font>
+            <Font name="Verdana" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="so_dien_thoai" layoutX="454.0" layoutY="486.0" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="454.0" AnchorPane.topAnchor="480.0">
+         <font>
+            <Font name="Verdana" size="18.0" />
+         </font>
+      </TextField>
+      <Button fx:id="quay_lai" layoutX="76.0" layoutY="630.0" mnemonicParsing="false" onAction="#onQuayLaiBtn" prefHeight="40.0" prefWidth="100.0" text="Quay lại" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="75.0">
+         <font>
+            <Font name="Calibri" size="18.0" />
+         </font>
+      </Button>
+      <TextField fx:id="ten_dang_nhap" layoutX="450.0" layoutY="217.0" prefHeight="30.0" prefWidth="300.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="210.0">
+         <font>
+            <Font name="Verdana" size="18.0" />
+         </font>
+      </TextField>
+      <Circle fx:id="info_image" fill="#1f93ff" layoutX="219.0" layoutY="360.0" onMouseClicked="#setInfo_image" radius="154.0" stroke="BLACK" strokeType="INSIDE" styleClass="image" />
+   </children>
+</AnchorPane>
