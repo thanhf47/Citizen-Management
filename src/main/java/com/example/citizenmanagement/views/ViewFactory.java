@@ -48,6 +48,8 @@ public class ViewFactory {
     private AnchorPane feeDanhSachView;
     private AnchorPane feeThemKhoanThuView;
     private AnchorPane feeThemHoKhauView;
+
+    private AnchorPane feeThongKeThuPhiVeSinhView;
     /********************************************************************************************/
     public ViewFactory(){
         this.selectedMenuItem = new SimpleObjectProperty<>();
@@ -312,6 +314,22 @@ public class ViewFactory {
     public void closeStage(Stage stage) {
         stage.close();
     }
+
+    /********************************************************************************************/
+    // thong ke thu phi
+
+    public AnchorPane getFeeThongKeThuPhiVeSinhView(){
+        if(feeThongKeThuPhiVeSinhView == null){
+            try {
+                feeThongKeThuPhiVeSinhView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeThongKeThuPhiVeSinh.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return feeThongKeThuPhiVeSinhView;
+    }
+
+
 }
 
 

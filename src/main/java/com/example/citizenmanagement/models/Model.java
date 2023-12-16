@@ -428,4 +428,59 @@ public class Model {
     public FeeKhoanThuModel getFeeKhoanThuModel() {
         return feeKhoanThuModel;
     }
+
+    public int getSoTienPhiVeSinhTren1Nguoi(){
+        int res = 0;
+        ResultSet resultSet = databaseConnection.getSoTienPhiVeSinhTren1Nguoi();
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return  res;
+    }
+
+    public int getTongSoTienDaThuPhiVeSinh(){
+        int res = 0;
+        ResultSet resultSet = databaseConnection.getTongSoTienDaThuPhiVeSinh();
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    public int getTongSoTienDaThuPhiKhac(){
+        int res = 0;
+        ResultSet resultSet = databaseConnection.getTongSoTienDaThuPhiKhac();
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+    public int getNumberOfCacLoaiPhiKhac(){
+        int res = 0;
+        ResultSet resultSet = databaseConnection.getNumberOfCacLoaiPhiKhac();
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
 }

@@ -552,6 +552,57 @@ public class DatabaseConnection {
         }
         return res;
     }
+
+    public ResultSet getSoTienPhiVeSinhTren1Nguoi() {
+        ResultSet resultSet = null;
+        Statement statement;
+        try {
+            statement = connection.createStatement();
+            resultSet=statement.executeQuery("SELECT SOTIENTRENMOTNGUOI FROM LOAIPHI WHERE MAKHOANTHU = 1");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return  resultSet;
+    }
+
+    public ResultSet getTongSoTienDaThuPhiVeSinh(){
+        ResultSet resultSet = null;
+        Statement statement;
+        String query = "SELECT SUM(SOTIENCANDONG) FROM DONGGOP WHERE MAKHOANTHU = 1 AND TRANGTHAI = 1";
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
+    public ResultSet getTongSoTienDaThuPhiKhac(){
+        ResultSet resultSet = null;
+        Statement statement;
+        String query = "SELECT SUM(SOTIENCANDONG) FROM DONGGOP WHERE MAKHOANTHU != 1 AND TRANGTHAI = 1";
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
+    public ResultSet getNumberOfCacLoaiPhiKhac(){
+        ResultSet resultSet = null;
+        Statement statement;
+        String query = "SELECT COUNT(MAKHOANTHU) FROM LOAIPHI";
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
 }
 
 
