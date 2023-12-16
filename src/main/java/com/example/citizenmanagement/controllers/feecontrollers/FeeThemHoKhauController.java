@@ -1,6 +1,7 @@
 package com.example.citizenmanagement.controllers.feecontrollers;
 
 import com.example.citizenmanagement.models.FeeHoKhauCell;
+import com.example.citizenmanagement.models.FeeKhoanThuCell;
 import com.example.citizenmanagement.models.FeeMenuOptions;
 import com.example.citizenmanagement.models.Model;
 import com.example.citizenmanagement.views.FeeHoKhauCellFactory;
@@ -66,6 +67,7 @@ public class FeeThemHoKhauController implements Initializable {
             String moTa = Model.getInstance().getFeeKhoanThuModel().getMoTa().getValue();
             Model.getInstance().getDatabaseConnection().themKhoanThuPhi(tenKhoanThu, batBuoc, soTienCanDong, now, moTa);
             int maKhoanThu = Model.getInstance().getDatabaseConnection().layMaKhoanThu(tenKhoanThu, batBuoc, soTienCanDong, now, moTa);
+            Model.getInstance().getDanhSachKhoanThu().add(new FeeKhoanThuCell(maKhoanThu, tenKhoanThu, batBuoc, soTienCanDong, now.toString()));
 
 
             // add danh sách thu phí
@@ -77,7 +79,7 @@ public class FeeThemHoKhauController implements Initializable {
             initDanhSach();
 
             Model.getInstance().getFeeKhoanThuModel().setFeeKhoanThuModel("", 0, 0, LocalDate.now().toString(), "");
-            Model.getInstance().getViewFactory().getFeeSelectedMenuItem().set(FeeMenuOptions.TRANG_CHU);
+            Model.getInstance().getViewFactory().getFeeSelectedMenuItem().set(FeeMenuOptions.DANH_SACH_KHOAN_THU);
         }
     }
 

@@ -1,8 +1,11 @@
 package com.example.citizenmanagement.models;
 
 import com.example.citizenmanagement.views.ViewFactory;
+import javafx.beans.Observable;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
 import java.sql.ResultSet;
@@ -24,13 +27,18 @@ public class Model {
 
     //thu phi
     private final FeeKhoanThuModel feeKhoanThuModel;
+    private final ObservableList<FeeKhoanThuCell> danhSachKhoanThu;
 
     private Model() {
         this.viewFactory = new ViewFactory();
         this.databaseConnection = new DatabaseConnection();
 
         this.citizenManager = new CitizenManager();
+
         this.feeKhoanThuModel = new FeeKhoanThuModel();
+        this.danhSachKhoanThu = FXCollections.observableArrayList();
+        initDanhSachKhoanThu();
+
         imageObjectProperty = new SimpleObjectProperty<>();
 
         citizenManagerLoginSuccessFlag = false;
@@ -427,5 +435,25 @@ public class Model {
 
     public FeeKhoanThuModel getFeeKhoanThuModel() {
         return feeKhoanThuModel;
+    }
+
+    public ObservableList<FeeKhoanThuCell> getDanhSachKhoanThu() {return danhSachKhoanThu;}
+    private void initDanhSachKhoanThu() {
+        ResultSet resultSet = databaseConnection.getDanhSachKhoanThu();
+        try {
+            if(resultSet.isBeforeFirst()){
+                while(resultSet.next()) {
+                    int maKhoanThu = resultSet.getInt(1);
+                    String tenKhoanThu = resultSet.getNString(2);
+                    int batBuoc = resultSet.getInt(3);
+                    int soTienCanDong = resultSet.getInt(4);
+                    String ngayTao = resultSet.getString(5);
+
+                    danhSachKhoanThu.add(new FeeKhoanThuCell(maKhoanThu, tenKhoanThu, batBuoc, soTienCanDong, ngayTao));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
