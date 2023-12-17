@@ -33,6 +33,7 @@ public class ViewFactory {
     private AnchorPane themHoKhau;
     private AnchorPane tachHoKhau;
     private AnchorPane xemChiTietHoKhau;
+    private AnchorPane thay_doi_ho_khau;
     private final ObjectProperty<String> quaylai;
 
     // Nhan Khau View
@@ -75,14 +76,12 @@ public class ViewFactory {
         return trangChuView;
     }
     public AnchorPane getHoKhauView() {
-        if (hoKhauView == null) {
             try {
                 hoKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/hoKhauShow.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
 
-        }
         return hoKhauView;
     }
 
@@ -224,15 +223,20 @@ public class ViewFactory {
         return tachHoKhau;
     }
     public AnchorPane getXemChiTietHoKhau(){
-        if (xemChiTietHoKhau == null) {
             try {
                 xemChiTietHoKhau = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/xemChiTietHoKhau.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-        }
         return xemChiTietHoKhau;
+    }
+    public AnchorPane get_thay_doi_ho_khau(){
+        try {
+            thay_doi_ho_khau = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/thay_doi_ho_khau.fxml")).load();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return thay_doi_ho_khau;
     }
     public ObjectProperty<String> getQuaylai(){
         return quaylai;

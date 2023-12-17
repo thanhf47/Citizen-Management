@@ -63,7 +63,6 @@ public class hoKhauShowControler implements Initializable {
         listView.setOnMouseClicked(mouseEvent -> {
             Model.setHoKhauDuocChon(listView.getSelectionModel().getSelectedItem());
             Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.XEM_CHI_TIET_HO_KHAU);
-
         });
         //****************************************************
 

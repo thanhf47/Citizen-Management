@@ -2,9 +2,6 @@ package com.example.citizenmanagement.controllers.maincontrollers.hoKhau;
 
 import com.example.citizenmanagement.models.MainHoKhauCell;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -13,8 +10,6 @@ import java.util.ResourceBundle;
 public class hoKhauCellControler implements Initializable {
 
     private final MainHoKhauCell khauCell;
-    public AnchorPane anchorPane;
-    public HBox hbox;
     public Text ma_ho_khau_text;
     public Text ma_chu_ho_text;
     public Text dia_chi_text;

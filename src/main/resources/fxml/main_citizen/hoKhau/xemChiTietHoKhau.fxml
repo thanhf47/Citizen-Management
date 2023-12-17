@@ -15,12 +15,12 @@
       <font>
          <Font size="37.0" />
       </font></Text>
-   <Label layoutX="170.0" layoutY="66.0" text="Các thành viên trong gia đình" AnchorPane.topAnchor="66.0">
+   <Label layoutX="116.0" layoutY="80.0" text="Các thành viên trong gia đình" AnchorPane.topAnchor="80.0">
       <font>
-         <Font size="18.0" />
+         <Font size="22.0" />
       </font></Label>
-   <ListView fx:id="listView_thanhvien" layoutX="11.0" layoutY="130.0" prefHeight="400.0" prefWidth="556.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="284.0" AnchorPane.topAnchor="100.0" />
-   <VBox layoutX="582.0" layoutY="130.0" prefHeight="442.0" prefWidth="254.0" spacing="5.0" AnchorPane.topAnchor="80.0">
+   <ListView fx:id="listView_thanhvien" layoutX="14.0" layoutY="123.0" prefHeight="422.0" prefWidth="556.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="280.4" AnchorPane.topAnchor="123.0" />
+   <VBox layoutX="581.0" layoutY="99.0" prefHeight="442.0" prefWidth="254.0" spacing="5.0" AnchorPane.topAnchor="99.0">
       <Label text="Mã hộ khẩu">
          <font>
             <Font size="18.0" />
@@ -73,59 +73,35 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </VBox>
-   <Button fx:id="chuyen_di_but" layoutX="726.0" layoutY="577.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: #7a777b;" text="Chuyển đi" textFill="#ecdcdc">
+   <Button fx:id="chuyen_di_but" layoutX="347.0" layoutY="595.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: #7a777b;" text="Chuyển đi" textFill="#ecdcdc">
       <font>
          <Font size="16.0" />
       </font>
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor></Button>
-   <Button fx:id="cancel_but" layoutX="768.0" layoutY="651.0" mnemonicParsing="false" text="Cancle" visible="false" AnchorPane.bottomAnchor="62.200000000000045" AnchorPane.rightAnchor="14.0">
+   <Button fx:id="cancel_but" layoutX="501.0" layoutY="676.0" mnemonicParsing="false" text="Cancle" visible="false" AnchorPane.bottomAnchor="37.200000000000045" AnchorPane.rightAnchor="281.0">
       <font>
          <Font size="16.0" />
       </font>
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor></Button>
-   <Button layoutX="600.0" layoutY="651.0" mnemonicParsing="false" text="Xác nhận" visible="false" AnchorPane.bottomAnchor="62.200000000000045" AnchorPane.rightAnchor="164.39999999999998" fx:id="xac_nhan_but">
+   <Button layoutX="228.0" layoutY="676.0" mnemonicParsing="false" text="Xác nhận" visible="false" AnchorPane.bottomAnchor="37.200000000000045" AnchorPane.rightAnchor="536.4" fx:id="xac_nhan_but">
       <font>
          <Font size="16.0" />
       </font>
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor></Button>
-   <Button fx:id="thaydoi_but" layoutX="618.0" layoutY="577.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #7a777b;" text="Thay đổi" textFill="#f7f2f2">
+   <Button fx:id="thaydoi_but" layoutX="170.0" layoutY="596.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #7a777b;" text="Thay đổi" textFill="#f7f2f2">
       <font>
          <Font size="16.0" />
       </font>
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor></Button>
-   <Button disable="true" layoutX="361.0" layoutY="508.0" mnemonicParsing="false" prefHeight="35.0" style="-fx-background-color: #4e4b4c;" text="Xóa thành viên " textFill="#f2eded" fx:id="xoa_but">
-      <font>
-         <Font size="14.0" />
-      </font>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor></Button>
-   <Button fx:id="them_but" disable="true" layoutX="60.0" layoutY="508.0" mnemonicParsing="false" prefHeight="35.0" style="-fx-background-color: #60e980;" text="Thêm thành viên ">
-      <font>
-         <Font size="14.0" />
-      </font>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor></Button>
-   <TextField fx:id="tim_kiem_text" layoutX="154.0" layoutY="550.0" prefHeight="35.0" prefWidth="200.0" promptText="Tìm kiếm nhân khẩu" visible="false" AnchorPane.bottomAnchor="160.0">
-      <font>
-         <Font size="18.0" />
-      </font>
-   </TextField>
-   <ListView fx:id="listview_tim_kiem" layoutX="10.0" layoutY="599.0" prefHeight="140.0" prefWidth="556.0" visible="false" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="10.0" />
-   <Label fx:id="thong_bao_loi_lbl" layoutX="536.0" layoutY="722.0" textFill="#bc2222" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="585.0">
-      <font>
-         <Font size="14.0" />
-      </font></Label>
-   <Button fx:id="quay_lai_but" layoutX="687.0" layoutY="651.0" mnemonicParsing="false" text="Quay lại">
+   <Button fx:id="quay_lai_but" layoutX="509.0" layoutY="597.0" mnemonicParsing="false" text="Quay lại">
       <font>
          <Font size="16.0" />
       </font>

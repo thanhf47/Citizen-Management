@@ -25,7 +25,7 @@ public class Model {
 
     //ho khau section
     private static MainHoKhauCell hoKhauDuocChon;
-
+    private static thanh_vien_cua_ho_cell thanhVienCuaHoCell;
     //thu phi
     private final FeeKhoanThuModel feeKhoanThuModel;
     private final ObservableList<FeeKhoanThuCell> danhSachKhoanThu;
@@ -425,6 +425,14 @@ public class Model {
 
     public static void setHoKhauDuocChon(MainHoKhauCell hoKhauDuocChon) {
         Model.hoKhauDuocChon = hoKhauDuocChon;
+    }
+
+    public static thanh_vien_cua_ho_cell getThanhVienCuaHoCell() {
+        return thanhVienCuaHoCell;
+    }
+
+    public static void setThanhVienCuaHoCell(thanh_vien_cua_ho_cell thanhVienCuaHoCell) {
+        Model.thanhVienCuaHoCell = thanhVienCuaHoCell;
     }
 
     /*************************************************************************************************/

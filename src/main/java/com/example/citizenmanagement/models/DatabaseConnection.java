@@ -17,6 +17,7 @@ public class DatabaseConnection {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, dbUser, dbPassword);
         } catch (Exception e) {
+            System.out.println("loi o dayyyy");
             throw new RuntimeException(e);
         }
     }
@@ -385,8 +386,7 @@ public class DatabaseConnection {
     }
 
 
-    // ho khau****************************************************************************
-    /***********************************************************************************/
+
     //Nhân khẩu
     public int addNhanKhau (String hoTen, String CCCD, String namSinh, int gioiTinh, String noiSinh, String nguyenQuan,String danToc, String tonGiao, String quocTich, String soHoChieu, String noiThuongTru, String ngheNghiep, String ngayTao, String ghiChu ){
         int thanhcong = 0;
@@ -463,8 +463,9 @@ public class DatabaseConnection {
         }
         return resultSet;
     }
+
     /***********************************************************************************/
-    // Hộ khẩu
+    // Hộ khẩu*************************************************************
 
     public int addHoKhau(String ma_ch, String ngaythem, String diachi, String ghichu){
         if(!ma_ch.isEmpty() && !diachi.isEmpty() && !ngaythem.isEmpty()) {
@@ -515,19 +516,19 @@ public class DatabaseConnection {
         }
         return resultSet;
     }
-    public int capNhatHoKhau(String idHoKhau, String maChuHo, String diaChi, String ghiChu){
+    public int capNhatHoKhau(String idHoKhau, String maChuHo, String diaChi, String ngaTao, String ghiChu){
         ResultSet resultSet=null;
         try {
-            String capnhat = "update HOKHAU set IDCHUHO=?, DIACHI=?, GHICHU=? where MAHOKHAU=?";
+            String capnhat = "update HOKHAU set IDCHUHO=?, DIACHI=?, NGAYTAO=?, GHICHU=? where MAHOKHAU=?";
             PreparedStatement preparedStatement = connection.prepareStatement(capnhat);
             preparedStatement.setString(1,maChuHo);
             preparedStatement.setString(2,diaChi);
-
+            preparedStatement.setString(3,ngaTao);
             if(ghiChu.isEmpty())
-                preparedStatement.setString(3,null);
+                preparedStatement.setString(4,null);
             else
-                preparedStatement.setString(3, ghiChu);
-            preparedStatement.setString(4,idHoKhau);
+                preparedStatement.setString(4, ghiChu);
+            preparedStatement.setString(5,idHoKhau);
             preparedStatement.executeUpdate();
             return 1;
         } catch (SQLException e) {
@@ -536,20 +537,82 @@ public class DatabaseConnection {
         }
     }
     public int xoaHoKhau(String maHoKhau) {
-        int res = 0;
         String query = "DELETE HOKHAU\n" +
                 "WHERE MAHOKHAU = " + maHoKhau;
-        Statement statement;
         try {
-            statement = connection.createStatement();
+            Statement statement = connection.createStatement();
             statement.executeUpdate(query);
-            res = 1;
+            return  1;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            return 0;
+            //throw new RuntimeException(e);
         }
-        return res;
     }
 
+    public ResultSet lay_cac_thanh_vien(String ma_ho){
+        String query = "select * from THANHVIENCUAHO where MAHOKHAU='"+ma_ho+"'";
+        ResultSet resultSet=null;
+        try{
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+        }catch (Exception e){
+            System.out.println("loi o truy van thanh vien");
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
+
+    public ResultSet lay_nhan_khau(String ma_nhan_khau) {
+        ResultSet resultSet = null;
+        String querry = " select SOCANCUOC, HOTEN, GIOITINH, NAMSINH from NHANKHAU where MANHANKHAU='"+ma_nhan_khau+"'";
+        try{
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery(querry);
+        }
+        catch(Exception e) {
+            System.out.println("loi o lay_nhan_khau");
+        }
+        return resultSet;
+    }
+
+    public int add_thanh_vien_cua_ho(String cccd,String ma_ho, String quan_he){
+        String query = "INSERT INTO THANHVIENCUAHO VALUES (?,?,?)";
+        String query1 = "select * FROM NHANKHAU WHERE SOCANCUOC='"+cccd+"'";
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query1);
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1,resultSet.getString(1));
+                preparedStatement.setString(2,ma_ho);
+                preparedStatement.setNString(3,quan_he);
+
+                preparedStatement.executeUpdate();
+                return 1;
+            }
+        }catch (Exception e){
+            System.out.println("loi o add_thanh_vien_cua_ho");
+            return 0;
+        }
+        return 0;
+    }
+    public void xoa_thanh_vien_cua_ho(String cccd){
+        String query1 = "select * FROM NHANKHAU WHERE SOCANCUOC='"+cccd+"'";
+        try{
+            Statement statement1 = connection.createStatement();
+            ResultSet resultSet=statement1.executeQuery(query1);
+            if(resultSet.isBeforeFirst()) {
+                resultSet.next();
+                String query = "DELETE FROM THANHVIENCUAHO WHERE MANHANKHAU='"+resultSet.getString(1)+"'";
+                Statement statement = connection.createStatement();
+                statement.executeUpdate(query);
+            }
+        }catch (Exception e){
+            System.out.println("loi o xoa_thanh_vien_cua_ho");
+            e.printStackTrace();
+        }
+    }
 
     /***************************************************************************/
     // Quản lý thu phí

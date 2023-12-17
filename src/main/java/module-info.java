@@ -3,7 +3,7 @@ module com.example.citizenmanagement {
     requires javafx.fxml;
     requires de.jensd.fx.glyphs.fontawesome;
     requires java.sql;
-    requires mssql.jdbc;
+    requires com.microsoft.sqlserver.jdbc;
 
 
     opens com.example.citizenmanagement to javafx.fxml;
