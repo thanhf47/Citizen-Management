@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+// Vẫn là FeeHoKhauCell nhưng bỏ checkbox
 public class FeeHoKhauCell2Controller implements Initializable {
 
     @FXML
