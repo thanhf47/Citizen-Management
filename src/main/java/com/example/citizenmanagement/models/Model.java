@@ -29,6 +29,9 @@ public class Model {
     private final FeeKhoanThuModel feeKhoanThuModel;
     private final ObservableList<FeeKhoanThuCell> danhSachKhoanThu;
 
+    private final ObservableList<FeeHoKhauCell> danhSachDaDongPhi;
+    private final ObservableList<FeeHoKhauCell> danhSachChuaDongPhi;
+
     private Model() {
         this.viewFactory = new ViewFactory();
         this.databaseConnection = new DatabaseConnection();
@@ -37,6 +40,9 @@ public class Model {
 
         this.feeKhoanThuModel = new FeeKhoanThuModel();
         this.danhSachKhoanThu = FXCollections.observableArrayList();
+        this.danhSachDaDongPhi = FXCollections.observableArrayList();
+        this.danhSachChuaDongPhi = FXCollections.observableArrayList();
+
         initDanhSachKhoanThu();
 
         imageObjectProperty = new SimpleObjectProperty<>();
@@ -463,6 +469,14 @@ public class Model {
     }
 
     public ObservableList<FeeKhoanThuCell> getDanhSachKhoanThu() {return danhSachKhoanThu;}
+
+    public ObservableList<FeeHoKhauCell> getDanhSachDaDongPhi() {
+        return danhSachDaDongPhi;
+    }
+
+    public ObservableList<FeeHoKhauCell> getDanhSachChuaDongPhi() {
+        return danhSachChuaDongPhi;
+    }
     private void initDanhSachKhoanThu() {
         ResultSet resultSet = databaseConnection.getDanhSachKhoanThu();
         try {

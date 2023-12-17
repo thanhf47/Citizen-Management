@@ -51,6 +51,10 @@ public class ViewFactory {
     private AnchorPane feeDanhSachView;
     private AnchorPane feeThemKhoanThuView;
     private AnchorPane feeThemHoKhauView;
+    private AnchorPane feeXemChiTietKhoanThuView;
+    private AnchorPane feeDSHoanThanhPhiView;
+    private AnchorPane feeDSChuaHoanThanhPhiView;
+
     /********************************************************************************************/
     public ViewFactory(){
         this.selectedMenuItem = new SimpleObjectProperty<>();
@@ -200,7 +204,39 @@ public class ViewFactory {
         return feeThemHoKhauView;
     }
 
+    public AnchorPane getFeeXemChiTietKhoanThuView() {
+        if (feeXemChiTietKhoanThuView == null) {
+            try {
+                feeXemChiTietKhoanThuView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeChiTietKhoanThu.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return feeXemChiTietKhoanThuView;
+    }
+    public AnchorPane getDSHoanThanhPhiView() {
+        if (feeDSHoanThanhPhiView == null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/fee/FeeDSHoanThanhPhi.fxml"));
+            try {
+                feeDSHoanThanhPhiView = loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return feeDSHoanThanhPhiView;
+    }
+    public AnchorPane getDSChuaHoanThanhPhiView() {
+        if(feeDSChuaHoanThanhPhiView == null) {
+            try {
+                feeDSChuaHoanThanhPhiView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeDSChuaHoanThanhPhi.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return feeDSChuaHoanThanhPhiView;
+    }
     /********************************************************************************************/
+    // hộ khẩu
     public AnchorPane getThemHoKhau(){
         if (themHoKhau == null) {
             try {
@@ -338,6 +374,9 @@ public class ViewFactory {
     public void closeStage(Stage stage) {
         stage.close();
     }
+
+
+
 }
 
 

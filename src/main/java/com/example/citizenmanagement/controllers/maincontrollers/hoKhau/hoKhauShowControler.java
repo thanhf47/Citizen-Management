@@ -51,13 +51,14 @@ public class hoKhauShowControler implements Initializable {
 
                             listView.getItems().add(new MainHoKhauCell(id, Owner, add,date_tao, ghi_chu));
                         }
-                        listView.setCellFactory(param-> new MainHoKhauCellFactory());
                     }
                 }catch (Exception e){
                     e.printStackTrace();
                 }
             }// END ELSE
         });
+
+        listView.setCellFactory(param-> new MainHoKhauCellFactory());
         //**************************************************************
 
         listView.setOnMouseClicked(mouseEvent -> {
@@ -77,7 +78,7 @@ public class hoKhauShowControler implements Initializable {
         });
     }
 
-    public void capnhat(){
+    private void capnhat(){
         ResultSet resultSet = Model.getInstance().getDatabaseConnection().getDanhSachHoKhau();
         listView.getItems().clear();
         try {
@@ -94,6 +95,5 @@ public class hoKhauShowControler implements Initializable {
         } catch (Exception e) {
             System.out.println("loi o hokhauShow");
         }
-        listView.setCellFactory(param-> new MainHoKhauCellFactory());
     }
 }

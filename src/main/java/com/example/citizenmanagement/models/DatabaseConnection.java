@@ -1,5 +1,6 @@
 package com.example.citizenmanagement.models;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.scene.control.Dialog;
 
 import java.sql.*;
@@ -23,362 +24,197 @@ public class DatabaseConnection {
             throw new RuntimeException(e);
         }
     }
+    private ResultSet executeQuery(String query) {
+        Statement statement;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+    private void executeUpdate(String query) {
+        Statement statement;
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     /******************************************************************************************/
     // Citizen Manager Section - Phần Đăng Nhập
     public ResultSet getCitizenManagerData(String tenDangNhap, String matKhau) {
 
         String query = "SELECT * FROM NGUOIQUANLY\n" +
                 "WHERE TENDANGNHAP = '" + tenDangNhap + "' AND MATKHAU = '" + matKhau +"'";
-        Statement statement;
-        ResultSet resultSet = null;
-        try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return resultSet;
+        return executeQuery(query);
     }
 
     public ResultSet checkCitizenManagerUsernameExisted(String tenDangNhap) {
         String query = "SELECT * FROM NGUOIQUANLY\n" +
                 "WHERE TENDANGNHAP = '" + tenDangNhap + "'";
-        Statement statement;
-        ResultSet resultSet = null;
-        try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return resultSet;
+        return executeQuery(query);
     }
 
     public ResultSet checkCitizenManagerAccountExisted(String hoTen, String tenDangNhap, String soDienThoai, int vaiTro) {
         String query = "SELECT * FROM NGUOIQUANLY\n" +
                 "WHERE HOTEN = N'" + hoTen + "' AND TENDANGNHAP = '" + tenDangNhap + "' AND SODIENTHOAI = '" + soDienThoai + "' AND VAITRO = '" + vaiTro + "'";
-        Statement statement;
-        ResultSet resultSet = null;
-        try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return resultSet;
+        return executeQuery(query);
     }
     public void updateCitizenManagerAccountPassword(String hoTen, String tenDangNhap, String soDienThoai, int vaiTro, String maKhau) {
         String query = "UPDATE NGUOIQUANLY SET MATKHAU = '" + maKhau + "' \n" +
                 "WHERE HOTEN = N'" + hoTen+ "' AND TENDANGNHAP = '" + tenDangNhap + "' AND SODIENTHOAI = '" + soDienThoai + "' AND VAITRO = '" + vaiTro + "'";
-        Statement statement;
-        try {
-            statement = connection.createStatement();
-            statement.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        executeUpdate(query);
     }
     public void setCitizenManagerData(String hoTen, String tenDangNhap, String matKhau, String soDienThoai, int vaiTro) {
         String query = "INSERT INTO NGUOIQUANLY(HOTEN, TENDANGNHAP, MATKHAU, SODIENTHOAI, VAITRO)\n" +
                         "VALUES (N'" + hoTen + "', '" + tenDangNhap + "', '" + matKhau + "', '" + soDienThoai + "', "+ Integer.toString(vaiTro)+ ")";
 
-        Statement statement;
-        try {
-            statement = connection.createStatement();
-            statement.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        executeUpdate(query);
     }
 
     /**************************************************************************************/
+    // trang chủ - thống kê quản lý dân cư
+    public ResultSet getNumberOfTamTru(int nam){
+        String query = "SELECT COUNT(MAGIAYTAMTRU) FROM TAMTRU " +
+                "WHERE " + nam + " BETWEEN YEAR(TUNGAY) AND YEAR(DENNGAY)";
+        return executeQuery(query);
+    }
+    public ResultSet getNumberOfTamVang(int nam){
+
+        String query = "SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG WHERE " + nam + " BETWEEN YEAR(TUNGAY) AND YEAR(DENNGAY)";
+        return executeQuery(query);
+    }
     public ResultSet getNumberOfNhanhKhau() {
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st = connection.createStatement();
-            rs = st.executeQuery("select count(MANHANKHAU) from NHANKHAU");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rs;
+        String query = "select count(MANHANKHAU) from NHANKHAU";
+        return executeQuery(query);
     }
 
     public ResultSet getNumberOfHoKhau(){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st= connection.createStatement();
-            rs = st.executeQuery("select count(MAHOKHAU) from HOKHAU");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rs;
+        String query = "select count(MAHOKHAU) from HOKHAU";
+        return executeQuery(query);
     }
 
     public ResultSet getNumberOfTamTru(){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st= connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU) FROM TAMTRU WHERE YEAR(TUNGAY) = YEAR(GETDATE()) ");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rs;
+        String query = "SELECT COUNT(MAGIAYTAMTRU) FROM TAMTRU WHERE YEAR(GETDATE()) BETWEEN YEAR(TUNGAY) AND YEAR(DENNGAY) ";
+        return executeQuery(query);
     }
     public ResultSet getNumberOfTamVang(){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st= connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG WHERE YEAR(TUNGAY) = YEAR(GETDATE())");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rs;
+        String query = "SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG WHERE YEAR(GETDATE()) BETWEEN YEAR(TUNGAY) AND YEAR(DENNGAY) ";
+        return executeQuery(query);
     }
 
     public ResultSet getNumberOfNhanKhauNam(){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st= connection.createStatement();
-            rs = st.executeQuery("select count(MANHANKHAU) from NHANKHAU where GIOITINH = 1");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rs;
+        String query = "select count(MANHANKHAU) from NHANKHAU where GIOITINH = 1";
+        return executeQuery(query);
     }
     public ResultSet getNumberOfNhanKhauNu(){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st= connection.createStatement();
-            rs = st.executeQuery("select count(MANHANKHAU) from NHANKHAU where GIOITINH = 0");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rs;
+        String query = "select count(MANHANKHAU) from NHANKHAU where GIOITINH = 0";
+        return executeQuery(query);
     }
 
     public ResultSet getNumberOfNhanKhauDuoi3Tuoi(){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st= connection.createStatement();
-            rs = st.executeQuery("select count(MANHANKHAU) \n" +
-                    "from NHANKHAU\n" +
-                    "where YEAR(GETDATE()) - NAMSINH < 3 AND YEAR(GETDATE()) - NAMSINH >= 0");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rs;
+        String query = "select count(MANHANKHAU) \n" +
+                "from NHANKHAU\n" +
+                "where YEAR(GETDATE()) - NAMSINH < 3 AND YEAR(GETDATE()) - NAMSINH >= 0";
+        return executeQuery(query);
     }
     public ResultSet getNumberOfNhanKhauTu3Den10Tuoi(){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st= connection.createStatement();
-            rs = st.executeQuery("select count(MANHANKHAU) \n" +
-                    "from NHANKHAU\n" +
-                    "where YEAR(GETDATE()) - NAMSINH >= 3 AND YEAR(GETDATE()) - NAMSINH < 10");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rs;
+        String query = "select count(MANHANKHAU) \n" +
+                "from NHANKHAU\n" +
+                "where YEAR(GETDATE()) - NAMSINH >= 3 AND YEAR(GETDATE()) - NAMSINH < 10";
+        return executeQuery(query);
     }
 
     public ResultSet getNumberOfNhanKhauTu10Den18Tuoi(){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st= connection.createStatement();
-            rs = st.executeQuery("select count(MANHANKHAU) \n" +
-                    "from NHANKHAU\n" +
-                    "where YEAR(GETDATE()) - NAMSINH >= 10 AND YEAR(GETDATE()) - NAMSINH < 18");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rs;
+        String query = "select count(MANHANKHAU) \n" +
+                "from NHANKHAU\n" +
+                "where YEAR(GETDATE()) - NAMSINH >= 10 AND YEAR(GETDATE()) - NAMSINH < 18";
+        return executeQuery(query);
     }
 
     public ResultSet getNumberOfNhanKhauTu18Den60Tuoi(){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st= connection.createStatement();
-            rs = st.executeQuery("select count(MANHANKHAU) \n" +
-                    "from NHANKHAU\n" +
-                    "where YEAR(GETDATE()) - NAMSINH >= 18 AND YEAR(GETDATE()) - NAMSINH < 60");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rs;
+        String query = "select count(MANHANKHAU) \n" +
+                "from NHANKHAU\n" +
+                "where YEAR(GETDATE()) - NAMSINH >= 18 AND YEAR(GETDATE()) - NAMSINH < 60";
+        return executeQuery(query);
     }
     public ResultSet getNumberOfNhanKhauTren60Tuoi(){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st= connection.createStatement();
-            rs = st.executeQuery("select count(MANHANKHAU) \n" +
-                    "from NHANKHAU\n" +
-                    "where YEAR(GETDATE()) - NAMSINH >= 60");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rs;
+        String query = "select count(MANHANKHAU) \n" +
+                "from NHANKHAU\n" +
+                "where YEAR(GETDATE()) - NAMSINH >= 60";
+        return executeQuery(query);
     }
     public ResultSet getNamHienTai(){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st= connection.createStatement();
-            rs = st.executeQuery("select YEAR(GETDATE())");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rs;
+        String query = "select YEAR(GETDATE())";
+        return executeQuery(query);
     }
     public ResultSet getHoKhauOfNamHienTai(){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st= connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAHOKHAU)\n" +
-                    "FROM HOKHAU");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rs;
+        String query = "SELECT COUNT(MAHOKHAU)\n" +
+                "FROM HOKHAU";
+        return executeQuery(query);
     }
 
-    public ResultSet getHoKhauOfNam(int r){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st= connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAHOKHAU)\n" +
-                    "FROM HOKHAU\n" +
-                    "WHERE YEAR(NGAYTAO) =" + r);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rs;
+    public ResultSet getHoKhauOfNam(int nam){
+        String query = "SELECT COUNT(MAHOKHAU)\n" +
+                "FROM HOKHAU\n" +
+                "WHERE " + nam + " > YEAR(NGAYTAO)";
+        return executeQuery(query);
     }
 
     public ResultSet getTamTruOfThangVaNam(int thang,int nam){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st = connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU)\n" +
-                    "FROM TAMTRU\n" +
-                    "WHERE MONTH(TUNGAY) =" + thang +"\n" +
-                    "AND YEAR(TUNGAY) =" + nam);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rs;
-
+        String query = "SELECT COUNT(MAGIAYTAMTRU)\n" +
+                "FROM TAMTRU\n" +
+                "WHERE " + thang + " BETWEEN MONTH(TUNGAY) AND MONTH(DENNGAY)" + "\n" +
+                "AND " + nam + " BETWEEN YEAR(TUNGAY) AND YEAR(DENNGAY)";
+        return executeQuery(query);
     }
 
     public ResultSet getTamTruViLyDoHocTap(int nam){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st = connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU)\n" +
-                    "FROM TAMTRU\n" +
-                    "WHERE LYDO LIKE N'%Học tập%' AND YEAR(TUNGAY)= " + nam);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return  rs;
+        String query = "SELECT COUNT(MAGIAYTAMTRU)\n" +
+                "FROM TAMTRU\n" +
+                "WHERE LYDO LIKE N'%Học tập%' AND " + nam + " BETWEEN YEAR(TUNGAY) AND YEAR(DENNGAY)";
+       return executeQuery(query);
     }
     public ResultSet getTamTruViLyDoLamViec(int nam){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st = connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU)\n" +
-                    "FROM TAMTRU\n" +
-                    "WHERE LYDO LIKE N'%Làm việc%' AND YEAR(TUNGAY)=" + nam);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return  rs;
+        String query = "SELECT COUNT(MAGIAYTAMTRU)\n" +
+                "FROM TAMTRU\n" +
+                "WHERE LYDO LIKE N'%Làm việc%' AND " + nam + " BETWEEN YEAR(TUNGAY) AND YEAR(DENNGAY)";
+        return executeQuery(query);
     }
 
     public ResultSet getTamTruViLyDoSucKhoe(int nam){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st = connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMTRU)\n" +
-                    "FROM TAMTRU\n" +
-                    "WHERE LYDO LIKE N'%sức khỏe%' AND YEAR(TUNGAY)=" + nam);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return  rs;
+        String query = "SELECT COUNT(MAGIAYTAMTRU)\n" +
+                "FROM TAMTRU\n" +
+                "WHERE LYDO LIKE N'%sức khỏe%' AND " + nam + " BETWEEN YEAR(TUNGAY) AND YEAR(DENNGAY)";
+        return executeQuery(query);
     }
 
     public ResultSet getTamVangOfThangVaNam(int thang,int nam){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st = connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG)\n" +
-                    "FROM TAMVANG\n" +
-                    "WHERE MONTH(TUNGAY) =" +thang + "\n" +
-                    "AND YEAR(TUNGAY) ="+ nam);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return rs;
+        String query = "SELECT COUNT(MAGIAYTAMVANG)\n" +
+                "FROM TAMVANG\n" +
+                "WHERE " + thang + " BETWEEN MONTH(TUNGAY) AND MONTH(DENNGAY)" + "\n" +
+                "AND " + nam + " BETWEEN YEAR(TUNGAY) AND YEAR(DENNGAY)";
+        return executeQuery(query);
     }
 
     public ResultSet getTamVangViLyDoHocTap(int nam){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st = connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG   WHERE LYDO LIKE N'%Học tập%' AND YEAR(TUNGAY) =" +nam);
+        String query = "SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG WHERE LYDO LIKE N'%Học tập%' AND " + nam + " BETWEEN YEAR(TUNGAY) AND YEAR(DENNGAY)";
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return  rs;
+        return executeQuery(query);
     }
 
     public ResultSet getTamVangViLyDoLamViec(int nam){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st = connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG   WHERE LYDO LIKE N'%Làm việc%' AND YEAR(TUNGAY) =" + nam);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return  rs;
+        String query = "SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG   WHERE LYDO LIKE N'%Làm việc%' AND " + nam + " BETWEEN YEAR(TUNGAY) AND YEAR(DENNGAY)";
+        return executeQuery(query);
     }
 
     public ResultSet getTamVangViLyDoSucKhoe(int nam){
-        Statement st;
-        ResultSet rs = null;
-        try {
-            st = connection.createStatement();
-            rs = st.executeQuery("SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG   WHERE LYDO LIKE N'%sức Khoẻ%' AND YEAR(TUNGAY) =" + nam);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return  rs;
+        String query = "SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG  WHERE LYDO LIKE N'%sức Khoẻ%' AND " + nam + " BETWEEN YEAR(TUNGAY) AND YEAR(DENNGAY)";
+        return executeQuery(query);
     }
 
     /***********************************************************************************/
@@ -447,16 +283,9 @@ public class DatabaseConnection {
         return resultSet;
     }
     public ResultSet truyvan() {
-        ResultSet resultSet = null;
-        String querry = " select SOCANCUOC, HOTEN, GIOITINH, NAMSINH, NOITHUONGTRU from NHANKHAU;";
-        try{
-            Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery(querry);
-        }
-        catch(Exception e) {
 
-        }
-        return resultSet;
+        String query = " select SOCANCUOC, HOTEN, GIOITINH, NAMSINH, NOITHUONGTRU from NHANKHAU;";
+        return executeQuery(query);
     }
     /***********************************************************************************/
     // Hộ khẩu
@@ -486,12 +315,7 @@ public class DatabaseConnection {
     }
     public ResultSet getDanhSachHoKhau(){
         String query = "select * from HOKHAU";
-        ResultSet resultSet=null;
-        try {
-             resultSet = connection.createStatement().executeQuery(query);
-        }catch (Exception e){
-        }
-        return resultSet;
+        return executeQuery(query);
     }
     public ResultSet timKiem(String dieukien){
         ResultSet resultSet=null;
@@ -526,7 +350,6 @@ public class DatabaseConnection {
             preparedStatement.executeUpdate();
             return 1;
         } catch (SQLException e) {
-            System.out.println("loi o capnhat !!!!!!!!!!!!!");
             return 0;
         }
     }
@@ -554,14 +377,7 @@ public class DatabaseConnection {
                 "FROM HOKHAU HK INNER JOIN NHANKHAU NK ON HK.IDCHUHO = NK.MANHANKHAU\n" +
                 "\tINNER JOIN THANHVIENCUAHO TV ON HK.MAHOKHAU = TV.MAHOKHAU\n" +
                 "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI";
-        Statement statement;
-        ResultSet resultSet=null;
-        try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
-        }catch (Exception e){
-        }
-        return resultSet;
+        return executeQuery(query);
     }
 
     public ResultSet danhsachdongphi_timKiem(String condition) {
@@ -572,41 +388,12 @@ public class DatabaseConnection {
                 "\tOR NK.HOTEN LIKE N'%" + condition + "%'\n" +
                 "\tOR DIACHI LIKE N'%" + condition+ "%'\n" +
                 "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI";
-        Statement statement;
-        ResultSet resultSet = null;
-        try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return resultSet;
+        return executeQuery(query);
     }
-
-    public ResultSet getNumberOfTamTru(int nam){
-        ResultSet resultSet = null;
-        String query = "SELECT COUNT(MAGIAYTAMTRU) FROM TAMTRU " +
-                "WHERE " + nam + " BETWEEN (YEAR(TUNGAY), YEAR(DENNGAY))";
-        Statement st;
-        try {
-            st = connection.createStatement();
-            resultSet = st.executeQuery(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return resultSet;
-    }
-
     public void themKhoanThuPhi(String tenKhoanThu, int batBuoc, int soTienCanDong, LocalDate ngayTao, String moTa) {
         String query = "INSERT INTO LOAIPHI(TEN, BATBUOC, SOTIENTRENMOTNGUOI, NGAYTAO, MOTA)\n" +
                 "VALUES (N'" + tenKhoanThu + "', " + batBuoc + ", "+ soTienCanDong + ", '" + ngayTao.toString() + "', N'" + moTa +"')";
-        Statement statement;
-        try {
-            statement = connection.createStatement();
-            statement.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        executeUpdate(query);
     }
     public int layMaKhoanThu(String tenKhoanThu,int batBuoc, int soTienCanDong, LocalDate ngayTao, String moTa) {
         int maKhoanThu = -1;
@@ -632,53 +419,169 @@ public class DatabaseConnection {
     public void themDanhSachThuPhi(int maHoKhau, int maKhoanThu, int soTienCanDong, int trangThai) {
         String query = "INSERT INTO DONGGOP(MAHOKHAU, MAKHOANTHU, SOTIENCANDONG, TRANGTHAI)\n" +
                 "VALUES (" + maHoKhau + ", " + maKhoanThu + ", " + soTienCanDong + ", " + trangThai + ")";
-        Statement statement;
-        try {
-            statement = connection.createStatement();
-            statement.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        executeUpdate(query);
     }
 
     public ResultSet getDanhSachKhoanThu() {
         String query = "SELECT * FROM LOAIPHI";
-        Statement statement;
-        ResultSet resultSet = null;
-        try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return resultSet;
+        return executeQuery(query);
     }
 
-    public ResultSet getNumberOfTamVang(int nam){
-        ResultSet resultSet = null;
-        String query = "SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG WHERE YEAR(TUNGAY) =" + nam;
-        Statement st;
-        try {
-            st = connection.createStatement();
-            resultSet = st.executeQuery(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return resultSet;
+    public ResultSet getKhoanThuPhi(int maKhoanThu) {
+        String query = "SELECT * FROM LOAIPHI\n" +
+                "WHERE MAKHOANTHU LIKE '" + maKhoanThu + "'";
+        return executeQuery(query);
     }
     public ResultSet danhSachKhoanThu_timKiem(String condition) {
         String query = "SELECT * FROM LOAIPHI\n" +
                 "WHERE MAKHOANTHU LIKE '%" + condition + "%' OR TEN LIKE N'%" + condition + "%'";
+        return executeQuery(query);
+    }
+
+    public int getSoLuongHoDaDongPhi(int maKhoanThu) {
+
+        int res = 0;
+
+        String query = "SELECT COUNT(MAHOKHAU) FROM DONGGOP\n" +
+                "WHERE MAKHOANTHU LIKE '" + maKhoanThu + "' AND TRANGTHAI = 1";
         Statement statement;
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         try {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
+            if (resultSet.isBeforeFirst()) {
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return resultSet;
+        return res;
     }
+
+    public int getSoLuongHoChuaDongPhi(int maKhoanThu) {
+
+        int res = 0;
+
+        String query = "SELECT COUNT(MAHOKHAU) FROM DONGGOP\n" +
+                "WHERE MAKHOANTHU LIKE '" + maKhoanThu + "' AND TRANGTHAI = 0";
+        Statement statement;
+        ResultSet resultSet;
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            if (resultSet.isBeforeFirst()) {
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    public int getSoLuongHoDongPhi(int maKhoanThu) {
+
+        int res = 0;
+
+        String query = "SELECT COUNT(MAHOKHAU) FROM DONGGOP\n" +
+                "WHERE MAKHOANTHU = " + maKhoanThu;
+        Statement statement;
+        ResultSet resultSet;
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            if (resultSet.isBeforeFirst()) {
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
+    public void deleteKhoanThuPhi(int maKhoanThu) {
+        String query1 = "DELETE DONGGOP\n" +
+                "WHERE MAKHOANTHU LIKE '" + maKhoanThu + "'";
+        String query2 = "DELETE LOAIPHI\n" +
+                "WHERE MAKHOANTHU LIKE '" + maKhoanThu + "'";
+
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query1);
+            statement.executeUpdate(query2);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ResultSet getDanhSachChuaDongPhi(int maKhoanThu) {
+        String query = "SELECT HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, COUNT(TV.MANHANKHAU)\n" +
+                "FROM DONGGOP INNER JOIN HOKHAU HK ON DONGGOP.MAHOKHAU = HK.MAHOKHAU\n" +
+                "INNER JOIN NHANKHAU NK ON HK.IDCHUHO = NK.MANHANKHAU\n" +
+                "\tINNER JOIN THANHVIENCUAHO TV ON HK.MAHOKHAU = TV.MAHOKHAU\n" +
+                "WHERE DONGGOP.MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 0\n" +
+                "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI";
+        return executeQuery(query);
+    }
+
+    public ResultSet danhSachChuaDongPhi_timKiem(int maKhoanThu, String condition) {
+        String query = "SELECT HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, COUNT(TV.MANHANKHAU)\n" +
+                "FROM DONGGOP INNER JOIN HOKHAU HK ON DONGGOP.MAHOKHAU = HK.MAHOKHAU\n" +
+                "INNER JOIN NHANKHAU NK ON HK.IDCHUHO = NK.MANHANKHAU\n" +
+                "\tINNER JOIN THANHVIENCUAHO TV ON HK.MAHOKHAU = TV.MAHOKHAU\n" +
+                "WHERE DONGGOP.MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 0\n" +
+                "\tAND (HK.MAHOKHAU LIKE '%" + condition + "%' OR NK.HOTEN LIKE '%" + condition + "%' OR HK.DIACHI LIKE '%" + condition + "%')\n" +
+                "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI";
+        return executeQuery(query);
+    }
+
+    public void updateNopPhi(int maHoKhau, int maKhoanThu) {
+        String query = "UPDATE DONGGOP\n" +
+                "SET TRANGTHAI = 1, NGAYDONG = GETDATE()\n" +
+                "WHERE MAHOKHAU = " + maHoKhau + " AND MAKHOANTHU = " + maKhoanThu;
+        executeUpdate(query);
+    }
+    public String getNgayNopPhi(int maHoKhau, int maKhoanThu) {
+        String query = "SELECT NGAYDONG FROM DONGGOP\n" +
+                "WHERE MAHOKHAU = " + maHoKhau + " AND MAKHOANTHU = " + maKhoanThu;
+        String ngayNopPhi = "";
+        ResultSet resultSet = executeQuery(query);
+        try {
+            if (resultSet.isBeforeFirst()) {
+                resultSet.next();
+                ngayNopPhi = resultSet.getString(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return ngayNopPhi;
+    }
+
+    public ResultSet danhSachDaDongPhi_timKiem(int maKhoanThu, String condition) {
+        String query = "SELECT HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, COUNT(TV.MANHANKHAU)\n" +
+                "FROM DONGGOP INNER JOIN HOKHAU HK ON DONGGOP.MAHOKHAU = HK.MAHOKHAU\n" +
+                "INNER JOIN NHANKHAU NK ON HK.IDCHUHO = NK.MANHANKHAU\n" +
+                "\tINNER JOIN THANHVIENCUAHO TV ON HK.MAHOKHAU = TV.MAHOKHAU\n" +
+                "WHERE DONGGOP.MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 1\n" +
+                "\tAND (HK.MAHOKHAU LIKE '%" + condition + "%' OR NK.HOTEN LIKE '%" + condition + "%' OR HK.DIACHI LIKE '%" + condition + "%')\n" +
+                "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI";
+        return executeQuery(query);
+    }
+
+    public ResultSet getDanhSachDaDongPhi(int maKhoanThu) {
+        String query = "SELECT HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, COUNT(TV.MANHANKHAU)\n" +
+                "FROM DONGGOP INNER JOIN HOKHAU HK ON DONGGOP.MAHOKHAU = HK.MAHOKHAU\n" +
+                "INNER JOIN NHANKHAU NK ON HK.IDCHUHO = NK.MANHANKHAU\n" +
+                "\tINNER JOIN THANHVIENCUAHO TV ON HK.MAHOKHAU = TV.MAHOKHAU\n" +
+                "WHERE DONGGOP.MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 1\n" +
+                "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI";
+        return executeQuery(query);
+    }
+    /***************************************************************************/
+
 
 }
 

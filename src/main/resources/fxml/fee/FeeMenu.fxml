@@ -6,47 +6,35 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="180.0" styleClass="slide_ankerpaine" stylesheets="@../../styles/mainmenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.feecontrollers.FeeMenuController">
-   <Pane layoutY="14.0" prefHeight="76.0" prefWidth="175.0" styleClass="inner_paine" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="2.0">
-      <ImageView fitHeight="47.0" fitWidth="41.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+<AnchorPane prefHeight="750.0" prefWidth="180.0" styleClass="slide_ankerpaine" stylesheets="@../../styles/FeeMenu.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.feecontrollers.FeeMenuController">
+   <VBox prefHeight="80.0" prefWidth="160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="-180.0">
          <image>
-            <Image url="@../../images/login_form/accounting.png" />
+            <Image url="@../../images/main/BART_SIMPSON.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="47.0" fitWidth="41.0" layoutX="113.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../images/login_form/list.png" />
-         </image>
-      </ImageView>
-   </Pane>
-   <Line endX="80.89288330078125" endY="7.62939453125E-6" layoutX="89.0" layoutY="130.0" startX="-78.90000915527344" startY="7.62939453125E-6" stroke="WHITE" />
-   <Button fx:id="trang_chu_btn" layoutY="191.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="180.0" styleClass="btn_an" text="Trang Chủ" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-      <font>
-         <Font size="15.0" />
-      </font>
-   </Button>
-   <Button fx:id="them_khoan_thu_btn" layoutY="279.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="180.0" styleClass="btn_an" text="Thêm Khoản Thu">
-      <font>
-         <Font size="15.0" />
-      </font>
-   </Button>
-   <Button fx:id="danh_sach_phi_btn" layoutY="363.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="180.0" styleClass="btn_an" text="Danh Sách Thu Phí">
-      <font>
-         <Font size="15.0" />
-      </font>
-   </Button>
-   <Button fx:id="logout_btn" layoutX="14.0" layoutY="698.0" mnemonicParsing="false" onAction="#onLogoutBtn" prefHeight="42.0" prefWidth="56.0" styleClass="btn_an">
-      <graphic>
-         <FontAwesomeIconView glyphName="SIGN_OUT" size="20" />
-      </graphic>
-   </Button>
-   <Label layoutX="80.0" layoutY="706.0" text="Đăng Xuất" textFill="WHITE">
-      <font>
-         <Font size="16.0" />
-      </font>
-   </Label>
+   </VBox>
+   <VBox prefHeight="400.0" prefWidth="160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
+      <Button fx:id="trang_chu_btn" mnemonicParsing="false" prefHeight="80.0" prefWidth="180.0" styleClass="btn_an" text="Trang Chủ">
+         <font>
+            <Font name="Verdana" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="them_khoan_thu_btn" mnemonicParsing="false" prefHeight="90.0" prefWidth="180.0" styleClass="btn_an" text="Thêm  Khoản Thu" />
+      <Button fx:id="danh_sach_phi_btn" mnemonicParsing="false" prefHeight="90.0" prefWidth="180.0" styleClass="btn_an" text="Danh Sách Khoản Thu" />
+      <Line endX="100.0" />
+   </VBox>
+   <HBox fx:id="dang_xuat_btn" onMouseClicked="#onLogoutBtn" prefHeight="60.0" prefWidth="180.0" styleClass="logoutBtn" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <FontAwesomeIconView glyphName="SIGN_OUT" rotate="180.0" size="36" />
+      <Label text="Đăng Xuất" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </HBox>
 </AnchorPane>

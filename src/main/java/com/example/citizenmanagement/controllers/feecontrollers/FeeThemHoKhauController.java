@@ -46,15 +46,15 @@ public class FeeThemHoKhauController implements Initializable {
     @FXML
     private void onHoanThanhBtn(){
         if (!checkDanhSach()) {
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Message");
+            alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Message");
             alert.setHeaderText(null);
             alert.setContentText("Chưa có thông tin danh sách hộ khẩu cần đóng phí!");
             alert.showAndWait();
         }
         else {
-            alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirmation Message");
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information Message");
             alert.setHeaderText(null);
             alert.setContentText("Tạo khoản phí thành công!");
             alert.showAndWait();
@@ -72,7 +72,12 @@ public class FeeThemHoKhauController implements Initializable {
 
             // add danh sách thu phí
             for (FeeHoKhauCell item : toanBoDanhSach) {
-                Model.getInstance().getDatabaseConnection().themDanhSachThuPhi(item.getMaHoKhau(), maKhoanThu, item.getSoTienCanDong(), 0);
+
+                if (item.getSelected())
+                    Model.getInstance().getDatabaseConnection().themDanhSachThuPhi(
+                            item.getMaHoKhau(), maKhoanThu,
+                            item.getSoTienCanDong(), 0);
+
             }
 
             toanBoDanhSach.clear();

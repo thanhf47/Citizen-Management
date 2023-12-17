@@ -11,8 +11,17 @@ public class FeeHoKhauCell {
     private int soThanhVien;
     private int soTienCanDong;
 
+    private int trangThai = 0; //đã đóng phí hay chưa, khởi tạo là chưa.
     public FeeHoKhauCell(boolean selected, int maHoKhau, String tenChuHo, String diaChi, int soThanhVien, int soTienCanDong) {
         this.selected.setValue(selected);
+        this.maHoKhau = maHoKhau;
+        this.tenChuHo = tenChuHo;
+        this.diaChi = diaChi;
+        this.soThanhVien = soThanhVien;
+        this.soTienCanDong = soTienCanDong;
+    }
+
+    public FeeHoKhauCell(int maHoKhau, String tenChuHo, String diaChi, int soThanhVien, int soTienCanDong){
         this.maHoKhau = maHoKhau;
         this.tenChuHo = tenChuHo;
         this.diaChi = diaChi;
@@ -65,4 +74,13 @@ public class FeeHoKhauCell {
     }
 
     public void setSelected(boolean selected) {this.selected.setValue(selected);}
+
+    public int getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(int trangThai) {
+        this.trangThai = trangThai;
+    }
+
 }

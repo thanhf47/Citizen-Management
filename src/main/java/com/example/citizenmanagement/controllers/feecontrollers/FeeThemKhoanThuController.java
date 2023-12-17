@@ -60,14 +60,14 @@ public class FeeThemKhoanThuController implements Initializable {
 
     private boolean checkThongTin() {
         if (ten_khoan_thu.getText().isEmpty()) {
-            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText(null);
             alert.setContentText("Vui lòng điền đủ thông tin Tên khoản thu!");
             alert.showAndWait();
             return false;
         }
         else if (luaChon == 1 && so_tien_can_dong.getText().isEmpty()) {
-            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText(null);
             alert.setContentText("Vui lòng điền đủ thông tin Số tiền cần đóng trên một người!");
             alert.showAndWait();

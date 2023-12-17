@@ -12,6 +12,8 @@ public class FeeKhoanThuCell {
     private final IntegerProperty soTienCanDong = new SimpleIntegerProperty();
     private final StringProperty ngayTao = new SimpleStringProperty();
 
+    public FeeKhoanThuCell() {
+    }
     public FeeKhoanThuCell(int maKhoanThu, String tenKhoanThu, int batBuoc, int soTienCanDong, String ngayTao) {
         this.maKhoanThu.setValue(maKhoanThu);
         this.tenKhoanThu.setValue(tenKhoanThu);

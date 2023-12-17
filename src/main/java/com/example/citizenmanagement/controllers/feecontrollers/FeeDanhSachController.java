@@ -2,6 +2,7 @@ package com.example.citizenmanagement.controllers.feecontrollers;
 
 import com.example.citizenmanagement.models.FeeHoKhauCell;
 import com.example.citizenmanagement.models.FeeKhoanThuCell;
+import com.example.citizenmanagement.models.FeeMenuOptions;
 import com.example.citizenmanagement.models.Model;
 import com.example.citizenmanagement.views.FeeKhoanThuCellFactory;
 import javafx.collections.ListChangeListener;
@@ -34,8 +35,23 @@ public class FeeDanhSachController implements Initializable {
                 initDanhSach();
             }
         });
-
         listView.setCellFactory(param -> new FeeKhoanThuCellFactory());
+
+        onClick();
+    }
+
+    private void onClick() {
+        listView.setOnMouseClicked(event -> {
+
+            if (event.getClickCount() == 2) { // double-click
+                FeeKhoanThuCell selectedItem = listView.getSelectionModel().getSelectedItem();
+                if (selectedItem != null) {
+                    Model.getInstance().getFeeKhoanThuModel().setMaKhoanThu(selectedItem.getMaKhoanThu());
+                    Model.getInstance().getViewFactory().getFeeSelectedMenuItem().set(FeeMenuOptions.CHI_TIET_KHOAN_THU);
+                }
+            }
+
+        });
     }
 
     private void onSearch() {
