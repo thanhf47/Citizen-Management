@@ -2,6 +2,7 @@ package com.example.citizenmanagement.controllers.maincontrollers.NhankhauContro
 
 import com.example.citizenmanagement.models.MainMenuOptions;
 import com.example.citizenmanagement.models.Model;
+import com.example.citizenmanagement.models.luuTruNhanKhau;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -37,30 +38,43 @@ public class DKTamTru2Controller implements Initializable {
     public TextField hochieu_text;
     public TextField nghenghiep_text;
 
+    int bit;
 
-    private DkTamTruController dkTamTru1Controller;
+    private static luuTruNhanKhau luuTruNhanKhau;
 
 
     private void onThoattamtru2() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.NHAN_KHAU);
     }
 
+    public static void setFormData(luuTruNhanKhau tam) {
+        luuTruNhanKhau = tam;
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        DKTamTru2Controller tamTru2Controller = new DKTamTru2Controller();
 
         thoat_btn_2.setOnAction(actionEvent -> {
             onThoattamtru2();
         });
 
         confirm_btn.setOnAction(actionEvent -> {
-         int thanhcong = Model.getInstance().getDatabaseConnection().addTamtru(dkTamTru1Controller.getHoten_text().getText(), dkTamTru1Controller.getCCCD_text().getText(), Integer.parseInt(dkTamTru1Controller.getNam_sinh_text().getText()) , dkTamTru1Controller.bits() , dkTamTru1Controller.getNguyen_quan_text().getText(), dkTamTru1Controller.getDantoc_text().getText(), dkTamTru1Controller.getDantoc_text().getText(), dkTamTru1Controller.getTongiao_text().getText(), dkTamTru1Controller.getQuoctich_text().getText(), dkTamTru1Controller.getHochieu_text().getText(),dkTamTru1Controller.getThuong_tru_text().getText(),dkTamTru1Controller.getNghenghiep_text().getText(),matamtru_text.getText(),sdt_text.getText(),Date.valueOf(ngayden_text.getValue()),Date.valueOf(ngaydi_text.getValue()),lido_text.getText() );
+            if(luuTruNhanKhau.getGioi_tinh() == "Nam") {
+                 bit = 1;
+            }
+            else bit = 0;
+         int thanhcong = Model.getInstance().getDatabaseConnection().addTamtru(luuTruNhanKhau.getHo_ten(), luuTruNhanKhau.getCCCD(),luuTruNhanKhau.getNam_sinh(), bit, luuTruNhanKhau.getNoi_sinh(),luuTruNhanKhau.getNguyen_quan(), luuTruNhanKhau.getDan_toc(),luuTruNhanKhau.getTon_giao(),luuTruNhanKhau.getQuoc_tich(), luuTruNhanKhau.getSo_ho_chieu(),luuTruNhanKhau.getThuong_tru(),luuTruNhanKhau.getNghe_nghiep(),matamtru_text.getText(),sdt_text.getText(),Date.valueOf(ngayden_text.getValue()),Date.valueOf(ngaydi_text.getValue()),lido_text.getText() );
          // int thanhcong = Model.getInstance().getDatabaseConnectionNhanKhau().addTamtru(hoten_text.getText(), CCCD_text.getText(), Integer.parseInt(nam_sinh_text.getText()), dkTamTru1Controller.bits(), noi_sinh_text.getText(),nguyen_quan_text.getText(), dantoc_text.getText(),tongiao_text.getText(), quoctich_text.getText(), hochieu_text.getText(), thuong_tru_text.getText(),nghenghiep_text.getText(),matamtru_text.getText(),sdt_text.getText(), Date.valueOf(ngayden_text.getValue()), Date.valueOf(ngaydi_text.getValue()), lido_text.getText() );
             if(thanhcong == 0) {
                 System.out.println("Đã thêm không thành công");
             }
         });
 
+    }
+
+    private void setDkTamTru1Controller(DkTamTruController dkTamTru1Controller) {
     }
 
 

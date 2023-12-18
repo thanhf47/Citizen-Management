@@ -1,49 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../../styles/Main/DkTamTru.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.DkTamVangController">
-    <Label layoutX="324.0" layoutY="41.0" styleClass="text_lbl" text="Khai báo tạm vắng" />
-    <VBox layoutX="41.0" layoutY="116.0" prefHeight="490.0" prefWidth="312.0" styleClass="vbx">
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số hộ khẩu " />
-      <TextField />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số CCCD" />
-        <TextField />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên" />
-        <TextField />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính" />
-        <TextField />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh" />
-        <DatePicker prefHeight="36.0" prefWidth="316.0" />
-        <HBox prefHeight="100.0" prefWidth="200.0" styleClass="hbx">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính:    " />
-            <CheckBox mnemonicParsing="false" text="Nam     " />
-            <CheckBox mnemonicParsing="false" text="Nữ       " />
-        </HBox>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thường trú" wrappingWidth="90.63720703125" />
-        <TextField />
-    </VBox>
-    <VBox layoutX="455.0" layoutY="116.0" prefHeight="510.0" prefWidth="312.0" styleClass="vbx">
+    <Label layoutX="293.0" layoutY="46.0" styleClass="text_lbl" text="Khai báo tạm vắng" />
+    <VBox layoutX="185.0" layoutY="120.0" prefHeight="510.0" prefWidth="513.0" styleClass="vbx">
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số giấy tạm vắng" />
-        <TextField />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi tạm trú " />
-        <TextField prefHeight="43.0" prefWidth="292.0" />
+        <TextField fx:id="giay_tam_vang" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu" />
+        <TextField fx:id="ma_nhan_khau" prefHeight="43.0" prefWidth="292.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi tạm trú" />
+      <TextField fx:id="noi_tam_tru" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lý do " />
-      <TextField prefHeight="97.0" prefWidth="292.0" />
+      <TextField fx:id="li_do" prefHeight="97.0" prefWidth="292.0" />
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian tạm vắng: " />
         <Label text="Ngày bắt đầu tạm vắng  " />
-        <DatePicker prefHeight="36.0" prefWidth="316.0" />
+        <DatePicker fx:id="ngay_bat_dau" prefHeight="36.0" prefWidth="316.0" />
         <Label text="Ngày kết thúc tạm vắng" />
-        <DatePicker prefHeight="36.0" prefWidth="316.0" />
+        <DatePicker fx:id="ngay_ket_thuc" prefHeight="36.0" prefWidth="316.0" />
     </VBox>
-    <Button layoutX="445.0" layoutY="664.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_acp" stylesheets="@../../../styles/Main/DkTamTru.css" text="Xác nhận " />
+    <Button layoutX="445.0" layoutY="664.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_acp" stylesheets="@../../../styles/Main/DkTamTru.css" text="Xác nhận " fx:id="xac_nhan_tam_vang" />
     <Button fx:id="thoat_btn" layoutX="266.0" layoutY="664.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_cancel" stylesheets="@../../../styles/Main/DkTamTru.css" text="Thoát" />
 </AnchorPane>

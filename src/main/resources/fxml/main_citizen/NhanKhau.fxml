@@ -5,42 +5,35 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="container" stylesheets="@../../styles/Main/NhanKhau.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.NhanKhauMenuController">
-    <TextField fx:id="tim_kiem_text" layoutX="180.0" layoutY="85.0" prefHeight="35.0" prefWidth="398.0" />
-    <Button fx:id="themmoi_btn" layoutX="682.0" layoutY="157.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="154.0" styleClass="button_add" text="Thêm mới ">
+<AnchorPane prefHeight="715.0" prefWidth="851.0" styleClass="container" stylesheets="@../../styles/Main/NhanKhau.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.NhanKhauMenuController">
+    <TextField fx:id="tim_kiem_text" layoutX="175.0" layoutY="28.0" prefHeight="35.0" prefWidth="398.0" />
+    <Button fx:id="themmoi_btn" layoutX="481.0" layoutY="657.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="154.0" styleClass="button_add" text="Thêm mới ">
       <graphic>
          <FontAwesomeIconView glyphName="PLUS" size="20" />
       </graphic></Button>
-    <Button fx:id="khaitu_button" layoutX="682.0" layoutY="325.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="154.0" styleClass="button_remove" text=" Khai tử">
-      <graphic>
-         <FontAwesomeIconView glyphName="MINUS" size="20" />
-      </graphic></Button>
-    <Button fx:id="tamtru_button" layoutX="682.0" layoutY="215.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="154.0" styleClass="button_tamtru" text="ĐK tạm trú ">
+    <Button fx:id="tamtru_button" layoutX="175.0" layoutY="657.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="154.0" styleClass="button_tamtru" text="ĐK tạm trú ">
       <graphic>
          <FontAwesomeIconView glyphName="BOOK" size="20" />
       </graphic></Button>
-    <Button fx:id="tamvang_button" layoutX="682.0" layoutY="271.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="154.0" styleClass="button_tamvang" text="ĐK tạm vắng">
-      <graphic>
-         <FontAwesomeIconView glyphName="BOOK" size="20" />
-      </graphic></Button>
-   <Label contentDisplay="CENTER" layoutX="51.0" layoutY="87.0" lineSpacing="10.0" text="Tìm Kiếm" textAlignment="CENTER">
+   <Label contentDisplay="CENTER" layoutX="46.0" layoutY="30.0" lineSpacing="10.0" text="Tìm Kiếm" textAlignment="CENTER">
       <font>
          <Font size="22.0" />
       </font>
    </Label>
-   <ImageView fitHeight="190.0" fitWidth="176.0" layoutX="675.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../../images/login_form/NhanKhau/Logo.png" />
-      </image>
-   </ImageView>
- <AnchorPane layoutY="162.0" minHeight="0.0" minWidth="0.0" prefHeight="588.0" prefWidth="655.0">
+ <AnchorPane layoutX="21.0" layoutY="147.0" minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="788.0">
       <children>
-         <ListView fx:id="list_view" layoutX="14.0" prefHeight="556.0" prefWidth="655.0" />
+         <ListView fx:id="list_view" layoutY="7.0" prefHeight="481.0" prefWidth="788.0" />
       </children>
    </AnchorPane>
+   <Text layoutX="175.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="CCCD" />
+   <Text layoutX="301.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Họ Tên " />
+   <Text layoutX="514.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Năm sinh" />
+   <Text layoutX="466.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+   <Text layoutX="642.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Địa chỉ " />
+   <Text layoutX="426.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Giới tính" />
+   <Text layoutX="63.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Mã nhân khẩu" />
 </AnchorPane>

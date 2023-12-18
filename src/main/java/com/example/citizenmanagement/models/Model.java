@@ -1,5 +1,6 @@
 package com.example.citizenmanagement.models;
 
+import com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.ThemMoiController;
 import com.example.citizenmanagement.views.ViewFactory;
 import javafx.beans.Observable;
 import javafx.beans.property.ObjectProperty;
@@ -24,17 +25,33 @@ public class Model {
 
     //ho khau section
     private static MainHoKhauCell hoKhauDuocChon;
+    // nhan khau section
+    private static List_nhan_khau nhanKhauDuocChon;
+
+    private final ObservableList<List_nhan_khau> danhsachnhankhau;
+
+    public static List_nhan_khau getNhanKhauDuocChon() {
+        return nhanKhauDuocChon;
+    }
+
+    public static void setNhanKhauDuocChon(List_nhan_khau nhanKhauDuocChon) {
+        Model.nhanKhauDuocChon = nhanKhauDuocChon;
+    }
 
     //thu phi
     private final FeeKhoanThuModel feeKhoanThuModel;
+
     private final ObservableList<FeeKhoanThuCell> danhSachKhoanThu;
 
+
+
     private Model() {
+//        this.luuTruNhanKhau = new luuTruNhanKhau();
+        this.danhsachnhankhau = FXCollections.observableArrayList();
         this.viewFactory = new ViewFactory();
         this.databaseConnection = new DatabaseConnection();
 
         this.citizenManager = new CitizenManager();
-
         this.feeKhoanThuModel = new FeeKhoanThuModel();
         this.danhSachKhoanThu = FXCollections.observableArrayList();
         initDanhSachKhoanThu();
@@ -42,7 +59,10 @@ public class Model {
         imageObjectProperty = new SimpleObjectProperty<>();
 
         citizenManagerLoginSuccessFlag = false;
+
+
     }
+
 
     public static synchronized Model getInstance() {
         return model;
@@ -427,6 +447,15 @@ public class Model {
     }
 
     /*************************************************************************************************/
+
+    // nhan khau
+//    public static List_nhan_khau getNhanKhauDuocChon() {
+//        return nhanKhauDuocChon;
+//    }
+//
+//    public static void setNhanKhauDuocChon(List_nhan_khau nhanKhauDuocChon) {
+//        Model.nhanKhauDuocChon = nhanKhauDuocChon;
+//    }
     //Thu phí
 
 

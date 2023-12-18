@@ -37,6 +37,7 @@ public class xemChiTietHokhauControler implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tam=Model.getHoKhauDuocChon();
+
         ma_ho_khau.setText(String.valueOf(tam.getId().get()));
         ma_chu_ho.setText(String.valueOf(tam.getOwner().get()));
         dia_chi.setText(String.valueOf(tam.getAddress().get()));

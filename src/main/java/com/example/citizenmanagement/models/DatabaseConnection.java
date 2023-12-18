@@ -1,5 +1,8 @@
 package com.example.citizenmanagement.models;
 
+import javafx.beans.Observable;
+import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Dialog;
 
 import java.sql.*;
@@ -9,12 +12,11 @@ public class DatabaseConnection {
     private Connection connection;
 
     public DatabaseConnection() {
-        String dbName = "QUANLYDANCU";
+//        String dbName = "QUANLYDANCU";
         String dbUser = "sa";
-        String dbPassword = "040703";
+        String dbPassword = "123456789";
 
-        String url = "jdbc:sqlserver://MAIN-CHARACTER\\THANH_NGUYEN:1433;databaseName=" + dbName +
-                ";encrypt=true;integratedSecurity=false;trustServerCertificate=true";
+        String url = "jdbc:sqlserver://LAPTOP-GKSBA9V1\\SQLEXPRESS:1433;databaseName=QUANLYDANCU;encrypt=true;trustServerCertificate=true";
 
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -389,7 +391,7 @@ public class DatabaseConnection {
 
     /***********************************************************************************/
     //Nhân khẩu
-    public int addNhanKhau (String hoTen, String CCCD, String namSinh, int gioiTinh, String noiSinh, String nguyenQuan,String danToc, String tonGiao, String quocTich, String soHoChieu, String noiThuongTru, String ngheNghiep, String ngayTao, String ghiChu ){
+    public int addNhanKhau (String hoTen, String CCCD, String namSinh, int gioiTinh, String noiSinh, String nguyenQuan,String danToc, String tonGiao, String quocTich, String soHoChieu, String noiThuongTru, String ngheNghiep, String ghiChu ){
         int thanhcong = 0;
         String querry = "insert into NHANKHAU (HOTEN, SOCANCUOC, NAMSINH, GIOITINH, NOISINH, NGUYENQUAN, DANTOC, TONGIAO, QUOCTICH, SOHOCHIEU, NOITHUONGTRU, NGHENGHIEP, NGAYTAO, GHICHU )" +
                 " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -401,7 +403,7 @@ public class DatabaseConnection {
             pre.setNString(7,danToc); pre.setNString(8,tonGiao);
             pre.setNString(9,quocTich); pre.setString(10,soHoChieu);
             pre.setNString(11,noiThuongTru); pre.setNString(12,ngheNghiep);
-            pre.setDate(13, Date.valueOf(ngayTao)); pre.setNString(14,ghiChu);
+            pre.setDate(13, Date.valueOf(LocalDate.now().toString())); pre.setNString(14,ghiChu);
             thanhcong = pre.executeUpdate();
         }
         catch(SQLException e) {
@@ -413,8 +415,8 @@ public class DatabaseConnection {
 
     public int addTamtru(String hoTen, String CCCD, int namSinh, int gioiTinh, String noiSinh, String nguyenQuan, String danToc, String tonGiao, String quocTich, String soHoChieu, String noiThuongTru, String ngheNghiep, String maTamTru, String sdt, Date ngayDen, Date ngayDi, String liDo ) {
         int thanhcong = 0;
-        String que = "ínsert to TAMTRU()" +
-                "value (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String que = "insert into TAMTRU(HOTEN, SOCANCUOC, NAMSINH, GIOITINH, NOISINH, NGUYENQUAN, DANTOC, TONGIAO, QUOCTICH, SOHOCHIEU, NOITHUONGTRU, NGHENGHIEP, MAGIAYTAMTRU, SODIENTHOAINGUOIDANGKY, TUNGAY, DENNGAY, LYDO)" +
+                "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try{
             PreparedStatement pre = connection.prepareStatement(que);
             pre.setNString(1,hoTen); pre.setString(2,CCCD);
@@ -434,9 +436,26 @@ public class DatabaseConnection {
 
         return thanhcong;
     }
+
+    // Nhân khâur
+
+    public ResultSet truyvanlistNhanKhau( String socancuoc) {
+        ResultSet resultSet = null;
+        String que = "SELECT HOTEN, SOCANCUOC, NAMSINH, GIOITINH, NOISINH, NGUYENQUAN, DANTOC, TONGIAO, QUOCTICH, SOHOCHIEU, NOITHUONGTRU, NGHENGHIEP, NGAYTAO, GHICHU " +
+                "FROM NHANKHAU WHERE SOCANCUOC LIKE ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(que);
+            preparedStatement.setString(1,  "%" + socancuoc + "%");
+            resultSet = preparedStatement.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
+
     public ResultSet nhanKhau_timkiem(String string) {
         ResultSet resultSet = null;
-        String querry = " select SOCANCUOC, HOTEN, GIOITINH, NAMSINH, NOITHUONGTRU from NHANKHAU where SOCANCUOC like ? or HOTEN like ? or GIOITINH like ? or NAMSINH like ? or NOITHUONGTRU like ?;";
+        String querry = " select MANHANKHAU, SOCANCUOC, HOTEN, GIOITINH, NAMSINH, NOITHUONGTRU from NHANKHAU where MANHANKHAU like ? or SOCANCUOC like ? or HOTEN like ? or GIOITINH like ? or NAMSINH like ? or NOITHUONGTRU like ?;";
         try {
             PreparedStatement preparedstatement = connection.prepareStatement(querry);
             preparedstatement.setString(1, "%" + string + "%");
@@ -444,6 +463,7 @@ public class DatabaseConnection {
             preparedstatement.setString(3, "%" + string + "%");
             preparedstatement.setString(4, "%" + string + "%");
             preparedstatement.setString(5, "%" + string + "%");
+            preparedstatement.setString(6, "%" + string + "%");
             resultSet = preparedstatement.executeQuery();
         }
         catch(Exception e) {
@@ -454,7 +474,7 @@ public class DatabaseConnection {
     }
     public ResultSet truyvan() {
         ResultSet resultSet = null;
-        String querry = " select SOCANCUOC, HOTEN, GIOITINH, NAMSINH, NOITHUONGTRU from NHANKHAU;";
+        String querry = " select MANHANKHAU, SOCANCUOC, HOTEN, GIOITINH, NAMSINH, NOITHUONGTRU from NHANKHAU;";
         try{
             Statement statement = connection.createStatement();
             resultSet = statement.executeQuery(querry);
@@ -658,6 +678,7 @@ public class DatabaseConnection {
         }
         return resultSet;
     }
+
 
 }
 

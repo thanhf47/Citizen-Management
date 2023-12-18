@@ -45,6 +45,8 @@ public class ViewFactory {
 
     private AnchorPane tamVang2View;
 
+    private AnchorPane xemChiTietNhanKhau;
+
     // Fee Views
     private final ObjectProperty<FeeMenuOptions> feeSelectedMenuItem;
     private AnchorPane feeTrangChuView;
@@ -87,14 +89,27 @@ public class ViewFactory {
     }
 
     public AnchorPane getNhanKhauView() {
-        if (nhanKhauView == null) {
+//        if (nhanKhauView == null) {
             try {
                 nhanKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/NhanKhau.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
+//        }
         return nhanKhauView;
+    }
+
+
+    public AnchorPane getXemChiTietNhanKhau() {
+
+            try {
+                xemChiTietNhanKhau = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau/NhanKhauShow.fxml")).load();
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        return xemChiTietNhanKhau;
     }
     /********************************************************************************************/
     // thong ke phan trang chu
