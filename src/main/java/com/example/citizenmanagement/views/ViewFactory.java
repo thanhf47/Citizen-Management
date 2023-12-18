@@ -201,26 +201,21 @@ public class ViewFactory {
 
     /********************************************************************************************/
     public AnchorPane getThemHoKhau(){
-        if (themHoKhau == null) {
             try {
                 themHoKhau = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/themMoiHoKhau.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-        }
         return themHoKhau;
     }
 
     public AnchorPane getTachHoKhau(){
-        if (tachHoKhau == null) {
             try {
                 tachHoKhau = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/tachHoKhau.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
-        return tachHoKhau;
+            return tachHoKhau;
     }
     public AnchorPane getXemChiTietHoKhau(){
             try {

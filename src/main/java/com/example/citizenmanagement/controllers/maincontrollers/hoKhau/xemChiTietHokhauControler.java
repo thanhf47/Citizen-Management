@@ -6,6 +6,7 @@ import com.example.citizenmanagement.models.MainHoKhauCell;
 import com.example.citizenmanagement.models.thanh_vien_cua_ho_cell;
 import com.example.citizenmanagement.views.MainHoKhauCellFactory;
 import com.example.citizenmanagement.views.thanh_vien_cua_ho_cell_factory;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
@@ -50,7 +51,10 @@ public class xemChiTietHokhauControler implements Initializable {
             System.out.println(" loi o cap nhap ten nhan khau");
             e.printStackTrace();
         }
-        //********************************************************
+
+
+
+
         chuyen_di_but.setOnAction(event -> {
             thaydoi_but.setVisible(false);
             quay_lai_but.setVisible(false);
@@ -59,9 +63,13 @@ public class xemChiTietHokhauControler implements Initializable {
             cancel_but.setVisible(true);
         });
 
+
+
         thaydoi_but.setOnAction(event -> {
             Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.THAY_DOI_HO_KHAU);
         });
+
+
 
         xac_nhan_but.setOnAction(event -> {
 
@@ -70,21 +78,14 @@ public class xemChiTietHokhauControler implements Initializable {
 
             cancel_but.setVisible(false);
             xac_nhan_but.setVisible(false);
-            int ketqua=0;
-            ketqua=Model.getInstance().getDatabaseConnection().xoaHoKhau(String.valueOf(tam.getId().get()));
-            if(ketqua==1)
-            {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Xoa thanh cong!");
-                alert.setHeaderText(null);
-                alert.showAndWait();
+
+
+            ObservableList<thanh_vien_cua_ho_cell> danh_sach = listView_thanhvien.getItems();
+            for(int i=0;i<danh_sach.size();i++){
+                thanh_vien_cua_ho_cell tam = danh_sach.get(i);
+                Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(tam.getCccd());
             }
-            else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Xoa khong thanh cong!\n Ban phai xoa cac thanh vien cua ho truoc");
-                alert.setHeaderText(null);
-                alert.showAndWait();
-            }
+            Model.getInstance().getDatabaseConnection().xoaHoKhau(tam.getId().get());
         });
 
         cancel_but.setOnAction(event -> {

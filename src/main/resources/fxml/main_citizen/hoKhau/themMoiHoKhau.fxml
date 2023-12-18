@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -13,39 +14,51 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.hoKhau.themMoiHoKhauControler">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.hoKhau.themMoiHoKhauControler">
     <Text fill="#458149" layoutX="284.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thêm Mới Hộ Khẩu">
       <font>
          <Font size="33.0" />
       </font></Text>
-    <Button layoutX="692.0" layoutY="586.0" mnemonicParsing="false" prefHeight="35.0" style="-fx-background-color: #208f1a;" text="Xác nhận" textFill="#faf6f6" fx:id="xac_nhan_but">
+    <Button layoutX="668.0" layoutY="539.0" mnemonicParsing="false" prefHeight="35.0" style="-fx-background-color: #208f1a;" text="Xác nhận" textFill="#faf6f6" fx:id="xac_nhan_but">
         <graphic>
           <FontAwesomeIconView fill="#efeaea" glyphName="PLUS" size="20" />
         </graphic>
+      <font>
+         <Font size="16.0" />
+      </font>
     </Button>
-   <Button fx:id="cancel_but" layoutX="691.0" layoutY="648.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #bbba12;" text="Cancel" textFill="#eae0e0">
+   <Button fx:id="cancel_but" layoutX="667.0" layoutY="611.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #bbba12;" text="Cancel" textFill="#eae0e0">
       <graphic>
          <FontAwesomeIconView fill="#fcf7f7" glyphName="TIMES" size="20" />
       </graphic>
+      <font>
+         <Font size="16.0" />
+      </font>
    </Button>
-   <ListView fx:id="listView_to_chon" layoutX="14.0" layoutY="127.0" prefHeight="250.0" prefWidth="581.0" AnchorPane.leftAnchor="14.0" />
-   <ListView fx:id="listView_to_them" layoutX="14.0" layoutY="461.0" prefHeight="250.0" prefWidth="582.0" AnchorPane.rightAnchor="255.0" />
-   <Button fx:id="chuyen_sang" layoutX="69.0" layoutY="390.0" maxHeight="60.0" maxWidth="40.0" minHeight="60.0" minWidth="40.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="40.0" textFill="#f2eded" AnchorPane.bottomAnchor="300.0">
+   <ListView fx:id="listView_to_chon" layoutX="14.0" layoutY="127.0" prefHeight="250.0" prefWidth="581.0" stylesheets="@../../../styles/Main/hoKhau/listView.css" AnchorPane.leftAnchor="14.0">
+      <styleClass>
+         <String fx:value="list-view" />
+         <String fx:value="list-cell" />
+      </styleClass></ListView>
+   <ListView fx:id="listView_to_them" layoutX="14.0" layoutY="461.0" prefHeight="250.0" prefWidth="582.0" stylesheets="@../../../styles/Main/hoKhau/listView.css" AnchorPane.rightAnchor="255.0">
+      <styleClass>
+         <String fx:value="list-cell" />
+         <String fx:value="list-view" />
+      </styleClass></ListView>
+   <Button fx:id="chuyen_lai" layoutX="32.0" layoutY="390.0" maxHeight="60.0" maxWidth="40.0" minHeight="60.0" minWidth="40.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="40.0" textFill="#f2eded" AnchorPane.bottomAnchor="300.0">
       <graphic>
           <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../../../images/main/mui_ten_chuyen_len.png" />
-            </image></ImageView>
+              <Image url="@../../../images/main/mui_ten_chuyen_len.png" />
+          </ImageView>
       </graphic>
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor></Button>
-   <Button fx:id="chuyen_lai" layoutX="473.0" layoutY="386.0" maxHeight="60.0" minHeight="60.0" minWidth="40.0" mnemonicParsing="false" prefWidth="26.0" textFill="#e7dbdb" AnchorPane.bottomAnchor="300.0">
+   <Button fx:id="chuyen_sang" layoutX="532.0" layoutY="390.0" maxHeight="60.0" minHeight="60.0" minWidth="40.0" mnemonicParsing="false" prefWidth="26.0" textFill="#e7dbdb" AnchorPane.bottomAnchor="300.0">
       <graphic>
           <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../../../images/main/mui_ten_chuyen_xuong.png" />
-            </image></ImageView>
+              <Image url="@../../../images/main/mui_ten_chuyen_xuong.png" />
+          </ImageView>
       </graphic>
       <cursor>
          <Cursor fx:constant="HAND" />
@@ -54,56 +67,55 @@
       <font>
          <Font size="19.0" />
       </font></TextField>
-   <Text fill="#716bb0" layoutX="157.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thêm những nhân khẩu mới:">
+   <Text fill="#716bb0" layoutX="94.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Những nhân khẩu mới">
       <font>
          <Font size="20.0" />
       </font></Text>
-   <Label fx:id="error_lbl" layoutX="14.0" layoutY="718.0" text="thong bao loi" textFill="#bc1d1d">
+    <VBox layoutX="617.0" layoutY="95.0" prefHeight="432.0" prefWidth="209.0" spacing="10.0">
+        <Label text="ID Chủ hộ:">
+          <font>
+              <Font size="20.0" />
+          </font>
+        </Label>
+        <TextField fx:id="id_chu_ho_text" prefHeight="35.0">
+          <font>
+              <Font size="16.0" />
+          </font>
+        </TextField>
+        <Label text="Địa chỉ:">
+          <font>
+              <Font size="20.0" />
+          </font>
+        </Label>
+        <TextField fx:id="add_text" prefHeight="35.0">
+          <font>
+              <Font size="16.0" />
+          </font>
+        </TextField>
+        <Label text="Ngày thêm:">
+          <font>
+              <Font size="20.0" />
+          </font>
+        </Label>
+        <TextField fx:id="date_them_text" prefHeight="35.0">
+          <font>
+              <Font size="16.0" />
+          </font>
+        </TextField>
+        <Label text="Ghi chú:">
+           <font>
+               <Font size="20.0" />
+           </font>
+        </Label>
+        <TextField fx:id="ghi_chu_text" prefHeight="35.0">
+           <font>
+               <Font size="16.0" />
+           </font>
+        </TextField>
+    </VBox>
+   <TextField fx:id="quan_he_textField" layoutX="305.0" layoutY="413.0" promptText="Có quan hệ với chủ hộ">
       <font>
-         <Font size="14.0" />
-      </font></Label>
-   <VBox layoutX="617.0" layoutY="95.0" prefHeight="432.0" prefWidth="209.0" spacing="10.0">
-      <children>
-          <Label text="ID Chủ hộ:">
-            <font>
-               <Font size="20.0" />
-            </font>
-         </Label>
-          <TextField fx:id="id_chu_ho_text" prefHeight="35.0">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </TextField>
-          <Label text="Địa chỉ:">
-            <font>
-               <Font size="20.0" />
-            </font>
-         </Label>
-          <TextField fx:id="add_text" prefHeight="35.0">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </TextField>
-          <Label text="Ngày thêm:">
-            <font>
-               <Font size="20.0" />
-            </font>
-         </Label>
-          <TextField fx:id="date_them_text" prefHeight="35.0">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </TextField>
-         <Label text="Ghi chú:">
-            <font>
-               <Font size="20.0" />
-            </font>
-         </Label>
-         <TextField fx:id="ghi_chu_text" prefHeight="35.0">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </TextField>
-      </children>
-   </VBox>
+         <Font size="16.0" />
+      </font>
+   </TextField>
 </AnchorPane>

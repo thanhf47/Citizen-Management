@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -15,8 +16,16 @@
          <Font size="25.0" />
       </font>
    </Text>
-   <ListView fx:id="listView_nhan_khau" layoutX="23.0" layoutY="135.0" prefHeight="200.0" prefWidth="566.0" />
-   <ListView fx:id="listView_thanh_vien" layoutX="23.0" layoutY="470.0" prefHeight="200.0" prefWidth="566.0" />
+   <ListView fx:id="listView_nhan_khau" layoutX="23.0" layoutY="135.0" prefHeight="200.0" prefWidth="566.0" stylesheets="@../../../styles/Main/hoKhau/listView.css">
+      <styleClass>
+         <String fx:value="list-view" />
+         <String fx:value="list-cell" />
+      </styleClass></ListView>
+   <ListView fx:id="listView_thanh_vien" layoutX="23.0" layoutY="470.0" prefHeight="200.0" prefWidth="566.0" stylesheets="@../../../styles/Main/hoKhau/listView.css">
+      <styleClass>
+         <String fx:value="list-view" />
+         <String fx:value="list-cell" />
+      </styleClass></ListView>
    <VBox layoutX="637.0" layoutY="135.0" prefHeight="373.0" prefWidth="187.0" spacing="10.0">
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thay đổi mã chủ hộ">
          <font>

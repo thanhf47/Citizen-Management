@@ -5,18 +5,39 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class thanh_vien_cua_ho_cell {
+    private String maNhanKhau;
     private final StringProperty cccd;
     private final StringProperty ho_ten;
     private final StringProperty quan_he;
     private final StringProperty ngay_sinh;
     private final StringProperty gioi_tinh;
+    private Boolean check_box;
 
     public thanh_vien_cua_ho_cell(String cancuoc, String hoten, String quanhe, String ngaysinh, String gioitinh){
+        maNhanKhau = "";
         cccd = new SimpleStringProperty(this,"id",cancuoc);
         ho_ten = new SimpleStringProperty(this,"owner",hoten);
         quan_he = new SimpleStringProperty(this,"address",quanhe);
         ngay_sinh = new SimpleStringProperty(this,"date_tao",ngaysinh);
         gioi_tinh = new SimpleStringProperty(this,"ghi_chu",gioitinh);
+        check_box=false;
+    }
+
+    public thanh_vien_cua_ho_cell(String maNhanKhau, String cancuoc, String hoten, String quanhe, String ngaysinh, String gioitinh){
+        this.maNhanKhau = maNhanKhau;
+        cccd = new SimpleStringProperty(this,"id",cancuoc);
+        ho_ten = new SimpleStringProperty(this,"owner",hoten);
+        quan_he = new SimpleStringProperty(this,"address",quanhe);
+        ngay_sinh = new SimpleStringProperty(this,"date_tao",ngaysinh);
+        gioi_tinh = new SimpleStringProperty(this,"ghi_chu",gioitinh);
+        check_box=false;
+    }
+    public Boolean getCheck_box() {
+        return check_box;
+    }
+
+    public void setCheck_box(Boolean check_box) {
+        this.check_box = check_box;
     }
 
     public String getCccd() {
@@ -77,5 +98,9 @@ public class thanh_vien_cua_ho_cell {
 
     public void setGioi_tinh(String gioi_tinh) {
         this.gioi_tinh.set(gioi_tinh);
+    }
+
+    public String getmaNhanKhau() {
+        return maNhanKhau;
     }
 }

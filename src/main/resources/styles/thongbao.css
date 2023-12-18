@@ -1,0 +1,42 @@
+.alert {
+    -fx-background-color: #f2f2f2;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 1);
+}
+
+.dialog-pane {
+    -fx-background-color: #ffffff;
+}
+
+.header-panel {
+    -fx-background-color: #f2f2f2;
+}
+
+.header-text {
+    -fx-font-size: 2.6em;
+    -fx-text-fill: #aa0000;
+}
+
+.content-panel {
+    -fx-padding: 10px;
+}
+.content-text {
+    -fx-font-size: 1.6em;
+    -fx-text-fill: #ffffff;
+}
+.button-bar {
+    -fx-background-color: #f2f2f2;
+}
+
+.button-bar .button {
+    -fx-background-color: #d3d3d3;
+    -fx-text-fill: #000000;
+}
+
+.button-bar .button:hover {
+    -fx-background-color: #a9a9a9;
+   -fx-cursor: hand;
+}
+
+.button-bar .button:pressed {
+    -fx-background-color: #808080;
+}

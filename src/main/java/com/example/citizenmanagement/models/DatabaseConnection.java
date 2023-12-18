@@ -468,14 +468,17 @@ public class DatabaseConnection {
     // Hộ khẩu*************************************************************
 
     public int addHoKhau(String ma_ch, String ngaythem, String diachi, String ghichu){
-        if(!ma_ch.isEmpty() && !diachi.isEmpty() && !ngaythem.isEmpty()) {
+        if(!ma_ch.isEmpty() && !diachi.isEmpty()) {
             String query = "insert into HOKHAU (IDCHUHO, DIACHI, NGAYTAO, GHICHU) VALUES (?, ?, ?, ?)";
             try {
                 PreparedStatement statement = connection.prepareStatement(query);
 
                 statement.setString(1, ma_ch);
                 statement.setString(2, diachi);
-                statement.setString(3, ngaythem);
+                if(ngaythem.isEmpty())
+                    statement.setString(3,null);
+                else
+                    statement.setString(3, ngaythem);
                 if(ghichu.isEmpty())
                     statement.setString(4,null);
                 else
@@ -516,6 +519,18 @@ public class DatabaseConnection {
         }
         return resultSet;
     }
+    public ResultSet lay_ho_khau(String ma_chu_ho){
+        String query = "select * from HOKHAU WHERE IDCHUHO="+ma_chu_ho;
+        ResultSet resultSet=null;
+        try{
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            return resultSet;
+        }catch (Exception e){
+            System.out.println("loi o lay_ho_khau");
+            return resultSet;
+        }
+    }
     public int capNhatHoKhau(String idHoKhau, String maChuHo, String diaChi, String ngaTao, String ghiChu){
         ResultSet resultSet=null;
         try {
@@ -523,7 +538,10 @@ public class DatabaseConnection {
             PreparedStatement preparedStatement = connection.prepareStatement(capnhat);
             preparedStatement.setString(1,maChuHo);
             preparedStatement.setString(2,diaChi);
-            preparedStatement.setString(3,ngaTao);
+            if(ngaTao.isEmpty()||ngaTao.equals("null"))
+                preparedStatement.setString(3,null);
+            else
+                preparedStatement.setString(3,ngaTao);
             if(ghiChu.isEmpty())
                 preparedStatement.setString(4,null);
             else
