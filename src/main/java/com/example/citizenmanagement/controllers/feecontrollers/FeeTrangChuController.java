@@ -17,11 +17,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class FeeTrangChuController implements Initializable {
-    public Label tongsotiendathuvesinh_lab;
-    public Label sotientren1nguoi_lab;
-    public Label tongsotiendathuphikhac_lab;
-    public Label soloaiphikhac_lab;
 
+
+    public Label tongSoHoKhau;
+    public Label tongSoNhanKhau;
+    public Label tongSoTienDaThu;
+    public Label tongSoLoaiPhi;
     @FXML
     private Circle profile_thuphi;
     @FXML
@@ -31,10 +32,7 @@ public class FeeTrangChuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        sotientren1nguoi_lab.setText(Integer.toString(Model.getInstance().getSoTienPhiVeSinhTren1Nguoi()) + " VND");
-        tongsotiendathuvesinh_lab.setText(Integer.toString(Model.getInstance().getTongSoTienDaThuPhiVeSinh()) + " VND");
-        tongsotiendathuphikhac_lab.setText(Integer.toString(Model.getInstance().getTongSoTienDaThuPhiKhac()) + " VND");
-        soloaiphikhac_lab.setText(Integer.toString(Model.getInstance().getNumberOfCacLoaiPhiKhac()));
+
         displayName();
 
         Model.getInstance().getImageObjectProperty().addListener((observable, oldValue, newValue) -> {
@@ -47,6 +45,13 @@ public class FeeTrangChuController implements Initializable {
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
+        //----------------------------------------------------//
+        // hien thi cac thong so tren bang tom tat
+
+        tongSoLoaiPhi.setText(Integer.toString(Model.getInstance().getNumberOfCacLoaiPhi()));
+        tongSoTienDaThu.setText(Integer.toString(Model.getInstance().getTongSoTienDaThuPhi()) + " VND");
+        tongSoNhanKhau.setText(Integer.toString(Model.getInstance().getNumberOfNhanKhau()));
+        tongSoHoKhau.setText(Integer.toString(Model.getInstance().getNumberOfHoKhau()));
 
 
     }
@@ -58,14 +63,11 @@ public class FeeTrangChuController implements Initializable {
             name_thuphi.setText(parts[parts.length - 1]);
         }
     }
-
-    @FXML
-    public void click_phivesinh(MouseEvent event) {
-        Model.getInstance().getViewFactory().getFeeSelectedMenuItem().set(FeeMenuOptions.THONG_KE_THU_PHI_VE_SINH);
-    }
-
-
     public void onProFile_Fee(MouseEvent mouseEvent) {
-        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.PROFILE);
+        Model.getInstance().getViewFactory().getFeeSelectedMenuItem().set(FeeMenuOptions.FEE_PROFILE);
     }
+
+
+
+
 }

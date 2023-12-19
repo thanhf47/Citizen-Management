@@ -64,6 +64,36 @@
     -fx-scale-y: 1.05;
 }
 
+.text_field {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #000000;
+    -fx-border-color: #353A56;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
 
+.text_field:hover {
+    -fx-background-color: #F0F0F0;
+}
+
+.text_field:focused {
+    -fx-background-color: #E0E0E0;
+    -fx-border-color: #0066FF;
+}
+
+.pane_sokhoanphi{
+    -fx-background-color: #88F7F6;
+}
+.pane_sotien{
+    -fx-background-color: #F3F8AD;
+}
+
+.pane_sonhankhau{
+    -fx-background-color: #7EA4F0;
+}
+
+.pane_sohokhau{
+    -fx-background-color: #C1EBC4;
+}
 
 

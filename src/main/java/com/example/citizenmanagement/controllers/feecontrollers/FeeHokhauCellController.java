@@ -44,6 +44,7 @@ public class FeeHokhauCellController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         checkbox.setSelected(feeHoKhauCell.getSelected());
+        checkbox.setDisable(true);
         ma_ho_khau.setText(String.valueOf(feeHoKhauCell.getMaHoKhau()));
         ten_chu_ho.setText(feeHoKhauCell.getTenChuHo());
         dia_chi.setText(feeHoKhauCell.getDiaChi());

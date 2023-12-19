@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.TrangChuTamVangController">
+   <children>
+      <ListView fx:id="listview_tamvang" layoutX="15.0" layoutY="157.0" prefHeight="530.0" prefWidth="820.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.400000000000091" />
+      <Label layoutX="271.0" layoutY="35.0" text="Danh Sách Tạm Vắng">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="14.0" layoutY="106.0" prefHeight="52.0" prefWidth="820.0">
+         <children>
+            <Label layoutX="130.0" layoutY="19.0" prefHeight="22.0" prefWidth="135.0" text="Mã giấy tạm vắng">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="279.0" layoutY="19.0" prefHeight="22.0" prefWidth="118.0" text="Mã nhân khẩu">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="410.0" layoutY="18.0" prefHeight="22.0" prefWidth="150.0" text="Nơi tạm trú">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="591.0" layoutY="19.0" prefHeight="22.0" prefWidth="67.0" text="Từ ngày">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="724.0" layoutY="19.0" text="Đến ngày">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="19.0" prefHeight="22.0" prefWidth="74.0" text="Họ và tên">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

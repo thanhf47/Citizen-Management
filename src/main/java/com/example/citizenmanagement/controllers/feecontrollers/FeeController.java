@@ -20,6 +20,8 @@ public class FeeController implements Initializable {
                 case DANH_SACH_KHOAN_THU -> fee_parent.setCenter(Model.getInstance().getViewFactory().getFeeDanhSachView());
                 case DANH_SACH_HO_KHAU_CAN_THU_PHI -> fee_parent.setCenter(Model.getInstance().getViewFactory().getFeeThemHoKhauView());
                 case THONG_KE_THU_PHI_VE_SINH -> fee_parent.setCenter(Model.getInstance().getViewFactory().getFeeThongKeThuPhiVeSinhView());
+                case THONG_KE_THU_PHI_KHAC -> fee_parent.setCenter(Model.getInstance().getViewFactory().getFeeThongKeThuPhiKhacView());
+                case FEE_PROFILE -> fee_parent.setCenter(Model.getInstance().getViewFactory().getFeeProfileView());
                 default -> fee_parent.setCenter(Model.getInstance().getViewFactory().getFeeTrangChuView());
             }
         });

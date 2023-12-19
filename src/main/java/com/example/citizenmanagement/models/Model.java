@@ -18,12 +18,15 @@ public class Model {
     private boolean citizenManagerLoginSuccessFlag;
     private ObjectProperty<Image> imageObjectProperty;
     // nhan khau
+    private static MainTamVangCell nhanKhauTamVangDuocChon;
 
     //ho khau section
     private static MainHoKhauCell hoKhauDuocChon;
 
     //thu phi
     private final FeeKhoanThuModel feeKhoanThuModel;
+
+
 
     private Model() {
         this.viewFactory = new ViewFactory();
@@ -436,6 +439,40 @@ public class Model {
         return res;
     }
 
+    public boolean KiemTraXemMaNhanKhauDaTonTaiTrongTamVang(int manhankhau){
+        ResultSet resultSet = databaseConnection.KiemTraXemMaNhanKhauDaTonTaiTrongTamVang(manhankhau);
+        int res = 0;
+        boolean kiemtra = false;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+                if(res > 0) kiemtra = true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return kiemtra;
+    }
+
+    public boolean KiemTraMaNhanKhauCoTonTaiHayKhong(int manhankhau){
+        ResultSet resultSet = databaseConnection.KiemTraMaNhanKhauCoTonTaiHayKhong(manhankhau);
+        int res = 0;
+        boolean tontai = false;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+                if(res > 0) tontai = true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return tontai;
+    }
+
+
+
     // ho khau
 
     public static MainHoKhauCell getHoKhauDuocChon() {
@@ -444,6 +481,15 @@ public class Model {
 
     public static void setHoKhauDuocChon(MainHoKhauCell hoKhauDuocChon) {
         Model.hoKhauDuocChon = hoKhauDuocChon;
+    }
+    // lam cai hien thi nhankhautamvang
+
+    public static MainTamVangCell getNhanKhauTamVangDuocChon(){
+        return nhanKhauTamVangDuocChon;
+    }
+
+    public static void setNhanKhauTamVangDuocChon(MainTamVangCell nhanKhauTamVangDuocChon){
+        Model.nhanKhauTamVangDuocChon = nhanKhauTamVangDuocChon;
     }
 
 
@@ -457,9 +503,10 @@ public class Model {
         return feeKhoanThuModel;
     }
 
-    public int getSoTienPhiVeSinhTren1Nguoi(){
+
+    public int getTongSoTienDaThuPhi(){
         int res = 0;
-        ResultSet resultSet = databaseConnection.getSoTienPhiVeSinhTren1Nguoi();
+        ResultSet resultSet = databaseConnection.getTongSoTienDaThuPhi();
         try {
             if(resultSet.isBeforeFirst()){
                 resultSet.next();
@@ -468,47 +515,20 @@ public class Model {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return  res;
+        return res;
+    }
+    public int getNumberOfCacLoaiPhi(){
+        int res = 0;
+        ResultSet resultSet = databaseConnection.getNumberOfCacLoaiPhi();
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
     }
 
-    public int getTongSoTienDaThuPhiVeSinh(){
-        int res = 0;
-        ResultSet resultSet = databaseConnection.getTongSoTienDaThuPhiVeSinh();
-        try {
-            if(resultSet.isBeforeFirst()){
-                resultSet.next();
-                res = resultSet.getInt(1);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return res;
-    }
-
-    public int getTongSoTienDaThuPhiKhac(){
-        int res = 0;
-        ResultSet resultSet = databaseConnection.getTongSoTienDaThuPhiKhac();
-        try {
-            if(resultSet.isBeforeFirst()){
-                resultSet.next();
-                res = resultSet.getInt(1);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return res;
-    }
-    public int getNumberOfCacLoaiPhiKhac(){
-        int res = 0;
-        ResultSet resultSet = databaseConnection.getNumberOfCacLoaiPhiKhac();
-        try {
-            if(resultSet.isBeforeFirst()){
-                resultSet.next();
-                res = resultSet.getInt(1);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return res;
-    }
 }

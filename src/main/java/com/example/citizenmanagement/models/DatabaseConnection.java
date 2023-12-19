@@ -450,6 +450,31 @@ public class DatabaseConnection {
         }
     }
 
+    public boolean dangKiTamVang(int maNhanKhau,String tuNgay, String denNgay,String lyDo, String noiTamTru){
+        ResultSet resultSet = null;
+        String dangkitamvang = "EXEC INSERT_TAM_VANG ?, ?, ?, ?,?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(dangkitamvang);
+            preparedStatement.setInt(1,maNhanKhau);
+
+            preparedStatement.setString(2,tuNgay);
+
+            preparedStatement.setString(3,denNgay);
+
+            preparedStatement.setString(4,lyDo);
+
+            if(noiTamTru.isEmpty())
+                preparedStatement.setString(5,null);
+            else
+                preparedStatement.setString(5,noiTamTru);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("loi o dang ki tam vang");
+            return false;
+        }
+    }
+
 
     public ResultSet getNumberOfTamTru(int nam) {
         ResultSet resultSet = null;
@@ -458,6 +483,68 @@ public class DatabaseConnection {
         try {
             st = connection.createStatement();
             resultSet = st.executeQuery(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
+    public ResultSet getDanhSachTamVang() {
+        ResultSet resultSet = null;
+        String query= "SELECT * FROM TAMVANG TV , NHANKHAU NK WHERE TV.MANHANKHAU = NK.MANHANKHAU";
+        Statement statement;
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+
+    }
+
+    public ResultSet timKiemTamVang(String timkiem){
+        ResultSet resultSet = null;
+        String query = "WHERE MAGIAYTAMVANG LIKE ? OR MANHANKHAU LIKE ? OR NOITAMTRU LIKE ? OR TUNGAY = ? OR DENNGAY = ? OR LYDO LIKE ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1,"%" + timkiem + "%" );
+            statement.setString(2,"%" + timkiem + "%" );
+            statement.setString(3,"%" + timkiem + "%");
+            statement.setString(4,"%" + timkiem + "%");
+            statement.setString(5,"%" + timkiem + "%");
+            statement.setString(6,"%" + timkiem + "%");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+
+    }
+
+    public ResultSet KiemTraXemMaNhanKhauDaTonTaiTrongTamVang(int manhankhau){
+
+        ResultSet resultSet = null;
+        String query = "SELECT COUNT(MANHANKHAU) FROM TAMVANG WHERE MANHANKHAU =" + manhankhau;
+
+        try {
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+
+    }
+
+    public ResultSet KiemTraMaNhanKhauCoTonTaiHayKhong(int manhankhau){
+        ResultSet resultSet = null;
+        String query = "SELECT COUNT(MANHANKHAU) FROM NHANKHAU WHERE MANHANKHAU =" + manhankhau;
+
+        try {
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -506,7 +593,7 @@ public class DatabaseConnection {
 
     public ResultSet getNumberOfTamVang(int nam){
         ResultSet resultSet = null;
-        String query = "SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG WHERE YEAR(TUNGAY) =" + nam;
+        String query = "SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG WHERE YEAR(TUNGAY) <= " + nam;
         Statement st;
         try {
             st = connection.createStatement();
@@ -577,41 +664,10 @@ public class DatabaseConnection {
         return res;
     }
 
-    public ResultSet getSoTienPhiVeSinhTren1Nguoi() {
+    public ResultSet getTongSoTienDaThuPhi(){
         ResultSet resultSet = null;
         Statement statement;
-        try {
-            statement = connection.createStatement();
-            resultSet=statement.executeQuery("SELECT SOTIENTRENMOTNGUOI FROM LOAIPHI WHERE MAKHOANTHU = 1");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return  resultSet;
-    }
-
-    public ResultSet getTongSoTienDaThuPhiVeSinh(){
-        ResultSet resultSet = null;
-        Statement statement;
-        String query = "SELECT SUM(SOTIENCANDONG) FROM DONGGOP WHERE MAKHOANTHU = 1 AND TRANGTHAI = 1";
-        try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return resultSet;
-    }
-
-
-
-
-
-
-    public ResultSet getTongSoTienDaThuPhiKhac(){
-        ResultSet resultSet = null;
-        Statement statement;
-        String query = "SELECT SUM(SOTIENCANDONG) FROM DONGGOP WHERE MAKHOANTHU != 1 AND TRANGTHAI = 1";
+        String query = "SELECT SUM(SOTIENCANDONG) FROM DONGGOP WHERE TRANGTHAI = 1";
         try {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
@@ -621,7 +677,7 @@ public class DatabaseConnection {
         return resultSet;
     }
 
-    public ResultSet getNumberOfCacLoaiPhiKhac(){
+    public ResultSet getNumberOfCacLoaiPhi(){
         ResultSet resultSet = null;
         Statement statement;
         String query = "SELECT COUNT(MAKHOANTHU) FROM LOAIPHI";

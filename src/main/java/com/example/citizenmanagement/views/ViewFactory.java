@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.lang.reflect.AnnotatedArrayType;
 
 public class ViewFactory {
 
@@ -28,6 +29,8 @@ public class ViewFactory {
 
     private AnchorPane profile;
 
+    private AnchorPane trangChuTamVangView;
+
     //Ho Khau
 
     private AnchorPane themHoKhau;
@@ -41,6 +44,7 @@ public class ViewFactory {
     private AnchorPane tamVangView;
     private AnchorPane themMoiView;
     private AnchorPane khaiTuView;
+    private AnchorPane chiTietThongTinTamVangView;
 
     // Fee Views
     private final ObjectProperty<FeeMenuOptions> feeSelectedMenuItem;
@@ -50,6 +54,10 @@ public class ViewFactory {
     private AnchorPane feeThemHoKhauView;
 
     private AnchorPane feeThongKeThuPhiVeSinhView;
+
+    private AnchorPane feeThongKeThuPhiKhacView;
+
+    private AnchorPane feeProfileView;
     /********************************************************************************************/
     public ViewFactory(){
         this.selectedMenuItem = new SimpleObjectProperty<>();
@@ -64,12 +72,10 @@ public class ViewFactory {
     }
 
     public AnchorPane getTrangChuView() {
-        if (trangChuView == null) {
-            try {
-                trangChuView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/TrangChu.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            trangChuView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/TrangChu.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return trangChuView;
     }
@@ -149,20 +155,36 @@ public class ViewFactory {
         return profile;
     }
 
+    public AnchorPane getTrangChuTamVangView(){
+        try {
+            trangChuTamVangView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/TrangChuTamVang.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return trangChuTamVangView;
+    }
+
+    public AnchorPane getChiTietThongTinTamVangView(){
+        try {
+            chiTietThongTinTamVangView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau/ChiTietThongTinTamVang.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return chiTietThongTinTamVangView;
+    }
+
     /********************************************************************************************/
     public ObjectProperty<FeeMenuOptions> getFeeSelectedMenuItem() {
         return feeSelectedMenuItem;
     }
 
     public AnchorPane getFeeTrangChuView() {
-        if (feeTrangChuView == null) {
-            try {
-                feeTrangChuView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeTrangChu.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
+        try {
+            feeTrangChuView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeTrangChu.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+
         return feeTrangChuView;
     }
     public AnchorPane getFeeDanhSachView() {
@@ -329,7 +351,27 @@ public class ViewFactory {
         return feeThongKeThuPhiVeSinhView;
     }
 
+    public AnchorPane getFeeThongKeThuPhiKhacView(){
+        if(feeThongKeThuPhiKhacView == null){
+            try {
+                feeThongKeThuPhiKhacView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeThongKeThuCacPhiKhac.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return feeThongKeThuPhiKhacView;
+    }
 
+    public AnchorPane getFeeProfileView(){
+        if(feeProfileView == null){
+            try {
+                feeProfileView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeProfile.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return feeProfileView;
+    }
 }
 
 
