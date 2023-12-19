@@ -119,33 +119,33 @@ public class DatabaseConnection {
     public ResultSet getNumberOfNhanKhauDuoi3Tuoi(){
         String query = "select count(MANHANKHAU) \n" +
                 "from NHANKHAU\n" +
-                "where YEAR(GETDATE()) - NAMSINH < 3 AND YEAR(GETDATE()) - NAMSINH >= 0";
+                "where YEAR(GETDATE()) - YEAR(NGAYSINH) < 3 AND YEAR(GETDATE()) - YEAR(NGAYSINH) >= 0";
         return executeQuery(query);
     }
     public ResultSet getNumberOfNhanKhauTu3Den10Tuoi(){
         String query = "select count(MANHANKHAU) \n" +
                 "from NHANKHAU\n" +
-                "where YEAR(GETDATE()) - NAMSINH >= 3 AND YEAR(GETDATE()) - NAMSINH < 10";
+                "where YEAR(GETDATE()) - YEAR(NGAYSINH) >= 3 AND YEAR(GETDATE()) - YEAR(NGAYSINH) < 10";
         return executeQuery(query);
     }
 
     public ResultSet getNumberOfNhanKhauTu10Den18Tuoi(){
         String query = "select count(MANHANKHAU) \n" +
                 "from NHANKHAU\n" +
-                "where YEAR(GETDATE()) - NAMSINH >= 10 AND YEAR(GETDATE()) - NAMSINH < 18";
+                "where YEAR(GETDATE()) - YEAR(NGAYSINH) >= 10 AND YEAR(GETDATE()) - YEAR(NGAYSINH) < 18";
         return executeQuery(query);
     }
 
     public ResultSet getNumberOfNhanKhauTu18Den60Tuoi(){
         String query = "select count(MANHANKHAU) \n" +
                 "from NHANKHAU\n" +
-                "where YEAR(GETDATE()) - NAMSINH >= 18 AND YEAR(GETDATE()) - NAMSINH < 60";
+                "where YEAR(GETDATE()) - YEAR(NGAYSINH) >= 18 AND YEAR(GETDATE()) - YEAR(NGAYSINH) < 60";
         return executeQuery(query);
     }
     public ResultSet getNumberOfNhanKhauTren60Tuoi(){
         String query = "select count(MANHANKHAU) \n" +
                 "from NHANKHAU\n" +
-                "where YEAR(GETDATE()) - NAMSINH >= 60";
+                "where YEAR(GETDATE()) - YEAR(NGAYSINH) >= 60";
         return executeQuery(query);
     }
     public ResultSet getNamHienTai(){
@@ -219,14 +219,14 @@ public class DatabaseConnection {
 
     /***********************************************************************************/
     //Nhân khẩu
-    public int addNhanKhau (String hoTen, String CCCD, String namSinh, int gioiTinh, String noiSinh, String nguyenQuan,String danToc, String tonGiao, String quocTich, String noiThuongTru, String ngheNghiep, String ngayTao, String ghiChu ){
+    public int addNhanKhau (String hoTen, String CCCD, String ngaySinh, int gioiTinh, String noiSinh, String nguyenQuan,String danToc, String tonGiao, String quocTich, String noiThuongTru, String ngheNghiep, String ngayTao, String ghiChu ){
         int thanhcong = 0;
-        String querry = "insert into NHANKHAU (HOTEN, SOCANCUOC, NAMSINH, GIOITINH, NOISINH, NGUYENQUAN, DANTOC, TONGIAO, QUOCTICH, NOITHUONGTRU, NGHENGHIEP, NGAYTAO, GHICHU )" +
+        String querry = "insert into NHANKHAU (HOTEN, SOCANCUOC, YEAR(NGAYSINH), GIOITINH, NOISINH, NGUYENQUAN, DANTOC, TONGIAO, QUOCTICH, NOITHUONGTRU, NGHENGHIEP, NGAYTAO, GHICHU )" +
                 " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try{
             PreparedStatement pre = connection.prepareStatement(querry);
             pre.setNString(1,hoTen); pre.setString(2,CCCD);
-            pre.setInt(3,Integer.parseInt(namSinh)); pre.setInt(4,gioiTinh);
+            pre.setString(3,ngaySinh); pre.setInt(4,gioiTinh);
             pre.setNString(5,noiSinh); pre.setNString(6,nguyenQuan);
             pre.setNString(7,danToc); pre.setNString(8,tonGiao);
             pre.setNString(9,quocTich);
@@ -241,14 +241,14 @@ public class DatabaseConnection {
         return thanhcong;
     }
 
-    public int addTamtru(String hoTen, String CCCD, int namSinh, int gioiTinh, String noiSinh, String nguyenQuan, String danToc, String tonGiao, String quocTich, String noiThuongTru, String ngheNghiep, String sdt, Date ngayDen, Date ngayDi, String liDo ) {
+    public int addTamtru(String hoTen, String CCCD, String ngaySinh, int gioiTinh, String noiSinh, String nguyenQuan, String danToc, String tonGiao, String quocTich, String noiThuongTru, String ngheNghiep, String sdt, Date ngayDen, Date ngayDi, String liDo ) {
         int thanhcong = 0;
         String que = "ínsert to TAMTRU()" +
                 "value (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try{
             PreparedStatement pre = connection.prepareStatement(que);
             pre.setNString(1,hoTen); pre.setString(2,CCCD);
-            pre.setInt(3,namSinh); pre.setInt(4,gioiTinh);
+            pre.setString(3, ngaySinh); pre.setInt(4,gioiTinh);
             pre.setNString(5,noiSinh); pre.setNString(6,nguyenQuan);
             pre.setNString(7,danToc); pre.setNString(8,tonGiao);
             pre.setNString(9,quocTich);
@@ -266,7 +266,7 @@ public class DatabaseConnection {
     }
     public ResultSet nhanKhau_timkiem(String string) {
         ResultSet resultSet = null;
-        String querry = " select SOCANCUOC, HOTEN, GIOITINH, NAMSINH, NOITHUONGTRU from NHANKHAU where SOCANCUOC like ? or HOTEN like ? or GIOITINH like ? or NAMSINH like ? or NOITHUONGTRU like ?;";
+        String querry = " select SOCANCUOC, HOTEN, GIOITINH, YEAR(NGAYSINH), NOITHUONGTRU from NHANKHAU where SOCANCUOC like ? or HOTEN like ? or GIOITINH like ? or YEAR(NGAYSINH) like ? or NOITHUONGTRU like ?;";
         try {
             PreparedStatement preparedstatement = connection.prepareStatement(querry);
             preparedstatement.setString(1, "%" + string + "%");
@@ -284,7 +284,7 @@ public class DatabaseConnection {
     }
     public ResultSet truyvan() {
 
-        String query = " select SOCANCUOC, HOTEN, GIOITINH, NAMSINH, NOITHUONGTRU from NHANKHAU;";
+        String query = " select SOCANCUOC, HOTEN, GIOITINH, YEAR(NGAYSINH), NOITHUONGTRU from NHANKHAU;";
         return executeQuery(query);
     }
     /***********************************************************************************/
@@ -390,12 +390,12 @@ public class DatabaseConnection {
                 "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI";
         return executeQuery(query);
     }
-    public void themKhoanThuPhi(String tenKhoanThu, int batBuoc, int soTienCanDong, LocalDate ngayTao, String moTa) {
+    public void themKhoanThuPhi(String tenKhoanThu, int batBuoc, long soTienCanDong, LocalDate ngayTao, String moTa) {
         String query = "INSERT INTO LOAIPHI(TEN, BATBUOC, SOTIENTRENMOTNGUOI, NGAYTAO, MOTA)\n" +
                 "VALUES (N'" + tenKhoanThu + "', " + batBuoc + ", "+ soTienCanDong + ", '" + ngayTao.toString() + "', N'" + moTa +"')";
         executeUpdate(query);
     }
-    public int layMaKhoanThu(String tenKhoanThu,int batBuoc, int soTienCanDong, LocalDate ngayTao, String moTa) {
+    public int layMaKhoanThu(String tenKhoanThu,int batBuoc, long soTienCanDong, LocalDate ngayTao, String moTa) {
         int maKhoanThu = -1;
 
         String query = "SELECT MAKHOANTHU\n" +
@@ -416,7 +416,7 @@ public class DatabaseConnection {
         }
         return maKhoanThu;
     }
-    public void themDanhSachThuPhi(int maHoKhau, int maKhoanThu, int soTienCanDong, int trangThai) {
+    public void themDanhSachThuPhi(int maHoKhau, int maKhoanThu, long soTienCanDong, int trangThai) {
         String query = "INSERT INTO DONGGOP(MAHOKHAU, MAKHOANTHU, SOTIENCANDONG, TRANGTHAI)\n" +
                 "VALUES (" + maHoKhau + ", " + maKhoanThu + ", " + soTienCanDong + ", " + trangThai + ")";
         executeUpdate(query);
@@ -518,29 +518,29 @@ public class DatabaseConnection {
     }
 
     public ResultSet getDanhSachChuaDongPhi(int maKhoanThu) {
-        String query = "SELECT HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, COUNT(TV.MANHANKHAU)\n" +
+        String query = "SELECT HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, COUNT(TV.MANHANKHAU), DONGGOP.SOTIENCANDONG\n" +
                 "FROM DONGGOP INNER JOIN HOKHAU HK ON DONGGOP.MAHOKHAU = HK.MAHOKHAU\n" +
                 "INNER JOIN NHANKHAU NK ON HK.IDCHUHO = NK.MANHANKHAU\n" +
                 "\tINNER JOIN THANHVIENCUAHO TV ON HK.MAHOKHAU = TV.MAHOKHAU\n" +
                 "WHERE DONGGOP.MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 0\n" +
-                "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI";
+                "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, DONGGOP.SOTIENCANDONG";
         return executeQuery(query);
     }
 
     public ResultSet danhSachChuaDongPhi_timKiem(int maKhoanThu, String condition) {
-        String query = "SELECT HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, COUNT(TV.MANHANKHAU)\n" +
+        String query = "SELECT HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, COUNT(TV.MANHANKHAU), DONGGOP.SOTIENCANDONG\n" +
                 "FROM DONGGOP INNER JOIN HOKHAU HK ON DONGGOP.MAHOKHAU = HK.MAHOKHAU\n" +
                 "INNER JOIN NHANKHAU NK ON HK.IDCHUHO = NK.MANHANKHAU\n" +
                 "\tINNER JOIN THANHVIENCUAHO TV ON HK.MAHOKHAU = TV.MAHOKHAU\n" +
                 "WHERE DONGGOP.MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 0\n" +
                 "\tAND (HK.MAHOKHAU LIKE '%" + condition + "%' OR NK.HOTEN LIKE '%" + condition + "%' OR HK.DIACHI LIKE '%" + condition + "%')\n" +
-                "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI";
+                "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, DONGGOP.SOTIENCANDONG";
         return executeQuery(query);
     }
 
-    public void updateNopPhi(int maHoKhau, int maKhoanThu) {
+    public void updateNopPhi(int maHoKhau, int maKhoanThu, String soTien) {
         String query = "UPDATE DONGGOP\n" +
-                "SET TRANGTHAI = 1, NGAYDONG = GETDATE()\n" +
+                "SET TRANGTHAI = 1, NGAYDONG = GETDATE(), SOTIENDADONG = " + soTien + "\n" +
                 "WHERE MAHOKHAU = " + maHoKhau + " AND MAKHOANTHU = " + maKhoanThu;
         executeUpdate(query);
     }
@@ -561,23 +561,23 @@ public class DatabaseConnection {
     }
 
     public ResultSet danhSachDaDongPhi_timKiem(int maKhoanThu, String condition) {
-        String query = "SELECT HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, COUNT(TV.MANHANKHAU)\n" +
-                "FROM DONGGOP INNER JOIN HOKHAU HK ON DONGGOP.MAHOKHAU = HK.MAHOKHAU\n" +
+        String query = "SELECT HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, COUNT(TV.MANHANKHAU), DG.SOTIENDADONG\n" +
+                "FROM DONGGOP DG INNER JOIN HOKHAU HK ON DG.MAHOKHAU = HK.MAHOKHAU\n" +
                 "INNER JOIN NHANKHAU NK ON HK.IDCHUHO = NK.MANHANKHAU\n" +
                 "\tINNER JOIN THANHVIENCUAHO TV ON HK.MAHOKHAU = TV.MAHOKHAU\n" +
-                "WHERE DONGGOP.MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 1\n" +
+                "WHERE DG.MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 1\n" +
                 "\tAND (HK.MAHOKHAU LIKE '%" + condition + "%' OR NK.HOTEN LIKE '%" + condition + "%' OR HK.DIACHI LIKE '%" + condition + "%')\n" +
-                "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI";
+                "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, DG.SOTIENDADONG";
         return executeQuery(query);
     }
 
     public ResultSet getDanhSachDaDongPhi(int maKhoanThu) {
-        String query = "SELECT HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, COUNT(TV.MANHANKHAU)\n" +
-                "FROM DONGGOP INNER JOIN HOKHAU HK ON DONGGOP.MAHOKHAU = HK.MAHOKHAU\n" +
+        String query = "SELECT HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, COUNT(TV.MANHANKHAU), DG.SOTIENDADONG\n" +
+                "FROM DONGGOP DG INNER JOIN HOKHAU HK ON DG.MAHOKHAU = HK.MAHOKHAU\n" +
                 "INNER JOIN NHANKHAU NK ON HK.IDCHUHO = NK.MANHANKHAU\n" +
                 "\tINNER JOIN THANHVIENCUAHO TV ON HK.MAHOKHAU = TV.MAHOKHAU\n" +
-                "WHERE DONGGOP.MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 1\n" +
-                "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI";
+                "WHERE DG.MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 1\n" +
+                "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, DG.SOTIENDADONG";
         return executeQuery(query);
     }
     /***************************************************************************/

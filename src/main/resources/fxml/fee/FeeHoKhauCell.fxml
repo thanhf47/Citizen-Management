@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="800.0" styleClass="my-list-cell" stylesheets="@../../styles/Fee/FeeThemHoKhau.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="800.0" styleClass="hoKhauCell_container" stylesheets="@../../styles/Fee/Cell.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <HBox fx:id="hbox" prefHeight="50.0" prefWidth="800.0">
       <Pane prefHeight="50.0" prefWidth="0.0" />
-      <CheckBox fx:id="checkbox" mnemonicParsing="false" prefWidth="40.0" />
+      <CheckBox fx:id="checkbox" mnemonicParsing="false" prefWidth="20.0" />
       <Text fx:id="ma_ho_khau" strokeType="OUTSIDE" strokeWidth="0.0" text="12345678901" wrappingWidth="100.0" />
-      <Text fx:id="ten_chu_ho" layoutX="24.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyễn Tiến Thành" wrappingWidth="150.0" />
+      <Text fx:id="ten_chu_ho" layoutX="24.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyễn Tiến Thành" wrappingWidth="160.0" />
       <Text fx:id="dia_chi" layoutX="48.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số 1 Đại Cồ Việt, Hai Bà Trưng, Hà Nội" wrappingWidth="200.0" />
-      <Text fx:id="so_thanh_vien" layoutX="72.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" wrappingWidth="90.0" />
-      <Text fx:id="so_tien_can_dong" layoutX="96.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100.000" wrappingWidth="75.0" />
+      <Text fx:id="so_thanh_vien" layoutX="72.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" wrappingWidth="40.0" />
+      <Text fx:id="so_tien" layoutX="96.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100.000" wrappingWidth="75.0" />
    </HBox>
 </AnchorPane>

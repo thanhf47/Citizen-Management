@@ -26,7 +26,7 @@ public class FeeDSChuaHoanThanhPhi implements Initializable {
     private TextField search_textfield;
 
     private Alert alert;
-
+    private long soTienCanDong;
     @FXML
     void onQuayLaiBtn(ActionEvent event) {
         Model.getInstance().getViewFactory().getFeeSelectedMenuItem().set(FeeMenuOptions.CHI_TIET_KHOAN_THU);
@@ -50,20 +50,46 @@ public class FeeDSChuaHoanThanhPhi implements Initializable {
             if (event.getClickCount() == 2) { // double-click
                 FeeHoKhauCell selectedItem = listView.getSelectionModel().getSelectedItem();
                 if (selectedItem != null) {
-                    alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Confirmation");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Xác nhận nộp tiền?");
 
-                    Optional<ButtonType> result = alert.showAndWait();
+                    if (Model.getInstance().getFeeKhoanThuModel().getBatBuoc().get() == 0) {
+                        TextInputDialog dialog = new TextInputDialog();
+                        dialog.setTitle("Nộp phí!");
+                        dialog.setHeaderText(null);
+                        dialog.setContentText("Nhập số tiền muốn nộp: \n");
+                        Optional<String> result1 = dialog.showAndWait();
+                        result1.ifPresent((soTien) -> {
+                            alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("Confirmation");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Xác nhận nộp tiền?");
 
-                    if (result.get() == ButtonType.OK) {
+                            Optional<ButtonType> result2 = alert.showAndWait();
+                            if (result2.get() == ButtonType.OK) {
 
-                        Model.getInstance().getDatabaseConnection().updateNopPhi(selectedItem.getMaHoKhau(), Model.getInstance().getFeeKhoanThuModel().getMaKhoanThu().get());
+                                Model.getInstance().getDatabaseConnection().updateNopPhi(selectedItem.getMaHoKhau(), Model.getInstance().getFeeKhoanThuModel().getMaKhoanThu().get(), soTien);
 
-                        Model.getInstance().getDanhSachChuaDongPhi().remove(selectedItem);
-                        showDanhSach();
+                                Model.getInstance().getDanhSachChuaDongPhi().remove(selectedItem);
+                                showDanhSach();
+                            }
+                        });
+                    }
+                    else {
+                        alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setTitle("Confirmation");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Xác nhận nộp tiền?");
 
+                        Optional<ButtonType> result2 = alert.showAndWait();
+                        if (result2.get() == ButtonType.OK) {
+
+                            Model.getInstance().getDatabaseConnection().updateNopPhi(
+                                    selectedItem.getMaHoKhau(),
+                                    Model.getInstance().getFeeKhoanThuModel().getMaKhoanThu().get(),
+                                    String.valueOf(soTienCanDong));
+
+                            Model.getInstance().getDanhSachChuaDongPhi().remove(selectedItem);
+                            showDanhSach();
+                        }
                     }
                 }
             }
@@ -87,8 +113,7 @@ public class FeeDSChuaHoanThanhPhi implements Initializable {
                                 String tenChuHo = resultSet.getNString(2);
                                 String diaChi = resultSet.getNString(3);
                                 int soThanhVien = resultSet.getInt(4);
-                                int soTienCanDong = soThanhVien * Model.getInstance().getFeeKhoanThuModel().getSoTienTrenMotNguoi().get();
-
+                                soTienCanDong = resultSet.getLong(5);
                                 listView.getItems().add(new FeeHoKhauCell(maHoKhau, tenChuHo, diaChi, soThanhVien, soTienCanDong));
                             }
                         }
@@ -110,7 +135,7 @@ public class FeeDSChuaHoanThanhPhi implements Initializable {
                     String tenChuHo = resultSet.getNString(2);
                     String diaChi = resultSet.getNString(3);
                     int soThanhVien = resultSet.getInt(4);
-                    int soTienCanDong = soThanhVien * Model.getInstance().getFeeKhoanThuModel().getSoTienTrenMotNguoi().get();
+                    soTienCanDong = resultSet.getLong(5);
 
                     Model.getInstance().getDanhSachChuaDongPhi().add(new FeeHoKhauCell(maHoKhau, tenChuHo, diaChi, soThanhVien, soTienCanDong));
                 }

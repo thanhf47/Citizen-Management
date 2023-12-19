@@ -45,6 +45,6 @@ public class FeeHoKhauCell2Controller implements Initializable {
         ten_chu_ho.setText(feeHoKhauCell.getTenChuHo());
         dia_chi.setText(feeHoKhauCell.getDiaChi());
         so_thanh_vien.setText(String.valueOf(feeHoKhauCell.getSoThanhVien()));
-        so_tien_can_dong.setText(String.valueOf(feeHoKhauCell.getSoTienCanDong()));
+        so_tien_can_dong.setText(String.valueOf(feeHoKhauCell.getSoTien()));
     }
 }

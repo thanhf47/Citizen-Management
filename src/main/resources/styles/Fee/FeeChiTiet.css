@@ -1,0 +1,30 @@
+.background_form {
+   -fx-background-color: linear-gradient(to right bottom,  rgba(255,255,255,1) 0%, rgba(255,246,244,1) 60%, rgba(207,247,255,1) 100%);
+}
+
+.button_ds {
+    -fx-background-color:#ffffff;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+}
+
+.button_ds:hover {
+    -fx-cursor: hand;
+    -fx-background-color: LIGHTSKYBLUE;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.button_ds:pressed {
+    -fx-background-color: #eeeeee;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+
+.info{
+    -fx-background-color:#ffffff;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+}

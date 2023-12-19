@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -9,18 +10,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="background" stylesheets="@../../styles/Fee/FeeThemHoKhau.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.feecontrollers.FeeThemHoKhauController">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="my-background" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.feecontrollers.FeeThemHoKhauController">
     <Label layoutX="43.0" layoutY="47.0" text="Chọn các hộ cần thu phí" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="50.0">
         <font>
           <Font name="Verdana Bold" size="42.0" />
         </font>
     </Label>
-    <Button fx:id="hoanThanhBtn" layoutX="512.0" layoutY="638.0" mnemonicParsing="false" onAction="#onHoanThanhBtn" prefHeight="40.0" prefWidth="114.0" text="Hoàn thành" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="150.0">
+    <Button fx:id="hoanThanhBtn" layoutX="512.0" layoutY="638.0" mnemonicParsing="false" onAction="#onHoanThanhBtn" prefHeight="43.0" prefWidth="132.0" styleClass="button_style" stylesheets="@../../styles/LoginForm.css" text="Hoàn thành" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="132.0">
         <font>
           <Font name="Calibri" size="18.0" />
         </font>
     </Button>
-    <Button fx:id="quayLaiBtn" layoutX="356.0" layoutY="638.0" mnemonicParsing="false" onAction="#onQuayLaiBtn" prefHeight="40.0" prefWidth="100.0" text="Quay lại" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="350.0">
+    <Button fx:id="quayLaiBtn" layoutX="356.0" layoutY="638.0" mnemonicParsing="false" onAction="#onQuayLaiBtn" prefHeight="43.0" prefWidth="116.0" styleClass="button_style" stylesheets="@../../styles/LoginForm.css" text="Quay lại" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="334.0">
         <font>
           <Font name="Calibri" size="18.0" />
         </font>
@@ -63,4 +64,8 @@
          <Glow />
       </effect>
    </Label>
+   <stylesheets>
+      <URL value="@../../styles/Fee/FeeThemHoKhau.css" />
+      <URL value="@../../styles/Fee/FeeDanhSach.css" />
+   </stylesheets>
 </AnchorPane>

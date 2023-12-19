@@ -103,42 +103,35 @@ public class ViewFactory {
     /********************************************************************************************/
     // thong ke phan trang chu
     public AnchorPane getThongKeNhanKhauView() {
-        if (thongKeHoKhauView == null) {
-            try {
-                thongKeNhanKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongKeNhanKhau.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            thongKeNhanKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongKeNhanKhau.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+
         return thongKeNhanKhauView;
     }
     public AnchorPane getThongKeHoKhauView() {
-        if (thongKeHoKhauView == null) {
-            try {
-                thongKeHoKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongKeHoKhau.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            thongKeHoKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongKeHoKhau.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return thongKeHoKhauView;
     }
     public AnchorPane getThongKeTamTruView(){
-        if (thongKeTamTruView == null) {
-            try {
-                thongKeTamTruView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongKeTamTruNam2023.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            thongKeTamTruView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongKeTamTruNam2023.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return thongKeTamTruView;
     }
     public AnchorPane getThongKeTamVangView(){
-        if (thongKeTamVangView == null) {
-            try {
-                thongKeTamVangView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongKeTamVangNam2023.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            thongKeTamVangView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongKeTamVangNam2023.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return thongKeTamVangView;
     }
@@ -166,12 +159,11 @@ public class ViewFactory {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
         }
         return feeTrangChuView;
     }
     public AnchorPane getFeeDanhSachView() {
-        if (feeDanhSachView == null) {
+        if(feeDanhSachView == null) {
             try {
                 feeDanhSachView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeDanhSach.fxml")).load();
             } catch (IOException e) {
@@ -181,57 +173,48 @@ public class ViewFactory {
         return feeDanhSachView;
     }
     public AnchorPane getFeeThemKhoanThuView() {
-        if (feeThemKhoanThuView == null) {
+        if(feeThemKhoanThuView == null) {
             try {
                 feeThemKhoanThuView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeThemKhoanThu.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
         }
         return feeThemKhoanThuView;
     }
 
     public AnchorPane getFeeThemHoKhauView() {
-        if (feeThemHoKhauView == null) {
-            try {
-                feeThemHoKhauView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeThemHoKhau.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
+        try {
+            feeThemHoKhauView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeThemHoKhau.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+
         return feeThemHoKhauView;
     }
 
     public AnchorPane getFeeXemChiTietKhoanThuView() {
-        if (feeXemChiTietKhoanThuView == null) {
-            try {
-                feeXemChiTietKhoanThuView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeChiTietKhoanThu.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            feeXemChiTietKhoanThuView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeChiTietKhoanThu.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return feeXemChiTietKhoanThuView;
     }
     public AnchorPane getDSHoanThanhPhiView() {
-        if (feeDSHoanThanhPhiView == null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/fee/FeeDSHoanThanhPhi.fxml"));
-            try {
-                feeDSHoanThanhPhiView = loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/fee/FeeDSHoanThanhPhi.fxml"));
+        try {
+            feeDSHoanThanhPhiView = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return feeDSHoanThanhPhiView;
     }
     public AnchorPane getDSChuaHoanThanhPhiView() {
-        if(feeDSChuaHoanThanhPhiView == null) {
-            try {
-                feeDSChuaHoanThanhPhiView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeDSChuaHoanThanhPhi.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            feeDSChuaHoanThanhPhiView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeDSChuaHoanThanhPhi.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return feeDSChuaHoanThanhPhiView;
     }

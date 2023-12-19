@@ -62,7 +62,7 @@ public class FeeThemHoKhauController implements Initializable {
             //add loại phí
             String tenKhoanThu = Model.getInstance().getFeeKhoanThuModel().getTenKhoanThu().getValue();
             int batBuoc = Model.getInstance().getFeeKhoanThuModel().getBatBuoc().getValue();
-            int soTienCanDong = Model.getInstance().getFeeKhoanThuModel().getSoTienTrenMotNguoi().getValue();
+            long soTienCanDong = Model.getInstance().getFeeKhoanThuModel().getSoTienTrenMotNguoi().getValue();
             LocalDate now = LocalDate.now();
             String moTa = Model.getInstance().getFeeKhoanThuModel().getMoTa().getValue();
             Model.getInstance().getDatabaseConnection().themKhoanThuPhi(tenKhoanThu, batBuoc, soTienCanDong, now, moTa);
@@ -76,8 +76,7 @@ public class FeeThemHoKhauController implements Initializable {
                 if (item.getSelected())
                     Model.getInstance().getDatabaseConnection().themDanhSachThuPhi(
                             item.getMaHoKhau(), maKhoanThu,
-                            item.getSoTienCanDong(), 0);
-
+                            item.getSoTien(), 0);
             }
 
             toanBoDanhSach.clear();
@@ -97,7 +96,7 @@ public class FeeThemHoKhauController implements Initializable {
 
     private void initDanhSach() {
         ResultSet resultSet = Model.getInstance().getDatabaseConnection().getDanhSachDongPhi();
-        listView.getItems().clear();
+        toanBoDanhSach.clear();
         try {
             if (resultSet.isBeforeFirst()) {
                 while (resultSet.next()) {
@@ -105,15 +104,13 @@ public class FeeThemHoKhauController implements Initializable {
                     String tenChuHo = resultSet.getNString(2);
                     String diaChi = resultSet.getNString(3);
                     int soThanhVien = resultSet.getInt(4);
-                    int soTienCanDong = soThanhVien * Model.getInstance().getFeeKhoanThuModel().getSoTienTrenMotNguoi().getValue();
-                    listView.getItems().add(new FeeHoKhauCell(false, maHoKhau, tenChuHo, diaChi, soThanhVien, soTienCanDong));
+                    long soTienCanDong = Model.getInstance().getFeeKhoanThuModel().getSoTienTrenMotNguoi().get() * soThanhVien;
+                    toanBoDanhSach.add(new FeeHoKhauCell(false, maHoKhau, tenChuHo, diaChi, soThanhVien, soTienCanDong));
                 }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        listView.setCellFactory(param -> new FeeHoKhauCellFactory());
-        toanBoDanhSach.addAll(listView.getItems());
     }
     private void showDanhSach() {
         listView.getItems().clear();
@@ -148,6 +145,7 @@ public class FeeThemHoKhauController implements Initializable {
         listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         initDanhSach();
+        showDanhSach();
         search_textfield.textProperty().addListener((observable, oldValue, newValue) -> {
             reloadListView = true;
             if (newValue.isEmpty()) {

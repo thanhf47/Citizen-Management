@@ -32,7 +32,6 @@
     -fx-cursor: hand;
     -fx-background-color: rgba(146, 150, 156, 0.5);
     -fx-font-size: 2.1em;
-
 }
 .btn_an:pressed{
     -fx-background-color: #98adb3;

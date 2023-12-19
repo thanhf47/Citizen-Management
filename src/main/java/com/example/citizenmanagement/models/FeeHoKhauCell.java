@@ -9,24 +9,25 @@ public class FeeHoKhauCell {
     private String tenChuHo;
     private String diaChi;
     private int soThanhVien;
-    private int soTienCanDong;
+    private Long soTien;
 
     private int trangThai = 0; //đã đóng phí hay chưa, khởi tạo là chưa.
-    public FeeHoKhauCell(boolean selected, int maHoKhau, String tenChuHo, String diaChi, int soThanhVien, int soTienCanDong) {
+
+    public FeeHoKhauCell(boolean selected, int maHoKhau, String tenChuHo, String diaChi, int soThanhVien, long soTien) {
         this.selected.setValue(selected);
         this.maHoKhau = maHoKhau;
         this.tenChuHo = tenChuHo;
         this.diaChi = diaChi;
         this.soThanhVien = soThanhVien;
-        this.soTienCanDong = soTienCanDong;
+        this.soTien = soTien;
     }
 
-    public FeeHoKhauCell(int maHoKhau, String tenChuHo, String diaChi, int soThanhVien, int soTienCanDong){
+    public FeeHoKhauCell(int maHoKhau, String tenChuHo, String diaChi, int soThanhVien, long soTien){
         this.maHoKhau = maHoKhau;
         this.tenChuHo = tenChuHo;
         this.diaChi = diaChi;
         this.soThanhVien = soThanhVien;
-        this.soTienCanDong = soTienCanDong;
+        this.soTien = soTien;
     }
 
     public int getMaHoKhau() {
@@ -45,8 +46,8 @@ public class FeeHoKhauCell {
         return soThanhVien;
     }
 
-    public int getSoTienCanDong() {
-        return soTienCanDong;
+    public long getSoTien() {
+        return soTien;
     }
 
     public boolean getSelected() { return selected.getValue();}
@@ -69,8 +70,8 @@ public class FeeHoKhauCell {
         this.soThanhVien = soThanhVien;
     }
 
-    public void setSoTienCanDong(int soTienCanDong) {
-        this.soTienCanDong = soTienCanDong;
+    public void setSoTien(long soTien) {
+        this.soTien = soTien;
     }
 
     public void setSelected(boolean selected) {this.selected.setValue(selected);}
@@ -82,5 +83,6 @@ public class FeeHoKhauCell {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
+
 
 }

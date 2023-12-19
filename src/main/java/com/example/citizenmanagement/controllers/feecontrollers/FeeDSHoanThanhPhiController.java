@@ -87,7 +87,7 @@ public class FeeDSHoanThanhPhiController implements Initializable {
                             String tenChuHo = resultSet.getNString(2);
                             String diaChi = resultSet.getNString(3);
                             int soThanhVien = resultSet.getInt(4);
-                            int soTienDaDong = soThanhVien * Model.getInstance().getFeeKhoanThuModel().getSoTienTrenMotNguoi().get();
+                            long soTienDaDong = resultSet.getLong(5);
 
                             listView.getItems().add(new FeeHoKhauCell(maHoKhau, tenChuHo, diaChi, soThanhVien, soTienDaDong));
                         }
@@ -110,9 +110,8 @@ public class FeeDSHoanThanhPhiController implements Initializable {
                     String tenChuHo = resultSet.getNString(2);
                     String diaChi = resultSet.getNString(3);
                     int soThanhVien = resultSet.getInt(4);
-                    int soTienCanDong = soThanhVien * Model.getInstance().getFeeKhoanThuModel().getSoTienTrenMotNguoi().get();
-
-                    Model.getInstance().getDanhSachDaDongPhi().add(new FeeHoKhauCell(maHoKhau, tenChuHo, diaChi, soThanhVien, soTienCanDong));
+                    long soTienDaDong = resultSet.getLong(5);
+                    Model.getInstance().getDanhSachDaDongPhi().add(new FeeHoKhauCell(maHoKhau, tenChuHo, diaChi, soThanhVien, soTienDaDong));
                 }
             }
         } catch (SQLException e) {

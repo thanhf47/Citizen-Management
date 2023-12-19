@@ -68,7 +68,7 @@ public class FeeDanhSachController implements Initializable {
                             int maKhoanThu = resultSet.getInt(1);
                             String tenKhoanThu = resultSet.getNString(2);
                             int batBuoc = resultSet.getInt(3);
-                            int soTienCanDong = resultSet.getInt(4);
+                            long soTienCanDong = resultSet.getLong(4);
                             String ngayTao = resultSet.getString(5);
 
                             listView.getItems().add(new FeeKhoanThuCell(maKhoanThu, tenKhoanThu, batBuoc, soTienCanDong, ngayTao));

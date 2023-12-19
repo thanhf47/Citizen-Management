@@ -55,7 +55,7 @@ public class DKTamTru2Controller implements Initializable {
          int thanhcong = Model.getInstance().getDatabaseConnection().addTamtru(
                  dkTamTru1Controller.getHoten_text().getText(),
                  dkTamTru1Controller.getCCCD_text().getText(),
-                 Integer.parseInt(dkTamTru1Controller.getNam_sinh_text().getText()),
+                 dkTamTru1Controller.getNam_sinh_text().getText(),
                  dkTamTru1Controller.bits(),
                  dkTamTru1Controller.getNoi_sinh_text().getText(),
                  dkTamTru1Controller.getNguyen_quan_text().getText(),

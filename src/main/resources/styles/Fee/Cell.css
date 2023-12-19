@@ -1,0 +1,20 @@
+.hoKhauCell_container{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box,#AAAAAA,3,0,0,3);
+}
+
+.hoKhauCell_container:hover {
+    -fx-background-color: #c7d4cb;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+.hoKhauCell_container HBox{
+    -fx-alignment: center-left;
+    -fx-spacing: 30;
+}
+.hoKhauCell_container HBox Text{
+    -fx-font-size: 1.2em;
+    -fx-font-family: Calibri;
+    -fx-font-weight: 700;
+}

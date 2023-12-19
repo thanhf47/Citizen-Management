@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.LoginFormController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@../../styles/LoginForm.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.LoginFormController">
    <AnchorPane fx:id="login_form" layoutX="400.0" prefHeight="500.0" prefWidth="400.0" styleClass="form" stylesheets="@../../styles/LoginForm.css">
       <TextField fx:id="login_password_show" layoutX="148.0" layoutY="261.0" prefHeight="30.0" prefWidth="200.0" promptText="Password" style="-fx-background-color: #FFFFFF;">
          <font>
@@ -35,12 +35,12 @@
             <Font name="Verdana" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="login_username" layoutX="148.0" layoutY="207.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+      <TextField fx:id="login_username" layoutX="148.0" layoutY="207.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="input_text_field">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="login_password_hidden" layoutX="148.0" layoutY="261.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+      <PasswordField fx:id="login_password_hidden" layoutX="148.0" layoutY="261.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="input_text_field">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
@@ -104,7 +104,7 @@
             <Font name="Verdana" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="register_username" layoutX="169.0" layoutY="175.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+      <TextField fx:id="register_username" layoutX="169.0" layoutY="175.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="input_text_field">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
@@ -130,17 +130,17 @@
             <Font name="Verdana" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="register_fullname" layoutX="169.0" layoutY="100.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+      <TextField fx:id="register_fullname" layoutX="169.0" layoutY="100.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="input_text_field">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="register_confirm" layoutX="169.0" layoutY="252.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+      <PasswordField fx:id="register_confirm" layoutX="169.0" layoutY="252.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="input_text_field">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
       </PasswordField>
-      <PasswordField fx:id="register_password" layoutX="169.0" layoutY="213.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+      <PasswordField fx:id="register_password" layoutX="169.0" layoutY="213.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="input_text_field">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
@@ -155,7 +155,7 @@
             <Font name="Verdana" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="register_phoneNumber" layoutX="169.0" layoutY="137.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+      <TextField fx:id="register_phoneNumber" layoutX="169.0" layoutY="137.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="input_text_field">
          <font>
             <Font name="Verdana" size="14.0" />
          </font>
@@ -196,7 +196,7 @@
                <Font name="Verdana" size="16.0" />
             </font>
          </Label>
-         <TextField fx:id="forgot_username" layoutX="168.0" layoutY="242.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" AnchorPane.rightAnchor="32.0">
+         <TextField fx:id="forgot_username" layoutX="168.0" layoutY="242.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="input_text_field" AnchorPane.rightAnchor="32.0">
             <font>
                <Font name="Verdana" size="14.0" />
             </font>
@@ -217,7 +217,7 @@
                <Font name="Verdana" size="16.0" />
             </font>
          </Label>
-         <TextField fx:id="forgot_fullname" layoutX="168.0" layoutY="149.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" AnchorPane.rightAnchor="32.0">
+         <TextField fx:id="forgot_fullname" layoutX="168.0" layoutY="149.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="input_text_field" AnchorPane.rightAnchor="32.0">
             <font>
                <Font name="Verdana" size="14.0" />
             </font>
@@ -232,7 +232,7 @@
                <Font name="Verdana" size="16.0" />
             </font>
          </Label>
-         <TextField fx:id="forgot_phoneNumber" layoutX="164.0" layoutY="195.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" AnchorPane.rightAnchor="32.0">
+         <TextField fx:id="forgot_phoneNumber" layoutX="164.0" layoutY="195.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="input_text_field" AnchorPane.rightAnchor="32.0">
             <font>
                <Font name="Verdana" size="14.0" />
             </font>
@@ -285,12 +285,12 @@
                <Font name="Verdana" size="16.0" />
             </font>
          </Label>
-         <PasswordField fx:id="forgot_confirm" layoutX="178.0" layoutY="268.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+         <PasswordField fx:id="forgot_confirm" layoutX="178.0" layoutY="268.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="input_text_field">
             <font>
                <Font name="Verdana" size="14.0" />
             </font>
          </PasswordField>
-         <PasswordField fx:id="forgot_password" layoutX="179.0" layoutY="195.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+         <PasswordField fx:id="forgot_password" layoutX="179.0" layoutY="195.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" styleClass="input_text_field">
             <font>
                <Font name="Verdana" size="14.0" />
             </font>

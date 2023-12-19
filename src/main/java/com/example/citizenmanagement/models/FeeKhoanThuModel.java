@@ -1,9 +1,6 @@
 package com.example.citizenmanagement.models;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
@@ -18,7 +15,7 @@ public class FeeKhoanThuModel{
     private StringProperty tenKhoanThu;
     private IntegerProperty batBuoc;
 
-    private IntegerProperty soTienTrenMotNguoi;
+    private LongProperty soTienTrenMotNguoi;
     private StringProperty ngayTao;
     private StringProperty moTa;
 
@@ -26,7 +23,7 @@ public class FeeKhoanThuModel{
         maKhoanThu = new SimpleIntegerProperty(-1);
         tenKhoanThu = new SimpleStringProperty("");
         batBuoc = new SimpleIntegerProperty(0);
-        soTienTrenMotNguoi = new SimpleIntegerProperty(0);
+        soTienTrenMotNguoi = new SimpleLongProperty(0);
         ngayTao = new SimpleStringProperty(LocalDate.now().toString());
         moTa = new SimpleStringProperty("");
 
@@ -43,7 +40,7 @@ public class FeeKhoanThuModel{
 
                 tenKhoanThu.set(resultSet.getNString(2));
                 batBuoc.set(resultSet.getInt(3));
-                soTienTrenMotNguoi.set(resultSet.getInt(4));
+                soTienTrenMotNguoi.set(resultSet.getLong(4));
                 ngayTao.set(resultSet.getString(5));
                 moTa.set(resultSet.getNString(6));
             }
@@ -52,7 +49,7 @@ public class FeeKhoanThuModel{
         }
     }
 
-    public void setFeeKhoanThuModel(String tenKhoanThu, int batBuoc, int soTienTrenMotNguoi, String ngayTao, String moTa) {
+    public void setFeeKhoanThuModel(String tenKhoanThu, int batBuoc, long soTienTrenMotNguoi, String ngayTao, String moTa) {
         this.tenKhoanThu.setValue(tenKhoanThu);
         this.batBuoc.setValue(batBuoc);
         this.soTienTrenMotNguoi.setValue(soTienTrenMotNguoi);
@@ -76,11 +73,11 @@ public class FeeKhoanThuModel{
         this.batBuoc.setValue(batBuoc);
     }
 
-    public IntegerProperty getSoTienTrenMotNguoi() {
+    public LongProperty getSoTienTrenMotNguoi() {
         return soTienTrenMotNguoi;
     }
 
-    public void setSoTienTrenMotNguoi(int soTienTrenMotNguoi) {
+    public void setSoTienTrenMotNguoi(long soTienTrenMotNguoi) {
         this.soTienTrenMotNguoi.setValue(soTienTrenMotNguoi);
     }
 

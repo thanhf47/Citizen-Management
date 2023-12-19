@@ -31,7 +31,7 @@ public class FeeHokhauCellController implements Initializable {
     private Text so_thanh_vien;
 
     @FXML
-    private Text so_tien_can_dong;
+    private Text so_tien;
 
     @FXML
     private Text ten_chu_ho;
@@ -44,11 +44,12 @@ public class FeeHokhauCellController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         checkbox.setSelected(feeHoKhauCell.getSelected());
+        checkbox.setDisable(true);
         ma_ho_khau.setText(String.valueOf(feeHoKhauCell.getMaHoKhau()));
         ten_chu_ho.setText(feeHoKhauCell.getTenChuHo());
         dia_chi.setText(feeHoKhauCell.getDiaChi());
         so_thanh_vien.setText(String.valueOf(feeHoKhauCell.getSoThanhVien()));
-        so_tien_can_dong.setText(String.valueOf(feeHoKhauCell.getSoTienCanDong()));
+        so_tien.setText(String.valueOf(feeHoKhauCell.getSoTien()));
 
         feeHoKhauCell.getPropertySelected().addListener((observable, oldValue, newValue) -> {
             if(newValue != null) {

@@ -43,10 +43,11 @@ public class FeeThemKhoanThuController implements Initializable {
         if(checkThongTin()) {
             Model.getInstance().getFeeKhoanThuModel().setFeeKhoanThuModel(
                     ten_khoan_thu.getText(),
-                    luaChon, Integer.parseInt(so_tien_can_dong.getText()),
+                    luaChon, Long.parseLong(so_tien_can_dong.getText()),
                     LocalDate.now().toString(),
                     mo_ta.getText());
             Model.getInstance().getViewFactory().getFeeSelectedMenuItem().set(FeeMenuOptions.DANH_SACH_HO_KHAU_CAN_THU_PHI);
+
         }
     }
 

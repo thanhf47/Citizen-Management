@@ -37,7 +37,7 @@ public class FeeController implements Initializable {
 
                 }
                 case DANH_SACH_HO_KHAU_CAN_THU_PHI -> {
-                    danh_sach_phi_btn.requestFocus();
+                    them_khoan_thu_btn.requestFocus();
                     fee_parent.setCenter(Model.getInstance().getViewFactory().getFeeThemHoKhauView());
 
                 }

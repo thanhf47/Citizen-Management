@@ -1,20 +1,17 @@
 package com.example.citizenmanagement.models;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 public class FeeKhoanThuCell {
     private final IntegerProperty maKhoanThu = new SimpleIntegerProperty();
     private final StringProperty tenKhoanThu = new SimpleStringProperty();
     private final IntegerProperty batBuoc = new SimpleIntegerProperty();
-    private final IntegerProperty soTienCanDong = new SimpleIntegerProperty();
+    private final LongProperty soTienCanDong = new SimpleLongProperty();
     private final StringProperty ngayTao = new SimpleStringProperty();
 
     public FeeKhoanThuCell() {
     }
-    public FeeKhoanThuCell(int maKhoanThu, String tenKhoanThu, int batBuoc, int soTienCanDong, String ngayTao) {
+    public FeeKhoanThuCell(int maKhoanThu, String tenKhoanThu, int batBuoc, long soTienCanDong, String ngayTao) {
         this.maKhoanThu.setValue(maKhoanThu);
         this.tenKhoanThu.setValue(tenKhoanThu);
         this.batBuoc.setValue(batBuoc);
@@ -58,11 +55,11 @@ public class FeeKhoanThuCell {
         this.batBuoc.set(batBuoc);
     }
 
-    public int getSoTienCanDong() {
+    public long getSoTienCanDong() {
         return soTienCanDong.get();
     }
 
-    public IntegerProperty soTienCanDongProperty() {
+    public LongProperty soTienCanDongProperty() {
         return soTienCanDong;
     }
 
