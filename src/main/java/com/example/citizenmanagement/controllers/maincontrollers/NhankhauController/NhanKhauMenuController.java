@@ -11,7 +11,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.sql.Date;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 
@@ -49,7 +52,7 @@ public class NhanKhauMenuController implements Initializable {
                                 String id = resultSet.getString(2);
                                 String hoten = resultSet.getNString(3);
                                 String gioitinh = resultSet.getString(4);
-                                String namsinh = resultSet.getString(5);
+                               String namsinh = resultSet.getString(5);
                                 String diachi = resultSet.getNString(6);
 
                                 list_view.getItems().add(new List_nhan_khau(ma, id, hoten, gioitinh, namsinh, diachi));
@@ -106,10 +109,18 @@ public class NhanKhauMenuController implements Initializable {
                     String id = resultSet.getString(2);
                     String hoten = resultSet.getNString(3);
                     String gioitinh = resultSet.getString(4);
-                    String namsinh = resultSet.getString(5);
+                    Date ngay_sinh = resultSet.getDate(5);
+                    String ngaysinh = "";
+
+                    if (ngay_sinh != null) {
+                        LocalDate localDate = ngay_sinh.toLocalDate();
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                        ngaysinh = localDate.format(formatter);
+                    }
+
                     String noisinh = resultSet.getNString(6);
 
-                   list_view.getItems().add(new List_nhan_khau(ma,id, hoten, gioitinh, namsinh, noisinh));
+                   list_view.getItems().add(new List_nhan_khau(ma,id, hoten, gioitinh, ngaysinh, noisinh));
                 }
             }
         }

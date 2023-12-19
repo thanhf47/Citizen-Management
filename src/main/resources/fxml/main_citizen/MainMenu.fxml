@@ -1,67 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0"
-            prefWidth="180.0" styleClass="slide_ankerpaine" stylesheets="@../../styles/mainmenu.css"
-            xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.citizenmanagement.controllers.maincontrollers.MainMenuController">
-   <Pane layoutX="4.0" layoutY="18.0" prefHeight="76.0" prefWidth="175.0" styleClass="inner_paine"
-         AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="2.0">
-      <ImageView fitHeight="55.0" fitWidth="45.0" layoutX="14.0" layoutY="16.0" pickOnBounds="true"
-                 preserveRatio="true">
+        <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+        <?import javafx.scene.control.Button?>
+        <?import javafx.scene.control.Label?>
+        <?import javafx.scene.image.Image?>
+        <?import javafx.scene.image.ImageView?>
+        <?import javafx.scene.layout.AnchorPane?>
+        <?import javafx.scene.layout.HBox?>
+        <?import javafx.scene.layout.Pane?>
+        <?import javafx.scene.layout.VBox?>
+        <?import javafx.scene.shape.Line?>
+        <?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="180.0" styleClass="slide_ankerpaine" stylesheets="@../../styles/mainmenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.MainMenuController">
+   <Pane layoutX="4.0" layoutY="18.0" prefHeight="76.0" prefWidth="175.0" styleClass="inner_paine" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="2.0">
+      <ImageView fitHeight="55.0" fitWidth="45.0" layoutX="14.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/login_form/smart-city.png"/>
+            <Image url="@../../images/login_form/smart-city.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="45.0" fitWidth="38.0" layoutX="121.0" layoutY="19.0" pickOnBounds="true"
-                 preserveRatio="true">
+      <ImageView fitHeight="45.0" fitWidth="38.0" layoutX="121.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/login_form/list.png"/>
+            <Image url="@../../images/login_form/list.png" />
          </image>
       </ImageView>
    </Pane>
-   <Line endX="75.50001525878906" layoutX="90.0" layoutY="151.0" startX="-82.10002136230469"/>
-   <VBox layoutX="11.0" layoutY="220.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-         AnchorPane.topAnchor="200.0">
-      <Button fx:id="trang_chu_btn" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" styleClass="btn_an"
-              text="Trang Chủ">
+   <Line endX="75.50001525878906" layoutX="90.0" layoutY="151.0" startX="-82.10002136230469" />
+   <VBox layoutX="11.0" layoutY="220.0" prefHeight="300.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
+      <Button fx:id="trang_chu_btn" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" styleClass="btn_an" text="Trang Chủ">
          <font>
-            <Font name="Verdana" size="15.0"/>
+            <Font name="Verdana" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="nhan_khau_btn" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" styleClass="btn_an"
-              text="Nhân Khẩu">
+      <Button fx:id="nhan_khau_btn" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" styleClass="btn_an" text="Nhân Khẩu">
          <font>
-            <Font name="Verdana" size="15.0"/>
+            <Font name="Verdana" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="ho_khau_btn" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" styleClass="btn_an"
-              text="Hộ Khẩu">
+      <Button fx:id="ho_khau_btn" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" styleClass="btn_an" text="Hộ Khẩu">
          <font>
-            <Font size="15.0"/>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="tamtru_btn" layoutX="10.0" layoutY="130.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" styleClass="btn_an" text="Tạm Trú">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="tamvang_btn" layoutX="10.0" layoutY="190.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" styleClass="btn_an" text="Tạm Vắng">
+         <font>
+            <Font size="15.0" />
          </font>
       </Button>
    </VBox>
-   <HBox fx:id="logout_btn" layoutY="535.0" onMouseClicked="#onLogoutBtn" prefHeight="60.0" prefWidth="180.0"
-         styleClass="logoutBtn" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+   <HBox fx:id="logout_btn" layoutY="535.0" onMouseClicked="#onLogoutBtn" prefHeight="60.0" prefWidth="180.0" styleClass="logoutBtn" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <children>
-         <FontAwesomeIconView glyphName="SIGN_OUT" rotate="180.0" size="36"/>
+         <FontAwesomeIconView glyphName="SIGN_OUT" rotate="180.0" size="36" />
          <Label text="Đăng Xuất" textFill="WHITE">
             <font>
-               <Font size="18.0"/>
+               <Font size="18.0" />
             </font>
          </Label>
       </children>
    </HBox>
 </AnchorPane>
+ 

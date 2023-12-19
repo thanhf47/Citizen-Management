@@ -8,13 +8,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class DkTamTruController implements Initializable {
 
+    public DatePicker ngay_sinh_lbl;
     private String[] Gioitinh = {"Nam", "Nữ"};
     public Button thoat_tamtru_btn;
     public Button tiep_tuc_btn;
@@ -113,7 +117,7 @@ public class DkTamTruController implements Initializable {
             String ho_ten = hoten_text.getText();
             String CCCD = CCCD_text.getText();
             String gioitinh = gioitinh_text.getValue();
-            int namsinh = bit;
+            LocalDate namsinh = ngay_sinh_lbl.getValue();
             String noisinh = noi_sinh_text.getText();
             String nguyenquan = nguyen_quan_text.getText();
             String dantoc = dantoc_text.getText();

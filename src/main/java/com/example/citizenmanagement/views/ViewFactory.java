@@ -16,6 +16,8 @@ public class ViewFactory {
 
     //Main Citizen Views
     private final ObjectProperty<MainMenuOptions>    selectedMenuItem;
+
+    private AnchorPane listTamTruView;
     private AnchorPane trangChuView;
     private AnchorPane nhanKhauView;
     private AnchorPane hoKhauView;
@@ -57,7 +59,6 @@ public class ViewFactory {
     public ViewFactory(){
         this.selectedMenuItem = new SimpleObjectProperty<>();
         this.feeSelectedMenuItem = new SimpleObjectProperty<>();
-
         this.quaylai = new SimpleObjectProperty<>("showBang");
     }
 
@@ -101,14 +102,11 @@ public class ViewFactory {
 
 
     public AnchorPane getXemChiTietNhanKhau() {
-
             try {
                 xemChiTietNhanKhau = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau/NhanKhauShow.fxml")).load();
-
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
         return xemChiTietNhanKhau;
     }
     /********************************************************************************************/
@@ -298,7 +296,15 @@ public class ViewFactory {
         }
         return tamTruView;
     }
-
+    public AnchorPane getTamTruListView() {
+        if ( listTamTruView == null) {
+            try {
+                listTamTruView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau/ListTamTru.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }        return listTamTruView;
+    }
     public AnchorPane gettamVang2View() {
         if (tamVang2View == null) {
             try {

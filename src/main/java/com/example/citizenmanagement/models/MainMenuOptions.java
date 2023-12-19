@@ -13,6 +13,7 @@ public enum MainMenuOptions {
     //nhan khau
     THEM_NHAN_KHAU,
     TAM_TRU,
+    TAM_TRU_LIST,
     TAM_VANG,
     KHAI_TU,
     TAM_TRU_2,

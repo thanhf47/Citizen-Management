@@ -4,13 +4,14 @@ import javafx.beans.property.StringProperty;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class luuTruNhanKhau  implements Initializable {
     private final String CCCD;
     private final String ho_ten;
     private final String so_ho_chieu;
-    private final int nam_sinh;
+    private final LocalDate nam_sinh;
     private final String gioi_tinh;
     private final String ton_giao;
 
@@ -24,7 +25,8 @@ public class luuTruNhanKhau  implements Initializable {
 
 
 
-    public luuTruNhanKhau(String ho_ten, String CCCD, int nam_sinh, String gioi_tinh, String noi_sinh, String nguyen_quan, String dan_toc, String ton_giao, String quoc_tich, String so_ho_chieu, String thuong_tru, String nghe_nghiep) {
+
+    public luuTruNhanKhau(String ho_ten, String CCCD, LocalDate nam_sinh, String gioi_tinh, String noi_sinh, String nguyen_quan, String dan_toc, String ton_giao, String quoc_tich, String so_ho_chieu, String thuong_tru, String nghe_nghiep) {
         this.CCCD = CCCD;
         this.ho_ten = ho_ten;
         this.so_ho_chieu = so_ho_chieu;
@@ -37,7 +39,6 @@ public class luuTruNhanKhau  implements Initializable {
         this.nguyen_quan = nguyen_quan;
         this.thuong_tru = thuong_tru;
         this.noi_sinh = noi_sinh;
-
     }
     public String getCCCD() {
         return CCCD;
@@ -51,9 +52,11 @@ public class luuTruNhanKhau  implements Initializable {
         return so_ho_chieu;
     }
 
-    public int getNam_sinh() {
+    public LocalDate getNam_sinh() {
         return nam_sinh;
     }
+
+
 
     public String getGioi_tinh() {
         return gioi_tinh;

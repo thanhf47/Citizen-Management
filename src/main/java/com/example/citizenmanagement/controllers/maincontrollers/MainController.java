@@ -15,13 +15,14 @@ public class MainController implements Initializable {
 
     private Button ho_khau_btn;
     private Button nhan_khau_btn;
+    public Button tamtru_btn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         ho_khau_btn = (Button) main_parent.lookup("#ho_khau_btn");
         nhan_khau_btn = (Button) main_parent.lookup("#nhan_khau_btn");
-
+        tamtru_btn = (Button) main_parent.lookup("#tamtru_btn");
         addListener();
     }
 
@@ -68,6 +69,10 @@ public class MainController implements Initializable {
                 case TAM_TRU -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().gettamTruView());
                     nhan_khau_btn.requestFocus();
+                }
+                case TAM_TRU_LIST -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getTamTruListView());
+                    tamtru_btn.requestFocus();
                 }
                 case TAM_TRU_2 -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().gettamTru2View());

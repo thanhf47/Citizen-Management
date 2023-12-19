@@ -2,13 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../../styles/Main/DkTamTru.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.DkTamTruController">
    <Label layoutX="314.0" layoutY="52.0" styleClass="text_lbl" text="Đăng kí tạm trú" />
@@ -22,7 +22,7 @@
          <ChoiceBox fx:id="gioitinh_text" prefHeight="31.0" prefWidth="132.0" />
       </HBox>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Năm Sinh" />
-      <TextField fx:id="nam_sinh_text" />
+      <DatePicker fx:id="ngay_sinh_lbl" prefHeight="31.0" prefWidth="315.0" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi Sinh" />
       <TextField fx:id="noi_sinh_text" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên Quán" />
