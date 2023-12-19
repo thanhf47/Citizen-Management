@@ -21,7 +21,7 @@ public class Model {
     private boolean citizenManagerLoginSuccessFlag;
     private ObjectProperty<Image> imageObjectProperty;
     // nhan khau
-
+    private static List_nhan_khau nhanKhauDuocChon;
     //ho khau section
     private static MainHoKhauCell hoKhauDuocChon;
 
@@ -495,5 +495,12 @@ public class Model {
             throw new RuntimeException(e);
         }
     }
+    /*********************************************************/
+    public static List_nhan_khau getNhanKhauDuocChon() {
+        return nhanKhauDuocChon;
+    }
 
+    public static void setNhanKhauDuocChon(List_nhan_khau nhanKhauDuocChon) {
+        Model.nhanKhauDuocChon = nhanKhauDuocChon;
+    }
 }

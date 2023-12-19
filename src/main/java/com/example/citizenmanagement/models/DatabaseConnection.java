@@ -580,6 +580,36 @@ public class DatabaseConnection {
                 "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, DG.SOTIENDADONG";
         return executeQuery(query);
     }
+
+    public ResultSet getDSNguoiChet() {
+        String query = "select MANHANKHAU, SOCANCUOC, HOTEN, GIOITINH, NGAYSINH, NOITHUONGTRU\n" +
+                "from NHANKHAU INNER JOIN KHAITU ON NHANKHAU.MANHANKHAU = KHAITU.MANHANKHAUNGUOICHET";
+
+        return executeQuery(query);
+    }
+
+    public ResultSet deadNhanKhau_timkiem(String condition) {
+        String query = "select MANHANKHAU, SOCANCUOC, HOTEN, GIOITINH, NGAYSINH, NOITHUONGTRU\n" +
+                "from NHANKHAU INNER JOIN KHAITU ON NHANKHAU.MANHANKHAU = KHAITU.MANHANKHAUNGUOICHET\n" +
+                "WHERE MANHANKHAU LIKE '%" + condition + "%' OR SOCANCUOC LIKE '%" + condition + "%' OR HOTEN LIKE '%" + condition + "%'";
+
+        return executeQuery(query);
+    }
+    public ResultSet getThongTinKhaiTu(String maNhanKhauNguoiChet) {
+        String query = "SELECT KT.MAGIAYKHAITU, NK1.MANHANKHAU, NK1.HOTEN, NK2.MANHANKHAU, NK2.HOTEN, NK2.SOCANCUOC, NK2.NGAYSINH, NK2.GIOITINH, NK2.DANTOC, NK2.QUOCTICH,\n" +
+                "\tNK2.NGUYENQUAN, NK2.NOITHUONGTRU, KT.NGAYKHAI, KT.NGAYCHET, KT.LYDOCHET\n" +
+                "FROM KHAITU KT INNER JOIN NHANKHAU NK1 ON KT.MANHANKHAUNGUOIKHAI = NK1.MANHANKHAU\n" +
+                "\tINNER JOIN NHANKHAU NK2 ON KT.MANHANKHAUNGUOICHET = NK2.MANHANKHAU\n" +
+                "WHERE KT.MANHANKHAUNGUOICHET = " + maNhanKhauNguoiChet;
+        return executeQuery(query);
+    }
+
+    public void updateThongTinKhaiTu(String maGiayKhaiTu, String ngayKhai, String ngayChet, String lyDo) {
+        String query = "UPDATE KHAITU\n" +
+                "SET NGAYKHAI = '" + ngayKhai + "', NGAYCHET = '" + ngayChet + "', LYDOCHET = N'" + lyDo + "'\n" +
+                "WHERE MAGIAYKHAITU = " + maGiayKhaiTu;
+        executeUpdate(query);
+    }
     /***************************************************************************/
 
 

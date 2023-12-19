@@ -4,6 +4,7 @@ public enum MainMenuOptions {
     TRANG_CHU,
     NHAN_KHAU,
     HO_KHAU,
+    QUA_DOI,
 
     //ho khau
     XEM_CHI_TIET_HO_KHAU,
@@ -16,7 +17,6 @@ public enum MainMenuOptions {
     TAM_VANG,
     KHAI_TU,
     TAM_TRU_2,
-
     TAM_VANG_2,
 
     KHAI_TU_2,
@@ -27,5 +27,6 @@ public enum MainMenuOptions {
     THONG_KE_TAM_VANG,
 
     //profile
-    PROFILE
+    PROFILE,
+    THONG_TIN_KHAI_TU;
 }

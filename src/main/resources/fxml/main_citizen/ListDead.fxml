@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="my-background" stylesheets="@../../styles/Fee/FeeDanhSach.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.ListDeadController">
+   <children>
+      <TextField fx:id="search_textfield" layoutX="35.0" layoutY="117.0" prefHeight="30.0" prefWidth="250.0" promptText="Tìm kiếm " styleClass="input_text_field" stylesheets="@../../styles/LoginForm.css" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="115.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+      <ListView fx:id="listView" layoutX="24.0" layoutY="207.0" prefHeight="500.0" prefWidth="820.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="215.0" />
+      <Label layoutX="64.0" layoutY="63.0" text="Danh sách những người đã chết" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="50.0">
+         <font>
+            <Font name="Verdana Bold" size="36.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="34.0" layoutY="169.0" prefHeight="50.0" prefWidth="800.0" styleClass="tieu_de" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="170.0">
+         <children>
+            <Text layoutX="7.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu">
+               <font>
+                  <Font name="Verdana Bold" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="143.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CCCD">
+               <font>
+                  <Font name="Verdana Bold" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="232.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên">
+               <font>
+                  <Font name="Verdana Bold" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="400.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính">
+               <font>
+                  <Font name="Verdana Bold" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="529.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh">
+               <font>
+                  <Font name="Verdana Bold" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="679.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Địa chỉ">
+               <font>
+                  <Font name="Verdana Bold" size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Label contentDisplay="CENTER" layoutX="760.0" layoutY="46.0" opacity="0.6" rotate="45.0" text="jwannasleep" textFill="#c41313" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+      </Label>
+   </children>
+</AnchorPane>

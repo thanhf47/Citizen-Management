@@ -25,6 +25,8 @@ public class MainMenuController implements Initializable {
 
     @FXML
     private Button nhan_khau_btn;
+    @FXML
+    private Button quadoi_btn;
 
 
     @FXML
@@ -44,6 +46,7 @@ public class MainMenuController implements Initializable {
         trang_chu_btn.setOnAction(event -> onTrangChu());
         nhan_khau_btn.setOnAction(event -> onNhanKhau());
         ho_khau_btn.setOnAction(event -> onHoKhau());
+        quadoi_btn.setOnAction(event -> onQuaDoi());
     }
 
     private void onTrangChu() {
@@ -54,6 +57,9 @@ public class MainMenuController implements Initializable {
     }
     private void onHoKhau() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.HO_KHAU);
+    }
+    private void onQuaDoi() {
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.QUA_DOI);
     }
 
 }

@@ -5,6 +5,7 @@ import javafx.beans.property.StringProperty;
 
 public class List_nhan_khau {
 
+    private final StringProperty so_nhan_khau;
     private final StringProperty cccd;
     private final StringProperty hoten;
 //    private final StringProperty so_ho_khau;
@@ -12,7 +13,8 @@ public class List_nhan_khau {
     private final StringProperty ngay_sinh;
     private final StringProperty dia_chi;
 
-    public List_nhan_khau(String cccd, String hoten, String gioi_tinh, String ngay_sinh, String dia_chi) {
+    public List_nhan_khau(String so_nhan_khau,String cccd, String hoten, String gioi_tinh, String ngay_sinh, String dia_chi){
+        this.so_nhan_khau = new SimpleStringProperty(this, "SoNhanKhau",so_nhan_khau);
         this.cccd = new SimpleStringProperty(this, "Cccd", cccd);
         this.hoten = new SimpleStringProperty(this, "HoVaTen", hoten);
         this.gioi_tinh = new SimpleStringProperty(this, "Gioi_tinh", gioi_tinh);
@@ -20,6 +22,7 @@ public class List_nhan_khau {
         this.dia_chi = new SimpleStringProperty(this, "DiaChi", dia_chi);
     }
 
+    public String getSoNhanKhau() {return so_nhan_khau.get();}
     public String getCccd() {
         return cccd.get();
     }

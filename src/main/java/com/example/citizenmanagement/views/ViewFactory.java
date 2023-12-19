@@ -5,6 +5,7 @@ import com.example.citizenmanagement.models.MainMenuOptions;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -27,6 +28,10 @@ public class ViewFactory {
     private AnchorPane thongKeTamVangView;
 
     private AnchorPane profile;
+
+    //danh sach nguoi chet
+    private AnchorPane listDeadView;
+    private AnchorPane thongTinKhaiTuView;
 
     //Ho Khau
 
@@ -54,6 +59,7 @@ public class ViewFactory {
     private AnchorPane feeXemChiTietKhoanThuView;
     private AnchorPane feeDSHoanThanhPhiView;
     private AnchorPane feeDSChuaHoanThanhPhiView;
+
 
     /********************************************************************************************/
     public ViewFactory(){
@@ -358,8 +364,24 @@ public class ViewFactory {
         stage.close();
     }
 
+    public AnchorPane getListDeadView() {
+        try {
+            listDeadView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ListDead.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return listDeadView;
+    }
 
 
+    public AnchorPane getThongTinKhaiTu() {
+        try {
+            thongTinKhaiTuView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/ThongTinKhaiTu.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return thongTinKhaiTuView;
+    }
 }
 
 

@@ -11,7 +11,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.sql.Date;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 
@@ -45,13 +48,14 @@ public class NhanKhauMenuController implements Initializable {
                 try {
                         if(resultSet.isBeforeFirst()) {
                             while(resultSet.next()) {
-                                String cccd = resultSet.getString(1);
-                                String hoTen = resultSet.getString(2);
-                                String gioitinh = resultSet.getString(3);
-                                String namsinh = resultSet.getString(4);
-                                String diachi = resultSet.getString(5);
+                                String ma = resultSet.getString(1);
+                                String id = resultSet.getString(2);
+                                String hoten = resultSet.getNString(3);
+                                String gioitinh = resultSet.getString(4);
+                                String namsinh = resultSet.getString(5);
+                                String diachi = resultSet.getNString(6);
 
-                                list_view.getItems().add(new List_nhan_khau(cccd, hoTen, gioitinh, namsinh, diachi));
+                                list_view.getItems().add(new List_nhan_khau(ma, id, hoten, gioitinh, namsinh, diachi));
                             }
                             list_view.setCellFactory(param ->new List_nhan_khau_factory());
                         }
@@ -98,12 +102,21 @@ public class NhanKhauMenuController implements Initializable {
         try{
             if(resultSet.isBeforeFirst()){
                 while (resultSet.next()) {
-                    String id = resultSet.getString(1);
-                    String hoten = resultSet.getNString(2);
-                    String gioitinh = resultSet.getString(3);
-                    String namsinh = resultSet.getString(4);
-                    String thuongtru = resultSet.getNString(5);
-                    list_view.getItems().add(new List_nhan_khau(id, hoten, gioitinh, namsinh, thuongtru));
+                    String ma = resultSet.getString(1);
+                    String id = resultSet.getString(2);
+                    String hoten = resultSet.getNString(3);
+                    String gioitinh = resultSet.getString(4);
+                    Date ngay_sinh = resultSet.getDate(5);
+                    String ngaysinh = "";
+
+                    if (ngay_sinh != null) {
+                        LocalDate localDate = ngay_sinh.toLocalDate();
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                        ngaysinh = localDate.format(formatter);
+                    }
+
+                    String noisinh = resultSet.getNString(6);
+                    list_view.getItems().add(new List_nhan_khau(ma,id, hoten, gioitinh, ngaysinh, noisinh));
                 }
             }
         }
