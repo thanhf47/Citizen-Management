@@ -457,19 +457,13 @@ public class DatabaseConnection {
         return thanhcong;
     }
 
-    public int capnhatNhanKhau (String hoTen, String CCCD, String namSinh, int gioiTinh, String noiSinh, String nguyenQuan,String danToc, String tonGiao, String quocTich, String soHoChieu, String noiThuongTru, String ngheNghiep, String ghiChu ){
+    public int capnhatNhanKhau (String string){
         int thanhcong = 0;
-        String querry = "update NHANKHAU SET (HOTEN = ?, SOCANCUOC = ?, NGAYSINH = ?, GIOITINH = ?, NOISINH =? , NGUYENQUAN = ?, DANTOC = ? , TONGIAO = ?, QUOCTICH = ?, SOHOCHIEU =?, NOITHUONGTRU = ?, NGHENGHIEP  = ?,  GHICHU  = ? )" +
-                " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String querry = "update NHANKHAU SET NGAYTAO = ? Where SOCANCUOC = ?";
         try{
             PreparedStatement pre = connection.prepareStatement(querry);
-            pre.setNString(1,hoTen); pre.setString(2,CCCD);
-            pre.setString(3,namSinh); pre.setInt(4,gioiTinh);
-            pre.setNString(5,noiSinh); pre.setNString(6,nguyenQuan);
-            pre.setNString(7,danToc); pre.setNString(8,tonGiao);
-            pre.setNString(9,quocTich); pre.setString(10,soHoChieu);
-            pre.setNString(11,noiThuongTru); pre.setNString(12,ngheNghiep);
-             pre.setNString(13,ghiChu);
+            pre.setDate(1,Date.valueOf(LocalDate.now().toString()));
+            pre.setString(2,string);
             thanhcong = pre.executeUpdate();
         }
         catch(SQLException e) {
@@ -516,6 +510,19 @@ public class DatabaseConnection {
     public ResultSet truyvan() {
         ResultSet resultSet = null;
         String querry = " select MANHANKHAU, SOCANCUOC, HOTEN, GIOITINH, NGAYSINH, NOITHUONGTRU from NHANKHAU;";
+        try{
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery(querry);
+        }
+        catch(Exception e) {
+
+        }
+        return resultSet;
+    }
+
+    public ResultSet truyvanTamTru() {
+        ResultSet resultSet = null;
+        String querry = " select MANHANKHAU, SOCANCUOC, HOTEN, GIOITINH, NGAYSINH, NOITHUONGTRU from NHANKHAU where GHICHU like N'tạm trú';";
         try{
             Statement statement = connection.createStatement();
             resultSet = statement.executeQuery(querry);

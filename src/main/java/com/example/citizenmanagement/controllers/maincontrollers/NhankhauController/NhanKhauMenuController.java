@@ -22,9 +22,6 @@ public class NhanKhauMenuController implements Initializable {
 
     @FXML
     public Button themmoi_btn;
-
-
-
     public Button tamtru_button;
 
     @FXML
@@ -54,10 +51,8 @@ public class NhanKhauMenuController implements Initializable {
                                 String gioitinh = resultSet.getString(4);
                                String namsinh = resultSet.getString(5);
                                 String diachi = resultSet.getNString(6);
-
                                 list_view.getItems().add(new List_nhan_khau(ma, id, hoten, gioitinh, namsinh, diachi));
                             }
-
                         }
                 }
                 catch (Exception e) {
@@ -97,8 +92,6 @@ public class NhanKhauMenuController implements Initializable {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.KHAI_TU);
     }
 
-
-
     public void capnhat() {
         ResultSet resultSet = Model.getInstance().getDatabaseConnection().truyvan();
         list_view.getItems().clear();
@@ -125,9 +118,8 @@ public class NhanKhauMenuController implements Initializable {
             }
         }
         catch(Exception e) {
-            System.out.println("Loi ơr NhanKhaumenucontroller");
+            System.out.println("Lỗi ở NhanKhaumenucontroller");
         }
         list_view.setCellFactory(param-> new List_nhan_khau_factory());
     }
-
 }

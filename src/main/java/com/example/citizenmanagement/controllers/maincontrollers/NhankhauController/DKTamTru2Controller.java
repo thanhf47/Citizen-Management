@@ -56,12 +56,12 @@ public class DKTamTru2Controller implements Initializable {
             LocalDate ngay_sinh = luuTruNhanKhau.getNam_sinh();
             Date ngaysinh = Date.valueOf(ngay_sinh);
 
-
           int thanhcong = Model.getInstance().getDatabaseConnection().addTamtru(luuTruNhanKhau.getHo_ten(), luuTruNhanKhau.getCCCD(),ngaysinh,bit,luuTruNhanKhau.getNoi_sinh(),luuTruNhanKhau.getNguyen_quan(),luuTruNhanKhau.getDan_toc(),luuTruNhanKhau.getTon_giao(),luuTruNhanKhau.getQuoc_tich(),luuTruNhanKhau.getThuong_tru(),luuTruNhanKhau.getNghe_nghiep(),matamtru_text.getText(),Date.valueOf(ngayden_text.getValue()),Date.valueOf(ngaydi_text.getValue()),lido_text.getText() );
+          int thanhcong1 = Model.getInstance().getDatabaseConnection().capnhatNhanKhau(luuTruNhanKhau.getCCCD());
 //          int thanhcong1 = Model.getInstance().getDatabaseConnection().addNhanKhauTamTru(luuTruNhanKhau.getHo_ten(), luuTruNhanKhau.getCCCD(),ngaysinh,bit,luuTruNhanKhau.getNoi_sinh(),luuTruNhanKhau.getNguyen_quan(),luuTruNhanKhau.getDan_toc(),luuTruNhanKhau.getTon_giao(),luuTruNhanKhau.getQuoc_tich(),luuTruNhanKhau.getThuong_tru(),luuTruNhanKhau.getNghe_nghiep());
 
          // int thanhcong = Model.getInstance().getDatabaseConnectionNhanKhau().addTamtru(hoten_text.getText(), CCCD_text.getText(), Integer.parseInt(nam_sinh_text.getText()), dkTamTru1Controller.bits(), noi_sinh_text.getText(),nguyen_quan_text.getText(), dantoc_text.getText(),tongiao_text.getText(), quoctich_text.getText(), hochieu_text.getText(), thuong_tru_text.getText(),nghenghiep_text.getText(),matamtru_text.getText(),sdt_text.getText(), Date.valueOf(ngayden_text.getValue()), Date.valueOf(ngaydi_text.getValue()), lido_text.getText() );
-            if(thanhcong == 0 ) {
+            if(thanhcong == 0 && thanhcong1 == 0 ) {
                 System.out.println("Đã thêm không thành công");
             }
         });

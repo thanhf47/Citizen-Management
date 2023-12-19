@@ -297,13 +297,12 @@ public class ViewFactory {
         return tamTruView;
     }
     public AnchorPane getTamTruListView() {
-        if ( listTamTruView == null) {
             try {
                 listTamTruView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau/ListTamTru.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }        return listTamTruView;
+               return listTamTruView;
     }
     public AnchorPane gettamVang2View() {
         if (tamVang2View == null) {
