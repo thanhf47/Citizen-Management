@@ -15,7 +15,7 @@
             <Font name="Verdana Bold" size="32.0" />
          </font>
       </Label>
-      <TextField fx:id="search_textfield" layoutX="45.0" layoutY="127.0" prefHeight="30.0" prefWidth="250.0" promptText="Tìm kiếm hộ khẩu" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="115.0">
+      <TextField fx:id="search_textfield" layoutX="45.0" layoutY="127.0" prefHeight="30.0" prefWidth="250.0" promptText="Tìm kiếm hộ khẩu" styleClass="input_text_field" stylesheets="@../../styles/LoginForm.css" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="115.0">
          <font>
             <Font size="17.0" />
          </font>

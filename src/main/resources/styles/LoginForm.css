@@ -81,7 +81,7 @@
 }
 
 .input_text_field {
-    -fx-background-color: #fff;
+    -fx-background-color: #f0eeed;
 }
 .input_text_field:hover {
     -fx-scale-x: 1.05;

@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="my-background" stylesheets="@../../styles/Fee/FeeDanhSach.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.feecontrollers.FeeDanhSachController">
-    <TextField fx:id="search_textfield" layoutX="25.0" layoutY="107.0" prefHeight="30.0" prefWidth="250.0" promptText="Tìm kiểm khoản thu" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="115.0">
+    <TextField fx:id="search_textfield" layoutX="25.0" layoutY="107.0" prefHeight="30.0" prefWidth="250.0" promptText="Tìm kiểm khoản thu" styleClass="input_text_field" stylesheets="@../../styles/LoginForm.css" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="115.0">
         <font>
           <Font size="17.0" />
         </font>
