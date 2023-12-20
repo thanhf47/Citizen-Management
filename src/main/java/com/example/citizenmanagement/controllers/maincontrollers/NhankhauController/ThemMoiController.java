@@ -86,6 +86,7 @@ public class ThemMoiController implements Initializable {
             alert.setHeaderText("Thành Công !!!");
             alert.setContentText("Đã thêm thành công, vui lòng ấn Thoát để xem danh sách");
             alert.showAndWait();
+            Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.NHAN_KHAU);
             clearText();
 
         }

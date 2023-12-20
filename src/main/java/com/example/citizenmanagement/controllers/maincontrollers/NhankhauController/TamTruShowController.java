@@ -36,7 +36,8 @@ public class TamTruShowController implements Initializable {
     public Button khai_tu_btn;
     public DatePicker ngay_tao_date;
     public DatePicker ngay_sinh_lbl;
-//    public Button tam_vang_btn;
+    public Button chinh_sua_btn;
+    //    public Button tam_vang_btn;
     int bit;
 
     private List_nhan_khau list1 ;
@@ -44,6 +45,19 @@ public class TamTruShowController implements Initializable {
     private String[] Gioitinh = {"Nam", "Nữ"};
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        confirm_chinh_sua_btn.setVisible(false);
+        ho_ten_text.setDisable(true);
+        my_choise_box.setDisable(true);
+        cccd_text.setDisable(true);
+        ngay_sinh_lbl.setDisable(true);
+        ton_giao_text.setDisable(true);
+        dan_toc_text.setDisable(true);
+        nghe_text.setDisable(true);
+        quoc_tich_text.setDisable(true);
+        nguyen_quan_text.setDisable(true);
+        thuong_tru_text.setDisable(true);
+        noi_sinh_text.setDisable(true);
+        ghi_chu_text.setDisable(true);
         ngay_tao_date.setDisable(true);
         my_choise_box.setItems(FXCollections.observableArrayList(Gioitinh));
 
@@ -68,6 +82,22 @@ public class TamTruShowController implements Initializable {
             onThoatTamVangBtn();
         });
 
+        chinh_sua_btn.setOnAction(ActionEvent-> {
+            ho_ten_text.setDisable(false);
+            my_choise_box.setDisable(false);
+            ngay_sinh_lbl.setDisable(false);
+            ton_giao_text.setDisable(false);
+            dan_toc_text.setDisable(false);
+            nghe_text.setDisable(false);
+            quoc_tich_text.setDisable(false);
+            nguyen_quan_text.setDisable(false);
+            thuong_tru_text.setDisable(false);
+            noi_sinh_text.setDisable(false);
+            ghi_chu_text.setDisable(false);
+            chinh_sua_btn.setVisible(false);
+            confirm_chinh_sua_btn.setVisible(true);
+
+        });
         confirm_chinh_sua_btn.setOnAction(event -> {
             if(my_choise_box.getValue() == "Nam") {
                 bit = 1;

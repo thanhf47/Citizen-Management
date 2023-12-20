@@ -8,107 +8,38 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.ThemMoiController">
-   <AnchorPane layoutX="30.0" layoutY="109.0" prefHeight="600.0" prefWidth="750.0" stylesheets="@../../../styles/Main/ThemNguoiMoi.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="100.0">
-      <Text layoutX="23.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên " AnchorPane.rightAnchor="630.0" AnchorPane.topAnchor="80.0">
-         <font>
-            <Font name="Verdana Bold" size="14.0" />
-         </font></Text>
-      <Text layoutX="413.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính" AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="130.0">
-         <font>
-            <Font name="Verdana Bold" size="14.0" />
-         </font></Text>
-      <Text layoutX="23.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Năm sinh" AnchorPane.rightAnchor="630.0" AnchorPane.topAnchor="130.0">
-         <font>
-            <Font name="Verdana Bold" size="14.0" />
-         </font></Text>
-      <Text layoutX="25.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tôn giáo " AnchorPane.rightAnchor="630.0" AnchorPane.topAnchor="180.0">
-         <font>
-            <Font name="Verdana Bold" size="14.0" />
-         </font></Text>
-      <Text layoutX="412.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dân tộc" AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="180.0">
-         <font>
-            <Font name="Verdana Bold" size="14.0" />
-         </font></Text>
-      <Text layoutX="25.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nghề nghiệp" AnchorPane.rightAnchor="630.0" AnchorPane.topAnchor="230.0">
-         <font>
-            <Font name="Verdana Bold" size="14.0" />
-         </font></Text>
-      <Text layoutX="406.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quốc tịch" AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="230.0">
-         <font>
-            <Font name="Verdana Bold" size="14.0" />
-         </font></Text>
-      <TextField fx:id="ton_giao_text" layoutX="141.0" layoutY="182.0" prefHeight="32.0" prefWidth="200.0" styleClass="text_fld" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="180.0">
-         <font>
-            <Font name="Verdana" size="14.0" />
-         </font></TextField>
-      <TextField fx:id="nghe_text" layoutX="142.0" layoutY="253.0" prefHeight="32.0" prefWidth="200.0" styleClass="text_fld" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="230.0">
-         <font>
-            <Font name="Verdana" size="14.0" />
-         </font></TextField>
-      <TextField fx:id="quoc_tich_text" layoutX="504.0" layoutY="253.0" prefHeight="32.0" prefWidth="200.0" styleClass="text_fld" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="230.0">
-         <font>
-            <Font name="Verdana" size="14.0" />
-         </font></TextField>
-      <TextField fx:id="nam_sinh_text" layoutX="142.0" layoutY="116.0" prefHeight="32.0" prefWidth="200.0" styleClass="text_fld" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="130.0">
-         <font>
-            <Font name="Verdana" size="14.0" />
-         </font></TextField>
-      <ChoiceBox fx:id="my_choise_box" layoutX="505.0" layoutY="112.0" prefHeight="32.0" prefWidth="200.0" styleClass="text_fld" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="130.0" />
-      <Text layoutX="21.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên quán " AnchorPane.rightAnchor="630.0" AnchorPane.topAnchor="280.0">
-         <font>
-            <Font name="Verdana Bold" size="14.0" />
-         </font></Text>
-      <TextField fx:id="nguyen_quan_text" layoutX="140.0" layoutY="319.0" prefHeight="32.0" prefWidth="550.0" styleClass="text_fld" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="280.0">
-         <font>
-            <Font name="Verdana" size="14.0" />
-         </font></TextField>
-      <Text layoutX="19.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thường trú" AnchorPane.rightAnchor="630.0" AnchorPane.topAnchor="330.0">
-         <font>
-            <Font name="Verdana Bold" size="14.0" />
-         </font></Text>
-      <TextField fx:id="thuong_tru_text" layoutX="140.0" layoutY="378.0" prefHeight="32.0" prefWidth="550.0" styleClass="text_fld" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="330.0">
-         <font>
-            <Font name="Verdana" size="14.0" />
-         </font></TextField>
-      <Text layoutX="35.0" layoutY="6.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CCCD " AnchorPane.rightAnchor="630.0" AnchorPane.topAnchor="30.0">
-         <font>
-            <Font name="Verdana Bold" size="14.0" />
-         </font></Text>
-      <TextField fx:id="cccd_text" layoutX="141.0" layoutY="-16.0" prefHeight="32.0" prefWidth="550.0" styleClass="text_fld" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="49.60000000000002" AnchorPane.topAnchor="30.0">
-         <font>
-            <Font name="Verdana" size="14.0" />
-         </font></TextField>
-      <Button fx:id="thoat_themmoi_button" layoutX="225.0" layoutY="520.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_cancel" text="Thoát" AnchorPane.bottomAnchor="50.0" />
-      <Button fx:id="confirm_btn" layoutX="408.0" layoutY="520.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_acp" text="Xác nhận" AnchorPane.bottomAnchor="50.0" />
-      <TextField fx:id="dan_toc_text" layoutX="506.0" layoutY="182.0" prefHeight="32.0" prefWidth="200.0" styleClass="text_fld" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="180.0">
-         <font>
-            <Font name="Verdana" size="14.0" />
-         </font></TextField>
-      <TextField fx:id="ghi_chu_text" layoutX="120.0" layoutY="502.0" prefHeight="32.0" prefWidth="550.0" styleClass="text_fld" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="430.0">
-         <font>
-            <Font name="Verdana" size="14.0" />
-         </font></TextField>
-      <Text layoutX="23.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ghi chú" AnchorPane.rightAnchor="630.0" AnchorPane.topAnchor="430.0">
-         <font>
-            <Font name="Verdana Bold" size="14.0" />
-         </font></Text>
-      <TextField fx:id="ho_ten_text" layoutX="140.0" layoutY="53.0" prefHeight="32.0" prefWidth="550.0" styleClass="text_fld" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="80.0">
-         <font>
-            <Font name="Verdana" size="14.0" />
-         </font></TextField>
-      <Text layoutX="27.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi sinh" AnchorPane.rightAnchor="630.0" AnchorPane.topAnchor="380.0">
-         <font>
-            <Font name="Verdana Bold" size="14.0" />
-         </font></Text>
-      <TextField fx:id="noi_sinh_text" layoutX="138.0" layoutY="442.0" prefHeight="32.0" prefWidth="550.0" styleClass="text_fld" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="380.0">
-         <font>
-            <Font name="Verdana" size="14.0" />
-         </font></TextField>
+<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.ThemMoiController">
+   <AnchorPane layoutX="30.0" layoutY="109.0" prefHeight="627.0" prefWidth="756.0" stylesheets="@../../../styles/Main/ThemNguoiMoi.css">
+      <Text layoutX="23.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên " />
+      <Text layoutX="413.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính" />
+      <Text layoutX="23.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh" />
+      <Text layoutX="25.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tôn giáo " />
+      <Text layoutX="412.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dân tộc" />
+      <Text layoutX="25.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nghề nghiệp" />
+      <Text layoutX="406.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quốc tịch" />
+      <TextField fx:id="ton_giao_text" layoutX="141.0" layoutY="182.0" prefHeight="32.0" prefWidth="190.0" styleClass="text_fld" />
+      <TextField fx:id="nghe_text" layoutX="142.0" layoutY="253.0" styleClass="text_fld" />
+      <TextField fx:id="quoc_tich_text" layoutX="504.0" layoutY="253.0" prefHeight="33.0" prefWidth="182.0" styleClass="text_fld" />
+      <ChoiceBox fx:id="my_choise_box" layoutX="505.0" layoutY="112.0" prefHeight="33.0" prefWidth="182.0" styleClass="text_fld" />
+      <Text layoutX="21.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên quán " />
+      <TextField fx:id="nguyen_quan_text" layoutX="140.0" layoutY="319.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
+      <Text layoutX="19.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thường trú" />
+      <TextField fx:id="thuong_tru_text" layoutX="140.0" layoutY="378.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
+      <Text layoutX="35.0" layoutY="6.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CCCD " />
+      <TextField fx:id="cccd_text" layoutX="141.0" layoutY="-16.0" prefHeight="33.0" prefWidth="260.0" styleClass="text_fld" />
+      <Button fx:id="thoat_themmoi_button" layoutX="232.0" layoutY="556.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_cancel" text="Thoát" />
+      <Button fx:id="confirm_btn" layoutX="415.0" layoutY="556.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_acp" text="Xác nhận" />
+      <TextField fx:id="dan_toc_text" layoutX="506.0" layoutY="182.0" prefHeight="33.0" prefWidth="182.0" styleClass="text_fld" />
+      <TextField fx:id="ghi_chu_text" layoutX="138.0" layoutY="496.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
+      <Text layoutX="29.0" layoutY="518.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ghi chú" />
+      <TextField fx:id="ho_ten_text" layoutX="140.0" layoutY="53.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
+      <Text layoutX="27.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi sinh" />
+      <TextField fx:id="noi_sinh_text" layoutX="138.0" layoutY="442.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
+      <DatePicker fx:id="ngay_sinh_lbl" layoutX="133.0" layoutY="117.0" prefHeight="31.0" prefWidth="200.0" />
    </AnchorPane>
-   <Text layoutX="230.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thêm nhân khẩu mới " AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="231.5625" AnchorPane.topAnchor="40.0">
+   <Text layoutX="295.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thêm nhân khẩu mới ">
       <font>
-         <Font name="Verdana Bold" size="32.0" />
+         <Font size="27.0" />
       </font>
    </Text>
 </AnchorPane>

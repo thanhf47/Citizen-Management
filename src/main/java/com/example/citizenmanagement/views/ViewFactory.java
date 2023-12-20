@@ -364,12 +364,10 @@ public class ViewFactory {
     }
 
     public AnchorPane gettamTru2View() {
-        if (tamTru2View == null) {
-            try {
-                tamTru2View = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau/DkTamTru2.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            tamTru2View = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau/DkTamTru2.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return tamTru2View;
     }

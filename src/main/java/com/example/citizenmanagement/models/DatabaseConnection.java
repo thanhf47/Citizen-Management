@@ -224,8 +224,8 @@ public class DatabaseConnection {
     //Nhân khẩu
     public int addNhanKhau (String hoTen, String CCCD, String ngaySinh, int gioiTinh, String noiSinh, String nguyenQuan,String danToc, String tonGiao, String quocTich, String noiThuongTru, String ngheNghiep, String ghiChu ){
         int thanhcong = 0;
-        String querry = "insert into NHANKHAU (HOTEN, SOCANCUOC, YEAR(NGAYSINH), GIOITINH, NOISINH, NGUYENQUAN, DANTOC, TONGIAO, QUOCTICH, NOITHUONGTRU, NGHENGHIEP, NGAYTAO, GHICHU )" +
-                " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String querry = "insert into NHANKHAU (HOTEN, SOCANCUOC, YEAR(NGAYSINH), GIOITINH, NOISINH, NGUYENQUAN, DANTOC, TONGIAO, QUOCTICH, NOITHUONGTRU, NGHENGHIEP, NGAYTAO, GHICHU ) " +
+                " values(?,?,?,?,?,?,?,?,?,?,?,?)";
         try{
             PreparedStatement pre = connection.prepareStatement(querry);
             pre.setNString(1,hoTen); pre.setString(2,CCCD);

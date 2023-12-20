@@ -18,11 +18,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 
-public class NhanKhauMenuController implements Initializable {
+public class NhanKhauController implements Initializable {
 
     @FXML
     public Button themmoi_btn;
-    public Button tamtru_button;
 
     @FXML
     public ListView<List_nhan_khau> list_view;
@@ -33,8 +32,10 @@ public class NhanKhauMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        themmoi_btn.setOnAction(actionEvent -> onThemmoi());
+
         capnhat();
-        this.addListener();
         tim_kiem_text.textProperty().addListener((observableValue, oldval, newval) -> {
             if(newval.isEmpty()){
                 capnhat();
@@ -74,23 +75,8 @@ public class NhanKhauMenuController implements Initializable {
 
     }
 
-    private void addListener() {
-        themmoi_btn.setOnAction(actionEvent -> onThemmoi());
-        tamtru_button.setOnAction(actionEvent -> onTamtru());
-    }
-
     private void onThemmoi() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.THEM_NHAN_KHAU);
-    }
-
-    private void onTamtru() {
-        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TAM_TRU);
-    }
-    private void onTamvang() {
-        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TAM_VANG);
-    }
-    private void onKhaitu() {
-        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.KHAI_TU);
     }
 
     public void capnhat() {

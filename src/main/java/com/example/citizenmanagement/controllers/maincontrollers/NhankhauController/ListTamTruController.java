@@ -27,10 +27,12 @@ public class ListTamTruController implements Initializable {
         list_tam_tru.setCellFactory(param -> new List_nhan_khau_factory());
 
         list_tam_tru.setOnMouseClicked(mouseEvent -> {
-            List_nhan_khau selected = list_tam_tru.getSelectionModel().getSelectedItem();
-            if(selected != null) {
-                Model.setNhanKhauDuocChon(selected);
-                Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.XEM_CHI_TIET_TAM_TRU);
+            if (mouseEvent.getClickCount() == 2) {
+                List_nhan_khau selected = list_tam_tru.getSelectionModel().getSelectedItem();
+                if (selected != null) {
+                    Model.setNhanKhauDuocChon(selected);
+                    Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.XEM_CHI_TIET_TAM_TRU);
+                }
             }
         });
     }
