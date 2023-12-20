@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.hoKhau.ThemChuHoKhauController">
+   <children>
+      <Text fill="#458149" layoutX="75.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thêm Mới Hộ Khẩu">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Text>
+      <ListView fx:id="listView" layoutX="25.0" layoutY="144.0" prefHeight="550.0" prefWidth="800.0" stylesheets="@../../../styles/Main/hoKhau/listView.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
+         <styleClass>
+            <String fx:value="list-view" />
+            <String fx:value="list-cell" />
+         </styleClass>
+      </ListView>
+      <TextField fx:id="search_text" layoutX="71.0" layoutY="85.0" prefWidth="241.0" promptText="Tìm kiếm nhân khẩu" AnchorPane.topAnchor="90.0">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </TextField>
+      <Text fill="#458149" layoutX="598.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chọn chủ hộ">
+         <font>
+            <Font name="Verdana" size="28.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

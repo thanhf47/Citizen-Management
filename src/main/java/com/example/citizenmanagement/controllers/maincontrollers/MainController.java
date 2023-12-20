@@ -13,6 +13,7 @@ public class MainController implements Initializable {
     @FXML
     private BorderPane main_parent;
 
+    private Button trang_chu_btn;
     private Button ho_khau_btn;
     private Button nhan_khau_btn;
     private Button quadoi_btn;
@@ -22,7 +23,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        trang_chu_btn = (Button) main_parent.lookup("#trang_chu_btn");
         ho_khau_btn = (Button) main_parent.lookup("#ho_khau_btn");
         nhan_khau_btn = (Button) main_parent.lookup("#nhan_khau_btn");
         quadoi_btn = (Button) main_parent.lookup("#quadoi_btn");
@@ -40,16 +41,34 @@ public class MainController implements Initializable {
                     main_parent.setCenter(Model.getInstance().getViewFactory().getNhanKhauView());
                     nhan_khau_btn.requestFocus();
                 }
-                case PROFILE -> main_parent.setCenter(Model.getInstance().getViewFactory().getProfile());
-                case THONG_KE_NHAN_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactory().getThongKeNhanKhauView());
-                case THONG_KE_HO_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactory().getThongKeHoKhauView());
-                case THONG_KE_TAM_TRU -> main_parent.setCenter(Model.getInstance().getViewFactory().getThongKeTamTruView());
-                case THONG_KE_TAM_VANG -> main_parent.setCenter(Model.getInstance().getViewFactory().getThongKeTamVangView());
+                case PROFILE -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getProfile());
+                    trang_chu_btn.requestFocus();
+                }
+                case THONG_KE_NHAN_KHAU -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getThongKeNhanKhauView());
+                    trang_chu_btn.requestFocus();
+                }
+                case THONG_KE_HO_KHAU -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getThongKeHoKhauView());
+                    trang_chu_btn.requestFocus();
+                }
+                case THONG_KE_TAM_TRU -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getThongKeTamTruView());
+                    trang_chu_btn.requestFocus();
+                }
+                case THONG_KE_TAM_VANG -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getThongKeTamVangView());
+                    trang_chu_btn.requestFocus();
+                }
                 case TRANG_CHU_TAM_VANG -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().getTrangChuTamVangView());
                     tamvang_btn.requestFocus();
                 }
-                case CHI_TIET_THONG_TIN_TAM_VANG -> main_parent.setCenter(Model.getInstance().getViewFactory().getChiTietThongTinTamVangView());
+                case CHI_TIET_THONG_TIN_TAM_VANG -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getChiTietThongTinTamVangView());
+                    tamvang_btn.requestFocus();
+                }
                 //ho khau ****************************************************************************************
                 case HO_KHAU -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().getHoKhauView());
@@ -63,8 +82,11 @@ public class MainController implements Initializable {
                     main_parent.setCenter(Model.getInstance().getViewFactory().getTachHoKhau());
                     ho_khau_btn.requestFocus();
                 }
-                case THEM_HO_KHAU -> {
-                    main_parent.setCenter(Model.getInstance().getViewFactory().getThemHoKhau());
+                case THEM_CHU_HO_KHAU -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getThemChuHoKhau());
+                }
+                case THEM_THANH_VIEN_HO_KHAU -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getThemThanhVienHoKhau());
                     ho_khau_btn.requestFocus();
                 }
                 case QUA_DOI -> {
@@ -74,6 +96,10 @@ public class MainController implements Initializable {
                 case THONG_TIN_KHAI_TU -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().getThongTinKhaiTu());
                     quadoi_btn.requestFocus();
+                }
+                case THAY_DOI_HO_KHAU -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().get_thay_doi_ho_khau());
+                    ho_khau_btn.requestFocus();
                 }
                 //*********************************************************************************
 
@@ -112,6 +138,7 @@ public class MainController implements Initializable {
                 }
                 default -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().getTrangChuView());
+                    trang_chu_btn.requestFocus();
                 }
 
             }

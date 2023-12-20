@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Model {
+    private int tam;
     private static Model model;
     private final ViewFactory viewFactory;
     private final DatabaseConnection databaseConnection;
@@ -27,6 +28,8 @@ public class Model {
 
     //ho khau section
     private static MainHoKhauCell hoKhauDuocChon;
+    private static thanh_vien_cua_ho_cell thanhVienCuaHoCell;
+
     // nhan khau section
     private static List_nhan_khau nhanKhauTamTruDuocChon;
 
@@ -39,14 +42,6 @@ public class Model {
     public static void setNhanKhauDuocChon(List_nhan_khau nhanKhauDuocChon) {
         Model.nhanKhauDuocChon = nhanKhauDuocChon;
     }
-
-//    public static List_nhan_khau getNhanKhauTamTruDuocChon() {
-//        return nhanKhauTamTruDuocChon;
-//    }
-//
-//    public static void setNhanKhauTamTruDuocChon(List_nhan_khau nhanKhauTamTruDuocChon) {
-//        Model.nhanKhauTamTruDuocChon = nhanKhauTamTruDuocChon;
-//    }
 
     //thu phi
     private final FeeKhoanThuModel feeKhoanThuModel;
@@ -530,6 +525,14 @@ public class Model {
 
     public static void setNhanKhauTamVangDuocChon(MainTamVangCell nhanKhauTamVangDuocChon){
         Model.nhanKhauTamVangDuocChon = nhanKhauTamVangDuocChon;
+    }
+
+    public static thanh_vien_cua_ho_cell getThanhVienCuaHoCell() {
+        return thanhVienCuaHoCell;
+    }
+
+    public static void setThanhVienCuaHoCell(thanh_vien_cua_ho_cell thanhVienCuaHoCell) {
+        Model.thanhVienCuaHoCell = thanhVienCuaHoCell;
     }
 
     /*************************************************************************************************/

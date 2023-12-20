@@ -3,7 +3,6 @@ module com.example.citizenmanagement {
     requires javafx.fxml;
     requires de.jensd.fx.glyphs.fontawesome;
     requires java.sql;
-    requires java.desktop;
 
     opens com.example.citizenmanagement to javafx.fxml;
     opens com.example.citizenmanagement.controllers to javafx.fxml;

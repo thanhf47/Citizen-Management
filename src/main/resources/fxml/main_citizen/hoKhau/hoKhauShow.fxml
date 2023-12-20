@@ -8,17 +8,20 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="hoKhauShow_container" stylesheets="@../../../styles/Main/hoKhau/hoKhauShow.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.hoKhau.hoKhauShowControler">
-   <TextField fx:id="search_textfield" layoutX="15.0" layoutY="97.0" promptText="Tìm kiếm hộ khẩu" AnchorPane.topAnchor="98.0">
+   <TextField fx:id="search_textfield" alignment="CENTER" layoutX="15.0" layoutY="97.0" promptText="Tìm kiếm hộ khẩu" AnchorPane.topAnchor="98.0">
       <font>
-         <Font size="17.0" />
+         <Font size="20.0" />
       </font></TextField>
-   <ListView fx:id="listView" layoutX="175.0" layoutY="242.0" prefHeight="530.0" prefWidth="820.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="198.0" />
-   <Text layoutX="324.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bảng Hộ Khẩu" />
-   <Button fx:id="tach_but" layoutX="269.0" layoutY="98.0" mnemonicParsing="false" prefWidth="122.0" text="Tách" AnchorPane.topAnchor="98.0" />
-   <Button fx:id="them_but" layoutX="443.0" layoutY="98.0" mnemonicParsing="false" text="Thêm Mới" AnchorPane.topAnchor="98.0" />
+   <ListView fx:id="listView" layoutX="175.0" layoutY="242.0" prefHeight="530.0" prefWidth="820.0" style="-fx-border-color: #aa0000; -fx-border-width: 1;" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="198.0" />
+   <Text layoutX="324.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bảng Hộ Khẩu">
+      <font>
+         <Font size="30.0" />
+      </font></Text>
+   <Button fx:id="tach_but" alignment="CENTER" layoutX="359.0" layoutY="99.0" mnemonicParsing="false" prefWidth="122.0" text="Tách" AnchorPane.topAnchor="99.0" />
+   <Button fx:id="them_but" layoutX="537.0" layoutY="98.0" mnemonicParsing="false" text="Thêm Mới" AnchorPane.topAnchor="98.0" />
    <AnchorPane layoutX="25.0" layoutY="147.0" prefHeight="50.0" prefWidth="800.0" styleClass="tieu_de">
       <Text layoutX="51.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã hộ khẩu" />
-      <Text layoutX="179.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã chủ hộ" />
+      <Text layoutX="176.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên chủ hộ" />
       <Text layoutX="314.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Địa chỉ" />
       <Text layoutX="537.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo" />
       <Text layoutX="689.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ghi chú" />

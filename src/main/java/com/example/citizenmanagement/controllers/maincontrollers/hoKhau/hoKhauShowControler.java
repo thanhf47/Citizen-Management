@@ -44,7 +44,7 @@ public class hoKhauShowControler implements Initializable {
                     if(resultSet.isBeforeFirst()){
                         while (resultSet.next()){
                             String id = resultSet.getString(1);
-                            String Owner = resultSet.getString(2);
+                            String Owner = resultSet.getString(6);
                             String add = resultSet.getString(3);
                             String date_tao = resultSet.getString(4);
                             String ghi_chu = resultSet.getString(5);
@@ -64,7 +64,6 @@ public class hoKhauShowControler implements Initializable {
         listView.setOnMouseClicked(mouseEvent -> {
             Model.setHoKhauDuocChon(listView.getSelectionModel().getSelectedItem());
             Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.XEM_CHI_TIET_HO_KHAU);
-
         });
         //****************************************************
 
@@ -74,7 +73,7 @@ public class hoKhauShowControler implements Initializable {
         //****************************************************
 
         them_but.setOnAction(event -> {
-            Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.THEM_HO_KHAU);
+            Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.THEM_CHU_HO_KHAU);
         });
     }
 
@@ -85,15 +84,30 @@ public class hoKhauShowControler implements Initializable {
             if(resultSet.isBeforeFirst()){
                 while (resultSet.next()){
                     String id = resultSet.getString(1);
-                    String Owner = resultSet.getString(2);
+                    ResultSet resultSet1= Model.getInstance().getDatabaseConnection().lay_nhan_khau(resultSet.getString(2));
+                    String Owner=null;
+                    try {
+                        if(resultSet1.isBeforeFirst()){
+                            resultSet1.next();
+                            Owner = resultSet1.getString(2);
+                        }
+                    }catch (Exception e){
+                        throw new RuntimeException(e);
+                    }
                     String add = resultSet.getString(3);
-                    String date_tao = resultSet.getString(4);
-                    String ghi_chu = resultSet.getString(5);
+
+
+                    String date_tao;
+                    date_tao = resultSet.getString(4);
+
+                    String ghi_chu;
+                    ghi_chu=resultSet.getString(5);
+
                     listView.getItems().add(new MainHoKhauCell(id, Owner, add,date_tao,ghi_chu));
                 }
             }
         } catch (Exception e) {
-            System.out.println("loi o hokhauShow");
+            throw new RuntimeException(e);
         }
     }
 }

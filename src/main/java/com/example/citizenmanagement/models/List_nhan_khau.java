@@ -23,8 +23,6 @@ public class List_nhan_khau {
         this.ngay_sinh = new SimpleStringProperty(this, "NgaySinh", ngay_sinh);
         this.dia_chi = new SimpleStringProperty(this, "DiaChi", dia_chi);
     }
-
-    public String getSoNhanKhau() {return so_nhan_khau.get();}
     public String getCccd() {
         return cccd.get();
     }

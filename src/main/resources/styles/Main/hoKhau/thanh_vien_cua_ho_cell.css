@@ -1,0 +1,19 @@
+.thanh_vien_cua_ho{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box,#AAAAAA,3,0,0,3);
+}
+
+.thanh_vien_cua_ho:hover {
+    -fx-background-color: #c7d4cb;
+}
+
+.thanh_vien_cua_ho HBox{
+    -fx-alignment: center-left;
+    -fx-spacing: 20;
+}
+.thanh_vien_cua_ho HBox Text{
+    -fx-font-size: 1.2em;
+    -fx-font-family: Calibri;
+    -fx-font-weight: 700;
+}

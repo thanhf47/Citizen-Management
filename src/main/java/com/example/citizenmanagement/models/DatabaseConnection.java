@@ -1,12 +1,15 @@
 package com.example.citizenmanagement.models;
 
+
 import javafx.beans.Observable;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Dialog;
 
+
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class DatabaseConnection {
     private Connection connection;
@@ -23,6 +26,7 @@ public class DatabaseConnection {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, dbUser, dbPassword);
         } catch (Exception e) {
+            System.out.println("loi o dayyyy");
             throw new RuntimeException(e);
         }
     }
@@ -220,7 +224,8 @@ public class DatabaseConnection {
         return executeQuery(query);
     }
 
-    /***********************************************************************************/
+
+
     //Nhân khẩu
     public int addNhanKhau (String hoTen, String CCCD, String ngaySinh, int gioiTinh, String noiSinh, String nguyenQuan,String danToc, String tonGiao, String quocTich, String noiThuongTru, String ngheNghiep, String ghiChu ){
         int thanhcong = 0;
@@ -457,15 +462,22 @@ public class DatabaseConnection {
     /***********************************************************************************/
     // Hộ khẩu
 
-    public int addHoKhau(String ma_ch, String ngaythem, String diachi, String ghichu){
-        if(!ma_ch.isEmpty() && !diachi.isEmpty() && !ngaythem.isEmpty()) {
-            String query = "insert into HOKHAU (IDCHUHO, DIACHI, NGAYTAO, GHICHU) VALUES (?, ?, ?, ?)";
+    public int addHoKhau(String ma_ch, String diachi, String ghichu){
+        if(!ma_ch.isEmpty() && !diachi.isEmpty()) {
+            String query = "EXEC INSERT_HOKHAU ?, ?, ?, ?";
             try {
                 PreparedStatement statement = connection.prepareStatement(query);
 
                 statement.setString(1, ma_ch);
                 statement.setString(2, diachi);
-                statement.setString(3, ngaythem);
+//                LocalDate currentDate = LocalDate.now();
+//
+//                // Định dạng ngày tháng
+//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//
+//                // Chuyển đổi thành chuỗi
+//                String formattedDate = currentDate.format(formatter);
+                statement.setString(3,LocalDate.now().toString());
                 if(ghichu.isEmpty())
                     statement.setString(4,null);
                 else
@@ -474,6 +486,8 @@ public class DatabaseConnection {
                 statement.executeUpdate();
                 return 1;
             } catch (Exception e) {
+                System.out.println("loi o addHoKhau");
+//                throw new RuntimeException(e);
                 return 0;
             }
         }
@@ -487,33 +501,46 @@ public class DatabaseConnection {
     public ResultSet timKiem(String dieukien){
         ResultSet resultSet=null;
         String query = "SELECT * FROM HOKHAU\n" +
-                "WHERE MAHOKHAU LIKE ? OR IDCHUHO LIKE ? OR DIACHI LIKE ? OR NGAYTAO LIKE ? OR GHICHU LIKE ?";
+                "WHERE MAHOKHAU LIKE ? OR TENCHUHO LIKE ? OR DIACHI LIKE ?";
         try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, "%" + dieukien + "%");
             statement.setString(2, "%" + dieukien + "%");
             statement.setString(3, "%" + dieukien + "%");
-            statement.setString(4, "%" + dieukien + "%");
-            statement.setString(5, "%" + dieukien + "%");
             resultSet = statement.executeQuery();
         }catch (Exception e){
-            System.out.println("timkiem");
+            throw new RuntimeException(e);
         }
         return resultSet;
     }
+    public ResultSet lay_ho_khau(String ma_chu_ho){
+        String query = "select * from HOKHAU WHERE IDCHUHO = " + ma_chu_ho;
+        return executeQuery(query);
+    }
     public int capNhatHoKhau(String idHoKhau, String maChuHo, String diaChi, String ghiChu){
-        ResultSet resultSet=null;
+
         try {
-            String capnhat = "update HOKHAU set IDCHUHO=?, DIACHI=?, GHICHU=? where MAHOKHAU=?";
+            String capnhat = "update HOKHAU set IDCHUHO=?, DIACHI=?, GHICHU=?, tenchuho=? where MAHOKHAU=?";
             PreparedStatement preparedStatement = connection.prepareStatement(capnhat);
             preparedStatement.setString(1,maChuHo);
             preparedStatement.setString(2,diaChi);
-
             if(ghiChu.isEmpty())
                 preparedStatement.setString(3,null);
             else
                 preparedStatement.setString(3, ghiChu);
-            preparedStatement.setString(4,idHoKhau);
+            preparedStatement.setString(5,idHoKhau);
+
+
+            String lay_ten_chu="select * from nhankhau where manhankhau="+maChuHo;
+            Statement statement = connection.createStatement();
+            ResultSet resultSet1 = statement.executeQuery(lay_ten_chu);
+            if(resultSet1.isBeforeFirst()){
+                resultSet1.next();
+                preparedStatement.setString(4,resultSet1.getNString(2));
+            }
+            else {
+                preparedStatement.setString(4,null);
+            }
             preparedStatement.executeUpdate();
             return 1;
         } catch (SQLException e) {
@@ -522,21 +549,17 @@ public class DatabaseConnection {
     }
 
     public int xoaHoKhau(String maHoKhau) {
-        int res = 0;
-        String query = "DELETE HOKHAU\n" +
+        String query = "DELETE from HOKHAU\n" +
                 "WHERE MAHOKHAU = " + maHoKhau;
-        Statement statement;
         try {
-            statement = connection.createStatement();
+            Statement statement = connection.createStatement();
             statement.executeUpdate(query);
-            res = 1;
+            return  1;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            return 0;
+            //throw new RuntimeException(e);
         }
-        return res;
     }
-
-
     public ResultSet getDanhSachTamVang() {
         ResultSet resultSet = null;
         String query= "SELECT * FROM TAMVANG TV , NHANKHAU NK WHERE TV.MANHANKHAU = NK.MANHANKHAU";
@@ -550,6 +573,103 @@ public class DatabaseConnection {
         return resultSet;
     }
 
+    public ResultSet lay_cac_thanh_vien(String ma_ho){
+        String query = "select * from THANHVIENCUAHO where MAHOKHAU="+ma_ho;
+        ResultSet resultSet=null;
+        try{
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+        }catch (Exception e){
+            System.out.println("loi o truy van thanh vien");
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
+
+    public ResultSet lay_nhan_khau(String ma_nhan_khau) {
+        String query = " select SOCANCUOC, HOTEN, GIOITINH, NGAYSINH from NHANKHAU where MANHANKHAU = " + ma_nhan_khau;
+        return executeQuery(query);
+    }
+
+    public int add_thanh_vien_cua_ho(String maNhanKhau,String ma_ho, String quan_he){
+        String query = "INSERT INTO THANHVIENCUAHO VALUES (?,?,?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,maNhanKhau);
+            preparedStatement.setString(2,ma_ho);
+            preparedStatement.setNString(3,quan_he);
+            preparedStatement.executeUpdate();
+
+            return 1;
+        } catch (Exception e){
+            System.out.println("loi o add_thanh_vien_cua_ho");
+            return 0;
+        }
+    }
+    public void xoa_thanh_vien_cua_ho(String maNhanKhau){
+        String query1 = "select * FROM NHANKHAU WHERE MANHANKHAU = " + maNhanKhau;
+        try{
+            Statement statement1 = connection.createStatement();
+            ResultSet resultSet=statement1.executeQuery(query1);
+            if(resultSet.isBeforeFirst()) {
+                resultSet.next();
+                String query = "DELETE FROM THANHVIENCUAHO WHERE MANHANKHAU='"+resultSet.getString(1)+"'";
+                Statement statement = connection.createStatement();
+                statement.executeUpdate(query);
+            }
+        }catch (Exception e){
+            System.out.println("loi o xoa_thanh_vien_cua_ho");
+            e.printStackTrace();
+        }
+    }
+
+    public ResultSet truyvan_chua_co_nha() {
+        ResultSet resultSet = null;
+        String querry = " select MANHANKHAU, SOCANCUOC, HOTEN, GIOITINH, NGAYSINH, NOITHUONGTRU from NHANKHAU WHERE MANHANKHAU NOT IN (SELECT MANHANKHAU FROM THANHVIENCUAHO);";
+        try{
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery(querry);
+        }
+        catch(Exception e) {
+            System.out.println("loi truy van chua co ho khau");
+        }
+        return resultSet;
+    }
+
+    public ResultSet nhanKhau_timkiem_chua_co_nha(String string) {
+        ResultSet resultSet = null;
+        String querry = " select MANHANKHAU, SOCANCUOC, HOTEN, GIOITINH, NGAYSINH, NOITHUONGTRU from NHANKHAU where (MANHANKHAU like ? or SOCANCUOC like ? or HOTEN like ?) AND MANHANKHAU NOT IN (SELECT MANHANKHAU FROM THANHVIENCUAHO);";
+        try {
+            PreparedStatement preparedstatement = connection.prepareStatement(querry);
+            preparedstatement.setString(1, "%" + string + "%");
+            preparedstatement.setString(2, "%" + string + "%");
+            preparedstatement.setString(3, "%" + string + "%");
+            resultSet = preparedstatement.executeQuery();
+        }
+        catch(Exception e) {
+            System.out.println("Lỗi tìm kiếm");
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
+   public String lay_chu_ho(String ma_ho_khau){
+        String query = "select * from HOKHAU WHERE MAHOKHAU="+ma_ho_khau;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet=statement.executeQuery(query);
+
+                if (resultSet.isBeforeFirst()) {
+                    resultSet.next();
+                    return resultSet.getString(2);
+                }
+
+        }catch (Exception e){
+            System.out.println("loi o lay_ho_khau");
+            return null;
+        }
+        return null;
+   }
     /***************************************************************************/
     // Quản lý thu phí
     public ResultSet getDanhSachDongPhi() {

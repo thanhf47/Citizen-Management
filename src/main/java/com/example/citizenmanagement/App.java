@@ -12,7 +12,7 @@ public class App extends Application {
 //        Model.getInstance().getViewFactory().showFeeWindow();
 //       Model.getInstance().getViewFactory().showMainWindow();
     }
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         launch(args);
-    }
+    }*/
 }

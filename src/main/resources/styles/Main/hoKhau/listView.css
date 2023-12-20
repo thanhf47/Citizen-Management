@@ -1,0 +1,11 @@
+.list-view{
+    -fx-padding: 5;
+    -fx-border-width: 1;
+    -fx-border-color: #000000;
+}
+
+.list-cell:hover{
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-cursor: hand;
+}

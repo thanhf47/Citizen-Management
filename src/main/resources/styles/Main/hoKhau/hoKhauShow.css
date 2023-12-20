@@ -2,13 +2,13 @@
        -fx-background-color: linear-gradient(to right bottom,  rgba(255,255,255,1) 0%, rgba(255,246,244,1) 60%, rgba(207,247,255,1) 100%);
 }
 .hoKhauShow_container Text{
-    -fx-font-size: 2.6em;
+    -fx-font-size: 3.6em;
     -fx-font-family: "Calibri Light";
     -fx-font-weight: bold;
     -fx-text-fill: #561B1B;
 }
 .hoKhauShow_container TextField{
-    -fx-pref-width: 200;
+    -fx-pref-width: 280;
     -fx-pref-height: 35;
     -fx-effect: dropshadow(three-pass-box,#AAAAAA,5,0,0,5);
 }
@@ -16,10 +16,10 @@
 .hoKhauShow_container Button{
     -fx-background-color: linear-gradient(to right,#373c7d,#3998e6);
     -fx-effect: dropshadow(three-pass-box,#373c7d,3,0,0,4);
-    -fx-pref-width: 110;
+    -fx-pref-width: 125;
     -fx-pref-height: 35;
     -fx-font-family: "Calibri Light";
-    -fx-font-size: 1.4em;
+    -fx-font-size: 1.8em;
 }
 .hoKhauShow_container Button:hover{
     -fx-cursor: hand;

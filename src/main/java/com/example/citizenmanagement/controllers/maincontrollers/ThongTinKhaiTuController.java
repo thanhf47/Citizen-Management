@@ -110,7 +110,7 @@ public class ThongTinKhaiTuController implements Initializable{
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ResultSet resultSet = Model.getInstance().getDatabaseConnection().getThongTinKhaiTu(Model.getNhanKhauDuocChon().getSoNhanKhau());
+        ResultSet resultSet = Model.getInstance().getDatabaseConnection().getThongTinKhaiTu(Model.getNhanKhauDuocChon().getSo_nhan_khau());
 
         try {
             if(resultSet.isBeforeFirst()) {

@@ -5,14 +5,12 @@ import com.example.citizenmanagement.models.MainMenuOptions;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.lang.reflect.AnnotatedArrayType;
 
 public class ViewFactory {
 
@@ -40,9 +38,12 @@ public class ViewFactory {
 
     //Ho Khau
 
-    private AnchorPane themHoKhau;
+    private AnchorPane themThanhVienHoKhauView;
+
+    private AnchorPane themChuHoKhauView;
     private AnchorPane tachHoKhau;
     private AnchorPane xemChiTietHoKhau;
+    private AnchorPane thay_doi_ho_khau;
     private final ObjectProperty<String> quaylai;
 
     // Nhan Khau View
@@ -89,14 +90,12 @@ public class ViewFactory {
         return trangChuView;
     }
     public AnchorPane getHoKhauView() {
-        if (hoKhauView == null) {
-            try {
-                hoKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/hoKhauShow.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
+        try {
+            hoKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/hoKhauShow.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+
         return hoKhauView;
     }
 
@@ -265,38 +264,38 @@ public class ViewFactory {
     }
     /********************************************************************************************/
     // hộ khẩu
-    public AnchorPane getThemHoKhau(){
-        if (themHoKhau == null) {
+    public AnchorPane getThemThanhVienHoKhau(){
             try {
-                themHoKhau = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/themMoiHoKhau.fxml")).load();
+                themThanhVienHoKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/ThemThanhVienHoKhau.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-        }
-        return themHoKhau;
+        return themThanhVienHoKhauView;
     }
 
     public AnchorPane getTachHoKhau(){
-        if (tachHoKhau == null) {
             try {
                 tachHoKhau = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/tachHoKhau.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
-        return tachHoKhau;
+            return tachHoKhau;
     }
     public AnchorPane getXemChiTietHoKhau(){
-        if (xemChiTietHoKhau == null) {
             try {
                 xemChiTietHoKhau = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/xemChiTietHoKhau.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-        }
         return xemChiTietHoKhau;
+    }
+    public AnchorPane get_thay_doi_ho_khau(){
+        try {
+            thay_doi_ho_khau = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/thay_doi_ho_khau.fxml")).load();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return thay_doi_ho_khau;
     }
     public ObjectProperty<String> getQuaylai(){
         return quaylai;
@@ -435,6 +434,15 @@ public class ViewFactory {
             }
         }
         return feeProfileView;
+    }
+
+    public AnchorPane getThemChuHoKhau() {
+        try {
+            themChuHoKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/ThemChuHoKhau.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return themChuHoKhauView;
     }
 }
 
