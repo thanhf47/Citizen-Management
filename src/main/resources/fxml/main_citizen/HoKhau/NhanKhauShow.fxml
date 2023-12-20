@@ -2,52 +2,48 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.NhanKhauShowController">
-   <children>
-      <AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../../styles/Main/ThemNguoiMoi.css">
-         <children>
-            <Text layoutX="41.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên " />
-            <TextField fx:id="ngay_tao_text" layoutX="155.0" layoutY="623.0" prefHeight="33.0" prefWidth="190.0" styleClass="text_fld" />
-            <Text layoutX="431.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính" />
-            <Text layoutX="41.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Năm sinh" />
-            <Text layoutX="43.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tôn giáo " />
-            <Text layoutX="430.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dân tộc" />
-            <Text layoutX="43.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nghề nghiệp" />
-            <Text layoutX="424.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quốc tịch" />
-            <TextField fx:id="ton_giao_text" layoutX="159.0" layoutY="310.0" prefHeight="32.0" prefWidth="190.0" styleClass="text_fld" />
-            <TextField fx:id="nghe_text" layoutX="160.0" layoutY="381.0" styleClass="text_fld" />
-            <TextField fx:id="quoc_tich_text" layoutX="522.0" layoutY="381.0" prefHeight="33.0" prefWidth="182.0" styleClass="text_fld" />
-            <TextField fx:id="nam_sinh_text" layoutX="160.0" layoutY="244.0" styleClass="text_fld" />
-            <ChoiceBox fx:id="my_choise_box" layoutX="523.0" layoutY="240.0" prefHeight="33.0" prefWidth="182.0" styleClass="text_fld" />
-            <Text layoutX="39.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên quán " />
-            <TextField fx:id="nguyen_quan_text" layoutX="158.0" layoutY="447.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
-            <Text layoutX="37.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thường trú" />
-            <TextField fx:id="thuong_tru_text" layoutX="158.0" layoutY="506.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
-            <Text layoutX="53.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CCCD " />
-            <TextField fx:id="cccd_text" layoutX="159.0" layoutY="112.0" styleClass="text_fld" />
-            <Button fx:id="thoat_chinhsua_button" layoutX="250.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_cancel" text="Thoát" />
-            <Button fx:id="confirm_chinh_sua_btn" layoutX="433.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_acp" text="Xác nhận" />
-            <TextField fx:id="dan_toc_text" layoutX="524.0" layoutY="310.0" prefHeight="33.0" prefWidth="182.0" styleClass="text_fld" />
-            <Text layoutX="42.0" layoutY="643.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo" />
-            <TextField fx:id="ghi_chu_text" layoutX="522.0" layoutY="623.0" prefHeight="33.0" prefWidth="182.0" styleClass="text_fld" />
-            <Text layoutX="425.0" layoutY="645.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ghi chú" />
-            <TextField fx:id="ho_ten_text" layoutX="158.0" layoutY="181.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
-            <Text layoutX="412.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số hộ chiếu" />
-            <TextField fx:id="so_ho_chieu_text" layoutX="518.0" layoutY="112.0" styleClass="text_fld" />
-            <Text layoutX="45.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi sinh" />
-            <Text layoutX="282.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chỉnh Sửa Nhân Khẩu ">
-               <font>
-                  <Font size="27.0" />
-               </font>
-            </Text>
-            <TextField fx:id="noi_sinh_text" layoutX="157.0" layoutY="569.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
-         </children>
-      </AnchorPane>
-   </children>
+   <AnchorPane prefHeight="750.0" prefWidth="841.0" stylesheets="@../../../styles/Main/ThemNguoiMoi.css">
+      <Text layoutX="40.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên " />
+      <Text layoutX="430.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính" />
+      <Text layoutX="40.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh" />
+      <Text layoutX="42.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tôn giáo " />
+      <Text layoutX="429.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dân tộc" />
+      <Text layoutX="42.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nghề nghiệp" />
+      <Text layoutX="423.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quốc tịch" />
+      <TextField fx:id="ton_giao_text" layoutX="158.0" layoutY="300.0" prefHeight="32.0" prefWidth="190.0" styleClass="text_fld" />
+      <TextField fx:id="nghe_text" layoutX="159.0" layoutY="371.0" styleClass="text_fld" />
+      <TextField fx:id="quoc_tich_text" layoutX="521.0" layoutY="371.0" prefHeight="33.0" prefWidth="182.0" styleClass="text_fld" />
+      <ChoiceBox fx:id="my_choise_box" layoutX="522.0" layoutY="230.0" prefHeight="33.0" prefWidth="182.0" styleClass="text_fld" />
+      <Text layoutX="38.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên quán " />
+      <TextField fx:id="nguyen_quan_text" layoutX="157.0" layoutY="437.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
+      <Text layoutX="36.0" layoutY="518.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thường trú" />
+      <TextField fx:id="thuong_tru_text" layoutX="157.0" layoutY="496.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
+      <Text layoutX="52.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CCCD " />
+      <TextField fx:id="cccd_text" layoutX="158.0" layoutY="102.0" prefHeight="33.0" prefWidth="267.0" styleClass="text_fld" />
+      <Button fx:id="thoat_chinhsua_button" layoutX="117.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_cancel" text="Thoát" />
+      <Button fx:id="confirm_chinh_sua_btn" layoutX="603.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_acp" text="Xác nhận" />
+      <TextField fx:id="dan_toc_text" layoutX="523.0" layoutY="300.0" prefHeight="33.0" prefWidth="182.0" styleClass="text_fld" />
+      <TextField fx:id="ghi_chu_text" layoutX="523.0" layoutY="615.0" prefHeight="33.0" prefWidth="182.0" styleClass="text_fld" />
+      <Text layoutX="433.0" layoutY="637.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ghi chú" />
+      <TextField fx:id="ho_ten_text" layoutX="157.0" layoutY="171.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
+      <Text layoutX="44.0" layoutY="582.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi sinh" />
+      <Text layoutX="277.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chỉnh Sửa Nhân Khẩu ">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <TextField fx:id="noi_sinh_text" layoutX="156.0" layoutY="559.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
+      <Button fx:id="khai_tu_btn" layoutX="277.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_cancel" text="Khai tử " />
+      <Text layoutX="52.0" layoutY="644.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo " />
+      <DatePicker fx:id="ngay_tao_date" layoutX="156.0" layoutY="623.0" />
+      <DatePicker fx:id="ngay_sinh_lbl" layoutX="156.0" layoutY="232.0" prefHeight="31.0" prefWidth="190.0" />
+      <Button fx:id="tam_vang_btn" layoutX="431.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_cancel" text="Tạm vắng" />
+   </AnchorPane>
 </AnchorPane>

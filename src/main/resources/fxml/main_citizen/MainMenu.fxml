@@ -27,7 +27,7 @@
       </ImageView>
    </Pane>
    <Line endX="75.50001525878906" layoutX="90.0" layoutY="151.0" startX="-82.10002136230469" />
-   <VBox layoutX="11.0" layoutY="220.0" prefHeight="396.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
+   <VBox layoutX="11.0" layoutY="220.0" prefHeight="300.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
       <Button fx:id="trang_chu_btn" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" styleClass="btn_an" text="Trang Chủ">
          <font>
             <Font name="Verdana" size="15.0" />
@@ -70,3 +70,4 @@
       </children>
    </HBox>
 </AnchorPane>
+ 

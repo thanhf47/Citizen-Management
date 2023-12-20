@@ -8,20 +8,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../../styles/Main/DkTamTru.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.DkTamVangController">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../../styles/Main/DkTamTru.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.DkTamVangController">
     <Label layoutX="293.0" layoutY="46.0" styleClass="text_lbl" text="Khai báo tạm vắng" />
     <VBox layoutX="185.0" layoutY="120.0" prefHeight="510.0" prefWidth="513.0" styleClass="vbx">
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu : " />
-        <TextField fx:id="ma_nhan_khau" prefHeight="41.0" prefWidth="493.0" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi tạm trú" />
-        <TextField fx:id="noi_tam_tru" prefHeight="85.0" prefWidth="493.0" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lý do :  " />
-        <TextField fx:id="li_do" prefHeight="98.0" prefWidth="493.0" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian tạm vắng : " />
-        <Label text="Ngày bắt đầu tạm vắng :  " />
-        <DatePicker fx:id="ngay_bat_dau" prefHeight="50.0" prefWidth="316.0" />
-        <Label text="Ngày kết thúc tạm vắng :" />
-        <DatePicker fx:id="ngay_ket_thuc" prefHeight="54.0" prefWidth="316.0" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số giấy tạm vắng" />
+        <TextField fx:id="giay_tam_vang" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu" />
+        <TextField fx:id="ma_nhan_khau" prefHeight="43.0" prefWidth="292.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi tạm trú" />
+      <TextField fx:id="noi_tam_tru" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lý do " />
+      <TextField fx:id="li_do" prefHeight="97.0" prefWidth="292.0" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian tạm vắng: " />
+        <Label text="Ngày bắt đầu tạm vắng  " />
+        <DatePicker fx:id="ngay_bat_dau" prefHeight="36.0" prefWidth="316.0" />
+        <Label text="Ngày kết thúc tạm vắng" />
+        <DatePicker fx:id="ngay_ket_thuc" prefHeight="36.0" prefWidth="316.0" />
     </VBox>
     <Button layoutX="445.0" layoutY="664.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_acp" stylesheets="@../../../styles/Main/DkTamTru.css" text="Xác nhận " fx:id="xac_nhan_tam_vang" />
     <Button fx:id="thoat_btn" layoutX="266.0" layoutY="664.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_cancel" stylesheets="@../../../styles/Main/DkTamTru.css" text="Thoát" />

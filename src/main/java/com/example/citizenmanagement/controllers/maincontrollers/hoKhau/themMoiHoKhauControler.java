@@ -37,6 +37,7 @@ public class themMoiHoKhauControler implements Initializable {
             date_them_text.setText("");
             add_text.setText("");
             ghi_chu_text.setText("");
+
             if(ketqua==0){
                 error_lbl.setText("Ban da khong them thanh cong!");
             }

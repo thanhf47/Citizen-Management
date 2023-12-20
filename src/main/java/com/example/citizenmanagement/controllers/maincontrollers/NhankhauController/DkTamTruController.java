@@ -2,17 +2,23 @@ package com.example.citizenmanagement.controllers.maincontrollers.NhankhauContro
 
 import com.example.citizenmanagement.models.MainMenuOptions;
 import com.example.citizenmanagement.models.Model;
+import com.example.citizenmanagement.models.luuTruNhanKhau;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class DkTamTruController implements Initializable {
 
+    public DatePicker ngay_sinh_lbl;
     private String[] Gioitinh = {"Nam", "Nữ"};
     public Button thoat_tamtru_btn;
     public Button tiep_tuc_btn;
@@ -77,7 +83,7 @@ public class DkTamTruController implements Initializable {
         return nghenghiep_text;
     }
 
-    private DKTamTru2Controller dkTamTru2Controller;
+
 
 //    public void setDkTamTru2Controller(DKTamTru2Controller dkTamTru2Controller) {
 //        this.dkTamTru2Controller = dkTamTru2Controller;
@@ -108,6 +114,20 @@ public class DkTamTruController implements Initializable {
 
         tiep_tuc_btn.setOnAction(actionEvent -> {
             onTieptucTamtru();
+            String ho_ten = hoten_text.getText();
+            String CCCD = CCCD_text.getText();
+            String gioitinh = gioitinh_text.getValue();
+            LocalDate namsinh = ngay_sinh_lbl.getValue();
+            String noisinh = noi_sinh_text.getText();
+            String nguyenquan = nguyen_quan_text.getText();
+            String dantoc = dantoc_text.getText();
+            String tongiao = tongiao_text.getText();
+            String quoctich = quoctich_text.getText();
+
+            String noithuongtru = thuong_tru_text.getText();
+            String nghenghiep = nghenghiep_text.getText();
+            luuTruNhanKhau tam = new luuTruNhanKhau(ho_ten, CCCD, namsinh, gioitinh, noisinh, nguyenquan, dantoc, tongiao, quoctich, noithuongtru, nghenghiep );
+            DKTamTru2Controller.setFormData(tam);
         });
 
         gioitinh_text.getItems().addAll(Gioitinh);
@@ -115,9 +135,7 @@ public class DkTamTruController implements Initializable {
     }
     public String getGioiTinh(ActionEvent event) {
         String myGioiTinh = gioitinh_text.getValue();
-
         return myGioiTinh;
 }
-
 
 }

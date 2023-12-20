@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class NhanKhauShowController implements Initializable {
+public class TamTruShowController implements Initializable {
 
     public TextField ton_giao_text;
     public TextField nghe_text;
@@ -36,82 +36,73 @@ public class NhanKhauShowController implements Initializable {
     public Button khai_tu_btn;
     public DatePicker ngay_tao_date;
     public DatePicker ngay_sinh_lbl;
-    public Button tam_vang_btn;
+//    public Button tam_vang_btn;
+    int bit;
 
-    private List_nhan_khau list ;
-int bit;
+    private List_nhan_khau list1 ;
+
     private String[] Gioitinh = {"Nam", "Nữ"};
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ngay_tao_date.setDisable(true);
+        my_choise_box.setItems(FXCollections.observableArrayList(Gioitinh));
 
-    my_choise_box.setItems(FXCollections.observableArrayList(Gioitinh));
-       chitiet();
-      khai_tu_btn.setOnAction(actionEvent -> {
-          if(ghi_chu_text.getText() != null &&ghi_chu_text.getText().equals("khai tử"))
-          {
-              Alert alert = new Alert(Alert.AlertType.ERROR);
-              alert.setTitle("Lỗi");
-              alert.setHeaderText("Người này đã chết");
-              alert.setContentText("Xin bệ hạ hãy nghĩ thông suốt trước khi ấn nút !");
-              alert.showAndWait();
-          }else{
-              onKhaitu();}
-      });
-      thoat_chinhsua_button.setOnAction(event ->
-    {
-        onThoatTamVangBtn();
-        reset();
-    });
-      confirm_chinh_sua_btn.setOnAction(event -> {
-          if(my_choise_box.getValue() == "Nam") {
-              bit = 1;
-          }
-          else bit = 0;
-        Model.getInstance().getDatabaseConnection().capnhatNhanKhauShow(ho_ten_text.getText(),
-                Date.valueOf(ngay_sinh_lbl.getValue()),bit,
-                noi_sinh_text.getText(),nguyen_quan_text.getText(),
-                dan_toc_text.getText(),ton_giao_text.getText(),quoc_tich_text.getText(),
-                thuong_tru_text.getText(),nghe_text.getText(),ghi_chu_text.getText(),
-                Model.getNhanKhauDuocChon().getSo_nhan_khau());
-      });
+        chitiet();
+        khai_tu_btn.setOnAction(actionEvent ->{
 
-      tam_vang_btn.setOnAction(event -> {
-          if(ghi_chu_text.getText() != null &&ghi_chu_text.getText().equals("khai tử"))
-          {
-              Alert alert = new Alert(Alert.AlertType.ERROR);
-              alert.setTitle("Lỗi");
-              alert.setHeaderText("Người này đã chết");
-              alert.setContentText("Xin bệ hạ hãy nghĩ thông suốt trước khi ấn nút !");
-              alert.showAndWait();
-          }else{
-          onTamvang();}
-      });
+           int thanhcong = Model.getInstance().getDatabaseConnection().xoa_tam_tru(Model.getNhanKhauDuocChon().getSo_nhan_khau());
+            if(thanhcong == 1) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Thành công");
+                alert.setContentText("Đã xóa thành công người này!");
+                alert.showAndWait();
+                Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TAM_TRU_LIST);
+            }
+            else {
+                System.out.println("loi kljksadfjlkjg");
+            }
+        });
 
-}
+        thoat_chinhsua_button.setOnAction(event ->
+        {
+            onThoatTamVangBtn();
+        });
 
-    private void reset() {
-        ho_ten_text.clear();
-
+        confirm_chinh_sua_btn.setOnAction(event -> {
+            if(my_choise_box.getValue() == "Nam") {
+                bit = 1;
+            }
+            else {
+                bit = 0;
+            }
+            Model.getInstance().getDatabaseConnection().capnhatNhanKhauShow(ho_ten_text.getText(),Date.valueOf(ngay_sinh_lbl.getValue()), bit, noi_sinh_text.getText(),nguyen_quan_text.getText(),dan_toc_text.getText(),ton_giao_text.getText(),quoc_tich_text.getText(), thuong_tru_text.getText(),nghe_text.getText(),ghi_chu_text.getText(),Model.getNhanKhauDuocChon().getSo_nhan_khau());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Thành công");
+            alert.setContentText("Đã sửa thành công người này!");
+            alert.showAndWait();
+            Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TAM_TRU_LIST);
+        });
     }
+
+
     private void onTamvang() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TAM_VANG);
     }
     private void onThoatTamVangBtn() {
-        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.NHAN_KHAU);
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TAM_TRU_LIST);
     }
     private void onKhaitu() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.KHAI_TU);
     }
 
     private void chitiet() {
-        list = Model.getNhanKhauDuocChon();
-        ResultSet resultSet = Model.getInstance().getDatabaseConnection().truyvanlistNhanKhau(list.getSo_nhan_khau());
+        list1 = Model.getNhanKhauDuocChon();
+        ResultSet resultSet = Model.getInstance().getDatabaseConnection().truyvanlistNhanKhau(list1.getSo_nhan_khau());
         try {
             if (resultSet.next()) {
                 String value = resultSet.getString(1);
                 ho_ten_text.setText(value);
                 cccd_text.setText(resultSet.getString(2));
-                cccd_text.setDisable(true);
                 String gender = resultSet.getString(4);
                 if (gender.equals("1")) {
                     my_choise_box.setValue("Nam");

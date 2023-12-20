@@ -17,6 +17,8 @@ public class MainController implements Initializable {
     private Button nhan_khau_btn;
     private Button quadoi_btn;
     private Button tamvang_btn;
+    public Button tamtru_btn;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -25,6 +27,7 @@ public class MainController implements Initializable {
         nhan_khau_btn = (Button) main_parent.lookup("#nhan_khau_btn");
         quadoi_btn = (Button) main_parent.lookup("#quadoi_btn");
         tamvang_btn = (Button) main_parent.lookup("#tamvang_btn");
+        tamtru_btn = (Button) main_parent.lookup("#tamtru_btn");
 
         addListener();
     }
@@ -86,6 +89,10 @@ public class MainController implements Initializable {
                     main_parent.setCenter(Model.getInstance().getViewFactory().gettamTruView());
                     nhan_khau_btn.requestFocus();
                 }
+                case TAM_TRU_LIST -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getTamTruListView());
+                    tamtru_btn.requestFocus();
+                }
                 case TAM_TRU_2 -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().gettamTru2View());
                     nhan_khau_btn.requestFocus();
@@ -93,6 +100,15 @@ public class MainController implements Initializable {
                 case KHAI_TU -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().getkhaiTuView());
                     nhan_khau_btn.requestFocus();
+                }
+
+                case XEM_CHI_TIET_NHAN_KHAU -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getXemChiTietNhanKhau());
+                    nhan_khau_btn.requestFocus();
+                }
+                case XEM_CHI_TIET_TAM_TRU -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getXemChiTietTamTru());
+                    tamtru_btn.requestFocus();
                 }
                 default -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().getTrangChuView());

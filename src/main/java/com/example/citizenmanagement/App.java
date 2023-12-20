@@ -10,7 +10,7 @@ public class App extends Application {
         Model.createNewInstance();
         Model.getInstance().getViewFactory().showLoginWindow();
 //        Model.getInstance().getViewFactory().showFeeWindow();
-//        Model.getInstance().getViewFactory().showMainWindow();
+//       Model.getInstance().getViewFactory().showMainWindow();
     }
     public static void main(String[] args) {
         launch(args);

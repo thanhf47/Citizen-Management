@@ -22,16 +22,13 @@ public class NhanKhauMenuController implements Initializable {
 
     @FXML
     public Button themmoi_btn;
-    @FXML
-    public Button khaitu_button;
-    @FXML
     public Button tamtru_button;
-    @FXML
-    public Button tamvang_button;
+
     @FXML
     public ListView<List_nhan_khau> list_view;
     @FXML
     public TextField tim_kiem_text;
+
 
 
     @Override
@@ -52,12 +49,11 @@ public class NhanKhauMenuController implements Initializable {
                                 String id = resultSet.getString(2);
                                 String hoten = resultSet.getNString(3);
                                 String gioitinh = resultSet.getString(4);
-                                String namsinh = resultSet.getString(5);
+                               String namsinh = resultSet.getString(5);
                                 String diachi = resultSet.getNString(6);
 
                                 list_view.getItems().add(new List_nhan_khau(ma, id, hoten, gioitinh, namsinh, diachi));
                             }
-                            list_view.setCellFactory(param ->new List_nhan_khau_factory());
                         }
                 }
                 catch (Exception e) {
@@ -65,20 +61,22 @@ public class NhanKhauMenuController implements Initializable {
                 }
 
             }
+        });
+        list_view.setCellFactory(param ->new List_nhan_khau_factory());
 
-
-
+        list_view.setOnMouseClicked(mouseEvent -> {
+            List_nhan_khau selected = list_view.getSelectionModel().getSelectedItem();
+            if(selected != null) {
+                Model.setNhanKhauDuocChon(selected);
+                Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.XEM_CHI_TIET_NHAN_KHAU);
+            }
         });
 
     }
 
-
-
     private void addListener() {
         themmoi_btn.setOnAction(actionEvent -> onThemmoi());
         tamtru_button.setOnAction(actionEvent -> onTamtru());
-        tamvang_button.setOnAction(actionEvent -> onTamvang());
-        khaitu_button.setOnAction(actionEvent -> onKhaitu());
     }
 
     private void onThemmoi() {
@@ -94,7 +92,6 @@ public class NhanKhauMenuController implements Initializable {
     private void onKhaitu() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.KHAI_TU);
     }
-
 
     public void capnhat() {
         ResultSet resultSet = Model.getInstance().getDatabaseConnection().truyvan();
@@ -116,14 +113,14 @@ public class NhanKhauMenuController implements Initializable {
                     }
 
                     String noisinh = resultSet.getNString(6);
-                    list_view.getItems().add(new List_nhan_khau(ma,id, hoten, gioitinh, ngaysinh, noisinh));
+
+                   list_view.getItems().add(new List_nhan_khau(ma,id, hoten, gioitinh, ngaysinh, noisinh));
                 }
             }
         }
         catch(Exception e) {
-            System.out.println("Concac");
+            System.out.println("Lỗi ở NhanKhaumenucontroller");
         }
         list_view.setCellFactory(param-> new List_nhan_khau_factory());
     }
-
 }

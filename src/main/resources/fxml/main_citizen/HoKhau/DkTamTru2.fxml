@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
@@ -13,20 +14,18 @@
       <URL value="@../../../styles/Main/ThemNguoiMoi.css" />
       <URL value="@../../../styles/Main/DkTamTru.css" />
    </stylesheets>
-   <AnchorPane layoutX="199.0" layoutY="93.0" prefHeight="535.0" prefWidth="452.0" styleClass="vbx" stylesheets="@../../../styles/Main/ThemNguoiMoi.css">
+   <AnchorPane layoutX="194.0" layoutY="130.0" prefHeight="522.0" prefWidth="463.0" styleClass="vbx" stylesheets="@../../../styles/Main/ThemNguoiMoi.css">
       <TextField fx:id="matamtru_text" layoutX="21.0" layoutY="72.0" prefHeight="31.0" prefWidth="419.0" styleClass="text_fld1" />
-      <Text layoutX="18.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã giấy tạm trú " />
-      <Text layoutX="15.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số điện thoại người đăng kí " />
-      <TextField fx:id="sdt_text" layoutX="21.0" layoutY="149.0" prefHeight="31.0" prefWidth="419.0" styleClass="text_fld1" />
-      <Text layoutX="19.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạm trú :" />
-      <Text layoutX="25.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Từ ngày" />
-      <Text layoutX="28.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đến ngày" />
-      <DatePicker fx:id="ngayden_text" layoutX="26.0" layoutY="253.0" styleClass="text_fld1" />
-      <DatePicker fx:id="ngaydi_text" layoutX="26.0" layoutY="327.0" styleClass="text_fld1" />
-      <Text layoutX="20.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lý do " />
-      <TextField fx:id="lido_text" layoutX="23.0" layoutY="407.0" prefHeight="138.0" prefWidth="419.0" styleClass="text_fld1" />
+      <Text layoutX="28.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số điện thoại người đăng kí " />
+      <Text layoutX="20.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạm trú :" />
+      <Text layoutX="26.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Từ ngày" />
+      <Text layoutX="28.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đến ngày" />
+      <DatePicker fx:id="ngayden_text" layoutX="27.0" layoutY="179.0" styleClass="text_fld1" />
+      <DatePicker fx:id="ngaydi_text" layoutX="27.0" layoutY="253.0" styleClass="text_fld1" />
+      <Text layoutX="32.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lý do " />
+      <TextArea fx:id="lido_text" layoutX="18.0" layoutY="333.0" prefHeight="151.0" prefWidth="419.0" />
    </AnchorPane>
-   <Label layoutX="314.0" layoutY="48.0" styleClass="text_lbl" text="Đăng kí tạm trú" />
+   <Label layoutX="314.0" layoutY="63.0" styleClass="text_lbl" text="Đăng kí tạm trú" />
    <Button fx:id="thoat_btn_2" layoutX="272.0" layoutY="690.0" mnemonicParsing="false" styleClass="button_cancel" text="Thoát" />
    <Button fx:id="confirm_btn" layoutX="487.0" layoutY="690.0" mnemonicParsing="false" styleClass="button_acp" text="Xác nhận" />
 </AnchorPane>

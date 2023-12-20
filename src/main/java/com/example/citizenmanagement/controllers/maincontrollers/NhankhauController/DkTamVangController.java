@@ -1,5 +1,6 @@
 package com.example.citizenmanagement.controllers.maincontrollers.NhankhauController;
 
+import com.example.citizenmanagement.models.List_nhan_khau;
 import com.example.citizenmanagement.models.MainMenuOptions;
 import com.example.citizenmanagement.models.Model;
 import javafx.fxml.FXML;
@@ -33,6 +34,8 @@ public class DkTamVangController implements Initializable {
 
     @FXML
     private Button xac_nhan_tam_vang;
+    private List_nhan_khau tam;
+
 
     private void onThoatBtn() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TAM_VANG);
@@ -42,6 +45,10 @@ public class DkTamVangController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         thoat_btn.setOnAction(event -> onThoatBtn());
         xac_nhan_tam_vang.setOnAction(event -> onDangKyTamVang());
+
+        tam = Model.getNhanKhauDuocChon();
+       ma_nhan_khau.setText(tam.getSo_nhan_khau());
+       ma_nhan_khau.setDisable(true);
     }
 
     public void onDangKyTamVang(){
@@ -80,16 +87,13 @@ public class DkTamVangController implements Initializable {
                 alert.setHeaderText("Bạn đã thêm thành công");
                 alert.setContentText("Mời bạn trở về trang chủ");
                 alert.showAndWait();
-                Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TRANG_CHU_TAM_VANG);
 
-                
+//                Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TRANG_CHU_TAM_VANG);
+
+                Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.NHAN_KHAU);
+
             }
-
-
         }
-
-
     }
-
-
 }
+

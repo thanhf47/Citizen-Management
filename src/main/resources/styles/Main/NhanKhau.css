@@ -82,3 +82,9 @@
 .button_search :pressed {
   -fx-background-color: #3998e6;
 }
+
+.text {
+    -fx-fill: #000000;
+    -fx-font-size: 1.2em;
+    -fx-font-family: "Calibri Light";
+}

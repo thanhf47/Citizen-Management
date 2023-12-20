@@ -14,6 +14,8 @@ import java.util.ResourceBundle;
 public class MainMenuController implements Initializable {
 
 
+    public Button tamtru_btn;
+    public Button tamvang_btn;
     @FXML
     private Button ho_khau_btn;
 
@@ -22,14 +24,9 @@ public class MainMenuController implements Initializable {
 
     @FXML
     private Button nhan_khau_btn;
+
     @FXML
     private Button quadoi_btn;
-
-    @FXML
-    private Button tamtru_btn;
-
-    @FXML
-    private Button tamvang_btn;
 
     @FXML
     private Button trang_chu_btn;
@@ -54,6 +51,8 @@ public class MainMenuController implements Initializable {
         ho_khau_btn.setOnAction(event -> onHoKhau());
         quadoi_btn.setOnAction(event -> onQuaDoi());
         tamvang_btn.setOnAction(event -> onTamVang());
+        tamtru_btn.setOnAction(even-> onTamTrulist());
+
     }
 
     private void onTrangChu() {
@@ -71,5 +70,7 @@ public class MainMenuController implements Initializable {
     private void onTamVang(){
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TRANG_CHU_TAM_VANG);
     }
-
+    private void onTamTrulist() {
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TAM_TRU_LIST);
+    }
 }
