@@ -643,40 +643,26 @@ public class DatabaseConnection {
         return resultSet;
     }
 
-    public int add_thanh_vien_cua_ho(String cccd,String ma_ho, String quan_he){
+    public int add_thanh_vien_cua_ho(String ma_nhan_khau,String ma_ho, String quan_he){
         String query = "INSERT INTO THANHVIENCUAHO VALUES (?,?,?)";
-        String query1 = "select * FROM NHANKHAU WHERE SOCANCUOC='"+cccd+"'";
         try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query1);
-            if(resultSet.isBeforeFirst()){
-
-                resultSet.next();
-                PreparedStatement preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setString(1,resultSet.getString(1));
-                preparedStatement.setString(2,ma_ho);
-                preparedStatement.setNString(3,quan_he);
-                preparedStatement.executeUpdate();
-
-                return 1;
-            }
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,ma_nhan_khau);
+            preparedStatement.setString(2,ma_ho);
+            preparedStatement.setString(3,quan_he);
+            preparedStatement.executeUpdate();
+            return 1;
         }catch (Exception e){
             System.out.println("loi o add_thanh_vien_cua_ho");
             return 0;
         }
-        return 0;
     }
-    public void xoa_thanh_vien_cua_ho(String cccd){
-        String query1 = "select * FROM NHANKHAU WHERE SOCANCUOC='"+cccd+"'";
+    public void xoa_thanh_vien_cua_ho(String ma_nhan_khau){
+        String query1 = "delete FROM thanhviencuaho WHERE manhankhau='"+ma_nhan_khau+"'";
         try{
             Statement statement1 = connection.createStatement();
-            ResultSet resultSet=statement1.executeQuery(query1);
-            if(resultSet.isBeforeFirst()) {
-                resultSet.next();
-                String query = "DELETE FROM THANHVIENCUAHO WHERE MANHANKHAU='"+resultSet.getString(1)+"'";
-                Statement statement = connection.createStatement();
-                statement.executeUpdate(query);
-            }
+            statement1.executeUpdate(query1);
+
         }catch (Exception e){
             System.out.println("loi o xoa_thanh_vien_cua_ho");
             e.printStackTrace();

@@ -61,8 +61,8 @@ public class tachHoKhauControler implements Initializable {
                 thanh_vien_tren=nguoi_in_listView_now.getSelectionModel().getSelectedItem();
                 if(thanh_vien_tren!=null){
                     if(!ma_chu_ho_hien_tai.equals(thanh_vien_tren.getmaNhanKhau())) {
-                        Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(thanh_vien_tren.getCccd());
-                        Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(thanh_vien_tren.getCccd(), ma_ho_khau_moi, quan_he_textField.getText());
+                        Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(thanh_vien_tren.getmaNhanKhau());
+                        Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(thanh_vien_tren.getmaNhanKhau(), ma_ho_khau_moi, quan_he_textField.getText());
                         nguoi_in_listView_now.getItems().clear();
                         nguoi_in_listView_new.getItems().clear();
                         cap_nhat_tren();
@@ -100,8 +100,8 @@ public class tachHoKhauControler implements Initializable {
             if(!quan_he_textField.getText().isEmpty()){
                 thanh_vien_duoi=nguoi_in_listView_new.getSelectionModel().getSelectedItem();
                 if(thanh_vien_duoi!=null){
-                    Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(thanh_vien_duoi.getCccd());
-                    Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(thanh_vien_duoi.getCccd(),maHK_search_textField.getText(),quan_he_textField.getText());
+                    Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(thanh_vien_duoi.getmaNhanKhau());
+                    Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(thanh_vien_duoi.getmaNhanKhau(),maHK_search_textField.getText(),quan_he_textField.getText());
                     nguoi_in_listView_now.getItems().clear();
                     nguoi_in_listView_new.getItems().clear();
                     cap_nhat_tren();

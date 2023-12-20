@@ -91,7 +91,7 @@ public class thay_doi_ho_khau_controler implements Initializable {
                 if(nhan_khau_dc_chon!=null)
                 {
                     int ketqua=0;
-                    ketqua=Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(nhan_khau_dc_chon.getCccd(),String.valueOf(tam.getId().get()),quan_he_textField.getText());
+                    ketqua=Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(nhan_khau_dc_chon.getSo_nhan_khau(),String.valueOf(tam.getId().get()),quan_he_textField.getText());
                     listView_nhan_khau.getItems().clear();
                     listView_thanh_vien.getItems().clear();
                     cap_nhat_list_view_nhan_khau();
@@ -121,7 +121,7 @@ public class thay_doi_ho_khau_controler implements Initializable {
         xoa_thanh_vien_but.setOnAction(actionEvent -> {
             if(!thanh_vien_cua_ho_dc_chon.isEmpty()){
                 for(thanh_vien_cua_ho_cell item:thanh_vien_cua_ho_dc_chon) {
-                    Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(item.getCccd());
+                    Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(item.getmaNhanKhau());
                 }
 
 //                listView_thanh_vien.getItems().removeAll(thanh_vien_cua_ho_dc_chon);
@@ -156,14 +156,14 @@ public class thay_doi_ho_khau_controler implements Initializable {
                 for (int i = 0; i < danh_sach_thanh_vien_ban_dau.size(); i++) {
                     thanh_vien_cua_ho_cell tam1 = danh_sach_thanh_vien_ban_dau.get(i);
                     if (!kiem_tra(danh_sach_thanh_vien_cua_ho_hien_tai, tam1)) {
-                        Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(tam1.getCccd(), String.valueOf(tam.getId().get()), tam1.getQuan_he());
+                        Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(tam1.getmaNhanKhau(), String.valueOf(tam.getId().get()), tam1.getQuan_he());
                     }
                 }
 
                 for (int i = 0; i < danh_sach_thanh_vien_cua_ho_hien_tai.size(); i++) {
                     thanh_vien_cua_ho_cell tam1 = danh_sach_thanh_vien_cua_ho_hien_tai.get(i);
                     if (!kiem_tra(danh_sach_thanh_vien_ban_dau, tam1)) {
-                        Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(tam1.getCccd());
+                        Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(tam1.getmaNhanKhau());
                     }
                 }
                 Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.XEM_CHI_TIET_HO_KHAU);
@@ -324,7 +324,7 @@ public class thay_doi_ho_khau_controler implements Initializable {
     public Boolean kiem_tra(ObservableList<thanh_vien_cua_ho_cell> danh_sach, thanh_vien_cua_ho_cell doi_tuong){
         for(int i=0;i<danh_sach.size();i++){
             thanh_vien_cua_ho_cell tam = danh_sach.get(i);
-            if(tam.getCccd().equals(doi_tuong.getCccd()))
+            if(tam.getmaNhanKhau().equals(doi_tuong.getmaNhanKhau()))
                 return true;
         }
         return false;

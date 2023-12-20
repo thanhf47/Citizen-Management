@@ -76,7 +76,7 @@ public class xemChiTietHokhauControler implements Initializable {
             ObservableList<thanh_vien_cua_ho_cell> danh_sach = listView_thanhvien.getItems();
             for(int i=0;i<danh_sach.size();i++){
                 thanh_vien_cua_ho_cell tam = danh_sach.get(i);
-                Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(tam.getCccd());
+                Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(tam.getmaNhanKhau());
             }
             //Model.getInstance().getDatabaseConnection().xoa_dong_gop_lien_quan_den_ho_khau(tam.getId().get());
             int ketqua=Model.getInstance().getDatabaseConnection().xoaHoKhau(tam.getId().get());

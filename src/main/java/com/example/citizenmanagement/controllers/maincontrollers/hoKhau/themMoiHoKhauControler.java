@@ -97,7 +97,7 @@ public class themMoiHoKhauControler implements Initializable {
                 if(nhan_khau_dc_chon!=null)
                 {
                     int ketqua=0;
-                    ketqua=Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(nhan_khau_dc_chon.getCccd(),ma_ho_khau_moi,quan_he_textField.getText());
+                    ketqua=Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(nhan_khau_dc_chon.getSo_nhan_khau(),ma_ho_khau_moi,quan_he_textField.getText());
 
                         listView_to_chon.getItems().clear();
                         listView_to_them.getItems().clear();
@@ -127,7 +127,7 @@ public class themMoiHoKhauControler implements Initializable {
 
         chuyen_lai.setOnAction(actionEvent -> {
             if(thanh_vien_cua_ho_dc_them!=null){
-                    Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(thanh_vien_cua_ho_dc_them.getCccd());
+                    Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(thanh_vien_cua_ho_dc_them.getmaNhanKhau());
                     listView_to_chon.getItems().clear();
                     listView_to_them.getItems().clear();
                     cap_nhat_list_view_nhan_khau();
@@ -154,7 +154,7 @@ public class themMoiHoKhauControler implements Initializable {
                 ObservableList<thanh_vien_cua_ho_cell> danh_sach=listView_to_them.getItems();
                 for(int i=0; i<danh_sach.size();i++){
                     thanh_vien_cua_ho_cell tam = danh_sach.get(i);
-                    Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(tam.getCccd());
+                    Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(tam.getmaNhanKhau());
                 }
                 Model.getInstance().getDatabaseConnection().xoaHoKhau(ma_ho_khau_moi);
                 Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.HO_KHAU);
