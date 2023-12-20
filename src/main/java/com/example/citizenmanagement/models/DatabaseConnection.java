@@ -196,8 +196,9 @@ public class DatabaseConnection {
     public ResultSet getTamVangOfThangVaNam(int thang,int nam){
         String query = "SELECT COUNT(MAGIAYTAMVANG)\n" +
                 "FROM TAMVANG\n" +
-                "WHERE " + thang + " BETWEEN MONTH(TUNGAY) AND MONTH(DENNGAY)" + "\n" +
-                "AND " + nam + " BETWEEN YEAR(TUNGAY) AND YEAR(DENNGAY)";
+                "WHERE (YEAR(TUNGAY) = " + nam + " AND MONTH(TUNGAY) <= " + thang + ") OR (YEAR(DENNGAY) = " + nam + " AND MONTH(DENNGAY) >= " + thang + ")\n" +
+                "\tOR (YEAR(TUNGAY) < " + nam + " AND YEAR(DENNGAY) > " + nam + ")";
+
         return executeQuery(query);
     }
 
@@ -471,7 +472,7 @@ public class DatabaseConnection {
         String query = "SELECT MAKHOANTHU\n" +
                 "FROM LOAIPHI\n" +
                 "WHERE TEN = N'" + tenKhoanThu + "' AND BATBUOC = " + batBuoc +
-                " AND SOTIENTRENMOTNGUOI = " + soTienCanDong + "AND NGAYTAO = '" + ngayTao.toString() + "' AND MOTA = N'" + moTa +"'";
+                " AND SOTIENTRENMOTNGUOI = " + soTienCanDong + " AND NGAYTAO = '" + ngayTao.toString() + "' AND MOTA = N'" + moTa +"'";
         Statement statement;
         ResultSet resultSet = null;
         try {
@@ -599,23 +600,17 @@ public class DatabaseConnection {
     }
 
     public ResultSet getDanhSachChuaDongPhi(int maKhoanThu) {
-        String query = "SELECT HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, COUNT(TV.MANHANKHAU), DONGGOP.SOTIENCANDONG\n" +
-                "FROM DONGGOP INNER JOIN HOKHAU HK ON DONGGOP.MAHOKHAU = HK.MAHOKHAU\n" +
-                "INNER JOIN NHANKHAU NK ON HK.IDCHUHO = NK.MANHANKHAU\n" +
-                "\tINNER JOIN THANHVIENCUAHO TV ON HK.MAHOKHAU = TV.MAHOKHAU\n" +
-                "WHERE DONGGOP.MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 0\n" +
-                "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, DONGGOP.SOTIENCANDONG";
+        String query = "select MAHOKHAU, TENCHUHO, DIACHI, SOTHANHVIEN, SOTIENCANDONG\n" +
+                "from DONGGOP\n" +
+                "WHERE MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 0";
         return executeQuery(query);
     }
 
     public ResultSet danhSachChuaDongPhi_timKiem(int maKhoanThu, String condition) {
-        String query = "SELECT HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, COUNT(TV.MANHANKHAU), DONGGOP.SOTIENCANDONG\n" +
-                "FROM DONGGOP INNER JOIN HOKHAU HK ON DONGGOP.MAHOKHAU = HK.MAHOKHAU\n" +
-                "INNER JOIN NHANKHAU NK ON HK.IDCHUHO = NK.MANHANKHAU\n" +
-                "\tINNER JOIN THANHVIENCUAHO TV ON HK.MAHOKHAU = TV.MAHOKHAU\n" +
-                "WHERE DONGGOP.MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 0\n" +
-                "\tAND (HK.MAHOKHAU LIKE '%" + condition + "%' OR NK.HOTEN LIKE '%" + condition + "%' OR HK.DIACHI LIKE '%" + condition + "%')\n" +
-                "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, DONGGOP.SOTIENCANDONG";
+        String query = "select MAHOKHAU, TENCHUHO, DIACHI, SOTHANHVIEN, SOTIENCANDONG\n" +
+                "from DONGGOP\n" +
+                "WHERE MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 0\n" +
+                "\tAND MAHOKHAU LIKE '%" + condition + "%' OR TENCHUHO LIKE '%" + condition + "%' OR DIACHI LIKE '%" + condition + "%'";
         return executeQuery(query);
     }
 
@@ -642,23 +637,17 @@ public class DatabaseConnection {
     }
 
     public ResultSet danhSachDaDongPhi_timKiem(int maKhoanThu, String condition) {
-        String query = "SELECT HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, COUNT(TV.MANHANKHAU), DG.SOTIENDADONG\n" +
-                "FROM DONGGOP DG INNER JOIN HOKHAU HK ON DG.MAHOKHAU = HK.MAHOKHAU\n" +
-                "INNER JOIN NHANKHAU NK ON HK.IDCHUHO = NK.MANHANKHAU\n" +
-                "\tINNER JOIN THANHVIENCUAHO TV ON HK.MAHOKHAU = TV.MAHOKHAU\n" +
-                "WHERE DG.MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 1\n" +
-                "\tAND (HK.MAHOKHAU LIKE '%" + condition + "%' OR NK.HOTEN LIKE '%" + condition + "%' OR HK.DIACHI LIKE '%" + condition + "%')\n" +
-                "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, DG.SOTIENDADONG";
+        String query = "select MAHOKHAU, TENCHUHO, DIACHI, SOTHANHVIEN, SOTIENDADONG\n" +
+                "from DONGGOP\n" +
+                "WHERE MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 1\n" +
+                "\tAND MAHOKHAU LIKE '%" + condition + "%' OR TENCHUHO LIKE '%" + condition + "%' OR DIACHI LIKE '%" + condition + "%'";
         return executeQuery(query);
     }
 
     public ResultSet getDanhSachDaDongPhi(int maKhoanThu) {
-        String query = "SELECT HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, COUNT(TV.MANHANKHAU), DG.SOTIENDADONG\n" +
-                "FROM DONGGOP DG INNER JOIN HOKHAU HK ON DG.MAHOKHAU = HK.MAHOKHAU\n" +
-                "INNER JOIN NHANKHAU NK ON HK.IDCHUHO = NK.MANHANKHAU\n" +
-                "\tINNER JOIN THANHVIENCUAHO TV ON HK.MAHOKHAU = TV.MAHOKHAU\n" +
-                "WHERE DG.MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 1\n" +
-                "GROUP BY HK.MAHOKHAU, NK.HOTEN, HK.DIACHI, DG.SOTIENDADONG";
+        String query = "Select MAHOKHAU, TENCHUHO, DIACHI, SOTHANHVIEN, SOTIENDADONG\n" +
+                "from DONGGOP\n" +
+                "WHERE MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 1";
         return executeQuery(query);
     }
 
