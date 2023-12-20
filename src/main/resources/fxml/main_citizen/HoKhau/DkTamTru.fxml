@@ -37,8 +37,6 @@
       <TextField fx:id="tongiao_text" prefHeight="0.0" prefWidth="292.0" />
       <Label text="Quốc tịch" />
       <TextField fx:id="quoctich_text" prefHeight="0.0" prefWidth="292.0" />
-      <Label text="Số hộ chiếu" />
-      <TextField fx:id="hochieu_text" prefHeight="0.0" prefWidth="292.0" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nghề nghiệp" />
       <TextField fx:id="nghenghiep_text" prefHeight="0.0" prefWidth="292.0" />
    </VBox>

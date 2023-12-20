@@ -48,7 +48,7 @@ public class DkTamVangController implements Initializable {
         xac_nhan_tam_vang.setOnAction(event -> onDangKyTamVang());
         tam = Model.getNhanKhauDuocChon();
        ma_nhan_khau.setText(tam.getSo_nhan_khau());
-       ma_nhan_khau.setEditable(false);
+       ma_nhan_khau.setDisable(true);
     }
 
     public void onDangKyTamVang(){

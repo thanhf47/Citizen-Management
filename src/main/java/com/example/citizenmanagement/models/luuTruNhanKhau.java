@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 public class luuTruNhanKhau  implements Initializable {
     private final String CCCD;
     private final String ho_ten;
-    private final String so_ho_chieu;
+
     private final LocalDate nam_sinh;
     private final String gioi_tinh;
     private final String ton_giao;
@@ -26,10 +26,10 @@ public class luuTruNhanKhau  implements Initializable {
 
 
 
-    public luuTruNhanKhau(String ho_ten, String CCCD, LocalDate nam_sinh, String gioi_tinh, String noi_sinh, String nguyen_quan, String dan_toc, String ton_giao, String quoc_tich, String so_ho_chieu, String thuong_tru, String nghe_nghiep) {
+    public luuTruNhanKhau(String ho_ten, String CCCD, LocalDate nam_sinh, String gioi_tinh, String noi_sinh, String nguyen_quan, String dan_toc, String ton_giao, String quoc_tich, String thuong_tru, String nghe_nghiep) {
         this.CCCD = CCCD;
         this.ho_ten = ho_ten;
-        this.so_ho_chieu = so_ho_chieu;
+
         this.nam_sinh = nam_sinh;
         this.gioi_tinh = gioi_tinh;
         this.ton_giao = ton_giao;
@@ -48,9 +48,6 @@ public class luuTruNhanKhau  implements Initializable {
         return ho_ten;
     }
 
-    public String getSo_ho_chieu() {
-        return so_ho_chieu;
-    }
 
     public LocalDate getNam_sinh() {
         return nam_sinh;

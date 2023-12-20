@@ -43,21 +43,31 @@ int bit;
     private String[] Gioitinh = {"Nam", "Nữ"};
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(my_choise_box.getValue() == "Nam") {
-            bit = 1;
-        }
-        else bit = 0;
+
     my_choise_box.setItems(FXCollections.observableArrayList(Gioitinh));
        chitiet();
-      khai_tu_btn.setOnAction(actionEvent ->
-          onKhaitu());
+      khai_tu_btn.setOnAction(actionEvent -> {
+          if(ghi_chu_text.getText() != null &&ghi_chu_text.getText().equals("khai tử"))
+          {
+              Alert alert = new Alert(Alert.AlertType.ERROR);
+              alert.setTitle("Lỗi");
+              alert.setHeaderText("Người này đã chết");
+              alert.setContentText("Xin bệ hạ hãy nghĩ thông suốt trước khi ấn nút !");
+              alert.showAndWait();
+          }else{
+              onKhaitu();}
+      });
       thoat_chinhsua_button.setOnAction(event ->
     {
         onThoatTamVangBtn();
         reset();
     });
       confirm_chinh_sua_btn.setOnAction(event -> {
-        Model.getInstance().getDatabaseConnection().capnhatNhanKhauShow(ho_ten_text.getText(),Date.valueOf(ngay_sinh_lbl.getValue()),bit, noi_sinh_text.getText(),nguyen_quan_text.getText(),dan_toc_text.getText(),ton_giao_text.getText(),quoc_tich_text.getText(), thuong_tru_text.getText(),nghe_text.getText(),ghi_chu_text.getText(),cccd_text.getText());
+          if(my_choise_box.getValue() == "Nam") {
+              bit = 1;
+          }
+          else bit = 0;
+        Model.getInstance().getDatabaseConnection().capnhatNhanKhauShow(ho_ten_text.getText(),Date.valueOf(ngay_sinh_lbl.getValue()),bit, noi_sinh_text.getText(),nguyen_quan_text.getText(),dan_toc_text.getText(),ton_giao_text.getText(),quoc_tich_text.getText(), thuong_tru_text.getText(),nghe_text.getText(),ghi_chu_text.getText(),Model.getNhanKhauDuocChon().getSo_nhan_khau());
       });
 
       tam_vang_btn.setOnAction(event -> {
@@ -90,12 +100,13 @@ int bit;
 
     private void chitiet() {
         list = Model.getNhanKhauDuocChon();
-        ResultSet resultSet = Model.getInstance().getDatabaseConnection().truyvanlistNhanKhau(list.getCccd());
+        ResultSet resultSet = Model.getInstance().getDatabaseConnection().truyvanlistNhanKhau(list.getSo_nhan_khau());
         try {
             if (resultSet.next()) {
                 String value = resultSet.getString(1);
                 ho_ten_text.setText(value);
                 cccd_text.setText(resultSet.getString(2));
+                cccd_text.setDisable(true);
                 String gender = resultSet.getString(4);
                 if (gender.equals("1")) {
                     my_choise_box.setValue("Nam");

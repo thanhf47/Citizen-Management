@@ -123,10 +123,10 @@ public class DkTamTruController implements Initializable {
             String dantoc = dantoc_text.getText();
             String tongiao = tongiao_text.getText();
             String quoctich = quoctich_text.getText();
-            String sohochieu = hochieu_text.getText();
+
             String noithuongtru = thuong_tru_text.getText();
             String nghenghiep = nghenghiep_text.getText();
-            luuTruNhanKhau tam = new luuTruNhanKhau(ho_ten, CCCD, namsinh, gioitinh, noisinh, nguyenquan, dantoc, tongiao, quoctich, sohochieu, noithuongtru, nghenghiep );
+            luuTruNhanKhau tam = new luuTruNhanKhau(ho_ten, CCCD, namsinh, gioitinh, noisinh, nguyenquan, dantoc, tongiao, quoctich, noithuongtru, nghenghiep );
             DKTamTru2Controller.setFormData(tam);
         });
 

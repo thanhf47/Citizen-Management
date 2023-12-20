@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.TamTruShowController">
-    <AnchorPane layoutX="14.0" prefHeight="750.0" prefWidth="850.0" stylesheets="@../../../styles/Main/ThemNguoiMoi.css">
+    <AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../../styles/Main/ThemNguoiMoi.css">
         <Text layoutX="40.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên " />
         <Text layoutX="430.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính" />
         <Text layoutX="40.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh" />
@@ -28,9 +28,9 @@
         <Text layoutX="52.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CCCD " />
         <TextField fx:id="cccd_text" layoutX="158.0" layoutY="102.0" prefHeight="33.0" prefWidth="267.0" styleClass="text_fld" />
         <Button fx:id="thoat_chinhsua_button" layoutX="117.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_cancel" text="Thoát" />
-        <Button fx:id="confirm_chinh_sua_btn" layoutX="540.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_acp" text="Xác nhận" />
+        <Button fx:id="confirm_chinh_sua_btn" layoutX="562.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_acp" text="Xác nhận" />
         <TextField fx:id="dan_toc_text" layoutX="523.0" layoutY="300.0" prefHeight="33.0" prefWidth="182.0" styleClass="text_fld" />
-        <TextField fx:id="ghi_chu_text" layoutX="523.0" layoutY="615.0" prefHeight="33.0" prefWidth="182.0" styleClass="text_fld" />
+        <TextField fx:id="ghi_chu_text" layoutX="523.0" layoutY="626.0" prefHeight="33.0" prefWidth="182.0" styleClass="text_fld" />
         <Text layoutX="433.0" layoutY="637.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ghi chú" />
         <TextField fx:id="ho_ten_text" layoutX="157.0" layoutY="171.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
         <Text layoutX="44.0" layoutY="582.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi sinh" />
@@ -40,7 +40,7 @@
             </font>
         </Text>
         <TextField fx:id="noi_sinh_text" layoutX="156.0" layoutY="559.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
-        <Button fx:id="khai_tu_btn" layoutX="340.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_cancel" text="Khai tử " />
+        <Button fx:id="khai_tu_btn" layoutX="340.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="115.0" styleClass="button_cancel" text="Xóa  " />
         <Text layoutX="52.0" layoutY="644.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo " />
         <DatePicker fx:id="ngay_tao_date" layoutX="156.0" layoutY="623.0" />
         <DatePicker fx:id="ngay_sinh_lbl" layoutX="156.0" layoutY="232.0" prefHeight="31.0" prefWidth="190.0" />

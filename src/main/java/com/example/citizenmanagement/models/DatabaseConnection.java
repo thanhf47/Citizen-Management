@@ -473,9 +473,9 @@ public class DatabaseConnection {
         return thanhcong;
     }
 
-    public int capnhatNhanKhauShow (String hoten, Date ngaysinh, int Gioitinh, String noisinh, String nguyenquan, String dantoc, String tongiao, String quoctich, String noithuongtru, String nghenghiep, String ghichu,String string){
+    public int capnhatNhanKhauShow (String hoten, Date ngaysinh, int Gioitinh, String noisinh, String nguyenquan, String dantoc, String tongiao, String quoctich, String noithuongtru, String nghenghiep, String ghichu,String manhankhau){
         int thanhcong = 0;
-        String querry = "update NHANKHAU SET HOTEN = ? , NGAYSINH = ? , GIOITINH = ? , NOISINH = ? , NGUYENQUAN =? , DANTOC =? , TONGIAO = ? , QUOCTICH =? , NOITHUONGTRU = ? , NGHENGHIEP = ?, GHICHU =? Where SOCANCUOC = ?";
+        String querry = "update NHANKHAU SET HOTEN = ? , NGAYSINH = ? , GIOITINH = ? , NOISINH = ? , NGUYENQUAN =? , DANTOC =? , TONGIAO = ? , QUOCTICH =? , NOITHUONGTRU = ? , NGHENGHIEP = ?, GHICHU =? Where MANHANKHAU = ?";
         try{
             PreparedStatement pre = connection.prepareStatement(querry);
             pre.setNString(1,hoten);
@@ -489,7 +489,7 @@ public class DatabaseConnection {
             pre.setNString(9,noithuongtru);
             pre.setNString(10,nghenghiep);
             pre.setNString(11,ghichu);
-            pre.setString(12,string);
+            pre.setString(12,manhankhau);
             thanhcong = pre.executeUpdate();
         }
         catch(SQLException e) {
@@ -553,18 +553,34 @@ public class DatabaseConnection {
         return resultSet;
     }
 
-    public ResultSet truyvanlistNhanKhau( String socancuoc) {
+    public ResultSet truyvanlistNhanKhau( String manhankhau) {
         ResultSet resultSet = null;
-        String que = "SELECT HOTEN, SOCANCUOC, NGAYSINH, GIOITINH, NOISINH, NGUYENQUAN, DANTOC, TONGIAO, QUOCTICH, NOITHUONGTRU, NGHENGHIEP, NGAYTAO, GHICHU FROM NHANKHAU WHERE SOCANCUOC LIKE ?" ;
+        String que = "SELECT HOTEN, SOCANCUOC, NGAYSINH, GIOITINH, NOISINH, NGUYENQUAN, DANTOC, TONGIAO, QUOCTICH, NOITHUONGTRU, NGHENGHIEP, NGAYTAO, GHICHU FROM NHANKHAU WHERE MANHANKHAU = ?";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(que);
-            preparedStatement.setString(1,    socancuoc );
+            preparedStatement.setString(1,    manhankhau );
             resultSet = preparedStatement.executeQuery();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return resultSet;
+    }
+
+    public int xoa_tam_tru(String MaNhanKhau) {
+        if(!MaNhanKhau.isEmpty()) {
+            String query = "Delete TAMTRU where MANHANKHAU = ?";
+            try {
+                PreparedStatement statement = connection.prepareStatement(query);
+                statement.setString(1, MaNhanKhau);
+                statement.executeUpdate();
+                return 1;
+            } catch (Exception e) {
+                return 0;
+            }
+        }
+        else
+            return 0;
     }
 
     public ResultSet nhanKhau_timkiem(String string) {
@@ -601,7 +617,7 @@ public class DatabaseConnection {
 
     public ResultSet truyvanTamTru() {
         ResultSet resultSet = null;
-        String querry = " select MANHANKHAU, SOCANCUOC, HOTEN, GIOITINH, NGAYSINH, NOITHUONGTRU from NHANKHAU where GHICHU like N'tạm trú';";
+        String querry = " select MANHANKHAU, SOCANCUOC, HOTEN, GIOITINH, NGAYSINH, NOITHUONGTRU from NHANKHAU where GHICHU like N'%tạm trú%';";
         try{
             Statement statement = connection.createStatement();
             resultSet = statement.executeQuery(querry);

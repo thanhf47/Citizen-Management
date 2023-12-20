@@ -37,24 +37,50 @@ public class TamTruShowController implements Initializable {
     public DatePicker ngay_tao_date;
     public DatePicker ngay_sinh_lbl;
 //    public Button tam_vang_btn;
+    int bit;
 
     private List_nhan_khau list1 ;
 
     private String[] Gioitinh = {"Nam", "Nữ"};
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        ngay_tao_date.setDisable(true);
         my_choise_box.setItems(FXCollections.observableArrayList(Gioitinh));
 
         chitiet();
-        khai_tu_btn.setOnAction(actionEvent ->
-                onKhaitu());
+        khai_tu_btn.setOnAction(actionEvent ->{
+
+           int thanhcong = Model.getInstance().getDatabaseConnection().xoa_tam_tru(Model.getNhanKhauDuocChon().getSo_nhan_khau());
+            if(thanhcong == 1) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Thành công");
+                alert.setContentText("Đã xóa thành công người này!");
+                alert.showAndWait();
+                Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TAM_TRU_LIST);
+            }
+            else {
+                System.out.println("loi kljksadfjlkjg");
+            }
+        });
+
         thoat_chinhsua_button.setOnAction(event ->
         {
             onThoatTamVangBtn();
         });
+
         confirm_chinh_sua_btn.setOnAction(event -> {
-//          Model.getInstance().getDatabaseConnection().capnhatNhanKhau()
+            if(my_choise_box.getValue() == "Nam") {
+                bit = 1;
+            }
+            else {
+                bit = 0;
+            }
+            Model.getInstance().getDatabaseConnection().capnhatNhanKhauShow(ho_ten_text.getText(),Date.valueOf(ngay_sinh_lbl.getValue()), bit, noi_sinh_text.getText(),nguyen_quan_text.getText(),dan_toc_text.getText(),ton_giao_text.getText(),quoc_tich_text.getText(), thuong_tru_text.getText(),nghe_text.getText(),ghi_chu_text.getText(),Model.getNhanKhauDuocChon().getSo_nhan_khau());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Thành công");
+            alert.setContentText("Đã sửa thành công người này!");
+            alert.showAndWait();
+            Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TAM_TRU_LIST);
         });
     }
 
@@ -71,7 +97,7 @@ public class TamTruShowController implements Initializable {
 
     private void chitiet() {
         list1 = Model.getNhanKhauDuocChon();
-        ResultSet resultSet = Model.getInstance().getDatabaseConnection().truyvanlistNhanKhau(list1.getCccd());
+        ResultSet resultSet = Model.getInstance().getDatabaseConnection().truyvanlistNhanKhau(list1.getSo_nhan_khau());
         try {
             if (resultSet.next()) {
                 String value = resultSet.getString(1);
