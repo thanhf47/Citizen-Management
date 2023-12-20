@@ -8,10 +8,10 @@
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="800.0" styleClass="hoKhauCell_container" stylesheets="@../../../styles/Main/hoKhau/hoKhauCell.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <HBox fx:id="hbox" prefHeight="50.0" prefWidth="800.0">
       <FontAwesomeIconView glyphName="HOME" size="30" wrappingWidth="34.25710678100586" />
-      <Text fx:id="ma_ho_khau_text" fill="#dc5858" strokeType="OUTSIDE" strokeWidth="0.0" text="12345678901" wrappingWidth="92.4000244140625" />
-      <Text fx:id="ma_chu_ho_text" fill="#8da13b" layoutX="24.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12345678902" wrappingWidth="90.0" />
-      <Text fx:id="dia_chi_text" fill="#53b80d" layoutX="48.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dia chi" wrappingWidth="204.0" />
-      <Text fx:id="ngay_lap_text" fill="#795858" layoutX="72.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ngay lap" wrappingWidth="111.60003662109375" />
-      <Text fx:id="ghi_chu_text" fill="#bc6d6a" layoutX="120.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ghi chu" wrappingWidth="100.0" />
+      <Text fx:id="ma_ho_khau_text" fill="#533e3e" strokeType="OUTSIDE" strokeWidth="0.0" text="12345678901" wrappingWidth="78.800048828125" />
+      <Text fx:id="ten_chu_ho_text" fill="#3e4035" layoutX="24.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12345678902" wrappingWidth="90.0" />
+      <Text fx:id="dia_chi_text" fill="#292e25" layoutX="48.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="dia chi" wrappingWidth="204.0" />
+      <Text fx:id="ngay_lap_text" fill="#362c2c" layoutX="72.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ngay lap" wrappingWidth="111.60003662109375" />
+      <Text fx:id="ghi_chu_text" fill="#332b2b" layoutX="120.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ghi chu" wrappingWidth="100.0" />
    </HBox>
 </AnchorPane>

@@ -35,22 +35,15 @@ public class xemChiTietHokhauControler implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //******************************************************
         tam=Model.getHoKhauDuocChon();
+
         cap_nhat();
+
         ma_ho_khau.setText(String.valueOf(tam.getId().get()));
-        ma_chu_ho.setText(String.valueOf(tam.getOwner().get()));
+        ten_chu_ho.setText(String.valueOf(tam.getOwner().get()));
         dia_chi.setText(String.valueOf(tam.getAddress().get()));
         ngay_tao.setText(String.valueOf(tam.getDate_tao().get()));
         ghi_chu.setText(String.valueOf(tam.getGhi_chu().get()));
-        ResultSet resultSet = Model.getInstance().getDatabaseConnection().lay_nhan_khau(String.valueOf(tam.getOwner().get()));
-        try {
-            if(resultSet.isBeforeFirst()){
-                resultSet.next();
-                ten_chu_ho.setText(resultSet.getString(2));
-            }
-        }catch (Exception e){
-            System.out.println(" loi o cap nhap ten nhan khau");
-            e.printStackTrace();
-        }
+        ma_chu_ho.setText(Model.getInstance().getDatabaseConnection().lay_chu_ho(tam.getId().get()));
 
 
 
@@ -85,7 +78,21 @@ public class xemChiTietHokhauControler implements Initializable {
                 thanh_vien_cua_ho_cell tam = danh_sach.get(i);
                 Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(tam.getCccd());
             }
-            Model.getInstance().getDatabaseConnection().xoaHoKhau(tam.getId().get());
+            //Model.getInstance().getDatabaseConnection().xoa_dong_gop_lien_quan_den_ho_khau(tam.getId().get());
+            int ketqua=Model.getInstance().getDatabaseConnection().xoaHoKhau(tam.getId().get());
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setTitle("Thông báo");
+            alert.setContentText("Đã xóa thành công!");
+            alert.showAndWait();
+            listView_thanhvien.getItems().clear();
+            ma_ho_khau.setText(null);
+            ma_chu_ho.setText(null);
+            dia_chi.setText(null);
+            ngay_tao.setText(null);
+            ghi_chu.setText(null);
+            ten_chu_ho.setText(null);
         });
 
         cancel_but.setOnAction(event -> {
@@ -103,6 +110,7 @@ public class xemChiTietHokhauControler implements Initializable {
 
     }
     public void cap_nhat(){
+        String gioi_tinh;
         try {
             ResultSet resultSet = Model.getInstance().getDatabaseConnection().lay_cac_thanh_vien(String.valueOf(tam.getId().get()));
             listView_thanhvien.getItems().clear();
@@ -116,8 +124,12 @@ public class xemChiTietHokhauControler implements Initializable {
                         String hoTen = resultSet1.getString(2);
                         String quanHe = resultSet.getString(3);
                         String ngaySinh = resultSet1.getString(4);
-                        String gioiTinh = resultSet1.getString(3);
-                        listView_thanhvien.getItems().add(new thanh_vien_cua_ho_cell(cccd, hoTen, quanHe,ngaySinh,gioiTinh));
+                        int gioiTinh = resultSet1.getInt(3);
+                        if(gioiTinh==1)
+                            gioi_tinh="Nam";
+                        else
+                            gioi_tinh="Nu";
+                        listView_thanhvien.getItems().add(new thanh_vien_cua_ho_cell(resultSet.getString(1),cccd, hoTen, quanHe,ngaySinh,gioi_tinh));
                     }
                     }
                 }

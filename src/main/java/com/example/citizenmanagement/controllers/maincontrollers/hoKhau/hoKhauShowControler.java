@@ -44,7 +44,7 @@ public class hoKhauShowControler implements Initializable {
                     if(resultSet.isBeforeFirst()){
                         while (resultSet.next()){
                             String id = resultSet.getString(1);
-                            String Owner = resultSet.getString(2);
+                            String Owner = resultSet.getString(6);
                             String add = resultSet.getString(3);
                             String date_tao = resultSet.getString(4);
                             String ghi_chu = resultSet.getString(5);
@@ -83,15 +83,33 @@ public class hoKhauShowControler implements Initializable {
             if(resultSet.isBeforeFirst()){
                 while (resultSet.next()){
                     String id = resultSet.getString(1);
-                    String Owner = resultSet.getString(2);
+                    ResultSet resultSet1= Model.getInstance().getDatabaseConnection().lay_nhan_khau(resultSet.getString(2));
+                    String Owner=null;
+                    try {
+                        if(resultSet1.isBeforeFirst()){
+                            resultSet1.next();
+                            Owner = resultSet1.getString(2);
+                        }
+                    }catch (Exception e){
+                        System.out.println("loi o lay nhan khau trong cap nhat hokhauShow");
+                    }
                     String add = resultSet.getString(3);
-                    String date_tao = resultSet.getString(4);
-                    String ghi_chu = resultSet.getString(5);
+
+
+                    String date_tao;
+                    if(resultSet.getString(4)==null) date_tao="không có";
+                    else date_tao = resultSet.getString(4);
+
+                    String ghi_chu;
+                    if(resultSet.getString(5)==null) ghi_chu="không có";
+                    else ghi_chu=resultSet.getString(5);
+
                     listView.getItems().add(new MainHoKhauCell(id, Owner, add,date_tao,ghi_chu));
                 }
             }
         } catch (Exception e) {
             System.out.println("loi o hokhauShow");
+            e.printStackTrace();
         }
         listView.setCellFactory(param-> new MainHoKhauCellFactory());
     }

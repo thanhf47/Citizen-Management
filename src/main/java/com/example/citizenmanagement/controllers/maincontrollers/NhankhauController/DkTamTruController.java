@@ -2,6 +2,8 @@ package com.example.citizenmanagement.controllers.maincontrollers.NhankhauContro
 
 import com.example.citizenmanagement.models.MainMenuOptions;
 import com.example.citizenmanagement.models.Model;
+import com.example.citizenmanagement.models.luuTruNhanKhau;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -77,7 +79,7 @@ public class DkTamTruController implements Initializable {
         return nghenghiep_text;
     }
 
-    private DKTamTru2Controller dkTamTru2Controller;
+
 
 //    public void setDkTamTru2Controller(DKTamTru2Controller dkTamTru2Controller) {
 //        this.dkTamTru2Controller = dkTamTru2Controller;
@@ -108,18 +110,29 @@ public class DkTamTruController implements Initializable {
 
         tiep_tuc_btn.setOnAction(actionEvent -> {
             onTieptucTamtru();
+            String ho_ten = hoten_text.getText();
+            String CCCD = CCCD_text.getText();
+            String gioitinh = gioitinh_text.getValue();
+            int namsinh = bit;
+            String noisinh = noi_sinh_text.getText();
+            String nguyenquan = nguyen_quan_text.getText();
+            String dantoc = dantoc_text.getText();
+            String tongiao = tongiao_text.getText();
+            String quoctich = quoctich_text.getText();
+            String sohochieu = hochieu_text.getText();
+            String noithuongtru = thuong_tru_text.getText();
+            String nghenghiep = nghenghiep_text.getText();
+            luuTruNhanKhau tam = new luuTruNhanKhau(ho_ten, CCCD, namsinh, gioitinh, noisinh, nguyenquan, dantoc, tongiao, quoctich, sohochieu, noithuongtru, nghenghiep );
+            DKTamTru2Controller.setFormData(tam);
         });
 
         gioitinh_text.getItems().addAll(Gioitinh);
         gioitinh_text.setOnAction(this::getGioiTinh);
 
-
     }
     public String getGioiTinh(ActionEvent event) {
         String myGioiTinh = gioitinh_text.getValue();
-
         return myGioiTinh;
 }
-
 
 }

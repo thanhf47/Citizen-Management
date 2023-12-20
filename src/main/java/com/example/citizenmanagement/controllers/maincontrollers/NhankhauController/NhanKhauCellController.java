@@ -9,7 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class NhanKhauCellController implements Initializable {
-    public Label So_ho_khau_lbl;
+    public Label So_nhan_khau_lbl;
     public Label cccd_lbl;
     public Label ten_lbl;
     public Label gioi_tinh_lbl;
@@ -24,10 +24,15 @@ public class NhanKhauCellController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        So_ho_khau_lbl.setText(String.valueOf(list_nhan_khau.getSo_ho_khau()));
-        cccd_lbl.setText(String.valueOf(list_nhan_khau.getCccd()));
-        ten_lbl.setText(String.valueOf(list_nhan_khau.getHoten()));
-        gioi_tinh_lbl.setText(String.valueOf((list_nhan_khau.getGioi_tinh())));
+         So_nhan_khau_lbl.setText(String.valueOf(list_nhan_khau.getSo_nhan_khau()));
+         cccd_lbl.setText(String.valueOf(list_nhan_khau.getCccd()));
+         ten_lbl.setText(String.valueOf(list_nhan_khau.getHoten()));
+        if(  list_nhan_khau.getGioi_tinh().equals("1") ) {
+            gioi_tinh_lbl.setText("Nam");
+        }
+        else {
+            gioi_tinh_lbl.setText("Nữ");
+        }
         ngay_sinh_lbl.setText(String.valueOf(list_nhan_khau.getNgay_sinh()));
         dia_chi_lbl.setText(String.valueOf(list_nhan_khau.getDia_chi()));
     }

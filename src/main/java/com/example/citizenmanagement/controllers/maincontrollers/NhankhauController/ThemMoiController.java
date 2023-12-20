@@ -5,10 +5,7 @@ import com.example.citizenmanagement.models.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.List;
@@ -19,7 +16,6 @@ public class ThemMoiController implements Initializable {
     public Button thoat_themmoi_button;
     public ChoiceBox<String> my_choise_box;
     public Button confirm_btn;
-    public TextField ngay_tao_text;
     public TextField ton_giao_text;
     public TextField quoc_tich_text;
     public TextField nghe_text;
@@ -33,15 +29,30 @@ public class ThemMoiController implements Initializable {
     public TextField so_ho_chieu_text;
     public TextField noi_sinh_text;
 
-    //    public Label my_lable_gioitinh;
+
     private String[] Gioitinh = {"Nam", "Nữ"};
     private void onThoatTamVangBtn() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.NHAN_KHAU);
     }
+
+    public void clearText() {
+        my_choise_box.setValue(null);
+        ho_ten_text.clear(); cccd_text.clear();
+        noi_sinh_text.clear();
+        nguyen_quan_text.clear();
+        dan_toc_text.clear();
+        ton_giao_text.clear(); quoc_tich_text.clear();
+        so_ho_chieu_text.clear();
+        thuong_tru_text.clear();
+        nghe_text.clear();
+        ghi_chu_text.clear();
+        nam_sinh_text.clear();
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         thoat_themmoi_button.setOnAction(actionEvent -> {
-            onThoatTamVangBtn();
+        onThoatTamVangBtn();
+        clearText();
         });
 
         my_choise_box.getItems().addAll(Gioitinh);
@@ -60,9 +71,19 @@ public class ThemMoiController implements Initializable {
                    dan_toc_text.getText(), ton_giao_text.getText(),
                    quoc_tich_text.getText(), so_ho_chieu_text.getText(),
                    thuong_tru_text.getText(), nghe_text.getText(),
-                   ngay_tao_text.getText(), ghi_chu_text.getText());
+                    ghi_chu_text.getText());
         if(thanhcong == 0) {
-            System.out.println("Đã thêm không thành công");
+            System.out.println("Đã thêm không thành công, hãy kiểm tra lại");
+        }
+        else {
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Thông báo");
+            alert.setHeaderText("Thành Công !!!");
+            alert.setContentText("Đã thêm thành công, vui lòng ấn Thoát để xem danh sách");
+            alert.showAndWait();
+            clearText();
+
         }
         });
 

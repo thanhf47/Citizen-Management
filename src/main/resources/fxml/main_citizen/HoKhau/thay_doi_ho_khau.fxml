@@ -21,11 +21,7 @@
          <String fx:value="list-view" />
          <String fx:value="list-cell" />
       </styleClass></ListView>
-   <ListView fx:id="listView_thanh_vien" layoutX="23.0" layoutY="470.0" prefHeight="200.0" prefWidth="566.0" stylesheets="@../../../styles/Main/hoKhau/listView.css">
-      <styleClass>
-         <String fx:value="list-view" />
-         <String fx:value="list-cell" />
-      </styleClass></ListView>
+   <ListView fx:id="listView_thanh_vien" layoutX="23.0" layoutY="470.0" prefHeight="200.0" prefWidth="566.0" styleClass="list-cell" stylesheets="@../../../styles/Main/hoKhau/listView.css" />
    <VBox layoutX="637.0" layoutY="135.0" prefHeight="373.0" prefWidth="187.0" spacing="10.0">
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thay đổi mã chủ hộ">
          <font>
@@ -43,16 +39,6 @@
          </font>
       </Text>
       <TextField fx:id="thay_doi_dia_chi_textField" layoutX="10.0" layoutY="28.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
-      <Text layoutX="10.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thay đổi ngày tạo">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <TextField fx:id="thay_doi_ngay_tao_textField" layoutX="10.0" layoutY="71.0">
          <font>
             <Font size="16.0" />
          </font>

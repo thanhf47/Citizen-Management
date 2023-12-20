@@ -25,7 +25,6 @@ public class tachHoKhauControler implements Initializable {
     public Button xacNhan_but;
 
     public TextField ghi_chu;
-    public TextField ngay_tao;
     public TextField dia_chi;
     public TextField id_chu_moi;
 
@@ -36,10 +35,11 @@ public class tachHoKhauControler implements Initializable {
     private thanh_vien_cua_ho_cell thanh_vien_tren=null;
     private thanh_vien_cua_ho_cell thanh_vien_duoi=null;
     private String ma_ho_khau_moi;
+    private String ma_chu_ho_hien_tai;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        Model.getInstance().getDatabaseConnection().addHoKhau("41","","null","");
+        Model.getInstance().getDatabaseConnection().addHoKhau("41","null","");
         ResultSet resultSet = Model.getInstance().getDatabaseConnection().lay_ho_khau("41");
         try {
             if(resultSet.isBeforeFirst()){
@@ -60,27 +60,38 @@ public class tachHoKhauControler implements Initializable {
             if(!quan_he_textField.getText().isEmpty()){
                 thanh_vien_tren=nguoi_in_listView_now.getSelectionModel().getSelectedItem();
                 if(thanh_vien_tren!=null){
-                    Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(thanh_vien_tren.getCccd());
-                    Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(thanh_vien_tren.getCccd(),ma_ho_khau_moi,quan_he_textField.getText());
-                    nguoi_in_listView_now.getItems().clear();
-                    nguoi_in_listView_new.getItems().clear();
-                    cap_nhat_tren();
-                    cap_nhat_duoi();
+                    if(!ma_chu_ho_hien_tai.equals(thanh_vien_tren.getmaNhanKhau())) {
+                        Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(thanh_vien_tren.getCccd());
+                        Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(thanh_vien_tren.getCccd(), ma_ho_khau_moi, quan_he_textField.getText());
+                        nguoi_in_listView_now.getItems().clear();
+                        nguoi_in_listView_new.getItems().clear();
+                        cap_nhat_tren();
+                        cap_nhat_duoi();
+                        quan_he_textField.setText("");
+                    }
+                    else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setHeaderText(null);
+                        alert.setTitle("Thông báo lỗi");
+                        alert.setContentText("Bạn không được chuyển chủ hộ của hộ hiện tại");
+                        alert.showAndWait();
+                    }
                 }
                 else {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setContentText("Ban chua chon nguoi chuyen xuong!");
+                    alert.setContentText("Bạn chưa chọn người chuyển xuống");
+                    alert.setTitle("Cảnh báo");
                     alert.setHeaderText(null);
                     alert.showAndWait();
                 }
             }
             else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setContentText("Ban chua nhap quan he voi chu ho!");
+                alert.setTitle("Cảnh báo");
+                alert.setContentText("Bạn chưa nhập quan hệ với chủ hộ");
                 alert.setHeaderText(null);
                 alert.showAndWait();
             }
-            quan_he_textField.setText("");
         });
 
 
@@ -95,51 +106,46 @@ public class tachHoKhauControler implements Initializable {
                     nguoi_in_listView_new.getItems().clear();
                     cap_nhat_tren();
                     cap_nhat_duoi();
+                    quan_he_textField.setText("");
                 }
                 else {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setContentText("Ban chua chon nguoi chuyen len!");
+                    alert.setTitle("Cảnh báo");
+                    alert.setContentText("Bạn chưa chọn người chuyển lên");
                     alert.setHeaderText(null);
                     alert.showAndWait();
                 }
             }
             else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setContentText("Ban chua nhap quan he voi chu ho!");
+                alert.setTitle("Cảnh báo");
+                alert.setContentText("Bạn chưa nhập quan hệ với chủ hộ");
                 alert.setHeaderText(null);
                 alert.showAndWait();
             }
-            quan_he_textField.setText("");
 
         });
 
 
         cancel_but.setOnAction(event -> {
-            ResultSet resultSet1=Model.getInstance().getDatabaseConnection().lay_cac_thanh_vien(ma_ho_khau_moi);
-            try {
-                if(!resultSet1.isBeforeFirst())
-                {
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setHeaderText(null);
-                    alert.setContentText("Ban chac chan muon huy chu!");
-                    ButtonType ketqua=alert.showAndWait().orElse(ButtonType.CANCEL);
-                    if(ketqua==ButtonType.OK) {
-                        Model.getInstance().getDatabaseConnection().xoaHoKhau(ma_ho_khau_moi);
-                        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.HO_KHAU);
-                    }
-                }
-                else {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setHeaderText(null);
-                    alert.setContentText("Ban phai dua cac thanh vien tro lai ho khau ban dau cua ho");
-                    alert.showAndWait();
-                }
-            }catch (Exception e){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setContentText("Ban phai dua cac thanh vien tro lai ho khau ban dau cua ho");
-                alert.showAndWait();
-            }
+           if(nguoi_in_listView_new.getItems().isEmpty()){
+               Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+               alert.setHeaderText(null);
+               alert.setTitle("Xác nhận");
+               alert.setContentText("Bạn chắc chắn muốn hủy chứ!");
+               ButtonType ket = alert.showAndWait().orElse(ButtonType.CANCEL);
+               if(ket==ButtonType.OK){
+                   Model.getInstance().getDatabaseConnection().xoaHoKhau(ma_ho_khau_moi);
+                   Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.HO_KHAU);
+               }
+           }
+           else {
+               Alert alert = new Alert(Alert.AlertType.ERROR);
+               alert.setHeaderText(null);
+               alert.setTitle("Thông báo lỗi");
+               alert.setContentText("Bạn cần đưa các thành viên trở lại hộ khẩu ban đầu!");
+               alert.showAndWait();
+           }
         });
 
 
@@ -147,42 +153,36 @@ public class tachHoKhauControler implements Initializable {
             int ketqua=0;
             if(!dia_chi.getText().isEmpty()) {
                 if(kiem_tra_chu_ho_moi()) {
-                    ketqua = Model.getInstance().getDatabaseConnection().capNhatHoKhau(ma_ho_khau_moi, id_chu_moi.getText(), dia_chi.getText(),ngay_tao.getText(), ghi_chu.getText());
-                    if (ketqua == 0) {
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setHeaderText(null);
-                        alert.setContentText("khong tach thanh cong!");
-                        alert.showAndWait();
-                    } else {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setHeaderText(null);
-                        alert.setContentText("Ban da tach thanh cong!");
-                        alert.showAndWait();
-                        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.HO_KHAU);
-                    }
+                    ketqua = Model.getInstance().getDatabaseConnection().capNhatHoKhau(ma_ho_khau_moi, id_chu_moi.getText(), dia_chi.getText(), ghi_chu.getText());
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setTitle("Thông báo");
+                    alert.setContentText("Bạn đã tách thành công");
+                    alert.showAndWait();
+                    Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.HO_KHAU);
+
                 }
                 else {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setHeaderText(null);
-                    alert.setContentText("Sai thong tin chu ho");
+                    alert.setTitle("Thông báo lỗi");
+                    alert.setContentText("Sai thông tin chủ hộ");
                     alert.showAndWait();
                 }
             }
             else {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
-                alert.setContentText("ban chua nhap thong tin dia chi");
+                alert.setTitle("Thông báo lỗi");
+                alert.setContentText("Bạn chưa nhập thông tin địa chỉ");
                 alert.showAndWait();
             }
-            id_chu_moi.setText("");
-            ngay_tao.setText("");
-            dia_chi.setText("");
-            ghi_chu.setText("");
         });
 
     }
 
     public void cap_nhat_tren(){
+        String gioi_tinh;
         try {
             ResultSet resultSet = Model.getInstance().getDatabaseConnection().lay_cac_thanh_vien(maHK_search_textField.getText());
             nguoi_in_listView_now.getItems().clear();
@@ -196,8 +196,12 @@ public class tachHoKhauControler implements Initializable {
                             String hoTen = resultSet1.getString(2);
                             String quanHe = resultSet.getString(3);
                             String ngaySinh = resultSet1.getString(4);
-                            String gioiTinh = resultSet1.getString(3);
-                            nguoi_in_listView_now.getItems().add(new thanh_vien_cua_ho_cell(cccd, hoTen, quanHe,ngaySinh,gioiTinh));
+                            int gioiTinh = resultSet1.getInt(3);
+                            if(gioiTinh==1)
+                                gioi_tinh="Nam";
+                            else
+                                gioi_tinh="Nu";
+                            nguoi_in_listView_now.getItems().add(new thanh_vien_cua_ho_cell(resultSet.getString(1),cccd, hoTen, quanHe,ngaySinh,gioi_tinh));
                         }
                     }
                 }
@@ -210,10 +214,13 @@ public class tachHoKhauControler implements Initializable {
             e.printStackTrace();
         }
 
+        ma_chu_ho_hien_tai = Model.getInstance().getDatabaseConnection().lay_chu_ho(maHK_search_textField.getText());
+
         nguoi_in_listView_now.setCellFactory(param-> new thanh_vien_cua_ho_cell_factory());
     }
 
     public void cap_nhat_duoi(){
+        String gioi_tinh;
         try {
             ResultSet resultSet = Model.getInstance().getDatabaseConnection().lay_cac_thanh_vien(ma_ho_khau_moi);
             nguoi_in_listView_new.getItems().clear();
@@ -227,8 +234,12 @@ public class tachHoKhauControler implements Initializable {
                             String hoTen = resultSet1.getString(2);
                             String quanHe = resultSet.getString(3);
                             String ngaySinh = resultSet1.getString(4);
-                            String gioiTinh = resultSet1.getString(3);
-                            nguoi_in_listView_new.getItems().add(new thanh_vien_cua_ho_cell(cccd, hoTen, quanHe,ngaySinh,gioiTinh));
+                            int gioiTinh = resultSet1.getInt(3);
+                            if(gioiTinh==1)
+                                gioi_tinh="Nam";
+                            else
+                                gioi_tinh="Nu";
+                            nguoi_in_listView_new.getItems().add(new thanh_vien_cua_ho_cell(resultSet.getString(1),cccd, hoTen, quanHe,ngaySinh,gioi_tinh));
                         }
                     }
                 }
@@ -258,4 +269,6 @@ public class tachHoKhauControler implements Initializable {
         }
         return false;
     }
+
+
 }

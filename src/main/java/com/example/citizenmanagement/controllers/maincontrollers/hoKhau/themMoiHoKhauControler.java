@@ -19,7 +19,6 @@ public class themMoiHoKhauControler implements Initializable {
 
     public Button cancel_but;
     public TextField id_chu_ho_text;
-    public TextField date_them_text;
     public TextField add_text;
     public TextField ghi_chu_text;
     public ListView<List_nhan_khau> listView_to_chon;
@@ -36,13 +35,17 @@ public class themMoiHoKhauControler implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        cap_nhat_list_view_nhan_khau();
 
-        Model.getInstance().getDatabaseConnection().addHoKhau("41","","null","");
+        Model.getInstance().getDatabaseConnection().addHoKhau("41","null","");
         ResultSet resultSet = Model.getInstance().getDatabaseConnection().lay_ho_khau("41");
         try {
             if(resultSet.isBeforeFirst()){
                 resultSet.next();
                 ma_ho_khau_moi=resultSet.getString(1);
+            }
+            else {
+                System.out.println("khong coooo");
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -65,18 +68,19 @@ public class themMoiHoKhauControler implements Initializable {
                 cap_nhat_list_view_nhan_khau();
             }
             else {
-                ResultSet resultSet1 = Model.getInstance().getDatabaseConnection().nhanKhau_timkiem(search_text.getText());
+                ResultSet resultSet1 = Model.getInstance().getDatabaseConnection().nhanKhau_timkiem_chua_co_nha(search_text.getText());
                 listView_to_chon.getItems().clear();
                 try {
                     if(resultSet1.isBeforeFirst()) {
                         while(resultSet1.next()) {
-                            String cccd = resultSet1.getString(1);
-                            String hoTen = resultSet1.getString(2);
-                            String gioitinh = resultSet1.getString(3);
-                            String namsinh = resultSet1.getString(4);
-                            String diachi = resultSet1.getString(5);
+                            String ma_nhan_khau=resultSet1.getString(1);
+                            String cccd = resultSet1.getString(2);
+                            String hoTen = resultSet1.getString(3);
+                            String gioitinh = resultSet1.getString(4);
+                            String namsinh = resultSet1.getString(5);
+                            String diachi = resultSet1.getString(6);
 
-                            listView_to_chon.getItems().add(new List_nhan_khau(cccd, hoTen, gioitinh, namsinh, diachi));
+                            listView_to_chon.getItems().add(new List_nhan_khau(ma_nhan_khau,cccd, hoTen, gioitinh, namsinh, diachi));
                         }
                         listView_to_chon.setCellFactory(param ->new List_nhan_khau_factory());
                     }
@@ -94,27 +98,25 @@ public class themMoiHoKhauControler implements Initializable {
                 {
                     int ketqua=0;
                     ketqua=Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(nhan_khau_dc_chon.getCccd(),ma_ho_khau_moi,quan_he_textField.getText());
-                    if(ketqua==1) {
+
                         listView_to_chon.getItems().clear();
                         listView_to_them.getItems().clear();
                         cap_nhat_list_view_nhan_khau();
                         cap_nhat_list_view_thanh_vien();
-                    }
-                    else {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setContentText("Nguoi nay da o trong mot ho khau roi!");
-                        alert.showAndWait();
-                    }
                 }
                 else {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setContentText("Ban chua chon nguoi duoc them!");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Thông báo lỗi");
+                    alert.setContentText("Bạn chưa chọn người được thêm");
+                    alert.setHeaderText(null);
                     alert.showAndWait();
                 }
             }
             else{
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Ban chua dien thong tin quan he giua chu ho va nguoi duoc them!");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Bạn chưa điền quan hệ với chủ hộ");
+                alert.setTitle("Thông báo lỗi");
+                alert.setHeaderText(null);
                 alert.showAndWait();
             }
             nhan_khau_dc_chon=null;
@@ -132,8 +134,10 @@ public class themMoiHoKhauControler implements Initializable {
                     cap_nhat_list_view_thanh_vien();
             }
             else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Ban chua chon thanh vien de xoa!");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("Thông báo lỗi");
+                alert.setContentText("Bạn chưa chọn người để chuyển đi");
                 alert.showAndWait();
             }
             thanh_vien_cua_ho_dc_them=null;
@@ -142,8 +146,9 @@ public class themMoiHoKhauControler implements Initializable {
 
         cancel_but.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setContentText("Ban chac chan muon huy ?");
+            alert.setContentText("Bạn chắc chắn muốn hủy?");
             alert.setHeaderText(null);
+            alert.setTitle("Xác nhận");
             ButtonType ketqua=alert.showAndWait().orElse(ButtonType.CANCEL);
             if(ketqua==ButtonType.OK) {
                 ObservableList<thanh_vien_cua_ho_cell> danh_sach=listView_to_them.getItems();
@@ -162,37 +167,30 @@ public class themMoiHoKhauControler implements Initializable {
             if(kiem_tra_chu_ho()) {
                 if(!add_text.getText().isEmpty()) {
                     int ketqua = 0;
-                    ketqua = Model.getInstance().getDatabaseConnection().capNhatHoKhau(ma_ho_khau_moi, id_chu_ho_text.getText(), add_text.getText(), date_them_text.getText(), ghi_chu_text.getText());
-                    if (ketqua == 0) {
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setHeaderText(null);
-                        alert.setContentText("Ban nhap sai ngay");
-                        alert.showAndWait();
-                    } else {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setHeaderText(null);
-                        alert.setContentText("Da them thanh cong");
-                        alert.showAndWait();
-                        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.HO_KHAU);
-                    }
+                    ketqua = Model.getInstance().getDatabaseConnection().capNhatHoKhau(ma_ho_khau_moi, id_chu_ho_text.getText(), add_text.getText(), ghi_chu_text.getText());
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setTitle("Thông báo");
+                    alert.setContentText("Đã thêm thành công");
+                    alert.showAndWait();
+                    Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.HO_KHAU);
+
                 }
                 else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setHeaderText(null);
-                    alert.setContentText("Ban chua nhap dia chi!");
+                    alert.setTitle("Thông báo lỗi");
+                    alert.setContentText("Bạn chưa nhập địa chỉ");
                     alert.showAndWait();
                 }
             }
             else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
-                alert.setContentText("Thong tin chu ho bi sai!");
+                alert.setTitle("Thông báo lỗi");
+                alert.setContentText("Thông tin chủ hộ bị sai");
                 alert.showAndWait();
             }
-            id_chu_ho_text.setText("");
-            date_them_text.setText("");
-            add_text.setText("");
-            ghi_chu_text.setText("");
         });
     }
 
@@ -217,6 +215,7 @@ public class themMoiHoKhauControler implements Initializable {
 
 
     public void cap_nhat_list_view_thanh_vien(){
+        String gioi_tinh;
         try {
             ResultSet resultSet = Model.getInstance().getDatabaseConnection().lay_cac_thanh_vien(ma_ho_khau_moi);
             listView_to_them.getItems().clear();
@@ -230,8 +229,12 @@ public class themMoiHoKhauControler implements Initializable {
                             String hoTen = resultSet1.getString(2);
                             String quanHe = resultSet.getString(3);
                             String ngaySinh = resultSet1.getString(4);
-                            String gioiTinh = resultSet1.getString(3);
-                            listView_to_them.getItems().add(new thanh_vien_cua_ho_cell(cccd, hoTen, quanHe,ngaySinh,gioiTinh));
+                            int gioiTinh = resultSet1.getInt(3);
+                            if(gioiTinh==1)
+                                gioi_tinh="Nam";
+                            else
+                                gioi_tinh="Nu";
+                            listView_to_them.getItems().add(new thanh_vien_cua_ho_cell(resultSet.getString(1),cccd, hoTen, quanHe,ngaySinh,gioi_tinh));
                         }
                     }
                 }
@@ -249,17 +252,20 @@ public class themMoiHoKhauControler implements Initializable {
 
 
     public void cap_nhat_list_view_nhan_khau() {
-        ResultSet resultSet = Model.getInstance().getDatabaseConnection().truyvan();
+        ResultSet resultSet = Model.getInstance().getDatabaseConnection().truyvan_chua_co_nha();
         listView_to_chon.getItems().clear();
         try{
             if(resultSet.isBeforeFirst()){
                 while (resultSet.next()) {
-                    String id = resultSet.getString(1);
-                    String hoten = resultSet.getNString(2);
-                    String gioitinh = resultSet.getString(3);
-                    String namsinh = resultSet.getString(4);
-                    String thuongtru = resultSet.getNString(5);
-                    listView_to_chon.getItems().add(new List_nhan_khau(id, hoten, gioitinh, namsinh, thuongtru));
+                    String ma_nhan_khau=resultSet.getString(1);
+                    String id = resultSet.getString(2);
+                    String hoten = resultSet.getNString(3);
+                    String gioitinh = resultSet.getString(4);
+                    String namsinh = resultSet.getString(5);
+                    String thuongtru;
+                    if(resultSet.getNString(6)==null) thuongtru="không có";
+                    else thuongtru = resultSet.getNString(6);
+                    listView_to_chon.getItems().add(new List_nhan_khau(ma_nhan_khau,id, hoten, gioitinh, namsinh, thuongtru));
                 }
             }
         }

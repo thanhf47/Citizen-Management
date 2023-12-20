@@ -81,7 +81,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </VBox>
-   <Button fx:id="chuyen_di_but" layoutX="345.0" layoutY="607.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="129.0" style="-fx-background-color: #d93140; -fx-border-color: #42390b; -fx-border-width: 1.6;" text="Chuyển đi" textFill="#ecdcdc">
+   <Button fx:id="chuyen_di_but" layoutX="345.0" layoutY="607.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="129.0" style="-fx-background-color: #d93140; -fx-border-color: #42390b; -fx-border-width: 1.6;" text="Xóa" textFill="#ecdcdc">
       <font>
          <Font size="20.0" />
       </font>

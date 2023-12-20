@@ -71,7 +71,7 @@
       <font>
          <Font size="20.0" />
       </font></Text>
-    <VBox layoutX="617.0" layoutY="95.0" prefHeight="432.0" prefWidth="209.0" spacing="10.0">
+    <VBox layoutX="617.0" layoutY="95.0" prefHeight="432.0" prefWidth="209.0" spacing="20.0">
         <Label text="ID Chủ hộ:">
           <font>
               <Font size="20.0" />
@@ -88,16 +88,6 @@
           </font>
         </Label>
         <TextField fx:id="add_text" prefHeight="35.0">
-          <font>
-              <Font size="16.0" />
-          </font>
-        </TextField>
-        <Label text="Ngày thêm:">
-          <font>
-              <Font size="20.0" />
-          </font>
-        </Label>
-        <TextField fx:id="date_them_text" prefHeight="35.0">
           <font>
               <Font size="16.0" />
           </font>

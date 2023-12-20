@@ -66,9 +66,9 @@ public class MainController implements Initializable {
                     nhan_khau_btn.requestFocus();
                 }
                 case TAM_VANG -> {
-                    main_parent.setCenter(Model.getInstance().getViewFactory().gettamVangView());
-                    nhan_khau_btn.requestFocus();
-                }
+                   main_parent.setCenter(Model.getInstance().getViewFactory().gettamVangView());
+                   nhan_khau_btn.requestFocus();
+               }
                 case TAM_TRU -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().gettamTruView());
                     nhan_khau_btn.requestFocus();
@@ -79,6 +79,11 @@ public class MainController implements Initializable {
                 }
                 case KHAI_TU -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().getkhaiTuView());
+                    nhan_khau_btn.requestFocus();
+                }
+
+                case XEM_CHI_TIET_NHAN_KHAU -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getXemChiTietNhanKhau());
                     nhan_khau_btn.requestFocus();
                 }
                 default -> {
