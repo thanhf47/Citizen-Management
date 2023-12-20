@@ -6,6 +6,7 @@ import com.example.citizenmanagement.models.Model;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -45,7 +46,8 @@ public class ChiTietThongTinTamVang implements Initializable {
 
     @FXML
     private Button thoat_btn;
-
+    @FXML
+    private Button xoaTamVang;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         luaChon = Model.getNhanKhauTamVangDuocChon();
@@ -64,5 +66,17 @@ public class ChiTietThongTinTamVang implements Initializable {
         thoat_btn.setOnAction(event ->{
             Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TRANG_CHU_TAM_VANG);
         });
+        xoaTamVang.setOnAction(event -> onXoaTamVang());
+    }
+
+    public void onXoaTamVang(){
+        int magiaytamvang = Integer.parseInt(magiaytamvang_fld.getText());
+        Model.getInstance().getDatabaseConnection().xoaTamVang(magiaytamvang);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Thông báo");
+        alert.setHeaderText("Xoá Thành Công");
+        alert.setContentText("Thông tin đã được xoá");
+        alert.showAndWait();
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TRANG_CHU_TAM_VANG);
     }
 }

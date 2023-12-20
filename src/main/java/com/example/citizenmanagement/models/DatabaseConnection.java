@@ -167,7 +167,7 @@ public class DatabaseConnection {
             st= connection.createStatement();
             rs = st.executeQuery("select count(MANHANKHAU) \n" +
                     "from NHANKHAU\n" +
-                    "where YEAR(GETDATE()) - NAMSINH < 3 AND YEAR(GETDATE()) - NAMSINH >= 0");
+                    "where YEAR(GETDATE()) - YEAR(NGAYSINH) < 3 AND YEAR(GETDATE()) - YEAR(NGAYSINH) >= 0");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -180,7 +180,7 @@ public class DatabaseConnection {
             st= connection.createStatement();
             rs = st.executeQuery("select count(MANHANKHAU) \n" +
                     "from NHANKHAU\n" +
-                    "where YEAR(GETDATE()) - NAMSINH >= 3 AND YEAR(GETDATE()) - NAMSINH < 10");
+                    "where YEAR(GETDATE()) - YEAR(NGAYSINH) >= 3 AND YEAR(GETDATE()) - YEAR(NGAYSINH) < 10");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -194,7 +194,7 @@ public class DatabaseConnection {
             st= connection.createStatement();
             rs = st.executeQuery("select count(MANHANKHAU) \n" +
                     "from NHANKHAU\n" +
-                    "where YEAR(GETDATE()) - NAMSINH >= 10 AND YEAR(GETDATE()) - NAMSINH < 18");
+                    "where YEAR(GETDATE()) - YEAR(NGAYSINH) >= 10 AND YEAR(GETDATE()) - YEAR(NGAYSINH) < 18");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -208,7 +208,7 @@ public class DatabaseConnection {
             st= connection.createStatement();
             rs = st.executeQuery("select count(MANHANKHAU) \n" +
                     "from NHANKHAU\n" +
-                    "where YEAR(GETDATE()) - NAMSINH >= 18 AND YEAR(GETDATE()) - NAMSINH < 60");
+                    "where YEAR(GETDATE()) - YEAR(NGAYSINH) >= 18 AND YEAR(GETDATE()) - YEAR(NGAYSINH) < 60");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -221,7 +221,7 @@ public class DatabaseConnection {
             st= connection.createStatement();
             rs = st.executeQuery("select count(MANHANKHAU) \n" +
                     "from NHANKHAU\n" +
-                    "where YEAR(GETDATE()) - NAMSINH >= 60");
+                    "where YEAR(GETDATE()) - YEAR(NGAYSINH) >= 60");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -503,23 +503,7 @@ public class DatabaseConnection {
 
     }
 
-    public ResultSet timKiemTamVang(String timkiem){
-        ResultSet resultSet = null;
-        String query = "WHERE MAGIAYTAMVANG LIKE ? OR MANHANKHAU LIKE ? OR NOITAMTRU LIKE ? OR TUNGAY = ? OR DENNGAY = ? OR LYDO LIKE ?";
-        try {
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1,"%" + timkiem + "%" );
-            statement.setString(2,"%" + timkiem + "%" );
-            statement.setString(3,"%" + timkiem + "%");
-            statement.setString(4,"%" + timkiem + "%");
-            statement.setString(5,"%" + timkiem + "%");
-            statement.setString(6,"%" + timkiem + "%");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return resultSet;
 
-    }
 
     public ResultSet KiemTraXemMaNhanKhauDaTonTaiTrongTamVang(int manhankhau){
 
@@ -549,6 +533,16 @@ public class DatabaseConnection {
             throw new RuntimeException(e);
         }
         return resultSet;
+    }
+
+    public  void xoaTamVang(int magiaytamvang){
+        String query = "DELETE TAMVANG  WHERE MAGIAYTAMVANG = " + magiaytamvang;
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println("deo xoa duoc");
+        }
     }
 
 
