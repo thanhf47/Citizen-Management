@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class NhanKhauShowController implements Initializable {
+public class TamTruShowController implements Initializable {
 
     public TextField ton_giao_text;
     public TextField nghe_text;
@@ -36,61 +36,42 @@ public class NhanKhauShowController implements Initializable {
     public Button khai_tu_btn;
     public DatePicker ngay_tao_date;
     public DatePicker ngay_sinh_lbl;
-    public Button tam_vang_btn;
+//    public Button tam_vang_btn;
 
-    private List_nhan_khau list ;
-int bit;
+    private List_nhan_khau list1 ;
+
     private String[] Gioitinh = {"Nam", "Nữ"};
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(my_choise_box.getValue() == "Nam") {
-            bit = 1;
-        }
-        else bit = 0;
-    my_choise_box.setItems(FXCollections.observableArrayList(Gioitinh));
-       chitiet();
-      khai_tu_btn.setOnAction(actionEvent ->
-          onKhaitu());
-      thoat_chinhsua_button.setOnAction(event ->
-    {
-        onThoatTamVangBtn();
-        reset();
-    });
-      confirm_chinh_sua_btn.setOnAction(event -> {
-        Model.getInstance().getDatabaseConnection().capnhatNhanKhauShow(ho_ten_text.getText(),Date.valueOf(ngay_sinh_lbl.getValue()),bit, noi_sinh_text.getText(),nguyen_quan_text.getText(),dan_toc_text.getText(),ton_giao_text.getText(),quoc_tich_text.getText(), thuong_tru_text.getText(),nghe_text.getText(),ghi_chu_text.getText(),cccd_text.getText());
-      });
 
-      tam_vang_btn.setOnAction(event -> {
-          if(ghi_chu_text.getText() != null &&ghi_chu_text.getText().equals("khai tử"))
-          {
-              Alert alert = new Alert(Alert.AlertType.ERROR);
-              alert.setTitle("Lỗi");
-              alert.setHeaderText("Người này đã chết");
-              alert.setContentText("Xin bệ hạ hãy nghĩ thông suốt trước khi ấn nút !");
-              alert.showAndWait();
-          }else{
-          onTamvang();}
-      });
+        my_choise_box.setItems(FXCollections.observableArrayList(Gioitinh));
 
-}
-
-    private void reset() {
-        ho_ten_text.clear();
-
+        chitiet();
+        khai_tu_btn.setOnAction(actionEvent ->
+                onKhaitu());
+        thoat_chinhsua_button.setOnAction(event ->
+        {
+            onThoatTamVangBtn();
+        });
+        confirm_chinh_sua_btn.setOnAction(event -> {
+//          Model.getInstance().getDatabaseConnection().capnhatNhanKhau()
+        });
     }
+
+
     private void onTamvang() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TAM_VANG);
     }
     private void onThoatTamVangBtn() {
-        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.NHAN_KHAU);
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TAM_TRU_LIST);
     }
     private void onKhaitu() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.KHAI_TU);
     }
 
     private void chitiet() {
-        list = Model.getNhanKhauDuocChon();
-        ResultSet resultSet = Model.getInstance().getDatabaseConnection().truyvanlistNhanKhau(list.getCccd());
+        list1 = Model.getNhanKhauDuocChon();
+        ResultSet resultSet = Model.getInstance().getDatabaseConnection().truyvanlistNhanKhau(list1.getCccd());
         try {
             if (resultSet.next()) {
                 String value = resultSet.getString(1);

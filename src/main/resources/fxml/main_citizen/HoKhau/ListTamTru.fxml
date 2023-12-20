@@ -13,4 +13,10 @@
          <Font size="27.0" />
       </font></Text>
     <Button fx:id="Them_tam_tru_btn" layoutX="332.0" layoutY="662.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="166.0" style="-fx-background-color: #33CC33;" text="Thêm người tạm trú" textAlignment="CENTER" />
+   <Text layoutX="93.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu " />
+   <Text layoutX="203.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CCCD" />
+   <Text layoutX="300.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên" />
+   <Text layoutX="456.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính" wrappingWidth="65.6708984375" />
+   <Text layoutX="542.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh " />
+   <Text layoutX="649.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thường trú" />
 </AnchorPane>

@@ -28,6 +28,8 @@ public class Model {
     // nhan khau section
     private static List_nhan_khau nhanKhauDuocChon;
 
+    private static List_nhan_khau nhanKhauTamTruDuocChon;
+
     private final ObservableList<List_nhan_khau> danhsachnhankhau;
 
     public static List_nhan_khau getNhanKhauDuocChon() {
@@ -37,6 +39,14 @@ public class Model {
     public static void setNhanKhauDuocChon(List_nhan_khau nhanKhauDuocChon) {
         Model.nhanKhauDuocChon = nhanKhauDuocChon;
     }
+
+//    public static List_nhan_khau getNhanKhauTamTruDuocChon() {
+//        return nhanKhauTamTruDuocChon;
+//    }
+//
+//    public static void setNhanKhauTamTruDuocChon(List_nhan_khau nhanKhauTamTruDuocChon) {
+//        Model.nhanKhauTamTruDuocChon = nhanKhauTamTruDuocChon;
+//    }
 
     //thu phi
     private final FeeKhoanThuModel feeKhoanThuModel;
@@ -456,6 +466,38 @@ public class Model {
 //    public static void setNhanKhauDuocChon(List_nhan_khau nhanKhauDuocChon) {
 //        Model.nhanKhauDuocChon = nhanKhauDuocChon;
 //    }
+
+    public boolean KiemTraXemMaNhanKhauDaTonTaiTrongTamVang(int manhankhau){
+        ResultSet resultSet = databaseConnection.KiemTraXemMaNhanKhauDaTonTaiTrongTamVang(manhankhau);
+        int res = 0;
+        boolean kiemtra = false;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+                if(res > 0) kiemtra = true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return kiemtra;
+    }
+
+    public boolean KiemTraMaNhanKhauCoTonTaiHayKhong(int manhankhau){
+        ResultSet resultSet = databaseConnection.KiemTraMaNhanKhauCoTonTaiHayKhong(manhankhau);
+        int res = 0;
+        boolean tontai = false;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+                if(res > 0) tontai = true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return tontai;
+    }
     //Thu phí
 
 

@@ -19,7 +19,7 @@ public enum MainMenuOptions {
     TAM_TRU_2,
 
     XEM_CHI_TIET_NHAN_KHAU,
-
+    XEM_CHI_TIET_TAM_TRU,
     TAM_VANG_2,
 
     KHAI_TU_2,

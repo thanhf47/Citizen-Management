@@ -23,9 +23,17 @@ public class ListTamTruController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         capnhat2();
         Them_tam_tru_btn.setOnAction(event -> onTamtru());
-        list_tam_tru.setCellFactory(param -> new List_nhan_khau_factory());
-    }
 
+        list_tam_tru.setCellFactory(param -> new List_nhan_khau_factory());
+
+        list_tam_tru.setOnMouseClicked(mouseEvent -> {
+            List_nhan_khau selected = list_tam_tru.getSelectionModel().getSelectedItem();
+            if(selected != null) {
+                Model.setNhanKhauDuocChon(selected);
+                Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.XEM_CHI_TIET_TAM_TRU);
+            }
+        });
+    }
 
     private void onTamtru() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TAM_TRU);
@@ -52,7 +60,7 @@ public class ListTamTruController implements Initializable {
 
                     String noisinh = resultSet.getNString(6);
 
-                    list_tam_tru.getItems().add(new List_nhan_khau(ma,id, hoten, gioitinh, ngaysinh, noisinh));
+                    list_tam_tru.getItems().add(new List_nhan_khau(ma, id, hoten, gioitinh, ngaysinh, noisinh));
                 }
             }
         }

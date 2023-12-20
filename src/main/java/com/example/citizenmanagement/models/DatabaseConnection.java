@@ -472,15 +472,94 @@ public class DatabaseConnection {
         }
         return thanhcong;
     }
+
+    public int capnhatNhanKhauShow (String hoten, Date ngaysinh, int Gioitinh, String noisinh, String nguyenquan, String dantoc, String tongiao, String quoctich, String noithuongtru, String nghenghiep, String ghichu,String string){
+        int thanhcong = 0;
+        String querry = "update NHANKHAU SET HOTEN = ? , NGAYSINH = ? , GIOITINH = ? , NOISINH = ? , NGUYENQUAN =? , DANTOC =? , TONGIAO = ? , QUOCTICH =? , NOITHUONGTRU = ? , NGHENGHIEP = ?, GHICHU =? Where SOCANCUOC = ?";
+        try{
+            PreparedStatement pre = connection.prepareStatement(querry);
+            pre.setNString(1,hoten);
+            pre.setDate(2, ngaysinh);
+            pre.setInt(3,Gioitinh);
+            pre.setNString(4,noisinh);
+            pre.setNString(5,nguyenquan);
+            pre.setNString(6,dantoc);
+            pre.setNString(7,tongiao);
+            pre.setNString(8,quoctich);
+            pre.setNString(9,noithuongtru);
+            pre.setNString(10,nghenghiep);
+            pre.setNString(11,ghichu);
+            pre.setString(12,string);
+            thanhcong = pre.executeUpdate();
+        }
+        catch(SQLException e) {
+            System.out.println("Lỗi câpj nhật khẩu");
+            throw new RuntimeException(e);
+        }
+        return thanhcong;
+    }
     // Nhân khâur
+    public ResultSet KiemTraXemMaNhanKhauDaTonTaiTrongTamVang(int manhankhau){
+
+        ResultSet resultSet = null;
+        String query = "SELECT COUNT(MANHANKHAU) FROM TAMVANG WHERE MANHANKHAU =" + manhankhau;
+
+        try {
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+
+    }
+    public boolean dangKiTamVang(int maNhanKhau,String tuNgay, String denNgay,String lyDo, String noiTamTru){
+        ResultSet resultSet = null;
+        String dangkitamvang = "EXEC INSERT_TAM_VANG ?, ?, ?, ?,?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(dangkitamvang);
+            preparedStatement.setInt(1,maNhanKhau);
+
+            preparedStatement.setString(2,tuNgay);
+
+            preparedStatement.setString(3,denNgay);
+
+            preparedStatement.setString(4,lyDo);
+
+            if(noiTamTru.isEmpty())
+                preparedStatement.setString(5,null);
+            else
+                preparedStatement.setString(5,noiTamTru);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("loi o dang ki tam vang");
+            return false;
+        }
+    }
+
+    public ResultSet KiemTraMaNhanKhauCoTonTaiHayKhong(int manhankhau){
+        ResultSet resultSet = null;
+        String query = "SELECT COUNT(MANHANKHAU) FROM NHANKHAU WHERE MANHANKHAU =" + manhankhau;
+
+        try {
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
 
     public ResultSet truyvanlistNhanKhau( String socancuoc) {
         ResultSet resultSet = null;
-        String que = "SELECT HOTEN, SOCANCUOC, NGAYSINH, GIOITINH, NOISINH, NGUYENQUAN, DANTOC, TONGIAO, QUOCTICH, NOITHUONGTRU, NGHENGHIEP, NGAYTAO, GHICHU " +
-                "FROM NHANKHAU WHERE SOCANCUOC LIKE ?";
+        String que = "SELECT HOTEN, SOCANCUOC, NGAYSINH, GIOITINH, NOISINH, NGUYENQUAN, DANTOC, TONGIAO, QUOCTICH, NOITHUONGTRU, NGHENGHIEP, NGAYTAO, GHICHU FROM NHANKHAU WHERE SOCANCUOC LIKE ?" ;
+
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(que);
-            preparedStatement.setString(1,  "%" + socancuoc + "%");
+            preparedStatement.setString(1,    socancuoc );
             resultSet = preparedStatement.executeQuery();
         } catch (Exception e) {
             e.printStackTrace();

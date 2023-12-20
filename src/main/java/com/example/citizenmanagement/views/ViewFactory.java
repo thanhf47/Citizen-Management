@@ -90,13 +90,11 @@ public class ViewFactory {
     }
 
     public AnchorPane getNhanKhauView() {
-//        if (nhanKhauView == null) {
             try {
                 nhanKhauView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/NhanKhau.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-//        }
         return nhanKhauView;
     }
 
@@ -107,6 +105,15 @@ public class ViewFactory {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        return xemChiTietNhanKhau;
+    }
+
+    public AnchorPane getXemChiTietTamTru() {
+        try {
+            xemChiTietNhanKhau = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau/TamTruShow.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         return xemChiTietNhanKhau;
     }
     /********************************************************************************************/
@@ -253,47 +260,43 @@ public class ViewFactory {
     /********************************************************************************************/
     // nhan khau
     public AnchorPane gettamVangView() {
-        if (tamVangView == null) {
             try {
                 tamVangView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau/DkTamVang.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
         return tamVangView;
     }
 
     public AnchorPane getthemMoiView() {
-        if (themMoiView == null) {
             try {
                 themMoiView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau/ThemMoi.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
+
         return themMoiView;
     }
 
     public AnchorPane getkhaiTuView() {
-        if (khaiTuView == null) {
             try {
                 khaiTuView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau/KhaiTu.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
 
-        }
+
         return khaiTuView;
     }
 
     public AnchorPane gettamTruView() {
-        if (tamTruView == null) {
+
             try {
                 tamTruView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau/DkTamTru.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
+
         return tamTruView;
     }
     public AnchorPane getTamTruListView() {
