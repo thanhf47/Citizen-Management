@@ -27,7 +27,7 @@
         <TextField fx:id="thuong_tru_text" layoutX="157.0" layoutY="496.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
         <Text layoutX="52.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CCCD " />
         <TextField fx:id="cccd_text" layoutX="158.0" layoutY="102.0" prefHeight="33.0" prefWidth="267.0" styleClass="text_fld" />
-        <Button fx:id="thoat_chinhsua_button" layoutX="117.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_cancel" text="Thoát" />
+        <Button fx:id="thoat_chinhsua_button" layoutX="132.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_cancel" text="Thoát" />
         <Button fx:id="confirm_chinh_sua_btn" layoutX="562.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_acp" text="Xác nhận" />
         <TextField fx:id="dan_toc_text" layoutX="523.0" layoutY="300.0" prefHeight="33.0" prefWidth="182.0" styleClass="text_fld" />
         <TextField fx:id="ghi_chu_text" layoutX="523.0" layoutY="626.0" prefHeight="33.0" prefWidth="182.0" styleClass="text_fld" />
@@ -40,9 +40,10 @@
             </font>
         </Text>
         <TextField fx:id="noi_sinh_text" layoutX="156.0" layoutY="559.0" prefHeight="33.0" prefWidth="549.0" styleClass="text_fld" />
-        <Button fx:id="khai_tu_btn" layoutX="340.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="115.0" styleClass="button_cancel" text="Xóa  " />
+        <Button fx:id="khai_tu_btn" layoutX="358.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="115.0" styleClass="button_cancel" text="Xóa  " />
         <Text layoutX="52.0" layoutY="644.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo " />
         <DatePicker fx:id="ngay_tao_date" layoutX="156.0" layoutY="623.0" />
         <DatePicker fx:id="ngay_sinh_lbl" layoutX="156.0" layoutY="232.0" prefHeight="31.0" prefWidth="190.0" />
+      <Button fx:id="chinh_sua_btn" layoutX="562.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" styleClass="button_acp" text="Chỉnh sửa " />
     </AnchorPane>
 </AnchorPane>

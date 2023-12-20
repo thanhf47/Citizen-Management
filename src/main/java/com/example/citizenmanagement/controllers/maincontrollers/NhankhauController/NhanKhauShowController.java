@@ -37,12 +37,27 @@ public class NhanKhauShowController implements Initializable {
     public DatePicker ngay_tao_date;
     public DatePicker ngay_sinh_lbl;
     public Button tam_vang_btn;
+    public Button chinh_sua_btn;
 
     private List_nhan_khau list ;
 int bit;
     private String[] Gioitinh = {"Nam", "Nữ"};
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        confirm_chinh_sua_btn.setVisible(false);
+        ho_ten_text.setDisable(true);
+        my_choise_box.setDisable(true);
+        cccd_text.setDisable(true);
+        ngay_sinh_lbl.setDisable(true);
+        ton_giao_text.setDisable(true);
+        dan_toc_text.setDisable(true);
+        nghe_text.setDisable(true);
+        quoc_tich_text.setDisable(true);
+        nguyen_quan_text.setDisable(true);
+        thuong_tru_text.setDisable(true);
+        noi_sinh_text.setDisable(true);
+        ghi_chu_text.setDisable(true);
+        ngay_tao_date.setDisable(true);
 
     my_choise_box.setItems(FXCollections.observableArrayList(Gioitinh));
        chitiet();
@@ -68,6 +83,11 @@ int bit;
           }
           else bit = 0;
         Model.getInstance().getDatabaseConnection().capnhatNhanKhauShow(ho_ten_text.getText(),Date.valueOf(ngay_sinh_lbl.getValue()),bit, noi_sinh_text.getText(),nguyen_quan_text.getText(),dan_toc_text.getText(),ton_giao_text.getText(),quoc_tich_text.getText(), thuong_tru_text.getText(),nghe_text.getText(),ghi_chu_text.getText(),Model.getNhanKhauDuocChon().getSo_nhan_khau());
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+          alert.setTitle("Thành công");
+          alert.setHeaderText("Thành công");
+          alert.setContentText("Bạn đã chỉnh sửa thành công!");
+          alert.showAndWait();
       });
 
       tam_vang_btn.setOnAction(event -> {
@@ -80,6 +100,23 @@ int bit;
               alert.showAndWait();
           }else{
           onTamvang();}
+      });
+
+      chinh_sua_btn.setOnAction(ActionEvent -> {
+          ho_ten_text.setDisable(false);
+          my_choise_box.setDisable(false);
+          ngay_sinh_lbl.setDisable(false);
+          ton_giao_text.setDisable(false);
+          dan_toc_text.setDisable(false);
+          nghe_text.setDisable(false);
+          quoc_tich_text.setDisable(false);
+          nguyen_quan_text.setDisable(false);
+          thuong_tru_text.setDisable(false);
+          noi_sinh_text.setDisable(false);
+          ghi_chu_text.setDisable(false);
+          chinh_sua_btn.setVisible(false);
+          confirm_chinh_sua_btn.setVisible(true);
+
       });
 
 }
