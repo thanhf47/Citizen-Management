@@ -12,6 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="180.0" styleClass="slide_ankerpaine" stylesheets="@../../styles/mainmenu.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.MainMenuController">
    <Pane layoutX="4.0" layoutY="18.0" prefHeight="76.0" prefWidth="175.0" styleClass="inner_paine" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="2.0">
       <ImageView fitHeight="55.0" fitWidth="45.0" layoutX="14.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">

@@ -22,6 +22,8 @@ public class Model {
     private ObjectProperty<Image> imageObjectProperty;
     // nhan khau
     private static List_nhan_khau nhanKhauDuocChon;
+    private static MainTamVangCell nhanKhauTamVangDuocChon;
+
     //ho khau section
     private static MainHoKhauCell hoKhauDuocChon;
 
@@ -31,6 +33,8 @@ public class Model {
 
     private final ObservableList<FeeHoKhauCell> danhSachDaDongPhi;
     private final ObservableList<FeeHoKhauCell> danhSachChuaDongPhi;
+
+
 
     private Model() {
         this.viewFactory = new ViewFactory();
@@ -450,6 +454,40 @@ public class Model {
         return res;
     }
 
+    public boolean KiemTraXemMaNhanKhauDaTonTaiTrongTamVang(int manhankhau){
+        ResultSet resultSet = databaseConnection.KiemTraXemMaNhanKhauDaTonTaiTrongTamVang(manhankhau);
+        int res = 0;
+        boolean kiemtra = false;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+                if(res > 0) kiemtra = true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return kiemtra;
+    }
+
+    public boolean KiemTraMaNhanKhauCoTonTaiHayKhong(int manhankhau){
+        ResultSet resultSet = databaseConnection.KiemTraMaNhanKhauCoTonTaiHayKhong(manhankhau);
+        int res = 0;
+        boolean tontai = false;
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+                if(res > 0) tontai = true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return tontai;
+    }
+
+
+
     // ho khau
 
     public static MainHoKhauCell getHoKhauDuocChon() {
@@ -458,6 +496,15 @@ public class Model {
 
     public static void setHoKhauDuocChon(MainHoKhauCell hoKhauDuocChon) {
         Model.hoKhauDuocChon = hoKhauDuocChon;
+    }
+    // lam cai hien thi nhankhautamvang
+
+    public static MainTamVangCell getNhanKhauTamVangDuocChon(){
+        return nhanKhauTamVangDuocChon;
+    }
+
+    public static void setNhanKhauTamVangDuocChon(MainTamVangCell nhanKhauTamVangDuocChon){
+        Model.nhanKhauTamVangDuocChon = nhanKhauTamVangDuocChon;
     }
 
     /*************************************************************************************************/
@@ -480,8 +527,8 @@ public class Model {
     private void initDanhSachKhoanThu() {
         ResultSet resultSet = databaseConnection.getDanhSachKhoanThu();
         try {
-            if(resultSet.isBeforeFirst()){
-                while(resultSet.next()) {
+            if (resultSet.isBeforeFirst()) {
+                while (resultSet.next()) {
                     int maKhoanThu = resultSet.getInt(1);
                     String tenKhoanThu = resultSet.getNString(2);
                     int batBuoc = resultSet.getInt(3);
@@ -495,6 +542,20 @@ public class Model {
             throw new RuntimeException(e);
         }
     }
+
+    public int getTongSoTienDaThuPhi(){
+        int res = 0;
+        ResultSet resultSet = databaseConnection.getTongSoTienDaThuPhi();
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
     /*********************************************************/
     public static List_nhan_khau getNhanKhauDuocChon() {
         return nhanKhauDuocChon;
@@ -503,4 +564,19 @@ public class Model {
     public static void setNhanKhauDuocChon(List_nhan_khau nhanKhauDuocChon) {
         Model.nhanKhauDuocChon = nhanKhauDuocChon;
     }
+
+    public int getNumberOfCacLoaiPhi(){
+        int res = 0;
+        ResultSet resultSet = databaseConnection.getNumberOfCacLoaiPhi();
+        try {
+            if(resultSet.isBeforeFirst()){
+                resultSet.next();
+                res = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return res;
+    }
+
 }

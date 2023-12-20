@@ -16,6 +16,7 @@ public class MainController implements Initializable {
     private Button ho_khau_btn;
     private Button nhan_khau_btn;
     private Button quadoi_btn;
+    private Button tamvang_btn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -23,6 +24,8 @@ public class MainController implements Initializable {
         ho_khau_btn = (Button) main_parent.lookup("#ho_khau_btn");
         nhan_khau_btn = (Button) main_parent.lookup("#nhan_khau_btn");
         quadoi_btn = (Button) main_parent.lookup("#quadoi_btn");
+        tamvang_btn = (Button) main_parent.lookup("#tamvang_btn");
+
         addListener();
     }
 
@@ -39,6 +42,11 @@ public class MainController implements Initializable {
                 case THONG_KE_HO_KHAU -> main_parent.setCenter(Model.getInstance().getViewFactory().getThongKeHoKhauView());
                 case THONG_KE_TAM_TRU -> main_parent.setCenter(Model.getInstance().getViewFactory().getThongKeTamTruView());
                 case THONG_KE_TAM_VANG -> main_parent.setCenter(Model.getInstance().getViewFactory().getThongKeTamVangView());
+                case TRANG_CHU_TAM_VANG -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getTrangChuTamVangView());
+                    tamvang_btn.requestFocus();
+                }
+                case CHI_TIET_THONG_TIN_TAM_VANG -> main_parent.setCenter(Model.getInstance().getViewFactory().getChiTietThongTinTamVangView());
                 //ho khau ****************************************************************************************
                 case HO_KHAU -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().getHoKhauView());
@@ -72,7 +80,7 @@ public class MainController implements Initializable {
                 }
                 case TAM_VANG -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().gettamVangView());
-                    nhan_khau_btn.requestFocus();
+                    tamvang_btn.requestFocus();
                 }
                 case TAM_TRU -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().gettamTruView());

@@ -60,6 +60,11 @@ public class FeeController implements Initializable {
                     danh_sach_phi_btn.requestFocus();
                     fee_parent.setCenter(Model.getInstance().getViewFactory().getDSChuaHoanThanhPhiView());
                 }
+                case FEE_PROFILE -> {
+                    fee_parent.setCenter(Model.getInstance().getViewFactory().getFeeProfileView());
+                    trang_chu_btn.requestFocus();
+                }
+
                 default -> {
                     trang_chu_btn.requestFocus();
                     fee_parent.setCenter(Model.getInstance().getViewFactory().getFeeTrangChuView());

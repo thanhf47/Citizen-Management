@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.lang.reflect.AnnotatedArrayType;
 
 public class ViewFactory {
 
@@ -32,6 +33,8 @@ public class ViewFactory {
     //danh sach nguoi chet
     private AnchorPane listDeadView;
     private AnchorPane thongTinKhaiTuView;
+    private AnchorPane trangChuTamVangView;
+
 
     //Ho Khau
 
@@ -49,6 +52,7 @@ public class ViewFactory {
     private AnchorPane tamTru2View;
 
     private AnchorPane tamVang2View;
+    private AnchorPane chiTietThongTinTamVangView;
 
     // Fee Views
     private final ObjectProperty<FeeMenuOptions> feeSelectedMenuItem;
@@ -59,8 +63,7 @@ public class ViewFactory {
     private AnchorPane feeXemChiTietKhoanThuView;
     private AnchorPane feeDSHoanThanhPhiView;
     private AnchorPane feeDSChuaHoanThanhPhiView;
-
-
+    private AnchorPane feeProfileView;
     /********************************************************************************************/
     public ViewFactory(){
         this.selectedMenuItem = new SimpleObjectProperty<>();
@@ -75,12 +78,10 @@ public class ViewFactory {
     }
 
     public AnchorPane getTrangChuView() {
-        if (trangChuView == null) {
-            try {
-                trangChuView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/TrangChu.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            trangChuView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/TrangChu.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return trangChuView;
     }
@@ -151,6 +152,24 @@ public class ViewFactory {
             }
         }
         return profile;
+    }
+
+    public AnchorPane getTrangChuTamVangView(){
+        try {
+            trangChuTamVangView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/TrangChuTamVang.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return trangChuTamVangView;
+    }
+
+    public AnchorPane getChiTietThongTinTamVangView(){
+        try {
+            chiTietThongTinTamVangView = new FXMLLoader(getClass().getResource("/fxml/main_citizen/HoKhau/ChiTietThongTinTamVang.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return chiTietThongTinTamVangView;
     }
 
     /********************************************************************************************/
@@ -381,6 +400,20 @@ public class ViewFactory {
             throw new RuntimeException(e);
         }
         return thongTinKhaiTuView;
+    }
+    /********************************************************************************************/
+    // thong ke thu phi
+
+
+    public AnchorPane getFeeProfileView(){
+        if(feeProfileView == null){
+            try {
+                feeProfileView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeProfile.fxml")).load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return feeProfileView;
     }
 }
 

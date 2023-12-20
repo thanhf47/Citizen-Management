@@ -10,15 +10,17 @@ public enum MainMenuOptions {
     XEM_CHI_TIET_HO_KHAU,
     TACH_HO_KHAU,
     THEM_HO_KHAU,
+    TRANG_CHU_TAM_VANG,
 
     //nhan khau
     THEM_NHAN_KHAU,
     TAM_TRU,
     TAM_VANG,
     KHAI_TU,
+
     TAM_TRU_2,
     TAM_VANG_2,
-
+    CHI_TIET_THONG_TIN_TAM_VANG,
     KHAI_TU_2,
     // thong ke
     THONG_KE_NHAN_KHAU,

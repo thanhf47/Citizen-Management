@@ -368,6 +368,75 @@ public class DatabaseConnection {
         }
         return res;
     }
+    public boolean dangKiTamVang(int maNhanKhau,String tuNgay, String denNgay,String lyDo, String noiTamTru){
+        ResultSet resultSet = null;
+        String dangkitamvang = "EXEC INSERT_TAM_VANG ?, ?, ?, ?,?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(dangkitamvang);
+            preparedStatement.setInt(1,maNhanKhau);
+
+            preparedStatement.setString(2,tuNgay);
+
+            preparedStatement.setString(3,denNgay);
+
+            preparedStatement.setString(4,lyDo);
+
+            if(noiTamTru.isEmpty())
+                preparedStatement.setString(5,null);
+            else
+                preparedStatement.setString(5,noiTamTru);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("loi o dang ki tam vang");
+            return false;
+        }
+    }
+
+
+    public ResultSet getDanhSachTamVang() {
+        ResultSet resultSet = null;
+        String query= "SELECT * FROM TAMVANG TV , NHANKHAU NK WHERE TV.MANHANKHAU = NK.MANHANKHAU";
+        Statement statement;
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+
+    }
+
+    public ResultSet KiemTraXemMaNhanKhauDaTonTaiTrongTamVang(int manhankhau){
+
+        ResultSet resultSet = null;
+        String query = "SELECT COUNT(MANHANKHAU) FROM TAMVANG WHERE MANHANKHAU =" + manhankhau;
+
+        try {
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+
+    }
+
+    public ResultSet KiemTraMaNhanKhauCoTonTaiHayKhong(int manhankhau){
+        ResultSet resultSet = null;
+        String query = "SELECT COUNT(MANHANKHAU) FROM NHANKHAU WHERE MANHANKHAU =" + manhankhau;
+
+        try {
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
 
 
     /***************************************************************************/
@@ -395,6 +464,7 @@ public class DatabaseConnection {
                 "VALUES (N'" + tenKhoanThu + "', " + batBuoc + ", "+ soTienCanDong + ", '" + ngayTao.toString() + "', N'" + moTa +"')";
         executeUpdate(query);
     }
+
     public int layMaKhoanThu(String tenKhoanThu,int batBuoc, long soTienCanDong, LocalDate ngayTao, String moTa) {
         int maKhoanThu = -1;
 
@@ -511,10 +581,22 @@ public class DatabaseConnection {
             Statement statement = connection.createStatement();
             statement.executeUpdate(query1);
             statement.executeUpdate(query2);
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ResultSet getTongSoTienDaThuPhi(){
+        ResultSet resultSet = null;
+        Statement statement;
+        String query = "SELECT SUM(SOTIENCANDONG) FROM DONGGOP WHERE TRANGTHAI = 1";
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
     }
 
     public ResultSet getDanhSachChuaDongPhi(int maKhoanThu) {
@@ -612,7 +694,27 @@ public class DatabaseConnection {
     }
     /***************************************************************************/
 
-
+    public ResultSet getNumberOfCacLoaiPhi(){
+        ResultSet resultSet = null;
+        Statement statement;
+        String query = "SELECT COUNT(MAKHOANTHU) FROM LOAIPHI";
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+    public  void xoaTamVang(int magiaytamvang){
+        String query = "DELETE TAMVANG  WHERE MAGIAYTAMVANG = " + magiaytamvang;
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println("deo xoa duoc");
+        }
+    }
 }
 
 
