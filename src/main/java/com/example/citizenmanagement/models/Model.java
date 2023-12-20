@@ -572,7 +572,7 @@ public class Model {
             if(resultSet.isBeforeFirst()){
                 resultSet.next();
                 res = resultSet.getInt(1);
-            }
+            }   
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

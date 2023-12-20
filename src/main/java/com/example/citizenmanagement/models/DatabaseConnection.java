@@ -487,8 +487,7 @@ public class DatabaseConnection {
         return maKhoanThu;
     }
     public void themDanhSachThuPhi(int maHoKhau, int maKhoanThu, long soTienCanDong, int trangThai) {
-        String query = "INSERT INTO DONGGOP(MAHOKHAU, MAKHOANTHU, SOTIENCANDONG, TRANGTHAI)\n" +
-                "VALUES (" + maHoKhau + ", " + maKhoanThu + ", " + soTienCanDong + ", " + trangThai + ")";
+        String query = "EXEC INSERT_DONGGOP " + maHoKhau + ", " + maKhoanThu + ", " + soTienCanDong + ", " + trangThai;
         executeUpdate(query);
     }
 
