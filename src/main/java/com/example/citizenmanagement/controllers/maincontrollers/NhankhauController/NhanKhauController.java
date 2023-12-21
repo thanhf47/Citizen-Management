@@ -48,10 +48,12 @@ public class NhanKhauController implements Initializable {
                             while(resultSet.next()) {
                                 String ma = resultSet.getString(1);
                                 String id = resultSet.getString(2);
+                                 if (id == null) id = "null";
                                 String hoten = resultSet.getNString(3);
                                 String gioitinh = resultSet.getString(4);
                                String namsinh = resultSet.getString(5);
                                 String diachi = resultSet.getNString(6);
+                                if (diachi == null) diachi = "null";
 
                                 list_view.getItems().add(new List_nhan_khau(ma, id, hoten, gioitinh, namsinh, diachi));
                             }

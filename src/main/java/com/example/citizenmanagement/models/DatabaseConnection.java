@@ -229,8 +229,8 @@ public class DatabaseConnection {
     //Nhân khẩu
     public int addNhanKhau (String hoTen, String CCCD, String ngaySinh, int gioiTinh, String noiSinh, String nguyenQuan,String danToc, String tonGiao, String quocTich, String noiThuongTru, String ngheNghiep, String ghiChu ){
         int thanhcong = 0;
-        String querry = "insert into NHANKHAU (HOTEN, SOCANCUOC, YEAR(NGAYSINH), GIOITINH, NOISINH, NGUYENQUAN, DANTOC, TONGIAO, QUOCTICH, NOITHUONGTRU, NGHENGHIEP, NGAYTAO, GHICHU ) " +
-                " values(?,?,?,?,?,?,?,?,?,?,?,?)";
+        String querry = "insert into NHANKHAU (HOTEN, SOCANCUOC, NGAYSINH, GIOITINH, NOISINH, NGUYENQUAN, DANTOC, TONGIAO, QUOCTICH, NOITHUONGTRU, NGHENGHIEP, NGAYTAO, GHICHU ) " +
+                " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try{
             PreparedStatement pre = connection.prepareStatement(querry);
             pre.setNString(1,hoTen); pre.setString(2,CCCD);
@@ -347,28 +347,25 @@ public class DatabaseConnection {
         return resultSet;
 
     }
-    public boolean dangKiTamVang(int maNhanKhau,String tuNgay, String denNgay,String lyDo, String noiTamTru){
-        ResultSet resultSet = null;
+    public void dangKiTamVang(int maNhanKhau, String noiTamTru,String tuNgay, String denNgay,String lyDo){
         String dangkitamvang = "EXEC INSERT_TAM_VANG ?, ?, ?, ?,?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(dangkitamvang);
             preparedStatement.setInt(1,maNhanKhau);
 
-            preparedStatement.setString(2,tuNgay);
+            preparedStatement.setString(3,tuNgay);
 
-            preparedStatement.setString(3,denNgay);
+            preparedStatement.setString(4,denNgay);
 
-            preparedStatement.setString(4,lyDo);
+            preparedStatement.setNString(5,lyDo);
 
             if(noiTamTru.isEmpty())
-                preparedStatement.setString(5,null);
+                preparedStatement.setNString(2,null);
             else
-                preparedStatement.setString(5,noiTamTru);
+                preparedStatement.setNString(2,noiTamTru);
             preparedStatement.executeUpdate();
-            return true;
         } catch (SQLException e) {
-            System.out.println("loi o dang ki tam vang");
-            return false;
+            throw new RuntimeException(e);
         }
     }
 

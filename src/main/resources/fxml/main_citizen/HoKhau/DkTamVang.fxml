@@ -17,14 +17,12 @@
          <Font name="Verdana Bold" size="32.0" />
       </font></Label>
     <VBox layoutX="199.0" layoutY="120.0" prefHeight="510.0" prefWidth="450.0" styleClass="vbx">
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số giấy tạm vắng" />
-        <TextField fx:id="giay_tam_vang" prefHeight="46.0" style="-fx-background-color: #fff;" styleClass="input_text_field" />
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu" />
-        <TextField fx:id="ma_nhan_khau" prefHeight="46.0" prefWidth="292.0" style="-fx-background-color: #fff;" styleClass="input_text_field" />
+        <TextField fx:id="ma_nhan_khau" prefHeight="32.0" prefWidth="292.0" style="-fx-background-color: #fff;" styleClass="input_text_field" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi tạm trú" />
-      <TextField fx:id="noi_tam_tru" prefHeight="46.0" style="-fx-background-color: #fff;" styleClass="input_text_field" />
+      <TextField fx:id="noi_tam_tru" prefHeight="32.0" style="-fx-background-color: #fff;" styleClass="input_text_field" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lý do " />
-      <TextArea fx:id="li_do" prefHeight="97.0" style="-fx-background-color: #fff;" styleClass="input_text_field" />
+      <TextArea fx:id="li_do" prefHeight="100.0" style="-fx-background-color: #fff;" styleClass="input_text_field" />
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian tạm vắng: " />
         <Label text="Ngày bắt đầu tạm vắng  ">
          <font>

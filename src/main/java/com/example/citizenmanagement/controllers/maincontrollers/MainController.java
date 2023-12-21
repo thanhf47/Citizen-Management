@@ -109,7 +109,7 @@ public class MainController implements Initializable {
                 }
                 case TAM_VANG -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().gettamVangView());
-                    tamvang_btn.requestFocus();
+                    nhan_khau_btn.requestFocus();
                 }
                 case TAM_TRU -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().gettamTruView());

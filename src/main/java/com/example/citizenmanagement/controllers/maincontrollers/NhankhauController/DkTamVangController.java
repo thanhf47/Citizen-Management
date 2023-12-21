@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.sql.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -52,7 +53,8 @@ public class DkTamVangController implements Initializable {
     }
 
     public void onDangKyTamVang(){
-        if(ma_nhan_khau.getText().isEmpty() || li_do.getText().isEmpty() || ngay_bat_dau.getValue() == null || ngay_ket_thuc.getValue() == null){
+//        System.out.println(ngay_bat_dau.getValue().toString() + "\n" + ngay_ket_thuc.getValue().toString());
+        if(li_do.getText().isEmpty() || ngay_bat_dau.getValue() == null || ngay_ket_thuc.getValue() == null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Lỗi");
             alert.setHeaderText("Bạn chưa nhập đủ thông tin !");
@@ -67,32 +69,29 @@ public class DkTamVangController implements Initializable {
             alert.setContentText("Nhân khẩu này đã đăng kí tạm vắng trước đó");
             alert.showAndWait();
         }
-        else if(!Model.getInstance().KiemTraMaNhanKhauCoTonTaiHayKhong(Integer.valueOf(ma_nhan_khau.getText()))){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Lỗi");
-            alert.setHeaderText("Không thể đăng kí tạm vắng !");
-            alert.setContentText("Nhân khẩu này không tồn tại");
-            alert.showAndWait();
-        }
+//        else if(!Model.getInstance().KiemTraMaNhanKhauCoTonTaiHayKhong(Integer.valueOf(ma_nhan_khau.getText()))){
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Lỗi");
+//            alert.setHeaderText("Không thể đăng kí tạm vắng !");
+//            alert.setContentText("Nhân khẩu này không tồn tại");
+//            alert.showAndWait();
+//        }
 
         else {
             int idNhanKhau = Integer.parseInt(ma_nhan_khau.getText());
             String lido = li_do.getText();
             String noitamtru = noi_tam_tru.getText();
-            String ngayBD = String.valueOf(ngay_bat_dau.getValue());
-            String ngayKT = String.valueOf(ngay_ket_thuc.getValue());
-            if(Model.getInstance().getDatabaseConnection().dangKiTamVang(idNhanKhau,ngayBD,ngayKT,lido,noitamtru)){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Thông báo");
-                alert.setHeaderText("Bạn đã thêm thành công");
-                alert.setContentText("Mời bạn trở về trang chủ");
-                alert.showAndWait();
+            Model.getInstance().getDatabaseConnection().dangKiTamVang(
+                    idNhanKhau, noitamtru,
+                    ngay_bat_dau.getValue().toString(),
+                    ngay_ket_thuc.getValue().toString() ,lido);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Thông báo");
+            alert.setHeaderText(null);
+            alert.setContentText("Bạn đã đăng ký tạm vắng thành công");
+            alert.showAndWait();
 
-//                Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TRANG_CHU_TAM_VANG);
-
-                Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.NHAN_KHAU);
-
-            }
+            Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.NHAN_KHAU);
         }
     }
 }
