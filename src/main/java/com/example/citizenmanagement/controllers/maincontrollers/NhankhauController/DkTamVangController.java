@@ -38,7 +38,7 @@ public class DkTamVangController implements Initializable {
 
 
     private void onThoatBtn() {
-        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TAM_VANG);
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.NHAN_KHAU);
     }
 
     @Override

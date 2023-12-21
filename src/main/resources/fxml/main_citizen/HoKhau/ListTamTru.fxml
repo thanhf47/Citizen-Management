@@ -13,7 +13,7 @@
       <font>
          <Font size="32.0" />
       </font></Text>
-    <Button fx:id="Them_tam_tru_btn" layoutX="332.0" layoutY="662.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" styleClass="button_style" text="Thêm tạm trú" textAlignment="CENTER" />
+    <Button fx:id="Them_tam_tru_btn" layoutX="332.0" layoutY="662.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: #1a5e03;" styleClass="button_style" text="Thêm tạm trú" textAlignment="CENTER" />
    <Text layoutX="71.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu ">
       <font>
          <Font name="Verdana Bold" size="14.0" />

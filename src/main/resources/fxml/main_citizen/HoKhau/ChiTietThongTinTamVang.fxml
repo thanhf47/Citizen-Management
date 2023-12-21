@@ -76,7 +76,7 @@
             <TextField fx:id="lydo_fld" disable="true" layoutX="10.0" layoutY="474.0" prefHeight="41.0" prefWidth="668.0" styleClass="input_text_field" />
          </children>
       </VBox>
-      <Button fx:id="thoat_btn" layoutX="90.0" layoutY="679.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" styleClass="button_style" text="Thoát">
+      <Button fx:id="thoat_btn" layoutX="90.0" layoutY="679.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: #818a84;" styleClass="button_style" text="Thoát">
          <graphic>
             <FontAwesomeIconView glyphName="ARROW_LEFT" size="18" />
          </graphic>
@@ -84,7 +84,7 @@
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="352.0" layoutY="679.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="100.0" styleClass="button_style" text="Xoá" fx:id="xoaTamVang">
+      <Button layoutX="352.0" layoutY="679.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: #c41606;" styleClass="button_style" text="Xoá" fx:id="xoaTamVang">
          <font>
             <Font size="13.0" />
          </font>

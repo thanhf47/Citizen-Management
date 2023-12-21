@@ -66,10 +66,12 @@ public class NhanKhauController implements Initializable {
         list_view.setCellFactory(param ->new List_nhan_khau_factory());
 
         list_view.setOnMouseClicked(mouseEvent -> {
-            List_nhan_khau selected = list_view.getSelectionModel().getSelectedItem();
-            if(selected != null) {
-                Model.setNhanKhauDuocChon(selected);
-                Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.XEM_CHI_TIET_NHAN_KHAU);
+            if (mouseEvent.getClickCount() == 2) {
+                List_nhan_khau selected = list_view.getSelectionModel().getSelectedItem();
+                if (selected != null) {
+                    Model.setNhanKhauDuocChon(selected);
+                    Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.XEM_CHI_TIET_NHAN_KHAU);
+                }
             }
         });
 

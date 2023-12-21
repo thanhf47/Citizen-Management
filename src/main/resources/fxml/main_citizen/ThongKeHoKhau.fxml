@@ -22,7 +22,7 @@
           <NumberAxis side="LEFT" />
       </yAxis>
     </StackedBarChart>
-    <Button fx:id="QuayLai2" layoutX="26.0" layoutY="698.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #08822c;" styleClass="button_style" text="Thoát">
+    <Button fx:id="QuayLai2" layoutX="26.0" layoutY="698.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #818a84;" styleClass="button_style" text="Thoát">
         <graphic>
           <FontAwesomeIconView glyphName="ARROW_LEFT" />
         </graphic>

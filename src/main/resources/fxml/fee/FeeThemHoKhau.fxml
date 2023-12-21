@@ -16,12 +16,12 @@
           <Font name="Verdana Bold" size="42.0" />
         </font>
     </Label>
-    <Button fx:id="hoanThanhBtn" layoutX="512.0" layoutY="638.0" mnemonicParsing="false" onAction="#onHoanThanhBtn" prefHeight="43.0" prefWidth="132.0" styleClass="button_style" stylesheets="@../../styles/LoginForm.css" text="Hoàn thành" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="132.0">
+    <Button fx:id="hoanThanhBtn" layoutX="512.0" layoutY="638.0" mnemonicParsing="false" onAction="#onHoanThanhBtn" prefHeight="46.0" prefWidth="132.0" style="-fx-background-color: #1a5e03;" styleClass="button_style" stylesheets="@../../styles/LoginForm.css" text="Hoàn thành" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="132.0">
         <font>
           <Font name="Calibri" size="18.0" />
         </font>
     </Button>
-    <Button fx:id="quayLaiBtn" layoutX="356.0" layoutY="638.0" mnemonicParsing="false" onAction="#onQuayLaiBtn" prefHeight="43.0" prefWidth="116.0" styleClass="button_style" stylesheets="@../../styles/LoginForm.css" text="Quay lại" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="334.0">
+    <Button fx:id="quayLaiBtn" layoutX="356.0" layoutY="638.0" mnemonicParsing="false" onAction="#onQuayLaiBtn" prefHeight="46.0" prefWidth="120.0" style="-fx-background-color: #818a84;" styleClass="button_style" stylesheets="@../../styles/LoginForm.css" text="Quay lại" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="334.0">
         <font>
           <Font name="Calibri" size="18.0" />
         </font>

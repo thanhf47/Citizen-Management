@@ -60,7 +60,7 @@
          <Font size="16.0" />
       </font>
    </Button>
-   <Button layoutX="243.0" layoutY="682.0" mnemonicParsing="false" style="-fx-background-color: #6b030f;" styleClass="button_style" text="Xóa thành viên" fx:id="xoa_thanh_vien_but">
+   <Button layoutX="243.0" layoutY="682.0" mnemonicParsing="false" style="-fx-background-color: #c41606;" styleClass="button_style" text="Xóa thành viên" fx:id="xoa_thanh_vien_but">
       <font>
          <Font size="16.0" />
       </font>
@@ -70,7 +70,7 @@
          <Font size="16.0" />
       </font>
    </Button>
-   <Button fx:id="huy_but" layoutX="685.0" layoutY="588.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #6b030f;" styleClass="button_style" text="Hủy">
+   <Button fx:id="huy_but" layoutX="685.0" layoutY="588.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #c41606;" styleClass="button_style" text="Hủy">
       <font>
          <Font size="16.0" />
       </font>

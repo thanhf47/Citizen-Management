@@ -15,17 +15,17 @@
       </Label>
       <AnchorPane layoutX="14.0" layoutY="106.0" prefHeight="52.0" prefWidth="820.0">
          <children>
-            <Label layoutX="130.0" layoutY="19.0" prefHeight="22.0" prefWidth="135.0" text="Mã giấy tạm vắng">
+            <Label layoutX="174.0" layoutY="7.0" prefHeight="46.0" prefWidth="82.0" text="Mã giấy tạm vắng" wrapText="true">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="279.0" layoutY="19.0" prefHeight="22.0" prefWidth="118.0" text="Mã nhân khẩu">
+            <Label layoutX="291.0" layoutY="19.0" prefHeight="22.0" prefWidth="118.0" text="Mã nhân khẩu">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="410.0" layoutY="18.0" prefHeight="22.0" prefWidth="150.0" text="Nơi tạm trú">
+            <Label layoutX="424.0" layoutY="19.0" prefHeight="22.0" prefWidth="150.0" text="Nơi tạm trú">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

@@ -114,11 +114,11 @@
             <Font name="Verdana Bold" size="32.0" />
          </font>
       </Label>
-      <Button fx:id="back_btn" layoutX="69.0" layoutY="610.0" mnemonicParsing="false" onAction="#onBackBtn" prefHeight="43.0" prefWidth="124.0" styleClass="button_style" stylesheets="@../../styles/LoginForm.css" text="Quay lại">
+      <Button fx:id="back_btn" layoutX="69.0" layoutY="610.0" mnemonicParsing="false" onAction="#onBackBtn" prefHeight="43.0" prefWidth="124.0" style="-fx-background-color: #818a84;" styleClass="button_style" stylesheets="@../../styles/LoginForm.css" text="Quay lại">
          <font>
             <Font name="Calibri" size="18.0" />
          </font></Button>
-      <Button fx:id="delete_btn" layoutX="231.0" layoutY="610.0" mnemonicParsing="false" onAction="#onDeleteBtn" prefHeight="43.0" prefWidth="154.0" styleClass="button_style" text="Xóa khoản phí">
+      <Button fx:id="delete_btn" layoutX="231.0" layoutY="610.0" mnemonicParsing="false" onAction="#onDeleteBtn" prefHeight="43.0" prefWidth="154.0" style="-fx-background-color: #c41606;" styleClass="button_style" text="Xóa khoản phí">
          <font>
             <Font name="Calibri" size="18.0" />
          </font></Button>

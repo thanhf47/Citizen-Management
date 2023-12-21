@@ -32,6 +32,6 @@
       <font>
          <Font size="18.0" />
       </font></Label>
-   <Button fx:id="thoat_btn_2" layoutX="272.0" layoutY="690.0" mnemonicParsing="false" prefWidth="120.0" styleClass="button_style" text="Thoát" />
-   <Button fx:id="confirm_btn" layoutX="487.0" layoutY="690.0" mnemonicParsing="false" prefWidth="120.0" styleClass="button_style" text="Xác nhận" />
+   <Button fx:id="thoat_btn_2" layoutX="272.0" layoutY="690.0" mnemonicParsing="false" prefWidth="120.0" style="-fx-background-color: #818a84;" styleClass="button_style" text="Thoát" />
+   <Button fx:id="confirm_btn" layoutX="487.0" layoutY="690.0" mnemonicParsing="false" prefWidth="120.0" style="-fx-background-color: #1a5e03;" styleClass="button_style" text="Xác nhận" />
 </AnchorPane>

@@ -9,9 +9,9 @@
     <HBox prefHeight="50.0" prefWidth="800.0">
         <Pane prefHeight="50.0" prefWidth="0.0" />
         <Text fx:id="ma_khoan_thu" strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="100.0" />
-        <Text fx:id="ten_khoan_thu" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên khoản thu" wrappingWidth="160.0" />
-        <Text fx:id="bat_buoc" strokeType="OUTSIDE" strokeWidth="0.0" text="Bắt buộc" wrappingWidth="100.0" />
-        <Text fx:id="so_tien_can_dong" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tiền" wrappingWidth="150.0" />
-        <Text fx:id="ngay_tao" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo" wrappingWidth="150.0" />
+        <Text fx:id="ten_khoan_thu" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên khoản thu" wrappingWidth="180.0" />
+        <Text fx:id="bat_buoc" strokeType="OUTSIDE" strokeWidth="0.0" text="Bắt buộc" wrappingWidth="120.0" />
+        <Text fx:id="so_tien_can_dong" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tiền" wrappingWidth="130.0" />
+        <Text fx:id="ngay_tao" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo" wrappingWidth="100.0" />
     </HBox>
 </AnchorPane>

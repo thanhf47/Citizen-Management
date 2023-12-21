@@ -33,7 +33,7 @@
           <TableColumn fx:id="soLuongTamVang" prefWidth="99.20001220703125" text="Số lượng" />
       </columns>
     </TableView>
-    <Button fx:id="thoatTamVang" layoutY="692.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #208f1a;" styleClass="button_style" text="Thoát">
+    <Button fx:id="thoatTamVang" layoutX="29.0" layoutY="692.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #818a84;" styleClass="button_style" text="Thoát">
         <graphic>
           <FontAwesomeIconView glyphName="ARROW_LEFT" size="13" />
         </graphic>

@@ -26,7 +26,7 @@
           <NumberAxis side="LEFT" />
       </yAxis>
     </StackedBarChart>
-    <Button fx:id="thoatTamTru" layoutX="25.0" layoutY="679.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #208f1a;" styleClass="button_style" text="Thoát">
+    <Button fx:id="thoatTamTru" layoutX="25.0" layoutY="679.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #818a84;" styleClass="button_style" text="Thoát">
         <graphic>
           <FontAwesomeIconView glyphName="ARROW_LEFT" size="15" />
         </graphic>

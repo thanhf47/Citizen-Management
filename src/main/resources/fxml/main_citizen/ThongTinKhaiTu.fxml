@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="my-background" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.ThongTinKhaiTuController">
    <children>
-      <AnchorPane layoutX="65.0" layoutY="49.0" prefHeight="628.0" prefWidth="770.0" stylesheets="@../../styles/Main/ThemNguoiMoi.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+      <AnchorPane layoutX="65.0" layoutY="49.0" prefHeight="646.0" prefWidth="763.0" stylesheets="@../../styles/Main/ThemNguoiMoi.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="43.0">
          <children>
             <Text layoutX="236.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ tên người khai" AnchorPane.rightAnchor="370.0" AnchorPane.topAnchor="40.0">
                <font>
@@ -126,7 +126,7 @@
                </font>
             </TextField>
             <TextArea fx:id="ly_do" layoutX="144.0" layoutY="456.0" prefHeight="90.0" prefWidth="550.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="440.0" />
-            <Button fx:id="chinh_sua_btn" layoutX="408.0" layoutY="562.0" mnemonicParsing="false" onAction="#onChinhSuaBtn" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #208f1a;" styleClass="button_style" text="Chỉnh sửa" AnchorPane.bottomAnchor="30.0" />
+            <Button fx:id="chinh_sua_btn" layoutX="408.0" layoutY="562.0" mnemonicParsing="false" onAction="#onChinhSuaBtn" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #1a5e03;" styleClass="button_style" text="Chỉnh sửa" AnchorPane.bottomAnchor="30.0" />
             <DatePicker fx:id="ngay_khai" layoutX="148.0" layoutY="392.0" prefHeight="32.0" prefWidth="200.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="390.0" />
             <DatePicker fx:id="ngay_chet" layoutX="500.0" layoutY="392.0" prefHeight="32.0" prefWidth="200.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="390.0" />
             <Text layoutX="36.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày khai" AnchorPane.rightAnchor="650.0" AnchorPane.topAnchor="390.0">

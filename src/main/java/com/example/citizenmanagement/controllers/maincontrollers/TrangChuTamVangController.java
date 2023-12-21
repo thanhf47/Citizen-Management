@@ -24,18 +24,14 @@ public class TrangChuTamVangController implements Initializable {
     @FXML
     private ListView listview_tamvang;
 
-    @FXML
-    private TextField search_tamvang_fld;
-
-    @FXML
-    private Button timkiemtamvang_btn;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showdanhsach();
         listview_tamvang.setOnMouseClicked(mouseEvent -> {
-            Model.setNhanKhauTamVangDuocChon((MainTamVangCell) listview_tamvang.getSelectionModel().getSelectedItem());
-            Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.CHI_TIET_THONG_TIN_TAM_VANG);
+            if (mouseEvent.getClickCount() == 2) {
+                Model.setNhanKhauTamVangDuocChon((MainTamVangCell) listview_tamvang.getSelectionModel().getSelectedItem());
+                Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.CHI_TIET_THONG_TIN_TAM_VANG);
+            }
         });
     }
 

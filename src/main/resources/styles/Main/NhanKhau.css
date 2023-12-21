@@ -13,13 +13,6 @@
     -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );
 }
 
-
-.container Text {
-    -fx-fill: #000000;
-    -fx-font-size: 1.5em;
-    -fx-font-family: "Calibri Light";
-}
-
 .button_add {
     -fx-background-color: Green;
     -fx-text-fill: #FFFFFF;
@@ -83,8 +76,3 @@
   -fx-background-color: #3998e6;
 }
 
-.text {
-    -fx-fill: #000000;
-    -fx-font-size: 1.2em;
-    -fx-font-family: "Calibri Light";
-}

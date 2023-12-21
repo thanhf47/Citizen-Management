@@ -45,8 +45,8 @@
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nghề nghiệp" />
       <TextField fx:id="nghenghiep_text" prefHeight="32.0" prefWidth="397.0" />
    </VBox>
-   <Button fx:id="tiep_tuc_btn" layoutX="457.0" layoutY="674.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" styleClass="button_style" stylesheets="@../../../styles/Main/DkTamTru.css" text="Tiếp tục" />
-   <Button fx:id="thoat_tamtru_btn" layoutX="276.0" layoutY="674.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" styleClass="button_style" text="Thoát" />
+   <Button fx:id="tiep_tuc_btn" layoutX="457.0" layoutY="674.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: #1a5e03;" styleClass="button_style" stylesheets="@../../../styles/Main/DkTamTru.css" text="Tiếp tục" />
+   <Button fx:id="thoat_tamtru_btn" layoutX="276.0" layoutY="674.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: #818a84;" styleClass="button_style" text="Thoát" />
    <stylesheets>
       <URL value="@../../../styles/Main/DkTamTru.css" />
       <URL value="@../../../styles/Main/NhanKhau.css" />

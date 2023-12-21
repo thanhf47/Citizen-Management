@@ -34,8 +34,8 @@
         <Label text="Ngày kết thúc tạm vắng" />
         <DatePicker fx:id="ngay_ket_thuc" prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: #fff;" styleClass="input_text_field" />
     </VBox>
-    <Button layoutX="445.0" layoutY="664.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="129.0" styleClass="button_style" stylesheets="@../../../styles/Main/DkTamTru.css" text="Xác nhận " fx:id="xac_nhan_tam_vang" />
-    <Button fx:id="thoat_btn" layoutX="266.0" layoutY="664.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" styleClass="button_style" stylesheets="@../../../styles/Main/DkTamTru.css" text="Thoát" />
+    <Button layoutX="445.0" layoutY="664.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="129.0" style="-fx-background-color: #1a5e03;" styleClass="button_style" stylesheets="@../../../styles/Main/DkTamTru.css" text="Xác nhận " fx:id="xac_nhan_tam_vang" />
+    <Button fx:id="thoat_btn" layoutX="266.0" layoutY="664.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: #818a84;" styleClass="button_style" stylesheets="@../../../styles/Main/DkTamTru.css" text="Thoát" />
    <stylesheets>
       <URL value="@../../../styles/Main/DkTamTru.css" />
       <URL value="@../../../styles/Main/NhanKhau.css" />
