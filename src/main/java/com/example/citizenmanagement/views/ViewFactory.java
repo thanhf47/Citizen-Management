@@ -275,18 +275,18 @@ public class ViewFactory {
 
     public AnchorPane getTachHoKhau(){
             try {
-                tachHoKhau = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/tachHoKhau.fxml")).load();
+                tachHoKhau = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/TachHoKhau.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
             return tachHoKhau;
     }
     public AnchorPane getXemChiTietHoKhau(){
-            try {
-                xemChiTietHoKhau = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/xemChiTietHoKhau.fxml")).load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            xemChiTietHoKhau = new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/xemChiTietHoKhau.fxml")).load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         return xemChiTietHoKhau;
     }
     public AnchorPane get_thay_doi_ho_khau(){

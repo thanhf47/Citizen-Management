@@ -517,6 +517,11 @@ public class DatabaseConnection {
         String query = "select * from HOKHAU WHERE IDCHUHO = " + ma_chu_ho;
         return executeQuery(query);
     }
+    public ResultSet getMaHoKhau(String maChuHo) {
+        String query = "Select mahokhau from thanhviencuaho where manhankhau = " + maChuHo;
+
+        return executeQuery(query);
+    }
     public int capNhatHoKhau(String idHoKhau, String maChuHo, String diaChi, String ghiChu){
 
         try {
@@ -587,11 +592,11 @@ public class DatabaseConnection {
     }
 
     public ResultSet lay_nhan_khau(String ma_nhan_khau) {
-        String query = " select SOCANCUOC, HOTEN, GIOITINH, NGAYSINH from NHANKHAU where MANHANKHAU = " + ma_nhan_khau;
+        String query = " select SOCANCUOC, HOTEN, GIOITINH, NGAYSINH, NOITHUONGTRU from NHANKHAU where MANHANKHAU = " + ma_nhan_khau;
         return executeQuery(query);
     }
 
-    public int add_thanh_vien_cua_ho(String maNhanKhau,String ma_ho, String quan_he){
+    public void add_thanh_vien_cua_ho(String maNhanKhau,String ma_ho, String quan_he){
         String query = "INSERT INTO THANHVIENCUAHO VALUES (?,?,?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -600,10 +605,8 @@ public class DatabaseConnection {
             preparedStatement.setNString(3,quan_he);
             preparedStatement.executeUpdate();
 
-            return 1;
         } catch (Exception e){
-            System.out.println("loi o add_thanh_vien_cua_ho");
-            return 0;
+            throw new RuntimeException(e);
         }
     }
     public void xoa_thanh_vien_cua_ho(String maNhanKhau){
@@ -613,7 +616,7 @@ public class DatabaseConnection {
             ResultSet resultSet=statement1.executeQuery(query1);
             if(resultSet.isBeforeFirst()) {
                 resultSet.next();
-                String query = "DELETE FROM THANHVIENCUAHO WHERE MANHANKHAU='"+resultSet.getString(1)+"'";
+                String query = "DELETE FROM THANHVIENCUAHO WHERE MANHANKHAU= "+resultSet.getString(1);
                 Statement statement = connection.createStatement();
                 statement.executeUpdate(query);
             }
@@ -621,6 +624,11 @@ public class DatabaseConnection {
             System.out.println("loi o xoa_thanh_vien_cua_ho");
             e.printStackTrace();
         }
+    }
+    public void xoaThanhVienCuaHo(String maNhanKhau) {
+        String query = "DELETE FROM THANHVIENCUAHO WHERE MANHANKHAU = " + maNhanKhau;
+        System.out.println("da xoa " + maNhanKhau);
+        executeUpdate(query);
     }
 
     public ResultSet truyvan_chua_co_nha() {
@@ -663,13 +671,13 @@ public class DatabaseConnection {
                     resultSet.next();
                     return resultSet.getString(2);
                 }
-
         }catch (Exception e){
             System.out.println("loi o lay_ho_khau");
             return null;
         }
         return null;
    }
+
     /***************************************************************************/
     // Quản lý thu phí
     public ResultSet getDanhSachDongPhi() {

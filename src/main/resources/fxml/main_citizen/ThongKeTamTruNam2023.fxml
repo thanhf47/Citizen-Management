@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="maunen" stylesheets="@../../styles/Main/TrangChu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.ThongKeTamTruNam2023Controller">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="maunen" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.ThongKeTamTruNam2023Controller">
     <StackedBarChart fx:id="thongKeTamTruNam2023" layoutX="71.0" layoutY="115.0" legendVisible="false" prefHeight="294.0" prefWidth="671.0" title="Tình Hình Tạm Trú">
       <xAxis>
           <CategoryAxis side="BOTTOM" />
@@ -25,10 +26,13 @@
           <NumberAxis side="LEFT" />
       </yAxis>
     </StackedBarChart>
-    <Button fx:id="thoatTamTru" layoutX="25.0" layoutY="701.0" mnemonicParsing="false" styleClass="button_quaylai" text="Thoát">
+    <Button fx:id="thoatTamTru" layoutX="25.0" layoutY="679.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #208f1a;" styleClass="button_style" text="Thoát">
         <graphic>
           <FontAwesomeIconView glyphName="ARROW_LEFT" size="15" />
         </graphic>
+      <font>
+         <Font size="14.0" />
+      </font>
     </Button>
    <PieChart fx:id="bieudolidotamtru" layoutX="168.0" layoutY="420.0" prefHeight="303.0" prefWidth="422.0" title="Lý do tạm trú" />
    <TableView fx:id="tableLyDoTamTru" layoutX="637.0" layoutY="443.0" prefHeight="257.0" prefWidth="151.0">
@@ -37,11 +41,17 @@
          <TableColumn fx:id="soluongtamtru_lydo" prefWidth="75.0" text="Số Lượng" />
       </columns>
    </TableView>
-   <TextField fx:id="timkiemnam_textfield" layoutX="25.0" layoutY="29.0" prefHeight="34.0" prefWidth="150.0" promptText="Năm" styleClass="text_field" />
-   <Button fx:id="timkiemnam_btn" layoutX="184.0" layoutY="33.0" mnemonicParsing="false" styleClass="button_quaylai" text="Tìm Kiếm">
+   <TextField fx:id="timkiemnam_textfield" layoutX="25.0" layoutY="29.0" prefHeight="36.0" prefWidth="200.0" promptText="Năm" styleClass="input_text_field">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
+   <Button fx:id="timkiemnam_btn" layoutX="232.0" layoutY="33.0" mnemonicParsing="false" styleClass="button_quaylai" text="Tìm Kiếm">
       <graphic>
          <FontAwesomeIconView glyphName="SEARCH" size="18" />
       </graphic>
+      <font>
+         <Font size="14.0" />
+      </font>
    </Button>
    <Pane layoutX="327.0" layoutY="25.0" prefHeight="76.0" prefWidth="207.0" styleClass="pain">
       <children>
@@ -67,4 +77,8 @@
          </Text>
       </children>
    </Pane>
+   <stylesheets>
+      <URL value="@../../styles/Main/TrangChu.css" />
+      <URL value="@../../styles/LoginForm.css" />
+   </stylesheets>
 </AnchorPane>

@@ -91,8 +91,7 @@ public class thay_doi_ho_khau_controler implements Initializable {
             if(!quan_he_textField.getText().isEmpty()){
                 if(nhan_khau_dc_chon!=null)
                 {
-                    int ketqua=0;
-                    ketqua=Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(nhan_khau_dc_chon.getSo_nhan_khau(),String.valueOf(tam.getId().get()),quan_he_textField.getText());
+                    Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(nhan_khau_dc_chon.getSo_nhan_khau(),String.valueOf(tam.getId().get()),quan_he_textField.getText());
                     listView_nhan_khau.getItems().clear();
                     listView_thanh_vien.getItems().clear();
                     cap_nhat_list_view_nhan_khau();

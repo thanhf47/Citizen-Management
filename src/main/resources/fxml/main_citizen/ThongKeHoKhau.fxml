@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.StackedBarChart?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="maunen" stylesheets="@../../styles/Main/TrangChu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.ThongKeHoKhauController">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="maunen" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.ThongKeHoKhauController">
     <StackedBarChart fx:id="thongKeHoKhau" layoutX="132.0" layoutY="260.0" legendVisible="false" prefHeight="322.0" prefWidth="585.0" title="Thống Kê Hộ Khẩu Theo Từng Năm">
       <xAxis>
           <CategoryAxis side="BOTTOM" />
@@ -21,10 +22,13 @@
           <NumberAxis side="LEFT" />
       </yAxis>
     </StackedBarChart>
-    <Button fx:id="QuayLai2" layoutX="26.0" layoutY="698.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" styleClass="button_quaylai" text="Thoát">
+    <Button fx:id="QuayLai2" layoutX="26.0" layoutY="698.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #08822c;" styleClass="button_style" text="Thoát">
         <graphic>
           <FontAwesomeIconView glyphName="ARROW_LEFT" />
         </graphic>
+      <font>
+         <Font size="14.0" />
+      </font>
     </Button>
    <Pane layoutX="277.0" layoutY="95.0" prefHeight="97.0" prefWidth="282.0" styleClass="pain">
       <children>
@@ -45,4 +49,8 @@
          </Text>
       </children>
    </Pane>
+   <stylesheets>
+      <URL value="@../../styles/Main/TrangChu.css" />
+      <URL value="@../../styles/LoginForm.css" />
+   </stylesheets>
 </AnchorPane>

@@ -1,25 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../../styles/Main/DkTamTru.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.KhaiTuController">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="my-background" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.KhaiTuController">
    <VBox layoutX="179.0" layoutY="109.0" prefHeight="509.0" prefWidth="520.0" styleClass="vbx">
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu người khai " />
-      <TextField fx:id="ma_nguoi_khai" prefHeight="31.0" prefWidth="457.0" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu người mất" />
-      <TextField fx:id="ma_nguoi_mat" prefHeight="31.0" prefWidth="627.0" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên nhân" />
-      <TextField fx:id="li_do_mat" prefHeight="104.0" prefWidth="292.0" />
-      <Label text="Ngày qua đời    " />
-      <DatePicker fx:id="ngay_mat" prefHeight="36.0" prefWidth="316.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu người khai ">
+         <font>
+            <Font name="Verdana" size="16.0" />
+         </font></Text>
+      <TextField fx:id="ma_nguoi_khai" prefHeight="34.0" prefWidth="457.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu người mất">
+         <font>
+            <Font name="Verdana" size="16.0" />
+         </font></Text>
+      <TextField fx:id="ma_nguoi_mat" prefHeight="34.0" prefWidth="627.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên nhân">
+         <font>
+            <Font name="Verdana" size="16.0" />
+         </font></Text>
+      <TextArea fx:id="li_do_mat" prefHeight="120.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày mất">
+         <font>
+            <Font name="Verdana" size="16.0" />
+         </font>
+      </Text>
+      <DatePicker fx:id="ngay_mat" prefHeight="34.0" prefWidth="250.0" />
    </VBox>
-   <Button layoutX="455.0" layoutY="674.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_acp" stylesheets="@../../../styles/Main/DkTamTru.css" text="Xác nhận " fx:id="xac_nhan_but" />
-   <Button fx:id="thoat_khaitu_btn" layoutX="276.0" layoutY="674.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_cancel" stylesheets="@../../../styles/Main/DkTamTru.css" text="Thoát" />
-   <Label layoutX="372.0" layoutY="48.0" prefHeight="45.0" prefWidth="106.0" styleClass="text_lbl" text="Khai tử" />
+   <Button layoutX="455.0" layoutY="674.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: #246909;" styleClass="button_style" stylesheets="@../../../styles/Main/DkTamTru.css" text="Xác nhận " fx:id="xac_nhan_but" />
+   <Button fx:id="thoat_khaitu_btn" layoutX="276.0" layoutY="674.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: #757874;" styleClass="button_style" stylesheets="@../../../styles/Main/DkTamTru.css" text="Thoát" />
+   <Label layoutX="376.0" layoutY="27.0" prefHeight="46.0" prefWidth="158.0" text="Khai tử">
+      <font>
+         <Font name="Verdana Bold" size="32.0" />
+      </font></Label>
+   <stylesheets>
+      <URL value="@../../../styles/Main/DkTamTru.css" />
+      <URL value="@../../../styles/Fee/FeeDanhSach.css" />
+      <URL value="@../../../styles/LoginForm.css" />
+   </stylesheets>
 </AnchorPane>

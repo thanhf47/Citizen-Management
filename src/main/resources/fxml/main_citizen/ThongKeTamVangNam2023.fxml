@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="maunen" stylesheets="@../../styles/Main/TrangChu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.ThongKeTamVangNam2023Controller">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="maunen" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.ThongKeTamVangNam2023Controller">
     <StackedBarChart fx:id="bieuDoThongKeTamVangTheoThang" layoutX="29.0" layoutY="150.0" legendVisible="false" prefHeight="266.0" prefWidth="710.0" title="Thống kê tạm vắng năm 2023">
       <xAxis>
           <CategoryAxis side="BOTTOM" />
@@ -32,7 +33,7 @@
           <TableColumn fx:id="soLuongTamVang" prefWidth="99.20001220703125" text="Số lượng" />
       </columns>
     </TableView>
-    <Button fx:id="thoatTamVang" layoutX="14.0" layoutY="702.0" mnemonicParsing="false" styleClass="button_quaylai" text="Thoát">
+    <Button fx:id="thoatTamVang" layoutY="692.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #208f1a;" styleClass="button_style" text="Thoát">
         <graphic>
           <FontAwesomeIconView glyphName="ARROW_LEFT" size="13" />
         </graphic>
@@ -40,13 +41,19 @@
           <Font size="14.0" />
         </font>
     </Button>
-   <TextField fx:id="timkiemnamtamvang_tfld" layoutX="29.0" layoutY="37.0" prefHeight="37.0" prefWidth="150.0" promptText="Năm" styleClass="text_field" />
-   <Button fx:id="timkiemnamtamvang_btn" layoutX="190.0" layoutY="40.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" styleClass="button_quaylai" text="Tìm Kiếm">
+   <TextField fx:id="timkiemnamtamvang_tfld" layoutX="29.0" layoutY="37.0" prefHeight="37.0" prefWidth="200.0" promptText="Năm" styleClass="input_text_field">
+      <font>
+         <Font size="14.0" />
+      </font></TextField>
+   <Button fx:id="timkiemnamtamvang_btn" layoutX="234.0" layoutY="40.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="100.0" styleClass="button_quaylai" text="Tìm Kiếm">
       <graphic>
          <FontAwesomeIconView glyphName="SEARCH" size="18" />
       </graphic>
+      <font>
+         <Font size="14.0" />
+      </font>
    </Button>
-   <Pane layoutX="325.0" layoutY="24.0" prefHeight="85.0" prefWidth="234.0" styleClass="pain">
+   <Pane layoutX="359.0" layoutY="27.0" prefHeight="85.0" prefWidth="234.0" styleClass="pain">
       <children>
          <ImageView fitHeight="47.0" fitWidth="53.0" layoutX="14.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -70,4 +77,8 @@
          </Text>
       </children>
    </Pane>
+   <stylesheets>
+      <URL value="@../../styles/Main/TrangChu.css" />
+      <URL value="@../../styles/LoginForm.css" />
+   </stylesheets>
 </AnchorPane>

@@ -23,8 +23,6 @@ public class hoKhauShowControler implements Initializable {
     @FXML
     private ListView<MainHoKhauCell> listView;
     @FXML
-    private Button tach_but;
-    @FXML
     private Button them_but;
 
     @Override
@@ -64,11 +62,6 @@ public class hoKhauShowControler implements Initializable {
         listView.setOnMouseClicked(mouseEvent -> {
             Model.setHoKhauDuocChon(listView.getSelectionModel().getSelectedItem());
             Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.XEM_CHI_TIET_HO_KHAU);
-        });
-        //****************************************************
-
-        tach_but.setOnAction(event -> {
-            Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.TACH_HO_KHAU);
         });
         //****************************************************
 

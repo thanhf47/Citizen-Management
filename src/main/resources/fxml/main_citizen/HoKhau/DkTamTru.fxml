@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -8,38 +9,47 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../../styles/Main/DkTamTru.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.DkTamTruController">
-   <Label layoutX="314.0" layoutY="52.0" styleClass="text_lbl" text="Đăng kí tạm trú" />
-   <VBox layoutX="51.0" layoutY="126.0" prefHeight="513.0" prefWidth="312.0" styleClass="vbx">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="container" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.DkTamTruController">
+   <Label layoutX="306.0" layoutY="46.0" text="Đăng kí tạm trú">
+      <font>
+         <Font name="Verdana Bold" size="32.0" />
+      </font></Label>
+   <VBox layoutX="51.0" layoutY="126.0" prefHeight="513.0" prefWidth="350.0" styleClass="vbx">
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số CCCD" />
-      <TextField fx:id="CCCD_text" />
+      <TextField fx:id="CCCD_text" prefHeight="32.0" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên" />
-      <TextField fx:id="hoten_text" />
-      <HBox prefHeight="66.0" prefWidth="292.0" styleClass="hbx">
+      <TextField fx:id="hoten_text" prefHeight="32.0" />
+      <HBox prefHeight="32.0" prefWidth="292.0" styleClass="hbx">
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính:    " />
-         <ChoiceBox fx:id="gioitinh_text" prefHeight="31.0" prefWidth="132.0" />
+         <ChoiceBox fx:id="gioitinh_text" prefHeight="32.0" prefWidth="150.0" />
       </HBox>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Năm Sinh" />
-      <DatePicker fx:id="ngay_sinh_lbl" prefHeight="31.0" prefWidth="315.0" />
+      <DatePicker fx:id="ngay_sinh_lbl" prefHeight="32.0" prefWidth="315.0" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi Sinh" />
-      <TextField fx:id="noi_sinh_text" />
+      <TextField fx:id="noi_sinh_text" prefHeight="32.0" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên Quán" />
-      <TextField fx:id="nguyen_quan_text" />
+      <TextField fx:id="nguyen_quan_text" prefHeight="32.0" />
    </VBox>
-   <VBox layoutX="465.0" layoutY="126.0" prefHeight="524.0" prefWidth="312.0" styleClass="vbx">
+   <VBox layoutX="457.0" layoutY="121.0" prefHeight="524.0" prefWidth="350.0" styleClass="vbx">
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thường trú" wrappingWidth="90.63720703125" />
-      <TextField fx:id="thuong_tru_text" />
+      <TextField fx:id="thuong_tru_text" prefHeight="32.0" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dân tộc" />
-      <TextField fx:id="dantoc_text" />
+      <TextField fx:id="dantoc_text" prefHeight="32.0" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tôn giáo" />
-      <TextField fx:id="tongiao_text" prefHeight="0.0" prefWidth="292.0" />
+      <TextField fx:id="tongiao_text" prefHeight="32.0" />
       <Label text="Quốc tịch" />
-      <TextField fx:id="quoctich_text" prefHeight="0.0" prefWidth="292.0" />
+      <TextField fx:id="quoctich_text" prefHeight="32.0" prefWidth="292.0" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nghề nghiệp" />
-      <TextField fx:id="nghenghiep_text" prefHeight="0.0" prefWidth="292.0" />
+      <TextField fx:id="nghenghiep_text" prefHeight="32.0" prefWidth="397.0" />
    </VBox>
-   <Button fx:id="tiep_tuc_btn" layoutX="457.0" layoutY="674.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_acp" stylesheets="@../../../styles/Main/DkTamTru.css" text="Tiếp Tuc" />
-   <Button fx:id="thoat_tamtru_btn" layoutX="276.0" layoutY="674.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="button_cancel" stylesheets="@../../../styles/Main/DkTamTru.css" text="Thoát" />
+   <Button fx:id="tiep_tuc_btn" layoutX="457.0" layoutY="674.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" styleClass="button_style" stylesheets="@../../../styles/Main/DkTamTru.css" text="Tiếp tục" />
+   <Button fx:id="thoat_tamtru_btn" layoutX="276.0" layoutY="674.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" styleClass="button_style" text="Thoát" />
+   <stylesheets>
+      <URL value="@../../../styles/Main/DkTamTru.css" />
+      <URL value="@../../../styles/Main/NhanKhau.css" />
+      <URL value="@../../../styles/LoginForm.css" />
+   </stylesheets>
 </AnchorPane>

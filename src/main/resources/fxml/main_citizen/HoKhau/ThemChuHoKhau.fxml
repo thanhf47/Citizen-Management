@@ -7,8 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.hoKhau.ThemChuHoKhauController">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="my-background" stylesheets="@../../../styles/Fee/FeeDanhSach.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.hoKhau.ThemChuHoKhauController">
    <children>
       <Text fill="#458149" layoutX="75.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thêm Mới Hộ Khẩu">
          <font>
@@ -21,7 +20,7 @@
             <String fx:value="list-cell" />
          </styleClass>
       </ListView>
-      <TextField fx:id="search_text" layoutX="71.0" layoutY="85.0" prefWidth="241.0" promptText="Tìm kiếm nhân khẩu" AnchorPane.topAnchor="90.0">
+      <TextField fx:id="search_text" layoutX="71.0" layoutY="85.0" prefWidth="241.0" promptText="Tìm kiếm nhân khẩu" styleClass="input_text_field" stylesheets="@../../../styles/LoginForm.css" AnchorPane.topAnchor="90.0">
          <font>
             <Font size="19.0" />
          </font>

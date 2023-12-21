@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -15,16 +16,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.hoKhau.tachHoKhauControler">
-   <Text fill="#8e6666" layoutX="327.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tách Hộ Khẩu">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="my-background" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.hoKhau.TachHoKhauController">
+   <Text layoutX="313.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tách Hộ Khẩu">
       <font>
-         <Font size="32.0" />
+         <Font name="Verdana" size="32.0" />
       </font></Text>
-   <TextField fx:id="maHK_search_textField" layoutX="14.0" layoutY="63.0" promptText="Nhập hộ khẩu cần tách" AnchorPane.leftAnchor="14.0">
-      <font>
-         <Font size="18.0" />
-      </font></TextField>
-   <ListView fx:id="nguoi_in_listView_now" layoutX="8.0" layoutY="143.2" prefHeight="270.0" prefWidth="564.0" stylesheets="@../../../styles/Main/hoKhau/listView.css" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="143.0">
+   <ListView fx:id="old_list" layoutX="8.0" layoutY="143.2" prefHeight="270.0" prefWidth="564.0" stylesheets="@../../../styles/Main/hoKhau/listView.css" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="143.0">
       <styleClass>
          <String fx:value="list-cell" />
          <String fx:value="list-view" />
@@ -33,7 +30,7 @@
       <font>
          <Font size="18.0" />
       </font></Label>
-   <ListView fx:id="nguoi_in_listView_new" layoutX="8.0" layoutY="475.2" prefHeight="270.0" prefWidth="564.0" stylesheets="@../../../styles/Main/hoKhau/listView.css" AnchorPane.topAnchor="475.0">
+   <ListView fx:id="new_list" layoutX="8.0" layoutY="475.2" prefHeight="270.0" prefWidth="564.0" stylesheets="@../../../styles/Main/hoKhau/listView.css" AnchorPane.topAnchor="475.0">
       <styleClass>
          <String fx:value="list-cell" />
          <String fx:value="list-view" />
@@ -42,7 +39,7 @@
       <font>
          <Font size="18.0" />
       </font></Label>
-   <Button layoutX="670.0" layoutY="524.0" mnemonicParsing="false" style="-fx-background-color: #279710;" text="Xác nhận" textFill="#ecebe0" AnchorPane.bottomAnchor="198.0" fx:id="xacNhan_but">
+   <Button layoutX="670.0" layoutY="524.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #279710;" styleClass="button_style" text="Xác nhận" textFill="#ecebe0" AnchorPane.bottomAnchor="198.0" fx:id="xacNhan_but">
       <graphic>
          <FontAwesomeIconView fill="#f7f1f1" glyphName="CHECK" size="20" />
       </graphic>
@@ -52,20 +49,9 @@
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor></Button>
-   <Button fx:id="cancel_but" layoutX="670.0" layoutY="582.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #beba1f;" text="Cancel" textFill="#d9d9d9">
+   <Button fx:id="cancel_but" layoutX="670.0" layoutY="582.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #beba1f;" styleClass="button_style" text="Cancel" textFill="#d9d9d9">
       <graphic>
          <FontAwesomeIconView fill="#efe9e9" glyphName="TIMES" size="20" />
-      </graphic>
-      <font>
-         <Font size="16.0" />
-      </font>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
-   </Button>
-   <Button fx:id="search_but" layoutX="265.0" layoutY="65.0" mnemonicParsing="false" style="-fx-background-color: #3280c4;" text="Search" textFill="#eadddd">
-      <graphic>
-         <FontAwesomeIconView fill="#f4f2f2" glyphName="SEARCH" size="20" />
       </graphic>
       <font>
          <Font size="16.0" />
@@ -78,12 +64,22 @@
       <padding>
          <Insets right="10.0" top="10.0" />
       </padding>
+      <Label text="ID Chủ hộ cũ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="id_chu_cu" style="-fx-background-color: #fff;" styleClass="input_text_field">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
       <Label text="ID Chủ hộ mới">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="id_chu_moi">
+      <TextField fx:id="id_chu_moi" style="-fx-background-color: #fff;" styleClass="input_text_field">
          <font>
             <Font size="16.0" />
          </font>
@@ -93,7 +89,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="dia_chi">
+      <TextField fx:id="dia_chi" style="-fx-background-color: #fff;" styleClass="input_text_field">
          <font>
             <Font size="16.0" />
          </font>
@@ -103,7 +99,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="ghi_chu">
+      <TextField fx:id="ghi_chu" style="-fx-background-color: #fff;" styleClass="input_text_field">
          <font>
             <Font size="16.0" />
          </font>
@@ -129,9 +125,13 @@
          </ImageView>
       </graphic>
    </Button>
-   <TextField fx:id="quan_he_textField" alignment="CENTER" layoutX="265.0" layoutY="428.0" prefHeight="37.0" prefWidth="223.0" promptText="Có quan hệ với chủ hộ">
+   <TextField fx:id="quan_he_textField" alignment="CENTER" layoutX="265.0" layoutY="428.0" prefHeight="37.0" prefWidth="223.0" promptText="Có quan hệ với chủ hộ" style="-fx-background-color: #fff;" styleClass="input_text_field">
       <font>
          <Font size="16.0" />
       </font>
    </TextField>
+   <stylesheets>
+      <URL value="@../../../styles/Fee/FeeDanhSach.css" />
+      <URL value="@../../../styles/LoginForm.css" />
+   </stylesheets>
 </AnchorPane>

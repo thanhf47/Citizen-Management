@@ -5,10 +5,7 @@ import com.example.citizenmanagement.models.MainMenuOptions;
 import com.example.citizenmanagement.models.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.Date;
@@ -18,7 +15,7 @@ public class KhaiTuController implements Initializable {
     public Button thoat_khaitu_btn;
     public TextField ma_nguoi_khai;
     public TextField ma_nguoi_mat;
-    public TextField li_do_mat;
+    public TextArea li_do_mat;
     public DatePicker ngay_mat;
 //    public DatePicker ngay_khai_tu;
     public Button xac_nhan_but;

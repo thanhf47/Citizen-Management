@@ -15,7 +15,7 @@ public class DkTamVangController implements Initializable {
 
 
     @FXML
-    private TextField li_do;
+    private TextArea li_do;
 
     @FXML
     private TextField ma_nhan_khau;

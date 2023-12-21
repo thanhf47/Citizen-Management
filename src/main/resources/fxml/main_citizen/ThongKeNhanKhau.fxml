@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
@@ -9,8 +10,9 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="maunen" stylesheets="@../../styles/Main/TrangChu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.ThongKeNhanKhauController">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="maunen" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.ThongKeNhanKhauController">
    <children>
       <TableView fx:id="table_gioitinh" layoutX="563.0" layoutY="40.0" prefHeight="94.0" prefWidth="182.0" AnchorPane.topAnchor="40.0">
         <columns>
@@ -33,10 +35,17 @@
           <TableColumn fx:id="soluongnhomtuoi" prefWidth="106.39996337890625" text="Số Lượng" />
         </columns>
       </TableView>
-      <Button fx:id="quaylai" layoutX="14.0" layoutY="710.0" mnemonicParsing="false" styleClass="button_quaylai" text="Thoát">
+      <Button fx:id="quaylai" layoutX="25.0" layoutY="678.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #208f1a;" styleClass="button_style" text="Thoát">
          <graphic>
             <FontAwesomeIconView glyphName="ARROW_LEFT" size="15" />
          </graphic>
+         <font>
+            <Font size="14.0" />
+         </font>
       </Button>
    </children>
+   <stylesheets>
+      <URL value="@../../styles/Main/TrangChu.css" />
+      <URL value="@../../styles/LoginForm.css" />
+   </stylesheets>
 </AnchorPane>
