@@ -13,12 +13,12 @@
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="my-background" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.KhaiTuController">
    <VBox layoutX="179.0" layoutY="109.0" prefHeight="509.0" prefWidth="520.0" styleClass="vbx">
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu người khai ">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu người khai(*)">
          <font>
             <Font name="Verdana" size="16.0" />
          </font></Text>
       <TextField fx:id="ma_nguoi_khai" prefHeight="34.0" prefWidth="457.0" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu người mất">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu người mất(*)">
          <font>
             <Font name="Verdana" size="16.0" />
          </font></Text>
@@ -28,7 +28,7 @@
             <Font name="Verdana" size="16.0" />
          </font></Text>
       <TextArea fx:id="li_do_mat" prefHeight="120.0" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày mất">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày mất(*)">
          <font>
             <Font name="Verdana" size="16.0" />
          </font>

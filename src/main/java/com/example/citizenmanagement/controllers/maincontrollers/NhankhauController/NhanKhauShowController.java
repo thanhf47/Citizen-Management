@@ -6,6 +6,7 @@ import com.example.citizenmanagement.models.Model;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
@@ -14,6 +15,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class NhanKhauShowController implements Initializable {
@@ -38,6 +40,9 @@ public class NhanKhauShowController implements Initializable {
     public DatePicker ngay_sinh_lbl;
     public Button tam_vang_btn;
     public Button chinh_sua_btn;
+    @FXML
+    private Button xoa_btn;
+    private Alert alert;
 
     private List_nhan_khau list ;
 int bit;
@@ -59,12 +64,21 @@ int bit;
         ghi_chu_text.setDisable(true);
         ngay_tao_date.setDisable(true);
 
+        if (!Model.getInstance().getDatabaseConnection().checkKhaiTu(
+                Model.getNhanKhauDuocChon().getSo_nhan_khau())) khai_tu_btn.setDisable(true);
+        else khai_tu_btn.setDisable(false);
+
+        if (!Model.getInstance().getDatabaseConnection().checkTamVang(Model.getNhanKhauDuocChon().getSo_nhan_khau()))
+            tam_vang_btn.setDisable(true);
+        else tam_vang_btn.setDisable(false);
+
+
     my_choise_box.setItems(FXCollections.observableArrayList(Gioitinh));
        chitiet();
       khai_tu_btn.setOnAction(actionEvent -> {
           if(ghi_chu_text.getText() != null &&ghi_chu_text.getText().equals("khai tử"))
           {
-              Alert alert = new Alert(Alert.AlertType.ERROR);
+              alert = new Alert(Alert.AlertType.ERROR);
               alert.setTitle("Lỗi");
               alert.setHeaderText("Người này đã chết");
               alert.setContentText("Xin bệ hạ hãy nghĩ thông suốt trước khi ấn nút !");
@@ -88,7 +102,7 @@ int bit;
                 dan_toc_text.getText(),ton_giao_text.getText(),quoc_tich_text.getText(),
                 thuong_tru_text.getText(),nghe_text.getText(),ghi_chu_text.getText(),
                 Model.getNhanKhauDuocChon().getSo_nhan_khau());
-          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+          alert = new Alert(Alert.AlertType.INFORMATION);
           alert.setTitle("Thành công");
           alert.setHeaderText("Thành công");
           alert.setContentText("Bạn đã chỉnh sửa thành công!");
@@ -99,7 +113,7 @@ int bit;
       tam_vang_btn.setOnAction(event -> {
           if(ghi_chu_text.getText() != null &&ghi_chu_text.getText().equals("khai tử"))
           {
-              Alert alert = new Alert(Alert.AlertType.ERROR);
+              alert = new Alert(Alert.AlertType.ERROR);
               alert.setTitle("Lỗi");
               alert.setHeaderText("Người này đã chết");
               alert.setContentText("Xin bệ hạ hãy nghĩ thông suốt trước khi ấn nút !");
@@ -178,6 +192,33 @@ int bit;
             e.printStackTrace();
         }
 
+    }
+
+    @FXML
+    private void onXoaBtn() {
+        alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Bạn chắc chắn muốn xóa?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            int thanhCong = Model.getInstance().getDatabaseConnection().xoaNhanKhau(Model.getNhanKhauDuocChon().getSo_nhan_khau());
+            if (thanhCong == 1) {
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("Bạn đã xóa thành công!");
+                alert.showAndWait();
+                Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.NHAN_KHAU);
+            }
+            else if (thanhCong == 0) {
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText(null);
+                alert.setContentText("Không thể xóa vì người này là một chủ hộ.");
+                alert.showAndWait();
+            }
+        }
     }
 
 }

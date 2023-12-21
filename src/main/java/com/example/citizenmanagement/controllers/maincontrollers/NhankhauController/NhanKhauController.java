@@ -28,8 +28,6 @@ public class NhanKhauController implements Initializable {
     @FXML
     public TextField tim_kiem_text;
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

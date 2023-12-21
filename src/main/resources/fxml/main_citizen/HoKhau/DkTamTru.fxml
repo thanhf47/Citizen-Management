@@ -20,27 +20,27 @@
    <VBox layoutX="51.0" layoutY="126.0" prefHeight="513.0" prefWidth="350.0" styleClass="vbx">
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số CCCD" />
       <TextField fx:id="CCCD_text" prefHeight="32.0" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên(*)" />
       <TextField fx:id="hoten_text" prefHeight="32.0" />
       <HBox prefHeight="32.0" prefWidth="292.0" styleClass="hbx">
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính:    " />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính(*)    " />
          <ChoiceBox fx:id="gioitinh_text" prefHeight="32.0" prefWidth="150.0" />
       </HBox>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Năm Sinh" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh(*)" />
       <DatePicker fx:id="ngay_sinh_lbl" prefHeight="32.0" prefWidth="315.0" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi Sinh" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi Sinh(*)" />
       <TextField fx:id="noi_sinh_text" prefHeight="32.0" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên Quán" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên Quán(*)" />
       <TextField fx:id="nguyen_quan_text" prefHeight="32.0" />
    </VBox>
    <VBox layoutX="457.0" layoutY="121.0" prefHeight="524.0" prefWidth="350.0" styleClass="vbx">
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thường trú" wrappingWidth="90.63720703125" />
       <TextField fx:id="thuong_tru_text" prefHeight="32.0" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dân tộc" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dân tộc(*)" />
       <TextField fx:id="dantoc_text" prefHeight="32.0" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tôn giáo" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tôn giáo(*)" />
       <TextField fx:id="tongiao_text" prefHeight="32.0" />
-      <Label text="Quốc tịch" />
+      <Label text="Quốc tịch(*)" />
       <TextField fx:id="quoctich_text" prefHeight="32.0" prefWidth="292.0" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nghề nghiệp" />
       <TextField fx:id="nghenghiep_text" prefHeight="32.0" prefWidth="397.0" />

@@ -3,7 +3,6 @@ CREATE DATABASE QUANLYDANCU;
 ----------------------------
 --B2:
 USE QuanLyDanCu
-GO
 
 --B3:
 ---------------------------------------------------------------------------------------------
@@ -34,7 +33,6 @@ CREATE TABLE NHANKHAU(
 
 	PRIMARY KEY (MANHANKHAU)
 );
-
 ---------------------------------------------------------------------------------------------
 
 CREATE TABLE HOKHAU(
@@ -111,7 +109,6 @@ CREATE TABLE TAMVANG(
 );
 
 -----------------------------------------------------------------------------------------------
-
 CREATE TABLE KHAITU(
 	MAGIAYKHAITU INT IDENTITY(1, 1),
 	MANHANKHAUNGUOIKHAI INT NOT NULL,
@@ -124,10 +121,23 @@ CREATE TABLE KHAITU(
 	FOREIGN KEY(MANHANKHAUNGUOIKHAI) REFERENCES NHANKHAU(MANHANKHAU),
 	FOREIGN KEY(MANHANKHAUNGUOICHET) REFERENCES NHANKHAU(MANHANKHAU)
 );
-
-
 ----------------------------------------------------------------------------------------------
 
+CREATE PROC DELETE_NHANKHAU
+@MANHANKHAU INT, @OUTPUT INT OUTPUT
+AS
+BEGIN
+	IF (@MANHANKHAU NOT IN (SELECT IDCHUHO FROM HOKHAU))
+	BEGIN 
+		DELETE FROM TAMTRU WHERE MANHANKHAU = @MANHANKHAU 
+		DELETE FROM TAMVANG WHERE MANHANKHAU = @MANHANKHAU 
+		DELETE FROM KHAITU WHERE MANHANKHAUNGUOICHET = @MANHANKHAU
+		DELETE FROM THANHVIENCUAHO WHERE MANHANKHAU = @MANHANKHAU 
+		DELETE FROM NHANKHAU WHERE MANHANKHAU = @MANHANKHAU
+		SELECT @OUTPUT = 1
+	END
+	ELSE SELECT @OUTPUT = 0;
+END
 --------------------------------------------------------------------------------------
 
 INSERT INTO Nguoiquanly (HOTEN, TENDANGNHAP, MATKHAU, SODIENTHOAI, VAITRO)

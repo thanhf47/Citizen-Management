@@ -11,23 +11,23 @@
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.NhankhauController.TamTruShowController">
     <AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="my-background">
-        <Text layoutX="40.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên " AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="190.0">
+        <Text layoutX="40.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên(*)" AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="190.0">
          <font>
             <Font name="Verdana Italic" size="14.0" />
          </font></Text>
-        <Text layoutX="430.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="250.0">
+        <Text layoutX="430.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính(*)" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="250.0">
          <font>
             <Font name="Verdana Italic" size="14.0" />
          </font></Text>
-        <Text layoutX="40.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh" AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="250.0">
+        <Text layoutX="40.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh(*)" AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="250.0">
          <font>
             <Font name="Verdana Italic" size="14.0" />
          </font></Text>
-        <Text layoutX="42.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tôn giáo " AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="310.0">
+        <Text layoutX="42.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tôn giáo(*)" AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="310.0">
          <font>
             <Font name="Verdana Italic" size="14.0" />
          </font></Text>
-        <Text layoutX="429.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dân tộc" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="310.0">
+        <Text layoutX="429.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dân tộc(*)" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="310.0">
          <font>
             <Font name="Verdana Italic" size="14.0" />
          </font></Text>
@@ -35,7 +35,7 @@
          <font>
             <Font name="Verdana Italic" size="14.0" />
          </font></Text>
-        <Text layoutX="423.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quốc tịch" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="370.0">
+        <Text layoutX="381.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quốc tịch(*)" AnchorPane.rightAnchor="381.68125" AnchorPane.topAnchor="370.0">
          <font>
             <Font name="Verdana Italic" size="14.0" />
          </font></Text>
@@ -43,7 +43,7 @@
         <TextField fx:id="nghe_text" layoutX="159.0" layoutY="371.0" prefHeight="32.0" prefWidth="200.0" styleClass="text_fld" AnchorPane.leftAnchor="175.0" AnchorPane.topAnchor="370.0" />
         <TextField fx:id="quoc_tich_text" layoutX="521.0" layoutY="371.0" prefHeight="32.0" prefWidth="200.0" styleClass="text_fld" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="370.0" />
         <ChoiceBox fx:id="my_choise_box" layoutX="475.0" layoutY="250.0" prefHeight="32.0" prefWidth="200.0" styleClass="text_fld" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="250.0" />
-        <Text layoutX="38.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên quán " AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="430.0">
+        <Text layoutX="38.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên quán(*)" AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="430.0">
          <font>
             <Font name="Verdana Italic" size="14.0" />
          </font></Text>
@@ -67,10 +67,6 @@
             <Font name="Verdana Italic" size="14.0" />
          </font></Text>
         <TextField fx:id="ho_ten_text" layoutX="203.0" layoutY="172.0" prefHeight="33.0" prefWidth="500.0" styleClass="text_fld" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="190.0" />
-        <Text layoutX="44.0" layoutY="582.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi sinh" AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="610.0">
-         <font>
-            <Font name="Verdana Italic" size="14.0" />
-         </font></Text>
         <Text layoutX="277.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chỉnh Sửa Tạm Trú">
             <font>
                 <Font size="27.0" />
@@ -78,13 +74,18 @@
         </Text>
         <TextField fx:id="noi_sinh_text" layoutX="200.0" layoutY="562.0" prefHeight="32.0" prefWidth="500.0" styleClass="text_fld" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="550.0" />
         <Button fx:id="khai_tu_btn" layoutX="365.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #c41606;" styleClass="button_style" text="Xóa" />
-        <Text layoutX="52.0" layoutY="644.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo " AnchorPane.rightAnchor="700.0" AnchorPane.topAnchor="550.0">
+        <Text layoutX="77.0" layoutY="631.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày tạo " AnchorPane.rightAnchor="705.2798828125" AnchorPane.topAnchor="616.9248046875">
          <font>
             <Font name="Verdana Italic" size="14.0" />
          </font></Text>
         <DatePicker fx:id="ngay_tao_date" layoutX="156.0" layoutY="623.0" prefHeight="32.0" prefWidth="200.0" AnchorPane.leftAnchor="175.0" AnchorPane.topAnchor="610.0" />
         <DatePicker fx:id="ngay_sinh_lbl" layoutX="156.0" layoutY="232.0" prefHeight="32.0" prefWidth="200.0" AnchorPane.leftAnchor="175.0" AnchorPane.topAnchor="250.0" />
       <Button fx:id="chinh_sua_btn" layoutX="562.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #1a5e03;" styleClass="button_style" text="Chỉnh sửa" />
+      <Text layoutX="58.0" layoutY="571.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi sinh(*)">
+         <font>
+            <Font name="Verdana Italic" size="14.0" />
+         </font>
+      </Text>
       <stylesheets>
          <URL value="@../../../styles/Main/ThemNguoiMoi.css" />
          <URL value="@../../../styles/Fee/FeeDanhSach.css" />

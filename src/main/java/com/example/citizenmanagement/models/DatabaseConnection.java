@@ -938,6 +938,47 @@ public class DatabaseConnection {
             System.out.println("deo xoa duoc");
         }
     }
+
+    public int xoaNhanKhau(String soNhanKhau) {
+        String query = "DECLARE @OUTPUT INT\n" +
+                "EXEC DELETE_NHANKHAU " + soNhanKhau + ", @OUTPUT OUTPUT\n" +
+                "SELECT @OUTPUT";
+        Statement statement;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            resultSet.next();
+            return resultSet.getInt(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean checkKhaiTu(String maNhanKhau) {
+        String query = "SELECT COUNT(MAGIAYKHAITU) FROM KHAITU WHERE MANHANKHAUNGUOICHET = " + maNhanKhau;
+        ResultSet resultSet = executeQuery(query);
+        try {
+            resultSet.next();
+            if (resultSet.getInt(1) == 0) return true; // chua chet
+            else return false; // da chet
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean checkTamVang(String maNhanKhau) {
+        String query = "SELECT COUNT(MAGIAYTAMVANG) FROM TAMVANG WHERE MANHANKHAU = " + maNhanKhau;
+        ResultSet resultSet = executeQuery(query);
+        try {
+            resultSet.next();
+            if (resultSet.getInt(1) == 0) return true;
+            else return false;// da chet
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }
 
 

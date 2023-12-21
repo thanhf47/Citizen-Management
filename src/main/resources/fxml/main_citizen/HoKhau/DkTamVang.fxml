@@ -17,13 +17,25 @@
          <Font name="Verdana Bold" size="32.0" />
       </font></Label>
     <VBox layoutX="199.0" layoutY="120.0" prefHeight="510.0" prefWidth="450.0" styleClass="vbx">
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã nhân khẩu(*)">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
         <TextField fx:id="ma_nhan_khau" prefHeight="32.0" prefWidth="292.0" style="-fx-background-color: #fff;" styleClass="input_text_field" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi tạm trú" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi tạm trú(*)">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
       <TextField fx:id="noi_tam_tru" prefHeight="32.0" style="-fx-background-color: #fff;" styleClass="input_text_field" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lý do " />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lý do ">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
       <TextArea fx:id="li_do" prefHeight="100.0" style="-fx-background-color: #fff;" styleClass="input_text_field" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian tạm vắng: " />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian tạm vắng(*)">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
         <Label text="Ngày bắt đầu tạm vắng  ">
          <font>
             <Font size="14.0" />
