@@ -67,7 +67,8 @@ public class ThemThanhVienHoKhauController implements Initializable {
                 try {
                     if (resultSet.isBeforeFirst()){
                         while (resultSet.next()) {
-                            if(!resultSet.getString(1).equals(chuHo.getSo_nhan_khau())) {
+                            boolean chuaChet = Model.getInstance().getDatabaseConnection().checkKhaiTu(resultSet.getString(1));
+                            if(!resultSet.getString(1).equals(chuHo.getSo_nhan_khau()) && chuaChet) {
                                 String ma_nhan_khau = resultSet.getString(1);
                                 String cccd = resultSet.getString(2);
                                 String hoten = resultSet.getNString(3);
@@ -203,7 +204,8 @@ public class ThemThanhVienHoKhauController implements Initializable {
         try {
             if(resultSet.isBeforeFirst()){
                 while (resultSet.next()) {
-                    if(!chuHo.getSo_nhan_khau().equals(resultSet.getString(1))) {
+                    boolean chuaChet = Model.getInstance().getDatabaseConnection().checkKhaiTu(resultSet.getString(1));
+                    if(!chuHo.getSo_nhan_khau().equals(resultSet.getString(1)) && chuaChet) {
                         String ma_nhan_khau = resultSet.getString(1);
                         String cccd = resultSet.getString(2);
                         String hoten = resultSet.getNString(3);

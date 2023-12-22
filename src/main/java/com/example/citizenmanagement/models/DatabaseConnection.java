@@ -972,8 +972,8 @@ public class DatabaseConnection {
         ResultSet resultSet = executeQuery(query);
         try {
             resultSet.next();
-            if (resultSet.getInt(1) == 0) return true;
-            else return false;// da chet
+            if (resultSet.getInt(1) == 0) return true; // chua di tam vang
+            else return false;// da da di tam vang
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

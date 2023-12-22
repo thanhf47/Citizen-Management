@@ -66,13 +66,22 @@ public class TachHoKhauController implements Initializable {
             if (!quan_he_textField.getText().isEmpty()) {
                 thanhVien = old_list.getSelectionModel().getSelectedItem();
                 if (thanhVien != null) {
-                    thanhVien.setQuan_he(quan_he_textField.getText());
-                    old_list.getItems().remove(thanhVien);
-                    new_list.getItems().add(thanhVien);
+                    boolean chuaChet = Model.getInstance().getDatabaseConnection().checkKhaiTu(thanhVien.getmaNhanKhau());
+                    if(chuaChet) {
+                        thanhVien.setQuan_he(quan_he_textField.getText());
+                        old_list.getItems().remove(thanhVien);
+                        new_list.getItems().add(thanhVien);
 
-                    thanhVien = null;
-                    quan_he_textField.setText("");
-
+                        thanhVien = null;
+                        quan_he_textField.setText("");
+                    }
+                    else {
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setContentText("Người em chọn chết rồi, chọn thằng khác đi.");
+                        alert.setTitle("Cảnh báo");
+                        alert.setHeaderText(null);
+                        alert.showAndWait();
+                    }
                 }
                 else {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
