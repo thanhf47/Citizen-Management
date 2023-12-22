@@ -75,8 +75,7 @@ public class FeeThemHoKhauController implements Initializable {
 
                 if (item.getSelected())
                     Model.getInstance().getDatabaseConnection().themDanhSachThuPhi(
-                            item.getMaHoKhau(), maKhoanThu,
-                            item.getSoTien(), 0);
+                            item.getMaHoKhau(), maKhoanThu, 0);
             }
 
             toanBoDanhSach.clear();

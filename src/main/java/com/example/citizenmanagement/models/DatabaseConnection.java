@@ -722,8 +722,8 @@ public class DatabaseConnection {
         }
         return maKhoanThu;
     }
-    public void themDanhSachThuPhi(int maHoKhau, int maKhoanThu, long soTienCanDong, int trangThai) {
-        String query = "EXEC INSERT_DONGGOP " + maHoKhau + ", " + maKhoanThu + ", " + soTienCanDong + ", " + trangThai;
+    public void themDanhSachThuPhi(int maHoKhau, int maKhoanThu, int trangThai) {
+        String query = "EXEC INSERT_DONGGOP " + maHoKhau + ", " + maKhoanThu + ", " + trangThai;
         executeUpdate(query);
     }
 
@@ -845,7 +845,7 @@ public class DatabaseConnection {
         String query = "select MAHOKHAU, TENCHUHO, DIACHI, SOTHANHVIEN, SOTIENCANDONG\n" +
                 "from DONGGOP\n" +
                 "WHERE MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 0\n" +
-                "\tAND MAHOKHAU LIKE '%" + condition + "%' OR TENCHUHO LIKE '%" + condition + "%' OR DIACHI LIKE '%" + condition + "%'";
+                "\tAND MAHOKHAU LIKE '%" + condition + "%' OR TENCHUHO LIKE N'%" + condition + "%' OR DIACHI LIKE N'%" + condition + "%'";
         return executeQuery(query);
     }
 
@@ -875,7 +875,7 @@ public class DatabaseConnection {
         String query = "select MAHOKHAU, TENCHUHO, DIACHI, SOTHANHVIEN, SOTIENDADONG\n" +
                 "from DONGGOP\n" +
                 "WHERE MAKHOANTHU = " + maKhoanThu + " AND TRANGTHAI = 1\n" +
-                "\tAND MAHOKHAU LIKE '%" + condition + "%' OR TENCHUHO LIKE '%" + condition + "%' OR DIACHI LIKE '%" + condition + "%'";
+                "\tAND MAHOKHAU LIKE '%" + condition + "%' OR TENCHUHO LIKE N'%" + condition + "%' OR DIACHI LIKE N'%" + condition + "%'";
         return executeQuery(query);
     }
 
@@ -896,7 +896,7 @@ public class DatabaseConnection {
     public ResultSet deadNhanKhau_timkiem(String condition) {
         String query = "select MANHANKHAU, SOCANCUOC, HOTEN, GIOITINH, NGAYSINH, NOITHUONGTRU\n" +
                 "from NHANKHAU INNER JOIN KHAITU ON NHANKHAU.MANHANKHAU = KHAITU.MANHANKHAUNGUOICHET\n" +
-                "WHERE MANHANKHAU LIKE '%" + condition + "%' OR SOCANCUOC LIKE '%" + condition + "%' OR HOTEN LIKE '%" + condition + "%'";
+                "WHERE MANHANKHAU LIKE '%" + condition + "%' OR SOCANCUOC LIKE '%" + condition + "%' OR HOTEN LIKE N'%" + condition + "%'";
 
         return executeQuery(query);
     }
