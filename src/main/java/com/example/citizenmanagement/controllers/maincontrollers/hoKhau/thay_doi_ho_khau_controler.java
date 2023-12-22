@@ -32,6 +32,7 @@ public class thay_doi_ho_khau_controler implements Initializable {
     private List_nhan_khau nhan_khau_dc_chon=null;
     private List<thanh_vien_cua_ho_cell> thanh_vien_cua_ho_dc_chon = new ArrayList<>();
     private MainHoKhauCell tam;
+    //dung de backup lai
     ObservableList<thanh_vien_cua_ho_cell> danh_sach_thanh_vien_ban_dau = FXCollections.observableArrayList();
 
     @Override
@@ -41,7 +42,7 @@ public class thay_doi_ho_khau_controler implements Initializable {
         tam= Model.getHoKhauDuocChon();
         cap_nhat_list_view_nhan_khau();
         cap_nhat_list_view_thanh_vien();
-//        cap_nhat_danh_sach_ban_dau();
+        cap_nhat_danh_sach_ban_dau();
         String ma_chu_ho=Model.getInstance().getDatabaseConnection().lay_chu_ho(tam.getId().get());
         thay_doi_ma_chu_ho_textFiled.setText(ma_chu_ho);
         thay_doi_dia_chi_textField.setText(String.valueOf(tam.getAddress().get()));
@@ -155,18 +156,15 @@ public class thay_doi_ho_khau_controler implements Initializable {
 
             if(resutl.get() == ButtonType.OK) {
                 ObservableList<thanh_vien_cua_ho_cell> danh_sach_thanh_vien_cua_ho_hien_tai = listView_thanh_vien.getItems();
-                for (int i = 0; i < danh_sach_thanh_vien_ban_dau.size(); i++) {
-                    thanh_vien_cua_ho_cell tam1 = danh_sach_thanh_vien_ban_dau.get(i);
-                    if (!kiem_tra(danh_sach_thanh_vien_cua_ho_hien_tai, tam1)) {
-                        Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(tam1.getmaNhanKhau(), String.valueOf(tam.getId().get()), tam1.getQuan_he());
-                    }
-                }
 
                 for (int i = 0; i < danh_sach_thanh_vien_cua_ho_hien_tai.size(); i++) {
                     thanh_vien_cua_ho_cell tam1 = danh_sach_thanh_vien_cua_ho_hien_tai.get(i);
-                    if (!kiem_tra(danh_sach_thanh_vien_ban_dau, tam1)) {
                         Model.getInstance().getDatabaseConnection().xoa_thanh_vien_cua_ho(tam1.getmaNhanKhau());
-                    }
+                }
+
+                for (int i = 0; i < danh_sach_thanh_vien_ban_dau.size(); i++) {
+                    thanh_vien_cua_ho_cell tam1 = danh_sach_thanh_vien_ban_dau.get(i);
+                    Model.getInstance().getDatabaseConnection().add_thanh_vien_cua_ho(tam1.getmaNhanKhau(), String.valueOf(tam.getId().get()), tam1.getQuan_he());
                 }
                 Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.XEM_CHI_TIET_HO_KHAU);
             }
@@ -333,47 +331,45 @@ public class thay_doi_ho_khau_controler implements Initializable {
     }
 
 
-    public Boolean kiem_tra(ObservableList<thanh_vien_cua_ho_cell> danh_sach, thanh_vien_cua_ho_cell doi_tuong){
-        for(int i=0;i<danh_sach.size();i++){
-            thanh_vien_cua_ho_cell tam = danh_sach.get(i);
-            if(tam.getmaNhanKhau().equals(doi_tuong.getmaNhanKhau()))
-                return true;
-        }
-        return false;
-    }
-
-
-
-//    public void cap_nhat_danh_sach_ban_dau(){
-//        String gioi_tinh;
-//        try {
-//            ResultSet resultSet = Model.getInstance().getDatabaseConnection().lay_cac_thanh_vien(String.valueOf(tam.getId().get()));
-//            try {
-//                if(resultSet.isBeforeFirst()){
-//                    while (resultSet.next()){
-//                        ResultSet resultSet1 = Model.getInstance().getDatabaseConnection().lay_nhan_khau(resultSet.getString(1));
-//                        if(resultSet1.isBeforeFirst()){
-//                            resultSet1.next();
-//                            String cccd = resultSet1.getString(1);
-//                            String hoTen = resultSet1.getString(2);
-//                            String quanHe = resultSet.getString(3);
-//                            String ngaySinh = resultSet1.getString(4);
-//                            int gioiTinh = resultSet1.getInt(3);
-//                            if(gioiTinh==1)
-//                                gioi_tinh="Nam";
-//                            else
-//                                gioi_tinh="Nu";
-//                            danh_sach_thanh_vien_ban_dau.add(new thanh_vien_cua_ho_cell(resultSet.getString(1),cccd, hoTen, quanHe,ngaySinh,gioi_tinh));
-//                        }
-//                    }
-//                }
-//            } catch (Exception e) {
-//                System.out.println("loi o xem chi tiet lay_nhan_khau");
-//                e.printStackTrace();
-//            }
-//        }catch (Exception e){
-//            System.out.println("loi o xem chi tiet lay_cac_thanh_vien");
-//            e.printStackTrace();
+//    public Boolean kiem_tra(ObservableList<thanh_vien_cua_ho_cell> danh_sach, thanh_vien_cua_ho_cell doi_tuong){
+//        for(int i=0;i<danh_sach.size();i++){
+//            thanh_vien_cua_ho_cell tam = danh_sach.get(i);
+//            if(tam.getmaNhanKhau().equals(doi_tuong.getmaNhanKhau()))
+//                return true;
 //        }
+//        return false;
 //    }
+
+    public void cap_nhat_danh_sach_ban_dau(){
+        String gioi_tinh;
+        try {
+            ResultSet resultSet = Model.getInstance().getDatabaseConnection().lay_cac_thanh_vien(String.valueOf(tam.getId().get()));
+            try {
+                if(resultSet.isBeforeFirst()){
+                    while (resultSet.next()){
+                        ResultSet resultSet1 = Model.getInstance().getDatabaseConnection().lay_nhan_khau(resultSet.getString(1));
+                        if(resultSet1.isBeforeFirst()){
+                            resultSet1.next();
+                            String cccd = resultSet1.getString(1);
+                            String hoTen = resultSet1.getString(2);
+                            String quanHe = resultSet.getString(3);
+                            String ngaySinh = resultSet1.getString(4);
+                            int gioiTinh = resultSet1.getInt(3);
+                            if(gioiTinh==1)
+                                gioi_tinh="Nam";
+                            else
+                                gioi_tinh="Nu";
+                            danh_sach_thanh_vien_ban_dau.add(new thanh_vien_cua_ho_cell(resultSet.getString(1),cccd, hoTen, quanHe,ngaySinh,gioi_tinh));
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("loi o xem chi tiet lay_nhan_khau");
+                e.printStackTrace();
+            }
+        }catch (Exception e){
+            System.out.println("loi o xem chi tiet lay_cac_thanh_vien");
+            e.printStackTrace();
+        }
+    }
 }

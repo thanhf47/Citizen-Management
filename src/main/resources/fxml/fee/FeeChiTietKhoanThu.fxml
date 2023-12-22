@@ -124,7 +124,7 @@
          </font></Button>
    </children>
    <stylesheets>
-      <URL value="@../../styles/Fee/FeeChiTiet.css" />
       <URL value="@../../styles/LoginForm.css" />
+      <URL value="@../../styles/Fee/FeeChiTiet.css" />
    </stylesheets>
 </AnchorPane>
