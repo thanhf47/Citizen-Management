@@ -281,7 +281,7 @@ public class DatabaseConnection {
             pre.setString(2, maNguoiMat);
             pre.setDate(3, Date.valueOf(LocalDate.now()));
             pre.setDate(4, ngayMat);
-            pre.setString(5, liDo);
+            pre.setNString(5, liDo);
             thanhcong = pre.executeUpdate();
         } catch (Exception e) {
             System.out.println("Lỗi khai tử");
@@ -415,15 +415,12 @@ public class DatabaseConnection {
 
     public ResultSet nhanKhau_timkiem(String string) {
         ResultSet resultSet = null;
-        String querry = " select MANHANKHAU, SOCANCUOC, HOTEN, GIOITINH, NGAYSINH, NOITHUONGTRU from NHANKHAU where MANHANKHAU like ? or SOCANCUOC like ? or HOTEN like ? or GIOITINH like ? or NGAYSINH like ? or NOITHUONGTRU like ?;";
+        String querry = " select MANHANKHAU, SOCANCUOC, HOTEN, GIOITINH, NGAYSINH, NOITHUONGTRU from NHANKHAU where MANHANKHAU like ? or SOCANCUOC like ? or HOTEN like ?";
         try {
             PreparedStatement preparedstatement = connection.prepareStatement(querry);
             preparedstatement.setString(1, "%" + string + "%");
             preparedstatement.setString(2, "%" + string + "%");
-            preparedstatement.setString(3, "%" + string + "%");
-            preparedstatement.setString(4, "%" + string + "%");
-            preparedstatement.setString(5, "%" + string + "%");
-            preparedstatement.setString(6, "%" + string + "%");
+            preparedstatement.setNString(3, "%" + string + "%");
             resultSet = preparedstatement.executeQuery();
         }
         catch(Exception e) {
@@ -466,19 +463,12 @@ public class DatabaseConnection {
                 PreparedStatement statement = connection.prepareStatement(query);
 
                 statement.setString(1, ma_ch);
-                statement.setString(2, diachi);
-//                LocalDate currentDate = LocalDate.now();
-//
-//                // Định dạng ngày tháng
-//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//
-//                // Chuyển đổi thành chuỗi
-//                String formattedDate = currentDate.format(formatter);
+                statement.setNString(2, diachi);
                 statement.setString(3,LocalDate.now().toString());
                 if(ghichu.isEmpty())
-                    statement.setString(4,null);
+                    statement.setNString(4,null);
                 else
-                    statement.setString(4, ghichu);
+                    statement.setNString(4, ghichu);
 
                 statement.executeUpdate();
                 return 1;
@@ -502,8 +492,8 @@ public class DatabaseConnection {
         try{
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, "%" + dieukien + "%");
-            statement.setString(2, "%" + dieukien + "%");
-            statement.setString(3, "%" + dieukien + "%");
+            statement.setNString(2, "%" + dieukien + "%");
+            statement.setNString(3, "%" + dieukien + "%");
             resultSet = statement.executeQuery();
         }catch (Exception e){
             throw new RuntimeException(e);
@@ -525,11 +515,11 @@ public class DatabaseConnection {
             String capnhat = "update HOKHAU set IDCHUHO=?, DIACHI=?, GHICHU=?, tenchuho=? where MAHOKHAU=?";
             PreparedStatement preparedStatement = connection.prepareStatement(capnhat);
             preparedStatement.setString(1,maChuHo);
-            preparedStatement.setString(2,diaChi);
+            preparedStatement.setNString(2,diaChi);
             if(ghiChu.isEmpty())
-                preparedStatement.setString(3,null);
+                preparedStatement.setNString(3,null);
             else
-                preparedStatement.setString(3, ghiChu);
+                preparedStatement.setNString(3, ghiChu);
             preparedStatement.setString(5,idHoKhau);
 
 
@@ -648,7 +638,7 @@ public class DatabaseConnection {
             PreparedStatement preparedstatement = connection.prepareStatement(querry);
             preparedstatement.setString(1, "%" + string + "%");
             preparedstatement.setString(2, "%" + string + "%");
-            preparedstatement.setString(3, "%" + string + "%");
+            preparedstatement.setNString(3, "%" + string + "%");
             resultSet = preparedstatement.executeQuery();
         }
         catch(Exception e) {
