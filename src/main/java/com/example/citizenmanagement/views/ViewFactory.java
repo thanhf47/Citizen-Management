@@ -197,13 +197,11 @@ public class ViewFactory {
     }
 
     public AnchorPane getFeeTrangChuView() {
-        if (feeTrangChuView == null) {
             try {
                 feeTrangChuView = new FXMLLoader(getClass().getResource("/fxml/fee/FeeTrangChu.fxml")).load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
         return feeTrangChuView;
     }
     public AnchorPane getFeeDanhSachView() {

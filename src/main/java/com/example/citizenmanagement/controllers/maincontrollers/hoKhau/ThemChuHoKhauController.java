@@ -85,6 +85,8 @@ public class ThemChuHoKhauController implements Initializable {
             if(resultSet.isBeforeFirst()){
                 while (resultSet.next()) {
                     String ma_nhan_khau=resultSet.getString(1);
+                    boolean chuaChet = Model.getInstance().getDatabaseConnection().checkKhaiTu(ma_nhan_khau);
+                    if(!chuaChet) continue;
                     String id = resultSet.getString(2);
                     String hoten = resultSet.getNString(3);
                     String gioitinh = resultSet.getString(4);
