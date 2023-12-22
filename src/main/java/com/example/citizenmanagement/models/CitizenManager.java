@@ -7,12 +7,12 @@ public class CitizenManager {
     private String soDienThoai;
     private int vaiTro;
 
-    public CitizenManager(String hoTen, String tenDangNhap, String matKhau, String soDienThoai, int vaiTro) {
-        this.hoTen = hoTen;
-        this.tenDangNhap = tenDangNhap;
-        this.soDienThoai = soDienThoai;
-        this.matKhau = matKhau;
-        this.vaiTro = vaiTro;
+    public CitizenManager() {
+        this.hoTen = "";
+        this.tenDangNhap = "";
+        this.soDienThoai = "";
+        this.matKhau = "";
+        this.vaiTro = -1;
     }
 
     public void setHoTen(String hoTen) {this.hoTen = hoTen;}
@@ -40,14 +40,15 @@ public class CitizenManager {
         return tenDangNhap;
     }
 
-    public String getMatKhau() {
-        return matKhau;
-    }
+    public String getSoDienThoai_hide() {
+        StringBuilder tmp = new StringBuilder();
+        for (int i = 0; i < 7; i++) {
+            tmp.append('*');
+        }
+        tmp.append(this.soDienThoai.substring(7));
 
-    public String getSoDienThoai() {
-        return soDienThoai;
+        return tmp.toString();
     }
-
     public int getVaiTro() {
         return vaiTro;
     }

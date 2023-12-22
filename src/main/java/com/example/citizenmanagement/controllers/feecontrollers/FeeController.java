@@ -14,9 +14,11 @@ public class FeeController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Model.getInstance().getViewFactory().getFeeSelectedMenuItem().addListener((observable, oldValue, newValue) -> {
+            fee_parent.requestFocus();
             switch (newValue) {
-                case THU_PHI_VE_SINH -> fee_parent.setCenter(Model.getInstance().getViewFactory().getFeeVeSinhView());
-                case THU_PHI_DONG_GOP -> fee_parent.setCenter(Model.getInstance().getViewFactory().getFeeDongGopView());
+                case THEM_KHOAN_THU_PHI -> fee_parent.setCenter(Model.getInstance().getViewFactory().getFeeThemKhoanThuView());
+                case DANH_SACH_KHOAN_THU -> fee_parent.setCenter(Model.getInstance().getViewFactory().getFeeDanhSachView());
+                case DANH_SACH_HO_KHAU_CAN_THU_PHI -> fee_parent.setCenter(Model.getInstance().getViewFactory().getFeeThemHoKhauView());
                 default -> fee_parent.setCenter(Model.getInstance().getViewFactory().getFeeTrangChuView());
             }
         });

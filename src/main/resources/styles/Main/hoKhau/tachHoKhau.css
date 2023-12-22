@@ -1,0 +1,64 @@
+.tach_container{
+    -fx-background-color: #FFFFFF;
+}
+.tach_container Text{
+    -fx-font-size: 2.6em;
+    -fx-font-family: "Calibri Light";
+    -fx-font-weight: bold;
+}
+.tach_container TextField{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 2;
+    -fx-effect: dropshadow(three-pass-box,#AAAAAA,3,0,0,3);
+    -fx-pref-width: 220;
+    -fx-pref-height: 36;
+    -fx-border-width: 1 0 0 0;
+    -fx-border-color: #EEEEEE;
+}
+.tach_container Label{
+    -fx-font-family: "Calibri Light";
+    -fx-font-size: 1.3em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #315919;
+}
+.tach_container Button{
+    -fx-background-color: linear-gradient(to right,#898630,#47f00a);
+    -fx-effect: dropshadow(three-pass-box,#AAAAAA,3,0,0,3);
+    -fx-background-radius: 2;
+    -fx-font-size: 1.3em;
+    -fx-font-family: "Calibri Light";
+    -fx-font-weight: bold;
+}
+.tach_container Button:hover{
+    -fx-cursor: hand;
+}
+.tach_container .list-view{
+    -fx-background-color: #AAAAAA;
+    -fx-border-width: 1;
+    -fx-border-color: #000000;
+    -fx-padding: 3;
+}
+.tach_container .list-cell{
+    -fx-background-color: #888888;
+}
+.tach_container VBox{
+    -fx-background-radius: 2;
+    -fx-spacing: 2;
+    -fx-padding: 5;
+    -fx-background-color: #132A13;
+}
+.tach_container VBox Label{
+    -fx-font-family: "Calibri Light";
+    -fx-font-size: 1.1em;
+    -fx-text-fill: #FFFFFF;
+}
+.tach_container VBox TextField{
+    -fx-fill: #FFFFFF;
+    -fx-background-radius: 2;
+    -fx-effect: dropshadow(three-pass-box,#DDDDDD,3,0,0,3);
+}
+.error_lbl{
+    -fx-text-fill: #aa0000;
+    -fx-font-family: "Calibri Light";
+    -fx-font-size: 1.3em;
+}

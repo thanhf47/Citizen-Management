@@ -1,0 +1,67 @@
+.maunen{
+    -fx-background-color:#CCCCCC;
+}
+.trangtri_top{
+    -fx-background-color: STEELBLUE;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    /*-fx-border-style: solid;*/
+    /*-fx-border-color: #748CF1;*/
+    -fx-text-fill: #000000;
+}
+.pain{
+    -fx-background-color:#ffffff;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+
+}
+.pain:hover{
+    -fx-cursor: hand;
+    -fx-background-color: LIGHTSKYBLUE;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.pain:pressed {
+    -fx-background-color: #eeeeee;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
+.button_quaylai{
+    -fx-background-color:STEELBLUE;
+    -fx-text-fill: #FFFFFF;
+
+}
+
+.button_quaylai FontAwesomeIconView{
+    -fx-fill: #FFFFFF;
+}
+
+.button_quaylai:hover{
+    -fx-cursor: hand;
+}
+
+.name {
+    -fx-font-weight: bold;
+}
+.name:hover {
+    -fx-font-size: 36px;
+    -fx-text-fill: #0e9637;
+}
+
+.profile:hover {
+    -fx-cursor: hand;
+    -fx-scale-x: 1.15;
+    -fx-scale-y: 1.15;
+}
+
+.profile:pressed {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+
+
+

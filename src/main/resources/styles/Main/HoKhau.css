@@ -1,0 +1,51 @@
+.container {
+    -fx-background-color: #EEEEEE;
+}
+
+.button_search {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #7B68EE;
+    -fx-pref-width: 100;
+    -fx-pref-height: 25;
+    -fx-font-size: 1.1em;
+}
+
+
+.container Text {
+    -fx-fill: #000000;
+    -fx-font-size: 1.5em;
+    -fx-font-family: "Camlibri Light";
+}
+
+.button_add {
+    -fx-background-color: Green;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 1.1em;
+    -fx-font-weight: bold;
+}
+
+.button_add FontAwesomeIconView {
+    -fx-fill: White;
+}
+
+.button_remove {
+    -fx-background-color: red;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 1.1em;
+    -fx-font-weight: bold;
+}
+
+.button_remove FontAwesomeIconView {
+    -fx-fill: White;
+}
+
+.button_tachkhau{
+    -fx-background-color: #FFCC33;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 1.1em;
+    -fx-font-weight: bold;
+}
+
+.button_tachkhau FontAwesomeIconView {
+    -fx-fill: White;
+}

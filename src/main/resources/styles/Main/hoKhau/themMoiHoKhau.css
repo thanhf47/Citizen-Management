@@ -1,0 +1,41 @@
+.themMoiHoKhau_container{
+    -fx-background-color: #D3D3D3;
+}
+.themMoiHoKhau_container Text{
+    -fx-font-family: "Calibri Light";
+    -fx-font-size: 2.6em;
+    -fx-font-weight: 700;
+}
+.themMoiHoKhau_container Label{
+    -fx-font-size: 1.6em;
+    -fx-font-family: "Calibri Light";
+    -fx-text-fill: #898630;
+}
+.themMoiHoKhau_container TextField{
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box,#AAAAAA,4,0,0,4);
+    -fx-pref-width: 250;
+    -fx-pref-height: 40;
+}
+.themMoiHoKhau_container Button{
+    -fx-background-color: linear-gradient(to right, #132A13,#253F32);
+    -fx-pref-height: 40;
+    -fx-effect: dropshadow(three-pass-box, #253F32, 3,0,0,3);
+    -fx-background-radius: 3;
+    -fx-font-weight: bold;
+    -fx-font-family: "Calibri Light";
+    -fx-font-size: 1.6em;
+}
+.themMoiHoKhau_container Button:hover{
+    -fx-cursor: hand;
+}
+.error_lbl{
+    -fx-text-fill: #AA0000;
+    -fx-font-family: "Calibri Light";
+    -fx-font-size: 1.6em;
+}
+
+.but_chuyen{
+    -fx-arc-height: 48;
+    -fx-pref-width: 48;
+}

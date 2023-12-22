@@ -1,44 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="tach_container" stylesheets="@../../../styles/hoKhau/tachHoKhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.hoKhau.tachHoKhauControler">
-   <Text fill="#8e6666" layoutX="322.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tách Hộ Khẩu" />
-   <Label layoutX="11.0" layoutY="81.0" text="Nhập mã hộ khẩu:" AnchorPane.leftAnchor="11.0" />
-   <TextField fx:id="maHK_search_textField" layoutX="11.0" layoutY="112.0" AnchorPane.leftAnchor="11.0" />
-   <ListView fx:id="nguoi_in_listView_now" layoutX="11.0" layoutY="189.0" prefHeight="314.0" prefWidth="375.0" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="189.0" />
-   <Label layoutX="11.0" layoutY="161.0" text="Chọn người sang hộ mới:" />
-   <Button fx:id="chuyen_sang_moi_but" layoutX="407.0" layoutY="260.0" mnemonicParsing="false" text="&gt;&gt;" textFill="#ebf2ed" />
-   <Button fx:id="Chuyen_lai_but" layoutX="407.0" layoutY="375.0" mnemonicParsing="false" text="&lt;&lt;" textFill="#e1dede" />
-   <ListView fx:id="nguoi_in_listView_new" layoutX="467.0" layoutY="189.0" prefHeight="313.0" prefWidth="375.0" AnchorPane.topAnchor="189.0" />
-   <Label layoutX="566.0" layoutY="161.0" text="Những người ở hộ mới:" textFill="#315919" />
-   <Button layoutX="573.0" layoutY="685.0" mnemonicParsing="false" text="Xác nhận" textFill="#ecebe0" AnchorPane.bottomAnchor="33.8" fx:id="xacNhan_but">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.hoKhau.tachHoKhauControler">
+   <Text fill="#8e6666" layoutX="327.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tách Hộ Khẩu">
+      <font>
+         <Font size="32.0" />
+      </font></Text>
+   <TextField fx:id="maHK_search_textField" layoutX="14.0" layoutY="63.0" promptText="Nhập hộ khẩu cần tách" AnchorPane.leftAnchor="14.0">
+      <font>
+         <Font size="18.0" />
+      </font></TextField>
+   <ListView fx:id="nguoi_in_listView_now" layoutX="8.0" layoutY="143.2" prefHeight="270.0" prefWidth="564.0" stylesheets="@../../../styles/Main/hoKhau/listView.css" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="143.0">
+      <styleClass>
+         <String fx:value="list-cell" />
+         <String fx:value="list-view" />
+      </styleClass></ListView>
+   <Label layoutX="198.0" layoutY="116.0" text="Chọn người sang hộ mới:">
+      <font>
+         <Font size="18.0" />
+      </font></Label>
+   <ListView fx:id="nguoi_in_listView_new" layoutX="8.0" layoutY="475.2" prefHeight="270.0" prefWidth="564.0" stylesheets="@../../../styles/Main/hoKhau/listView.css" AnchorPane.topAnchor="475.0">
+      <styleClass>
+         <String fx:value="list-cell" />
+         <String fx:value="list-view" />
+      </styleClass></ListView>
+   <Label layoutX="68.0" layoutY="443.0" text="Những người ở hộ mới" textFill="#315919">
+      <font>
+         <Font size="18.0" />
+      </font></Label>
+   <Button layoutX="670.0" layoutY="524.0" mnemonicParsing="false" style="-fx-background-color: #279710;" text="Xác nhận" textFill="#ecebe0" AnchorPane.bottomAnchor="198.0" fx:id="xacNhan_but">
       <graphic>
          <FontAwesomeIconView fill="#f7f1f1" glyphName="CHECK" size="20" />
-      </graphic></Button>
-   <Button fx:id="cancel_but" layoutX="723.0" layoutY="684.0" mnemonicParsing="false" text="Cancel" textFill="#d9d9d9">
+      </graphic>
+      <font>
+         <Font size="16.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></Button>
+   <Button fx:id="cancel_but" layoutX="670.0" layoutY="582.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="110.0" style="-fx-background-color: #beba1f;" text="Cancel" textFill="#d9d9d9">
       <graphic>
          <FontAwesomeIconView fill="#efe9e9" glyphName="TIMES" size="20" />
       </graphic>
+      <font>
+         <Font size="16.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
    </Button>
-   <Button fx:id="search_but" layoutX="322.0" layoutY="114.0" mnemonicParsing="false" text="Search" textFill="#eadddd">
+   <Button fx:id="search_but" layoutX="265.0" layoutY="65.0" mnemonicParsing="false" style="-fx-background-color: #3280c4;" text="Search" textFill="#eadddd">
       <graphic>
          <FontAwesomeIconView fill="#f4f2f2" glyphName="SEARCH" size="20" />
       </graphic>
+      <font>
+         <Font size="16.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
    </Button>
-   <Label fx:id="error_lbl" layoutX="14.0" layoutY="692.0" text="fsedgn" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="40.0" />
-   <TextField fx:id="ngay_tao" layoutX="75.0" layoutY="575.0" AnchorPane.bottomAnchor="95.0" />
-   <TextField fx:id="ghi_chu" layoutX="529.0" layoutY="619.0" AnchorPane.bottomAnchor="95.0" />
-   <TextField fx:id="dia_chi" layoutX="529.0" layoutY="544.0" AnchorPane.topAnchor="544.0" />
-   <Label layoutX="140.0" layoutY="539.0" text="Ngày tạo" AnchorPane.bottomAnchor="140.0" />
-   <Label layoutX="615.0" layoutY="591.0" text="Ghi chú" AnchorPane.bottomAnchor="140.60000000000002" />
-   <Label layoutX="618.0" layoutY="514.0" text="Địa chỉ" AnchorPane.topAnchor="514.0" />
-   <Label layoutX="123.0" layoutY="514.0" text="ID Chủ hộ mới" AnchorPane.topAnchor="514.0" />
-   <TextField fx:id="id_chu_moi" layoutX="75.0" layoutY="544.0" AnchorPane.bottomAnchor="170.0" />
+   <VBox layoutX="616.0" layoutY="125.0" prefHeight="375.0" prefWidth="196.0" spacing="10.0">
+      <padding>
+         <Insets right="10.0" top="10.0" />
+      </padding>
+      <Label text="ID Chủ hộ mới">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="id_chu_moi">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Label text="Địa chỉ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="dia_chi">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Label text="Ghi chú">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="ghi_chu">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+   </VBox>
+   <Button fx:id="chuyen_sang" layoutX="21.0" layoutY="417.0" maxHeight="60.0" maxWidth="40.0" minHeight="60.0" minWidth="40.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="40.0" textFill="#f2eded">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      <graphic>
+         <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../../images/main/mui_ten_chuyen_xuong.png" />
+         </ImageView>
+      </graphic>
+   </Button>
+   <Button fx:id="chuyen_lai" layoutX="518.0" layoutY="413.0" maxHeight="60.0" minHeight="60.0" minWidth="40.0" mnemonicParsing="false" prefWidth="26.0" textFill="#e7dbdb">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      <graphic>
+         <ImageView fitHeight="60.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../../images/main/mui_ten_chuyen_len.png" />
+         </ImageView>
+      </graphic>
+   </Button>
+   <TextField fx:id="quan_he_textField" alignment="CENTER" layoutX="265.0" layoutY="428.0" prefHeight="37.0" prefWidth="223.0" promptText="Có quan hệ với chủ hộ">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </TextField>
 </AnchorPane>

@@ -1,0 +1,76 @@
+.slide_ankerpaine{
+    /*-fx-background-color:#353A56;*/
+    -fx-background-image: url("../images/main/wall.jpg");
+    -fx-background-size: cover;
+    /*-fx-border-color: #2207bb;*/
+    -fx-border-width: 2px 2px 2px 2px;
+    /*-fx-border-radius: 20;
+    -fx-background-radius: 20;*/
+    -fx-text-fill: #FFFFFF;
+    /*-fx-border-style: solid;*/
+
+}
+
+.slide_ankerpaine FontAwesomeIconView{
+    -fx-fill: #FFFFFF;
+}
+.inner_paine{
+    -fx-background-color: #69B4C7;
+    -fx-border-width: 2px 2px 2px 2px;
+    /*-fx-border-radius: 20;
+    -fx-background-radius: 20;*/
+    -fx-border-style: solid;
+    -fx-border-color: #748CF1;
+
+}
+
+.btn_an{
+    -fx-background-color: transparent;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 2em;
+    -fx-text-alignment: center;
+}
+
+.btn_an:hover{
+    -fx-cursor: hand;
+    -fx-background-color: rgba(146, 150, 156, 0.5);
+    -fx-font-size: 2.2em;
+
+}
+.btn_an:pressed{
+    -fx-background-color: #98adb3;
+}
+
+.btn_an:focused {
+    -fx-background-color: rgba(146, 150, 156, 0.7);
+}
+
+.logoutBtn {
+    -fx-alignment: center;
+    -fx-spacing: 15;
+}
+
+.logoutBtn Label {
+    -fx-font-size: 1.8em;
+    -fx-font-weight: bold;
+}
+
+.logoutBtn Label:hover {
+    -fx-font-size: 2em;
+}
+
+.logoutBtn:hover {
+    -fx-cursor: hand;
+    -fx-background-color: rgba(146, 150, 156, 0.5);
+}
+
+.logoutBtn:pressed {
+    -fx-background-color: #98adb3;
+}
+
+
+
+
+

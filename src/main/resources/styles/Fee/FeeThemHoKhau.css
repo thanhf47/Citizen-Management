@@ -1,0 +1,51 @@
+.my-background {
+    -fx-background-color: #eeeeee;
+}
+
+.list-view {
+    -fx-border-color: #ccc;
+    -fx-border-width: 0 0 1 0;
+}
+
+.list-view .my-list-cell {
+    -fx-background-radius: 5;
+   /* -fx-effect: dropshadow(three-pass-box,#AAAAAA,3,0,0,3);*/
+     -fx-background-insets: 0;
+}
+.list-view .my-list-cell:even {
+    -fx-background-color: #f5f5f5;
+}
+
+.list-view .my-list-cell:odd {
+   -fx-background-color: #e82e2e;
+}
+
+.list-view .my-list-cell:hover {
+    -fx-background-color: #a7c8eb;
+    -fx-cursor: hand;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.list-view .my-list-cell:selected {
+    -fx-background-color: #0400ff;
+    -fx-text-fill: #ffffff;
+}
+
+.list-view .my-list-cell HBox {
+    -fx-alignment: center-left;
+    -fx-spacing: 30;
+}
+.list-view .my-list-cell HBox Text {
+    -fx-font-size: 1.2em;
+    -fx-font-family: Calibri;
+    -fx-font-weight: 700;
+}
+
+.list-view .my-list-cell HBox Line {
+    -fx-stroke: #AAAAAA;
+}
+
+.list-view .my-list-cell HBox CheckBox {
+    -fx-alignment: center;
+}

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.hoKhau.thay_doi_ho_khau_controler">
+   <Text layoutX="191.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thay đổi thông tin hộ khẩu">
+      <font>
+         <Font size="25.0" />
+      </font>
+   </Text>
+   <ListView fx:id="listView_nhan_khau" layoutX="23.0" layoutY="135.0" prefHeight="200.0" prefWidth="566.0" stylesheets="@../../../styles/Main/hoKhau/listView.css">
+      <styleClass>
+         <String fx:value="list-view" />
+         <String fx:value="list-cell" />
+      </styleClass></ListView>
+   <ListView fx:id="listView_thanh_vien" layoutX="23.0" layoutY="470.0" prefHeight="200.0" prefWidth="566.0" styleClass="list-cell" stylesheets="@../../../styles/Main/hoKhau/listView.css" />
+   <VBox layoutX="637.0" layoutY="135.0" prefHeight="373.0" prefWidth="187.0" spacing="10.0">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thay đổi mã chủ hộ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="thay_doi_ma_chu_ho_textFiled">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thay đổi địa chỉ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="thay_doi_dia_chi_textField" layoutX="10.0" layoutY="28.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Text layoutX="10.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ghi chú">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="ghi_chu_textField" layoutX="10.0" layoutY="114.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+   </VBox>
+   <Button fx:id="them_thanh_vien_but" layoutX="23.0" layoutY="375.0" mnemonicParsing="false" text="Thêm thành viên">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Button>
+   <Button layoutX="243.0" layoutY="682.0" mnemonicParsing="false" text="Xóa thành viên" fx:id="xoa_thanh_vien_but">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Button>
+   <Button layoutX="686.0" layoutY="533.0" mnemonicParsing="false" text="Xác Nhận" fx:id="xac_nhan_but">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Button>
+   <Button fx:id="huy_but" layoutX="686.0" layoutY="610.0" mnemonicParsing="false" prefWidth="89.0" text="Hủy">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Button>
+   <TextField fx:id="tim_kiem_nhan_khau" layoutX="62.0" layoutY="90.0" prefHeight="38.0" prefWidth="244.0" promptText="Tìm kiếm nhân khẩu cần thêm">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </TextField>
+   <TextField fx:id="quan_he_textField" alignment="CENTER" layoutX="242.0" layoutY="374.0" prefHeight="38.0" prefWidth="282.0" promptText="Có quan hệ với chủ hộ">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </TextField>
+   <Label layoutX="23.0" layoutY="436.0" text="Các thành viên của hộ">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Label>
+</AnchorPane>

@@ -1,0 +1,69 @@
+.text_fld {
+    -fx-border-style: solid solid solid solid;
+    -fx-border-width: 0.5;
+    -fx-border-color: purple;
+
+}
+
+.text_fld1 {
+        -fx-border-style: solid solid solid solid;
+        -fx-border-width: 0.5;
+        -fx-border-color: purple;
+}
+
+.button_acp {
+     -fx-background-color: linear-gradient(to bottom right ,#007700,#00CC00);
+     -fx-effect: dropshadow(three-pass-box , #AAAAAA, 3, 0, 0, 3);
+     -fx-pref-width: 100;
+     -fx-pref-hight: 50;
+     -fx-pref-size: 1.5em;
+     -fx-font-family: Serif ;
+     -fx-text-fill: #FFFFFF;
+     -fx-font-weight: Bold;
+ }
+
+  .button_cancel {
+       -fx-background-color: linear-gradient(to bottom right ,#838B83,#8B8B7A);
+       -fx-effect: dropshadow(three-pass-box , #AAAAAA, 3, 0, 0, 3);
+       -fx-pref-width: 100;
+       -fx-pref-hight: 50;
+       -fx-pref-size: 1.5em;
+       -fx-font-family: Serif ;
+       -fx-text-fill: #FFFFFF;
+       -fx-font-weight: Bold;
+   }
+
+   .button_acp :hover {
+    -fx-cursor: hand;
+    -fx-text-style: bold;
+    -fx-background-color: #373c7d;
+   }
+
+  .button_acp :focus {
+      -fx-outline-color: transparent;
+      -fx-outline-style: solid;
+  }
+
+  .button_acp:pressed {
+      -fx-background-color: #39e687;
+  }
+
+.button_cancel :hover {
+      -fx-cursor: hand;
+      -fx-text-style: bold;
+      -fx-background-color: #373c7d;
+}
+
+.button_cancel :focus {
+  -fx-outline-color: transparent;
+  -fx-outline-style: solid;
+}
+
+.button_cancel:pressed {
+  -fx-background-color: #8f908f;
+    }
+
+.lable {
+    -fx-font-weight : bold;
+
+}
