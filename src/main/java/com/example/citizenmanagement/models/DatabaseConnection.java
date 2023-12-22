@@ -643,6 +643,17 @@ public class DatabaseConnection {
         return resultSet;
     }
 
+    public void thay_doi_quan_he_chu_ho(String ma_nhan_khau, String quan_he){
+        String query = "update thanhviencuaho set quanhe="+quan_he+" where manhankhau="+ma_nhan_khau;
+        try {
+            Statement statement= connection.createStatement();
+            statement.executeUpdate(query);
+        }catch (Exception e){
+            System.out.println("sagvbdcasjvbjasvn dsjvnb");
+            e.printStackTrace();
+        }
+    }
+
     public int add_thanh_vien_cua_ho(String ma_nhan_khau,String ma_ho, String quan_he){
         String query = "INSERT INTO THANHVIENCUAHO VALUES (?,?,?)";
         try {

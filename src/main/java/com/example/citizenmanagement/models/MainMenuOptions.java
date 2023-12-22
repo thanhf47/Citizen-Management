@@ -10,6 +10,7 @@ public enum MainMenuOptions {
     TACH_HO_KHAU,
     THEM_HO_KHAU,
     THAY_DOI_HO_KHAU,
+    THAY_DOI_CHU_HO,
 
     //nhan khau
     THEM_NHAN_KHAU,

@@ -19,7 +19,6 @@ import java.util.ResourceBundle;
 public class thay_doi_ho_khau_controler implements Initializable {
     public ListView<List_nhan_khau> listView_nhan_khau;
     public ListView<thanh_vien_cua_ho_cell> listView_thanh_vien;
-    public TextField thay_doi_ma_chu_ho_textFiled;
     public TextField thay_doi_dia_chi_textField;
     public TextField ghi_chu_textField;
     public Button them_thanh_vien_but;
@@ -28,6 +27,7 @@ public class thay_doi_ho_khau_controler implements Initializable {
     public Button huy_but;
     public TextField tim_kiem_nhan_khau;
     public TextField quan_he_textField;
+    public Button thay_doi_chu_ho;
     //**************************************
     private List_nhan_khau nhan_khau_dc_chon=null;
     private List<thanh_vien_cua_ho_cell> thanh_vien_cua_ho_dc_chon = new ArrayList<>();
@@ -43,7 +43,6 @@ public class thay_doi_ho_khau_controler implements Initializable {
         cap_nhat_list_view_thanh_vien();
         cap_nhat_danh_sach_ban_dau();
         String ma_chu_ho=Model.getInstance().getDatabaseConnection().lay_chu_ho(tam.getId().get());
-        thay_doi_ma_chu_ho_textFiled.setText(ma_chu_ho);
         thay_doi_dia_chi_textField.setText(String.valueOf(tam.getAddress().get()));
         ghi_chu_textField.setText(String.valueOf(tam.getGhi_chu().get()));
         //**********************************************************
@@ -141,7 +140,9 @@ public class thay_doi_ho_khau_controler implements Initializable {
         });
 
 
-
+        thay_doi_chu_ho.setOnAction(actionEvent -> {
+            Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.THAY_DOI_CHU_HO);
+        });
 
         huy_but.setOnAction(actionEvent -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -183,7 +184,7 @@ public class thay_doi_ho_khau_controler implements Initializable {
                     ButtonType resutl = alert.showAndWait().orElse(ButtonType.CANCEL);
                     if (resutl == ButtonType.OK) {
                         int ketqua = 0;
-                        ketqua = Model.getInstance().getDatabaseConnection().capNhatHoKhau(String.valueOf(tam.getId().get()), thay_doi_ma_chu_ho_textFiled.getText(),
+                        ketqua = Model.getInstance().getDatabaseConnection().capNhatHoKhau(String.valueOf(tam.getId().get()), Model.getInstance().getDatabaseConnection().lay_chu_ho(tam.getId().get()),
                                 thay_doi_dia_chi_textField.getText(), ghi_chu_textField.getText());
                         if (ketqua == 1) {
                             Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
@@ -191,7 +192,7 @@ public class thay_doi_ho_khau_controler implements Initializable {
                             alert1.setTitle("Thông báo");
                             alert1.setHeaderText(null);
                             alert1.showAndWait();
-                            Model.setHoKhauDuocChon(new MainHoKhauCell(String.valueOf(tam.getId().get()), thay_doi_ma_chu_ho_textFiled.getText(),
+                            Model.setHoKhauDuocChon(new MainHoKhauCell(String.valueOf(tam.getId().get()),  Model.getInstance().getDatabaseConnection().lay_chu_ho(tam.getId().get()),
                                     thay_doi_dia_chi_textField.getText(), tam.getDate_tao().get(), ghi_chu_textField.getText()));
                             Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.XEM_CHI_TIET_HO_KHAU);
                         } else {
@@ -247,7 +248,7 @@ public class thay_doi_ho_khau_controler implements Initializable {
         try {
             if(resultSet.isBeforeFirst()){
                 while (resultSet.next()){
-                    if(thay_doi_ma_chu_ho_textFiled.getText().equals(resultSet.getString(1)))
+                    if( Model.getInstance().getDatabaseConnection().lay_chu_ho(tam.getId().get()).equals(resultSet.getString(1)))
                         return true;
                 }
             }

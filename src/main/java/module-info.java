@@ -3,7 +3,6 @@ module com.example.citizenmanagement {
     requires javafx.fxml;
     requires de.jensd.fx.glyphs.fontawesome;
     requires java.sql;
-
     requires com.microsoft.sqlserver.jdbc;
 
 
@@ -25,5 +24,6 @@ module com.example.citizenmanagement {
     exports com.example.citizenmanagement.views;
     exports com.example.citizenmanagement.controllers.maincontrollers.hoKhau;
     exports com.example.citizenmanagement.controllers.maincontrollers.NhankhauController;
+
 
 }

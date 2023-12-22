@@ -22,17 +22,7 @@
          <String fx:value="list-cell" />
       </styleClass></ListView>
    <ListView fx:id="listView_thanh_vien" layoutX="23.0" layoutY="470.0" prefHeight="200.0" prefWidth="566.0" styleClass="list-cell" stylesheets="@../../../styles/Main/hoKhau/listView.css" />
-   <VBox layoutX="637.0" layoutY="135.0" prefHeight="373.0" prefWidth="187.0" spacing="10.0">
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thay đổi mã chủ hộ">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <TextField fx:id="thay_doi_ma_chu_ho_textFiled">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
+   <VBox layoutX="637.0" layoutY="135.0" prefHeight="177.0" prefWidth="187.0" spacing="10.0">
       <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thay đổi địa chỉ">
          <font>
             <Font size="16.0" />
@@ -89,4 +79,9 @@
          <Font size="16.0" />
       </font>
    </Label>
+   <Button fx:id="thay_doi_chu_ho" layoutX="637.0" layoutY="330.0" mnemonicParsing="false" text="Thay đổi chủ hộ">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Button>
 </AnchorPane>

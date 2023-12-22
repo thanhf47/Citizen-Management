@@ -47,6 +47,10 @@ public class MainController implements Initializable {
                     main_parent.setCenter(Model.getInstance().getViewFactory().getXemChiTietHoKhau());
                     ho_khau_btn.requestFocus();
                 }
+                case THAY_DOI_CHU_HO -> {
+                    main_parent.setCenter(Model.getInstance().getViewFactory().getThayDoiChuHo());
+                    ho_khau_btn.requestFocus();
+                }
                 case TACH_HO_KHAU -> {
                     main_parent.setCenter(Model.getInstance().getViewFactory().getTachHoKhau());
                     ho_khau_btn.requestFocus();

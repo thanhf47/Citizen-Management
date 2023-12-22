@@ -30,6 +30,7 @@ public class ViewFactory {
 
     //Ho Khau
 
+    private AnchorPane thayDoiChuHo;
     private AnchorPane themHoKhau;
     private AnchorPane tachHoKhau;
     private AnchorPane xemChiTietHoKhau;
@@ -239,6 +240,14 @@ public class ViewFactory {
                 throw new RuntimeException(e);
             }
         return xemChiTietHoKhau;
+    }
+    public AnchorPane getThayDoiChuHo(){
+        try {
+            thayDoiChuHo=new FXMLLoader(getClass().getResource("/fxml/main_citizen/hoKhau/thay_doi_chu_ho.fxml")).load();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return thayDoiChuHo;
     }
     public AnchorPane get_thay_doi_ho_khau(){
         try {
