@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="maunen" stylesheets="@../../styles/Fee/FeeTrangChu.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.feecontrollers.FeeTrangChuController">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="maunen" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.feecontrollers.FeeTrangChuController">
    <AnchorPane prefHeight="102.0" prefWidth="850.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Circle fx:id="profile_thuphi" fill="DODGERBLUE" layoutX="799.0" layoutY="40.0" onMouseClicked="#onProFile_Fee" radius="30.0" stroke="BLACK" strokeType="INSIDE" styleClass="profile" />
       <Label layoutX="8.0" layoutY="30.0" text="HỆ THỐNG QUẢN LÝ THU PHÍ, ĐÓNG GÓP" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="25.0">
@@ -20,9 +24,9 @@
          <Font size="20.0" />
       </font>
    </Label>
-   <Label fx:id="name_thuphi" layoutX="166.0" layoutY="60.0" styleClass="name" text="NAME">
+   <Label fx:id="name_thuphi" layoutX="166.0" layoutY="60.0" styleClass="my_text" text="NAME">
       <font>
-         <Font size="20.0" />
+         <Font name="System Bold" size="20.0" />
       </font>
    </Label>
    <AnchorPane layoutY="120.0" prefHeight="124.0" prefWidth="850.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -48,7 +52,7 @@
                      <Font name="Arial Bold" size="17.0" />
                   </font>
                </Label>
-               <Label fx:id="tongSoTienDaThu" alignment="CENTER" layoutX="35.0" layoutY="51.0" text="Label">
+               <Label fx:id="tongSoTienDaThu" alignment="CENTER" layoutX="16.0" layoutY="51.0" text="Label" wrapText="true">
                   <font>
                      <Font name="System Bold" size="20.0" />
                   </font>
@@ -85,4 +89,28 @@
          </Pane>
       </children>
    </AnchorPane>
+   <ImageView fitHeight="112.0" fitWidth="440.0" layoutX="205.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../images/main/empty_music_tablature.png" />
+      </image>
+   </ImageView>
+   <Text layoutX="336.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enjoy the silence.">
+      <font>
+         <Font name="Consolas" size="18.0" />
+      </font>
+   </Text>
+   <Text layoutX="23.0" layoutY="697.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ronaldo" text="&quot;Siuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu&quot;">
+      <font>
+         <Font name="Consolas Italic" size="12.0" />
+      </font>
+   </Text>
+   <Text layoutX="713.0" layoutY="726.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-Ronaldo-">
+      <font>
+         <Font name="Consolas" size="14.0" />
+      </font>
+   </Text>
+   <stylesheets>
+      <URL value="@../../styles/Fee/FeeTrangChu.css" />
+      <URL value="@../../styles/Main/TrangChu.css" />
+   </stylesheets>
 </AnchorPane>

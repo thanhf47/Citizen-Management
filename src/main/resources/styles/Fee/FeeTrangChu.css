@@ -45,14 +45,16 @@
     -fx-cursor: hand;
 }
 
-.name {
+.my_text:hover {
+    -fx-font-size: 24px;
+    -fx-text-fill: #0e9637;
     -fx-font-weight: bold;
 }
-.name:hover {
-    -fx-font-size: 36px;
-    -fx-text-fill: #0e9637;
-}
 
+.ronaldo:hover {
+    -fx-font-size: 13px;
+    -fx-fill: #0e9637;
+}
 .profile:hover {
     -fx-cursor: hand;
     -fx-scale-x: 1.15;
