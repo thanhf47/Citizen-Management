@@ -85,8 +85,8 @@ public class FeeDSChuaHoanThanhPhi implements Initializable {
                             Model.getInstance().getDatabaseConnection().updateNopPhi(
                                     selectedItem.getMaHoKhau(),
                                     Model.getInstance().getFeeKhoanThuModel().getMaKhoanThu().get(),
-                                    String.valueOf(soTienCanDong));
-                            System.out.println(soTienCanDong);
+                                    String.valueOf(selectedItem.getSoTien()));
+
                             Model.getInstance().getDanhSachChuaDongPhi().remove(selectedItem);
                             showDanhSach();
                         }

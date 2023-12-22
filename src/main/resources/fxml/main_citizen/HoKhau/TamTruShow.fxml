@@ -59,7 +59,7 @@
          </font></Text>
         <TextField fx:id="cccd_text" layoutX="199.0" layoutY="103.0" prefHeight="33.0" prefWidth="500.0" styleClass="text_fld" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="130.0" />
         <Button fx:id="thoat_chinhsua_button" layoutX="175.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #6a7068;" styleClass="button_style" text="Thoát" />
-        <Button fx:id="confirm_chinh_sua_btn" layoutX="562.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" styleClass="button_acp" text="Xác nhận" />
+        <Button fx:id="confirm_chinh_sua_btn" layoutX="562.0" layoutY="684.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #1a5e03;" styleClass="button_style" text="Xác nhận" />
         <TextField fx:id="dan_toc_text" layoutX="523.0" layoutY="300.0" prefHeight="32.0" prefWidth="200.0" styleClass="text_fld" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="310.0" />
         <TextField fx:id="ghi_chu_text" layoutX="523.0" layoutY="626.0" prefHeight="32.0" prefWidth="200.0" styleClass="text_fld" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="610.0" />
         <Text layoutX="433.0" layoutY="637.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ghi chú" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="610.0">
