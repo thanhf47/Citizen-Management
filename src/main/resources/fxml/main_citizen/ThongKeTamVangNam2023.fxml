@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="maunen" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.citizenmanagement.controllers.maincontrollers.ThongKeTamVangNam2023Controller">
-    <StackedBarChart fx:id="bieuDoThongKeTamVangTheoThang" layoutX="29.0" layoutY="150.0" legendVisible="false" prefHeight="266.0" prefWidth="710.0" title="Thống kê tạm vắng năm 2023">
+    <StackedBarChart fx:id="bieuDoThongKeTamVangTheoThang" layoutX="29.0" layoutY="150.0" legendVisible="false" prefHeight="266.0" prefWidth="710.0" title="Thống kê tạm vắng ">
       <xAxis>
           <CategoryAxis side="BOTTOM" />
       </xAxis>
