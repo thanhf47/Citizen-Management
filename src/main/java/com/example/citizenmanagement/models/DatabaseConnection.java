@@ -30,6 +30,7 @@ public class DatabaseConnection {
             throw new RuntimeException(e);
         }
     }
+
     private ResultSet executeQuery(String query) {
         Statement statement;
         ResultSet resultSet = null;
