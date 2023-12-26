@@ -68,28 +68,37 @@ public class ThemMoiController implements Initializable {
                 bit = 1;
             }
             else bit = 0;
-           int thanhcong = Model.getInstance().getDatabaseConnection().addNhanKhau(
-                   ho_ten_text.getText(),cccd_text.getText(),
-                   Date.valueOf(ngay_sinh_lbl.getValue()).toString(), bit,
-                   noi_sinh_text.getText(), nguyen_quan_text.getText(),
-                   dan_toc_text.getText(), ton_giao_text.getText(),
-                   quoc_tich_text.getText(),
-                   thuong_tru_text.getText(), nghe_text.getText(),
-                    ghi_chu_text.getText());
-        if(thanhcong == 0) {
-            System.out.println("Đã thêm không thành công, hãy kiểm tra lại");
-        }
-        else {
+            if(ho_ten_text.getText().isEmpty() || ngay_sinh_lbl.getValue() == null || my_choise_box.getValue().isEmpty() || ton_giao_text.getText().isEmpty() || dan_toc_text.getText().isEmpty() || quoc_tich_text.getText().isEmpty() || nguyen_quan_text.getText().isEmpty() || noi_sinh_text.getText().isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Lỗi");
+                alert.setHeaderText(" Đăng Kí Không Thành Công !!!");
+                alert.setContentText("Chưa điền đủ những thông tin bắt buộc , xin kiểm tra lại !");
+                alert.showAndWait();
+            }
+            else{
+                int thanhcong = Model.getInstance().getDatabaseConnection().addNhanKhau(
+                        ho_ten_text.getText(), cccd_text.getText(),
+                        Date.valueOf(ngay_sinh_lbl.getValue()).toString(), bit,
+                        noi_sinh_text.getText(), nguyen_quan_text.getText(),
+                        dan_toc_text.getText(), ton_giao_text.getText(),
+                        quoc_tich_text.getText(),
+                        thuong_tru_text.getText(), nghe_text.getText(),
+                        ghi_chu_text.getText());
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Thông báo");
-            alert.setHeaderText("Thành Công !!!");
-            alert.setContentText("Đã thêm thành công, vui lòng ấn Thoát để xem danh sách");
-            alert.showAndWait();
-            Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.NHAN_KHAU);
-            clearText();
+                if (thanhcong == 0) {
+                    System.out.println("Đã thêm không thành công, hãy kiểm tra lại");
+                } else {
 
-        }
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Thông báo");
+                    alert.setHeaderText("Thành Công !!!");
+                    alert.setContentText("Đã thêm thành công, vui lòng ấn Thoát để xem danh sách");
+                    alert.showAndWait();
+                    Model.getInstance().getViewFactory().getSelectedMenuItem().set(MainMenuOptions.NHAN_KHAU);
+                    clearText();
+
+                }
+            }
         });
 
     }
